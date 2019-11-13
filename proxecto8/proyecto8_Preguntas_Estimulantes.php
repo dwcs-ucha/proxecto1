@@ -3,6 +3,7 @@
 	/*
 	* Autor:LorenzoOS
 	* FechaCreación: 12/11/2019
+	* Version : 1.0
 	*/
 ?>
 <head> </head>
@@ -21,9 +22,10 @@
 	$fallos = 0;
 	$numeroAleatorio = random_int(0,7);
 	
+	
+	
 	if(isset($_POST['btnJugar']) || isset($_POST['btnSiguiente'])){
 		
-	
 	
 	
 			switch($numeroAleatorio){
@@ -115,8 +117,10 @@
 
 <div id="botones">
 <?php	
-	if(isset($_POST['btnAcierto']) || isset($_POST['btnFallo'])){
+	
 
+		
+		
 		if(isset($_POST['btnAcierto'])){
 				$numerosUsados[]= $_POST['valor'];
 				$aciertos++;
@@ -134,7 +138,7 @@
 				echo '<input class="btnSiguiente" type="submit"  name="btnSiguiente" value="Siguiente"> </p>';
 				
 			}	
-	}		
+			
 	
 ?>
 </div>
