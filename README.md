@@ -1,4 +1,5 @@
 # proxecto1
 Proxecto da 1ª avaliación
 
-#Comentario
+#Sitio web de xogos e actividades para nenos e nenas con TEA.
+

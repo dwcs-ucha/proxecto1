@@ -1,0 +1,26 @@
+/*
+    BreoBeceiro:23/11/2019
+    PROXECTO 1º AVALIACIÓN | Versión 1.0
+*/
+
+.container { background-color: #9C9C9C; }
+
+.container h2 { text-align: center; }
+
+.imaxesNivel1 { width: 45%; }
+
+/*form {border: solid black 3px; }*/
+
+input[type=text] { width: 11%;
+                   font-size: 30px;
+                   text-align: center; }
+                
+.caixa1, .caixa2, .caixa3, .caixa4, .caixa5 { width: 49%; 
+                                              float: right; 
+                                              position: relative; 
+                                              /*border: black solid 1px;*/ 
+                                              margin: auto;}
+
+input .segundaSilaba { width: 8%; }
+
+.w-25{ float: left; }
