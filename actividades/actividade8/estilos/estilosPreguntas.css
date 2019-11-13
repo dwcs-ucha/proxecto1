@@ -1,23 +1,29 @@
 
-h1{
+#cabecera {
 text-align:center;
 }
 
 #botones {
-position:relative;
-left:410;
-}
-#Jugar{
-position:relative;
-left:410;
+display:block;
+margin:auto;
 }
 
-.pista{
-position:relative;
-left:200;
+#jugar{
+text-align:center;
+}
+
+.pista {
+left:500px;
+}
+
+p {
+display:block;
+text-align:center;
 }
 
 img{
+display:block;
+margin:auto;
 height:400px;
 width:800px;
 }

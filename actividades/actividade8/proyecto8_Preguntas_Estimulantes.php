@@ -1,19 +1,24 @@
 <html>
+<head> 
+<title>Preguntas Estimulantes</title>
 <?php
 	/*
 	* Autor:LorenzoOS
 	* FechaCreación: 12/11/2019
 	*/
+	require_once('../../layout/head.php');
 ?>
-<head> </head>
-<title>Preguntas Estimulantes</title>
+</head>
 <link rel="stylesheet" href="estilos/estilosPreguntas.css">
 <body>
-<div id="cabecera"><h1>Juego Preguntas Estimulantes</h1></div> 
-
-<form action="proyecto8_Preguntas_Estimulantes.php" method="POST" >
-<div id="Jugar">
 <?php
+	require_once('../../layout/cabeceira.php');
+?>
+<div id="cabecera"><h1>Juego Preguntas Estimulantes</h1></div> 
+<form action="proyecto8_Preguntas_Estimulantes.php" method="POST" >
+<div id="jugar">
+<?php
+	
 	$arrayImagenes = ['imaxes/jirafa.png','imaxes/perro.png','imaxes/coche.png','imaxes/tiburon.png','imaxes/boli.png','imaxes/chocolate.png','imaxes/camiseta.png','imaxes/bolso.png'];
 	$arrayRespuesta = ['Caballo','Gato','Moto','Delfin','Lapiz','Sopa','Sudadera','Mochila'];
 	$numerosUsados = array();
@@ -136,7 +141,13 @@
 			}	
 	}		
 	
+	
 ?>
+
+
 </div>
+<?php
+	require_once('../../layout/pe.php');
+?>
 </body>
 </html>
