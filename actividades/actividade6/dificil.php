@@ -1,9 +1,9 @@
 <?php 
         /********************************/
 	    /*      Luis Corral de Cal      */
-	    /*	    26 Novembro 2019	    */
+	    /*      26 Novembro 2019	    */
     	/*	    Proxecto 1 Avaliacion   */
-    	/*      Nivel fácil	            */
+    	/*      Nivel Dificil           */
     	/*	    Version 1		        */
     	/********************************/
 ?>
@@ -78,17 +78,17 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
 <body>
 <div class="xogador">
 <h3>Xogador : <?php echo $nome ?> </h3>
-<h4>Dificultade : Fácil </h4>
+<h4>Dificultade : Dificil </h4>
 </div>
 <div>
-      <form action="facil.php" method="post">
+      <form action="dificil.php" method="post">
 <?php /* creamos aleatoriamente as sumas */
         if(!isset($_POST['comp'])){
         $numeros_a = array();
         $numeros_b = array();        
         for($i=1;$i<=10;$i++){
-          array_push($numeros_a,rand(1,9));
-          array_push($numeros_b,rand(1,9));
+          array_push($numeros_a,rand(1,999));
+          array_push($numeros_b,rand(1,999));
         }
         for($i=0;$i<sizeof($numeros_a);$i++){
           $num_a .=$numeros_a[$i] . ',';

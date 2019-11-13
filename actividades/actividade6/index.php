@@ -1,12 +1,11 @@
 <?php 
         /********************************/
-	/*	Luis Corral de Cal      */
-	/*	21 Novembro 2019	*/
-    	/*	Proxecto 1 Avaliacion	*/
-    	/*      Páxina de acceso        */
-    	/*	Version 1		*/
-	/********************************/
-
+	    /*	Luis Corral de Cal          */
+	    /*	26 Novembro 2019	        */
+    	/*	Proxecto 1 Avaliacion	    */
+    	/*  Páxina de acceso            */
+    	/*	Version 1		            */
+	    /********************************/
 ?>
 <?php
 // include("../layout/cabeceira.php");   
@@ -44,7 +43,7 @@ if(isset($_POST['entrar'])){
                 header("location:medio.php?nome=$nome&difi=$dif");
                 break;
         case 'dificil':
-                header("location:facil.php?nome=$nome&difi=$dif");
+                header("location:dificil.php?nome=$nome&difi=$dif");
                 break;       
        }
     }
@@ -72,7 +71,32 @@ if(isset($_POST['entrar'])){
              Dificil ->  <input type="radio" name="dif" id="dif" value="dificil">
           <br><div id='erro'><?php if($dif=='' && isset($_POST)){echo $errordif;}?></div><br>
           <input type="submit" id="entrar" name="entrar" value="Empezar o Xogo">
+	  <input type="submit" id="vercla" name="vercla" value="Ver Clasificacion">
         </form>
      </div>
+     <?php if(isset($_POST['vercla'])){ ?>
+	<div>
+	 <table>
+	     <tr>
+	       <td>Ranking</td>
+	       <td>Nome</td>
+	       <td>Dificultade</td>
+	       <td>Puntuacion</td>
+	     </tr> 
+<?php $ficheiro = fopen('clasificacion.csv', "r+");  //Cargamos o fichero
+      while($celdas = fgetcsv($ficheiro,',')){ 
+/* asignamos os valores de cada rexistro do ficheiro ó array celdas hasta que
+	o ficheiro remate */?>
+	     <tr>
+	        <td><?php echo $celdas[0];?></td>  
+	        <td><?php echo $celdas[1];?></td>
+	        <td><?php echo $celdas[2];?></td>
+	        <td><?php echo $celdas[3];?></td>
+         </tr>
+<?php /*engadimos as columnas cos valores do array*/
+    }  fclose($ficheiro); //pechamos o ficheiro	?>
+	</table>
+	</div>
+	<?php } ?>
 </body>
 </html>
