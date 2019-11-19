@@ -1,4 +1,4 @@
 <?php
-	// Proxecto 1 da 1a
+	// index.php
 	echo "Proxecto1 - 1a avaliacion";
 ?>
