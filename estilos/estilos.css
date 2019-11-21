@@ -1,0 +1,17 @@
+.nav-link{
+ color: red;
+}
+
+.footer {
+ background-color: #17a2b8;
+}
+
+.copyright {
+ color: #02035b;
+ text-shadow: 1px 0px 0px #333;
+}
+
+.copyright-link, .copyright-link:hover {
+ color: #f8f9fa;
+ text-shadow: 2px 1px 5px #000;
+}

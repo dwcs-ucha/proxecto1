@@ -7,10 +7,13 @@
 */
 ?>
 <?php
-define('__ROOT__', $_SERVER["DOCUMENT_ROOT"]);
-require_once (__ROOT__.'/layout/cabeceira.php');
-require_once (__ROOT__.'/layout/menu.php');
-
-require_once (__ROOT__.'/layout/pe.php');
+define('__LAYOUT__', '../../layout/');
+require_once (__LAYOUT__.'cabeceira.php');
+require_once (__LAYOUT__.'menu.php');
 ?>
-
+    <div style="border: 1px solid";>
+	  <h1> Proba </h1>
+	</div>
+<?php 
+require_once (__LAYOUT__.'pe.php');
+?>
