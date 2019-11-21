@@ -18,8 +18,8 @@
  require_once '../../layout/cabeceira.php';
 ?>
 <div class="container">
-  <div style="border: 1px solid;">
-	  <h1> Proba </h1>
+  <div>
+    <h1> Proba </h1>
   </div>
 </div>
 <?php 
