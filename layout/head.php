@@ -8,7 +8,6 @@
   O cometido desta páxina é incluírse no interior das etiquetas <head> de cada páxina para aforrar traballo, xa que as seguintes
   liñas serán comúns a todas elas. Logo de engadirse este arquivo, cada participante poderá engadir a súa propia folla CSS, así
   como ficheiros JS coa etiqueta <script> e, naturalmente, o título da páxina con <title>.
-  
 -->
 
   <meta charset="UTF-8">

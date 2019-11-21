@@ -1,5 +1,5 @@
 # proxecto1
 Proxecto da 1ª avaliación
 
-#Comentario Breogan 3.0
+#Sitio web de xogos e actividades para nenos e nenas con TEA.
 
