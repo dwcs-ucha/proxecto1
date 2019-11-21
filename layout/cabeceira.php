@@ -1,8 +1,6 @@
 <?php
-  //17/11/2019 | Versión 1.0
+  //21/11/2019 | Versión 1.1
   //PROPOSTA DUNHA ESTRUTURA PARA A CABECEIRA DO SITIO CON BootStrap 4.
-  
-  //20/11/2019 | Versión 1.1
 ?>
   <nav class="navbar navbar-expand-sm bg-info navbar-dark">
     <a class="navbar-brand" href="#">Proxecto 1ª</a>
@@ -23,4 +21,3 @@
       </ul>
 	</div>
   </nav>
-  <!-- CONTIDO -->
