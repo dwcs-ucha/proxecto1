@@ -1,7 +1,3 @@
-<?php
-
-?>
-  </div>
   <!-- Footer -->
   <footer class="footer fixed-bottom">
 
@@ -13,5 +9,3 @@
 
   </footer>
   <!-- Footer -->
-</body>
-</html>
