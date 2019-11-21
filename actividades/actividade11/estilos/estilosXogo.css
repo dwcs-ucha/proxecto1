@@ -1,0 +1,60 @@
+h1, h2 {
+	text-align: center;
+}
+.imaxe {
+	text-align: center;
+	width: 140px;
+	float: left;
+}
+.cartas6 {
+	margin-top: 50px;
+	margin-left: 350px;
+	text-align: center;
+	clear: both;
+	width: 450px;
+}
+.cartas12 {
+	margin-left: 300px;
+	text-align: center;
+	clear: both;
+	width: 570px;
+}
+.cartas18 {
+	margin-left: 120px;
+	text-align: center;
+	clear: both;
+	width: 870px;
+}
+img {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.marcador{
+	position: absolute;
+	padding-top: 30px;
+	margin-right: 50px;
+	text-align: center;
+	border: 1px solid black;
+	width: 20%;
+	height: 200px;
+	float: right;
+	right: 0;
+	top: 180;
+}
+.botonFinal:link, .botonFinal:visited {
+	background-color: gainsboro;
+	color: black;
+	border: 1px solid black;
+	padding: 8px;
+	text-align: center;
+	text-decoration: none;
+	display: grid;
+	margin-left: 65px;
+	width: 50%;
+}
+.botonsFinal {
+	text-align: center;
+	position: absolute;
+	width: 90%;
+	bottom: 10%;
+}
