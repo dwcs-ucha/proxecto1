@@ -12,37 +12,35 @@
     //var_dump(sizeSilaba("L")); // Mándaselle un caracter e teñen que ser dous -> Devolve FALSE
 
     if(isset($_POST['enviar'])){
-        $silaba1= $_POST['silaba1'];
-        $silaba2= $_POST['silaba2'];
-        $silaba3= $_POST['silaba3'];
-        $silaba4= $_POST['silaba4'];
-        $silaba5= $_POST['silaba5'];
+        $silabaLA= $_POST['silabaLA'];
+        $silabaLE= $_POST['silabaLE'];
+        $silabaLI= $_POST['silabaLI'];
+        $silabaLO= $_POST['silabaLO'];
+        $silabaLU= $_POST['silabaLU'];
 
-        if(!validaSilaba(strtoupper($silaba2), "LE")){
-            $erro2= "Tes que poñer LE...";
+        if(!validaSilaba(strtoupper($silabaLE), "LE")){
+            $erroLE= "Tes que poñer LE...";
         }
 
-        if(!validaSilaba(strtoupper($silaba1), "LA")){
-            $erro1= "Tes que poñer LA...";
+        if(!validaSilaba(strtoupper($silabaLA), "LA")){
+            $erroLA= "Tes que poñer LA...";
         }
 
-        if(!validaSilaba(strtoupper($silaba3), "LI")){
-            $erro3= "Tes que poñer LI...";
+        if(!validaSilaba(strtoupper($silabaLI), "LI")){
+            $erroLI= "Tes que poñer LI...";
         }
 
-        if(!validaSilaba(strtoupper($silaba4), "LO")){
-            $erro4= "Tes que poñer LO...";
+        if(!validaSilaba(strtoupper($silabaLO), "LO")){
+            $erroLO= "Tes que poñer LO...";
         }
 
-        if(!validaSilaba(strtoupper($silaba5), "LU")){
-            $erro5= "Tes que poñer LU...";
+        if(!validaSilaba(strtoupper($silabaLU), "LU")){
+            $erroLU= "Tes que poñer LU...";
         }
 
-        // HAI QUE VALIDALOS CAMPOS ANTES DE PASALOS AO VECTOR E COMPROBAR QUE NON TEÑAN UNHA LONXITUDE SUPERIOR A 2 CARACTERES
-        //   (OS inputs VAN LIMITADOS A 2 CARACTERES NO HTML, PERO ESTE PODE SER MODIFICADO DENDE O CLIENTE, POLO QUE HAI QUE
-        //   VALIDALO IGUALMENTE NO SERVIDOR).
-
-        $silabas= array("LA"=>$silaba1, "LE"=>$silaba2, "LI"=>$silaba3, "LO"=>$silaba4, "LO"=>$silaba5);
+        //$silabasIniciais= array("LA"=>$silaba1, "LE"=>$silaba2, "LI"=>$silaba3, "LO"=>$silaba4, "LU"=>$silaba5);
+        $silabasFinais= array("PIZ", "CHE", "BRO", "RO", "NA");
+        //shuffle($silabasFinais);
     }
 ?>
 <!doctype html>
@@ -86,34 +84,44 @@
 
                 <div class="row align-items">
                     <?php
-                        for($i=1;$i<=5;$i++){
+                        // Ao array $silabasFinais hai que aplicarlle a función shuffle no corpo da páxina, pois facéndoo no
+                        //   bloque previo á etiqueta <!doctype html> os seus elementos non cambiaban de posición.
+                        shuffle($silabasFinais);
+
+                        // A variable $i servirá para asegurar que en cada iteracción do bucle se constrúen os input con atributos 
+                        //   'name' e 'id' distintos:
+                        $i= 1;
+                        foreach($silabasFinais as $silabaFinal){
                             ?>
                                 <div class="col">
-                                    <img src='Imaxes/ProxectoFacil_Imaxe<?php echo $i; ?>.jpg' class='imaxesNivel1' />
+                                    <?php
+                                        devolveImaxe($silabaFinal);
+                                    ?>
                                     <br />
                                     <div class="form-group">
-                                        <input type='text' name='silaba<?php echo $i; ?>' id='Silaba<?php echo $i; ?>' value="<?php isset($_POST['enviar']) && isset($silaba{$i})? print $silaba{$i} : print ""; ?>" maxlength='2' class="form-control" />
-                                        <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabasFinais[$i]; ?>' class="form-control" readonly='readonly' />
+                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php isset($_POST['enviar']) && isset($silaba{$i})? print $silaba{$i} : print ""; ?>" maxlength='2' class="form-control" />
+                                        <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabaFinal; ?>' class="form-control" readonly='readonly' />
                                     </div>
                                     <br />
                                     <?php
-                                        switch($i){
-                                            case 1:
-                                                if(isset($_POST['enviar']) && isset($erro1)){ echo $erro1; }
+                                        switch($silabaFinal){
+                                            case "PIZ":
+                                                if(isset($_POST['enviar']) && isset($erroLA)){ echo $erroLA; }
                                                 break;
-                                            case 2:
-                                                if(isset($_POST['enviar']) && isset($erro2)){ echo $erro2; }
+                                            case "CHE":
+                                                if(isset($_POST['enviar']) && isset($erroLE)){ echo $erroLE; }
                                                 break;
-                                            case 3:
-                                                if(isset($_POST['enviar']) && isset($erro3)){ echo $erro3; }
+                                            case "BRO":
+                                                if(isset($_POST['enviar']) && isset($erroLI)){ echo $erroLI; }
                                                 break;
-                                            case 4:
-                                                if(isset($_POST['enviar']) && isset($erro4)){ echo $erro4; }
+                                            case "RO":
+                                                if(isset($_POST['enviar']) && isset($erroLO)){ echo $erroLO; }
                                                 break;
-                                            case 5:
-                                                if(isset($_POST['enviar']) && isset($erro5)){ echo $erro5; }
+                                            case "NA":
+                                                if(isset($_POST['enviar']) && isset($erroLU)){ echo $erroLU; }
                                                 break;
                                         }
+                                        $i++;
                                         echo "</div>";
                         }
                                     ?>
