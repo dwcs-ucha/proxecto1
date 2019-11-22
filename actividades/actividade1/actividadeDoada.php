@@ -8,6 +8,9 @@
     // Módulo de funcións de validación e saneamento:
     include('actividadeDoada_moduloFuncions.php');
 
+    // Ficheiro de funcións comúns do sitio:
+    include('../../librerias/utils.php');
+
     //var_dump(validaSilaba("LE", "LA")); // Mándaselle un LE, e ten que haber un LA -> Devolve FALSE
     //var_dump(sizeSilaba("L")); // Mándaselle un caracter e teñen que ser dous -> Devolve FALSE
 
@@ -53,8 +56,10 @@
         <script type="text/javascript" src=""></script>
         <style type="text/css">
             .container { text-align: center; }
+            .opcions { background-color: #2D39EA; }
             /*form { text-align: center; }*/
-            .col {text-align: center;}
+            .col {text-align: center; }
+            .imaxesNivel1 { height: 42%; }
             .col input[type=text] { width: 45%;
                                     font-size: 30px;
                                     margin: auto; }
@@ -71,11 +76,11 @@
             ?>
             <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <input type="text" name="silabaLA" id="" value="LA" readonly="readonly" />
-                <input type="text" name="silabaLE" id="" value="LE" readonly="readonly" />
-                <input type="text" name="silabaLI" id="" value="LI" readonly="readonly" />
-                <input type="text" name="silabaLO" id="" value="LO" readonly="readonly" />
-                <input type="text" name="silabaLU" id="" value="LU" readonly="readonly" />
+                <input type="text" name="silabaLA" class="opcions" value="LA" readonly="readonly" />
+                <input type="text" name="silabaLE" class="opcions" value="LE" readonly="readonly" />
+                <input type="text" name="silabaLI" class="opcions" value="LI" readonly="readonly" />
+                <input type="text" name="silabaLO" class="opcions" value="LO" readonly="readonly" />
+                <input type="text" name="silabaLU" class="opcions" value="LU" readonly="readonly" />
 
                 <br /><br />
 
@@ -88,6 +93,7 @@
                         // A variable $i servirá para asegurar que en cada iteracción do bucle se constrúen os input con atributos 
                         //   'name' e 'id' distintos:
                         $i= 1;
+                        
                         foreach($silabasFinais as $silabaFinal){
                             ?>
                                 <div class="col">
