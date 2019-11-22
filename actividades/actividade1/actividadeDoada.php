@@ -46,12 +46,9 @@
 <!doctype html>
 <html lang="gl">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <?php
+            include('../../layout/head.php');
+        ?>
         <link rel="stylesheet" type="text/css" href="actividadeDoada.css">
         <script type="text/javascript" src=""></script>
         <style type="text/css">
@@ -70,7 +67,7 @@
     <body>
         <div class="container">
             <?php
-                include('actividadeDoada_Header.html');
+                include('../../layout/cabeceira.php');
             ?>
             <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -130,6 +127,10 @@
                 <br /><br />
 
                 <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
+
+                <?php
+                    include('../../layout/pe.php');
+                ?>
             </form>
         </div>
     </body>
