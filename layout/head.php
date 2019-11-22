@@ -1,14 +1,14 @@
-<!-- 
-  21/11/2019 | Versión 1.0
+<?php
+  // 21/11/2019 | Versión 1.0
 
-  Estrutura do <head> a engadir en cada páxina do sitio.
-  Esta estrutura proporciona o xogo de caracteres UTF-8 e a composición da escala dos navegadores para dispositivos móbiles, así 
-    como a biblioteca de BootStrap e o enlace á folla de estilos do sitio.
+  // Estrutura do <head> a engadir en cada páxina do sitio.
+  // Esta estrutura proporciona o xogo de caracteres UTF-8 e a composición da escala dos navegadores para dispositivos móbiles, así 
+  //   como a biblioteca de BootStrap e o enlace á folla de estilos do sitio.
   
-  O cometido desta páxina é incluírse no interior das etiquetas <head> de cada páxina para aforrar traballo, xa que as seguintes
-  liñas serán comúns a todas elas. Logo de engadirse este arquivo, cada participante poderá engadir a súa propia folla CSS, así
-  como ficheiros JS coa etiqueta <script> e, naturalmente, o título da páxina con <title>.
--->
+  // O cometido desta páxina é incluírse no interior das etiquetas <head> de cada páxina para aforrar traballo, xa que as seguintes
+  //   liñas serán comúns a todas elas. Logo de engadirse este arquivo, cada participante poderá engadir a súa propia folla CSS, así
+  //   como ficheiros JS coa etiqueta <script> e, naturalmente, o título da páxina con <title>.
+?>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

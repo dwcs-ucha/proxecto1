@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:12/11/2019
+    // BreoBeceiro:22/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // HAI QUE DEFINIR UN ARRAY NO QUE SE ALMACENEN AS IMAXES DA ACTIVIDADE.

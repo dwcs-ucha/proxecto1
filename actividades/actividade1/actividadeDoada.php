@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:12/11/2019
+    // BreoBeceiro:22/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // Arquivo que pode desaparecer:
