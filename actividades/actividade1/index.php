@@ -38,25 +38,29 @@
                     $tema= $_POST['tema'];
                     
                     if($nivel== "nivel1"){
-                        if($tema== "claro"){
-                            $url= "actividadeDoada.php?nivel1=true&tema=claro";
-                        }else{
+                        if($tema== "escuro"){
                             $url= "actividadeDoada.php?nivel1=true&tema=escuro";
+                        }else{
+                            $url= "actividadeDoada.php?nivel1=true&tema=claro";
                         }
                     }elseif($nivel== "nivel2"){
-                        if($tema== "claro"){
-                            $url= "actividadeDoada.php?nivel2=true&tema=claro";
+                        if($tema== "escuro"){
+                            $url= "actividadeMedia.php?nivel2=true&tema=escuro";
                         }else{
-                            $url= "actividadeDoada.php?nivel2=true&tema=escuro";
+                            $url= "actividadeMedia.php?nivel2=true&tema=claro";
                         }
                     }elseif($nivel== "nivel3"){
-                        if($tema== "claro"){
-                            $url= "actividadeDoada.php?nivel3=true&tema=claro";
+                        if($tema== "escuro"){
+                            $url= "actividadeDificil.php?nivel3=true&tema=escuro";
                         }else{
-                            $url= "actividadeDoada.php?nivel3=true&tema=escuro";
+                            $url= "actividadeDificil.php?nivel3=true&tema=claro";
                         }
                     }else{
-                        $url= "actividadeDoada.php?nivel1=true&tema=claro";
+                        if($tema== "escuro"){
+                            $url= "actividadeDoada.php?nivel1=true&tema=escuro";
+                        }else{
+                            $url= "actividadeDoada.php?nivel=true&tema=claro";
+                        }
                     }
                     header('Location: '. $url .'');
                 }
