@@ -2,6 +2,12 @@
     // BreoBeceiro:22/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
+    // FALTA IMPLEMENTAR AS PUNTUACIÓNS E LEVALAS AO CSV, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
+    // HAI QUE REFINAR A RECARGA DA PÁXINA SEN QUE SE REORDENE O CONTIDO DAS CAIXAS.
+    // OPCIONALMENTE, FALTARÍA ENGADIR O CAMBIO DA COR DE FONDO DOS ELEMENTOS input NOS CALES ESTÁN
+    //   AS SÍLABAS A ESCRIBIR. A IDEA É QUE INICIALMENTE APAREZAN NUNHA COR, E QUE AO ESCRIBILAS
+    //   NAS CAIXAS DE ACERTAR, A COR DE FONDO CAMBIE.
+
     // Arquivo que pode desaparecer:
     include('actividadeDoada_Utilidades.php');
 
@@ -42,7 +48,6 @@
         }
 
         //$silabasIniciais= array("LA"=>$silaba1, "LE"=>$silaba2, "LI"=>$silaba3, "LO"=>$silaba4, "LU"=>$silaba5);
-        $silabasFinais= array("PIZ", "CHE", "BRO", "RO", "NA");
         //shuffle($silabasFinais);
     }
 ?>
@@ -50,13 +55,23 @@
 <html lang="gl">
     <head>
         <?php
+            // Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:
             include('../../layout/head.php');
+
+            // En función do valor do parámetro 'tema' que veña pola URL, se é que ven, empregarase unha capa de CSS
+            //   ou outra (sendo as existentes dúas, unha de estilo claro, e outra de estilo escuro):
+            if(empty($_GET['tema'])){
+                echo "<link rel='stylesheet' type='text/css' href='estiloClaro.css'>";
+            }elseif($_GET['tema']== "escuro"){
+                echo "<link rel='stylesheet' type='text/css' href='estiloEscuro.css'>";
+            }elseif($_GET['tema']== "claro"){
+                echo "<link rel='stylesheet' type='text/css' href='estiloClaro.css'>";
+            }
         ?>
-        <link rel="stylesheet" type="text/css" href="actividadeDoada.css">
         <script type="text/javascript" src=""></script>
         <style type="text/css">
             .container { text-align: center; }
-            .opcions { background-color: #2D39EA; }
+            /*.opcions { background-color: #2D39EA; }
             /*form { text-align: center; }*/
             .col {text-align: center; }
             .imaxesNivel1 { height: 42%; }
@@ -88,12 +103,20 @@
                     <?php
                         // Ao array $silabasFinais hai que aplicarlle a función shuffle no corpo da páxina, pois facéndoo no
                         //   bloque previo á etiqueta <!doctype html> os seus elementos non cambiaban de posición.
-                        shuffle($silabasFinais);
+                        if(!isset($_POST['enviar'])){
+                            $silabasFinais= array("PIZ", "CHE", "BRO", "RO", "NA");
+                            shuffle($silabasFinais);
+                        }elseif(isset($_POST['refrescar'])){
+                            shuffle($silabasFinais);
+                            if(isset($_POST['enviar'])){
+                                $silabasFinais;
+                            }
+                        }
 
-                        // A variable $i servirá para asegurar que en cada iteracción do bucle se constrúen os input con atributos 
+                        // A variable $i servirá para asegurar que en cada iteracción do bucle se constrúen os 'input' con atributos 
                         //   'name' e 'id' distintos:
                         $i= 1;
-                        
+
                         foreach($silabasFinais as $silabaFinal){
                             ?>
                                 <div class="col">
@@ -102,7 +125,7 @@
                                     ?>
                                     <br />
                                     <div class="form-group">
-                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php isset($_POST['enviar']) && isset($silaba{$i})? print $silaba{$i} : print ""; ?>" maxlength='2' class="form-control" />
+                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="" maxlength='2' class="form-control" />
                                         <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabaFinal; ?>' class="form-control" readonly='readonly' />
                                     </div>
                                     <br />
@@ -133,6 +156,7 @@
                 <br /><br />
 
                 <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
+                <input type="submit" name="refrescar" id="Refrescar" value="Refrescar" />
 
                 <?php
                     include('../../layout/pe.php');
@@ -141,3 +165,5 @@
         </div>
     </body>
 </html>
+
+<?php //isset($silaba{print devolveSilabaInicial($silabaFinal)}) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>
