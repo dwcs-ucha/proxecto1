@@ -59,7 +59,7 @@
                         if($tema== "escuro"){
                             $url= "actividadeDoada.php?nivel1=true&tema=escuro";
                         }else{
-                            $url= "actividadeDoada.php?nivel=true&tema=claro";
+                            $url= "actividadeDoada.php?nivel1=true&tema=claro";
                         }
                     }
                     header('Location: '. $url .'');

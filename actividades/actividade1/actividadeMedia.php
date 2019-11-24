@@ -36,7 +36,7 @@
             
         </style>
         <title>
-            Completar sílabas e palabras | Nivel 3
+            Completar sílabas e palabras | Nivel 2
         </title>
     </head>
 
