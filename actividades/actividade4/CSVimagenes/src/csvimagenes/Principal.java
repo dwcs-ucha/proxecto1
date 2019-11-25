@@ -18,9 +18,9 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Principal extends javax.swing.JFrame {
 
-    File directorioImagenes = new File("../Imagenes");
+    File directorioImagenes = new File("Imagenes");
     DefaultComboBoxModel<String> modelo;
-    File ficheroSalida = new File("../categorias.csv");
+    File ficheroSalida = new File("categorias.csv");
 
     public Principal() {
         initComponents();
