@@ -21,7 +21,7 @@
 			.container p { margin: 5px 1px; }
 
 			.imaxe { display: block;
-					 width: 45%;
+					 width: 42%;
 					 margin: auto; }
             
         </style>
