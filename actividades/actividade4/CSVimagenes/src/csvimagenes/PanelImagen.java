@@ -20,16 +20,26 @@ public class PanelImagen extends javax.swing.JPanel {
     /**
      * Creates new form PanelImagen
      */
+    private File imagen;
     public PanelImagen() {
         initComponents();
     }
 
     public PanelImagen(File archivoImagen) {
+        imagen = archivoImagen;
         initComponents();
         Image imagenFuente = new ImageIcon(archivoImagen.getPath()).getImage();
         ImageIcon imagenEscalada = new ImageIcon(imagenFuente.getScaledInstance(90, 90, Image.SCALE_SMOOTH));
         jLabel1.setIcon(imagenEscalada);
         jTextField1.setText(archivoImagen.getName());
+    }
+
+    public String getNombre() {
+        return jTextField1.getText();
+    }
+
+    public File getImagen() {
+        return imagen;
     }
 
     /**
