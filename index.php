@@ -44,6 +44,9 @@
 				Este sitio foi desenvolvido polos alumn@s do módulo de <strong>'Desenvolvemento web en contorno servidor'</strong> 
 				pertencente ao segundo curso do FP Superior en 'Desenvolvemento de Aplicacións Web', no CIFP Rodolfo Ucha Piñeiro,
 				como parte da materia do propio módulo.
+				<br /><br />
+				Tódolos alumnos do módulo esperamos que disfrutedes moito coas nosas actividades, así que non esperedes máis e 
+				comezade xa cos xogos!
 			</p>
 			
 			<br />
