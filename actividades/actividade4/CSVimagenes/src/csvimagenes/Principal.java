@@ -1,11 +1,15 @@
 package csvimagenes;
 
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -16,6 +20,7 @@ public class Principal extends javax.swing.JFrame {
 
     File directorioImagenes = new File("../Imagenes");
     DefaultComboBoxModel<String> modelo;
+    File ficheroSalida = new File("../categorias.csv");
 
     public Principal() {
         initComponents();
@@ -23,6 +28,9 @@ public class Principal extends javax.swing.JFrame {
         modelo = new DefaultComboBoxModel();
         jComboBox1.setModel(modelo);
         cargarCategorias();
+        if (modelo.getSize() > 0) {
+            cargarImagenes();
+        }
         jComboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,11 +56,10 @@ public class Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Renombrar imagenes");
         setPreferredSize(new java.awt.Dimension(1000, 600));
 
         panelImagenes.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
@@ -60,38 +67,23 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        jPanel2.setBackground(new java.awt.Color(51, 102, 255));
+
         jLabel1.setText("Categoría");
         jPanel2.add(jLabel1);
 
         jComboBox1.setPreferredSize(new java.awt.Dimension(100, 26));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBox1MouseClicked(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jComboBox1);
 
-        jLabel2.setText("Fichero salida");
-        jPanel2.add(jLabel2);
-
-        jTextField1.setColumns(20);
-        jTextField1.setText("categorias.csv");
-        jPanel2.add(jTextField1);
-
-        jButton1.setText("Seleccionar");
-        jPanel2.add(jButton1);
-
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardar, java.awt.BorderLayout.PAGE_END);
 
         pack();
         setLocationRelativeTo(null);
@@ -104,17 +96,57 @@ public class Principal extends javax.swing.JFrame {
             panelImagenes.add(new PanelImagen(imagen));
         }
     }
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if (ficheroSalida.exists()) {
+            ficheroSalida.delete();
+        } else {
+            try {
+                ficheroSalida.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
-    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+        ArrayList<String> categorias = new ArrayList();
+        for (int i = 0; i < modelo.getSize(); i++) {
+            categorias.add(modelo.getElementAt(i));
+        }
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(ficheroSalida))) {
+            File ficheroImagenActual;
+            File directorioActual;
+            for (int indexCategoria = 0; indexCategoria < categorias.size(); indexCategoria++) {
+                directorioActual = new File(directorioImagenes.getPath() + "/" + categorias.get(indexCategoria));
+                escritor.write(categorias.get(indexCategoria) + ";");
+                if (modelo.getElementAt(indexCategoria).equals((String) modelo.getSelectedItem())) {
+                    for (int indexImagen = 0; indexImagen < directorioActual.list().length - 1; indexImagen++) {
+                        ficheroImagenActual = directorioActual.listFiles()[indexImagen];
+                        ficheroImagenActual.renameTo(new File(directorioActual.getPath() + "/" + ((PanelImagen) panelImagenes.getComponent(indexImagen)).getNombre()));
+                        escritor.write(ficheroImagenActual.getName() + ";");
+                    }
+                    ficheroImagenActual = directorioActual.listFiles()[directorioActual.listFiles().length - 1];
+                    ficheroImagenActual.renameTo(new File(directorioActual.getPath() + "/" + ((PanelImagen) panelImagenes.getComponent(directorioActual.listFiles().length - 1)).getNombre()));
 
-    }//GEN-LAST:event_jComboBox1MouseClicked
+                    escritor.write(ficheroImagenActual.getName() + "\n");
+                    directorioActual = new File(directorioImagenes.getPath() + "/" + categorias.get(indexCategoria));
+                } else {
+                    for (int indexImagen = 0; indexImagen < directorioActual.list().length - 1; indexImagen++) {
+                        ficheroImagenActual = directorioActual.listFiles()[indexImagen];
+                        escritor.write(ficheroImagenActual.getName() + ";");
+                    }
+                    ficheroImagenActual = directorioActual.listFiles()[directorioActual.listFiles().length - 1];
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+                    escritor.write(ficheroImagenActual.getName() + "\n");
+                    directorioActual = new File(directorioImagenes.getPath() + "/" + categorias.get(indexCategoria));
+                }
+            }
+            cargarImagenes();
+            panelImagenes.revalidate();
+            panelImagenes.repaint();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     void limpiarImagenesPanel() {
         panelImagenes.removeAll();
@@ -132,16 +164,24 @@ public class Principal extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -154,13 +194,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelImagenes;
     // End of variables declaration//GEN-END:variables
 

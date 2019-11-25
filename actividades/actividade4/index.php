@@ -1,64 +1,32 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Título</title>
+        <?php
+        require_once '../../layout/head.php'; /* Contén etiquetas coma meta, link, script */
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Agrupar elementos</title>
         <meta charset="utf-8"/>
-        <script src="script.js"></script>
-        <style>
-            img {
-                border-style : solid;
-                width : 150;
-                height : 150;
-            }
-        </style>
     </head>
     <body>
-        <form method = "post" action = "prueba.php">
-            <?php
-            $rutaImagenes = "Imagenes/";
-            $categoria = "animais/";
+        <?php
+        require_once '../../layout/cabeceira.php'; /* Contén a cabeceira, que consiste nun menú horizontal <nav> [...] </nav> */
+        ?>
+        <form action="actividade.php" method="post">
+            <img src="icono.png" height="300" width="300"/>
+            <h1>Xogo de agrupar elementos por categorías</h1>
+            <p>
+                Material para traballar a pertenencia ou non pertenencia dun obxeto a unha categoría de vocabulario dada.
+            </p>
+            Dificultade
+            Fácil <input type="radio" name="dificultade" value="facil"/>
+            Normal <input type="radio" name="dificultade" value="normal" checked/>
+            Difícil <input type="radio" name="dificultade" value="dificil"/>
 
-            $buenos = getImagenesBuenas();
-            $malos = getImagenesMalas();
-
-            for ($i = 0; $i < 20; $i++) {?>
-		    <input id = "seleccionada<?php echo $i ;?>" type = "hidden" name = "seleccionada<?php echo $i; ?>" value = ""/>
-                    <img id = "imagen-<?php echo $i; ?>" src = "<?php echo next($buenos); ?>" onclick = "seleccionar(this)"/>
-                <?php
-                
-            }
-            ?>
-            <input type = "submit" value = "Enviar"/>
+            <button type="submit" name="enviar">Xogar</button>
         </form>
         <?php
-
-        function getImagenesBuenas() {
-            global $categoria;
-            global $rutaImagenes;
-
-	    $archivo = fopen("categorias.csv", "r");
-	    $linea = fgetcsv($archivo, ",");
-	    $categoria = $linea[0]."/";
-	    for ($columna = 1; $columna < count($linea); $columna++) 
-	    {
-	    	$buenos[] = $rutaImagenes.$categoria.$linea[$columna].".JPG";
-	    }
-	    fclose($archivo);
-            shuffle($buenos);
-            return $buenos;
-        }
-
-        function getImagenesMalas() {
-            global $categoria;
-            global $rutaImagenes;
-
-            for ($i = 1; $i <= 6; $i++) {
-                $malos[] = $rutaImagenes . $categoria . "Mal/$i.JPG";
-            }
-            shuffle($malos);
-            return $malos;
-        }
-        
-        
+        require_once '../../layout/pe.php'; /* Contén o pé da páxina (<footer>[...]</footer>) */
         ?>
     </body>
 </html>
