@@ -34,7 +34,7 @@ img {
 	padding-top: 30px;
 	margin-right: 100px;
 	text-align: center;
-	border: 1px solid black;
+
 	width: 20%;
 	height: 300px;
 	float: right;
@@ -42,9 +42,9 @@ img {
 	top: 200;
 }
 .botonFinal:link, .botonFinal:visited {
-	background-color: gainsboro;
-	color: black;
-	border: 1px solid black;
+	background-color: #17a2b8;
+	color: #ffffff;
+	border: 1px solid #ffffff;
 	padding: 8px;
 	text-align: center;
 	text-decoration: none;
@@ -62,10 +62,10 @@ img {
 	text-align: center;
 	position: absolute;
 	height: 420px;
-	width: 600px;
-	z-index: 1;
-	left: 25%;
+	width: 870px;	
+	left: 5%;
 	top: 25%
-	background-color: white;
-	border: 1px solid black;
+	opacity: 1;
+	background-color: #ffffff;
+	z-index: 1;
 }

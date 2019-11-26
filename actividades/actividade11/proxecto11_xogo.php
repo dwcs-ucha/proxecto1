@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 <head>
 	<?php
@@ -25,11 +26,12 @@
 	<title>Emparella imaxes</title>
 </head>
 <body>
+	<div id="container">
 	<?php
 		require_once '../../layout/cabeceira.php';
 	?>
 	<h1>EMPARELLA</h1>
-	<h2>Nivel <?php echo ($numeroCartas / 6); ?></h2>
+	<h2>Nivel <?php echo ($numeroCartas / 6); ?></h2> 
 	<form id="xogo" action="proxecto11_xogo.php" method="get">
 		<?php
 			$ganhador = false;
@@ -150,5 +152,6 @@
 		}
 		require_once '../../layout/pe.php';
 	?>
+	</div>
 </body>
 </html>
