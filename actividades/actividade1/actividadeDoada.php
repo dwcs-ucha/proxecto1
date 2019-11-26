@@ -7,6 +7,9 @@
     // OPCIONALMENTE, FALTARÍA ENGADIR O CAMBIO DA COR DE FONDO DOS ELEMENTOS input NOS CALES ESTÁN
     //   AS SÍLABAS A ESCRIBIR. A IDEA É QUE INICIALMENTE APAREZAN NUNHA COR, E QUE AO ESCRIBILAS
     //   NAS CAIXAS DE ACERTAR, A COR DE FONDO CAMBIE.
+    // O ESTADO DO ARRAY $silabasFinais TES QUE CONSERVALO CUN input hidden, empregando as funcións explode()
+    //   e implode(), pois os campos hidden non aceptan matrices (hai que convertir o array nun string antes de 
+    //   mandalo ao input, e logo recuperalo).
 
     // Arquivo que pode desaparecer:
     include('actividadeDoada_Utilidades.php');
@@ -125,7 +128,7 @@
                                     ?>
                                     <br />
                                     <div class="form-group">
-                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="" maxlength='2' class="form-control" />
+                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php isset($_POST['silaba{print devolveSilabaInicial($silabaFinal)']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>" maxlength='2' class="form-control" />
                                         <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabaFinal; ?>' class="form-control" readonly='readonly' />
                                     </div>
                                     <br />
@@ -166,4 +169,6 @@
     </body>
 </html>
 
-<?php //isset($silaba{print devolveSilabaInicial($silabaFinal)}) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>
+<?php isset($_POST['silaba{print devolveSilabaInicial($silabaFinal)']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>
+
+<?php //if (isset($_POST["silaba" . devolveSilabaInicial($silabaFinal)])) { $_POST["silaba" . devolveSilabaInicial($silabaFinal)]; } else { echo ""; } ?>

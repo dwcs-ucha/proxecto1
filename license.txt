@@ -1,0 +1,4 @@
+A licenza para o proxecto é 'Creative Commons Attribution 4.0 International (CC By 4.0)', a cal é libre e, por tanto, está permitido compartir e adaptar os contidos do sitio libremente.
+Para reflexalo así no sitio, hai que pegar a seguinte sentenza HTML nas páxinas do sitio:
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">licencia de Creative Commons Reconocimiento 4.0 Internacional</a>.
