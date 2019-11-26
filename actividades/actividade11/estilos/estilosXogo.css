@@ -20,7 +20,7 @@ h1, h2 {
 	width: 570px;
 }
 .cartas18 {
-	margin-left: 120px;
+	margin-left: 100px;
 	text-align: center;
 	clear: both;
 	width: 870px;
@@ -32,14 +32,14 @@ img {
 .marcador{
 	position: absolute;
 	padding-top: 30px;
-	margin-right: 50px;
+	margin-right: 100px;
 	text-align: center;
 	border: 1px solid black;
 	width: 20%;
-	height: 200px;
+	height: 300px;
 	float: right;
 	right: 0;
-	top: 180;
+	top: 200;
 }
 .botonFinal:link, .botonFinal:visited {
 	background-color: gainsboro;
@@ -49,7 +49,7 @@ img {
 	text-align: center;
 	text-decoration: none;
 	display: grid;
-	margin-left: 65px;
+	margin-left: 80px;
 	width: 50%;
 }
 .botonsFinal {
@@ -57,4 +57,15 @@ img {
 	position: absolute;
 	width: 90%;
 	bottom: 10%;
+}
+.ganhador {
+	text-align: center;
+	position: absolute;
+	height: 420px;
+	width: 600px;
+	z-index: 1;
+	left: 25%;
+	top: 25%
+	background-color: white;
+	border: 1px solid black;
 }
