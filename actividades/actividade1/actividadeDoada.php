@@ -128,7 +128,7 @@
                                     ?>
                                     <br />
                                     <div class="form-group">
-                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php isset($_POST['silaba{print devolveSilabaInicial($silabaFinal)']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>" maxlength='2' class="form-control" />
+                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php isset($_POST['silaba'.(print devolveSilabaInicial($silabaFinal)).'']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>" maxlength='2' class="form-control" />
                                         <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabaFinal; ?>' class="form-control" readonly='readonly' />
                                     </div>
                                     <br />
@@ -160,7 +160,6 @@
 
                 <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
                 <input type="submit" name="refrescar" id="Refrescar" value="Refrescar" />
-
                 <?php
                     include('../../layout/pe.php');
                 ?>
@@ -169,6 +168,8 @@
     </body>
 </html>
 
-<?php isset($_POST['silaba{print devolveSilabaInicial($silabaFinal)']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>
+<!--BREO-->
+<?php //isset($_POST['silaba{print devolveSilabaInicial($silabaFinal)']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>
 
+<!--MARCOS-->
 <?php //if (isset($_POST["silaba" . devolveSilabaInicial($silabaFinal)])) { $_POST["silaba" . devolveSilabaInicial($silabaFinal)]; } else { echo ""; } ?>
