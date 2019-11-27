@@ -1,45 +1,8 @@
 h1, h2 {
 	text-align: center;
 }
-.imaxe {
-	text-align: center;
-	width: 140px;
-	float: left;
-}
-.cartas6 {
+.botons {
 	margin-top: 50px;
-	margin-left: 350px;
-	text-align: center;
-	clear: both;
-	width: 450px;
-}
-.cartas12 {
-	margin-left: 300px;
-	text-align: center;
-	clear: both;
-	width: 570px;
-}
-.cartas18 {
-	margin-left: 100px;
-	text-align: center;
-	clear: both;
-	width: 870px;
-}
-img {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-.marcador{
-	position: absolute;
-	padding-top: 30px;
-	margin-right: 100px;
-	text-align: center;
-
-	width: 20%;
-	height: 300px;
-	float: right;
-	right: 0;
-	top: 200;
 }
 .botonFinal:link, .botonFinal:visited {
 	background-color: #17a2b8;
@@ -49,23 +12,8 @@ img {
 	text-align: center;
 	text-decoration: none;
 	display: grid;
-	margin-left: 80px;
-	width: 50%;
+	width: 150px;
 }
 .botonsFinal {
 	text-align: center;
-	position: absolute;
-	width: 90%;
-	bottom: 10%;
-}
-.ganhador {
-	text-align: center;
-	position: absolute;
-	height: 420px;
-	width: 870px;	
-	left: 5%;
-	top: 25%
-	opacity: 1;
-	background-color: #ffffff;
-	z-index: 1;
 }
