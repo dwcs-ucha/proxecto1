@@ -1,0 +1,6 @@
+A licenza para o proxecto é 'Creative Commons Attribution 4.0 International (CC By 4.0)', a cal é libre e, por tanto, está permitido compartir e adaptar os contidos do sitio libremente.
+Para reflexalo así no sitio, quedou engadida en layout/pe.php a seguinte instrucción HTML:
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">licencia de Creative Commons Reconocimiento 4.0 Internacional</a>.
+
+OLLO: Este documento license.txt non pode quedar así. Aquí teñen que vir reflectidos os termos da licencia empregada, os cales deberíamos poder obter na rede. A idea será copiar o texto e pegalo aquí, adaptando as liñas necesarias ao noso caso. Por exemplo, anunciando que a autoría do contido deste sitio pertence aos alumnos e alumnas do módulo de 'desenvolvemento web en contorno servidor' do ciclo de 'Desenvolvemento de Aplicacións Web'.
