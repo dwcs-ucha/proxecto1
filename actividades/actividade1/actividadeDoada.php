@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:22/11/2019
+    // BreoBeceiro:27/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // FALTA IMPLEMENTAR AS PUNTUACIÓNS E LEVALAS AO CSV, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
@@ -48,6 +48,11 @@
 
         if(!validaSilaba(strtoupper($silabaLU), "LU")){
             $erroLU= "Tes que poñer LU...";
+        }
+
+        if(isset($_POST['silabasFinais'])){
+            $silabasFinais= explode(",", $_POST['silabasFinais']);
+            var_dump($silabasFinais);
         }
 
         //$silabasIniciais= array("LA"=>$silaba1, "LE"=>$silaba2, "LI"=>$silaba3, "LO"=>$silaba4, "LU"=>$silaba5);
@@ -109,12 +114,13 @@
                         if(!isset($_POST['enviar'])){
                             $silabasFinais= array("PIZ", "CHE", "BRO", "RO", "NA");
                             shuffle($silabasFinais);
-                        }elseif(isset($_POST['refrescar'])){
-                            shuffle($silabasFinais);
-                            if(isset($_POST['enviar'])){
-                                $silabasFinais;
-                            }
                         }
+                        if(isset($_POST['refrescar'])){
+                            shuffle($silabasFinais);
+                            $silabasFinaisSTRING= implode(",", $silabasFinais);
+                            //var_dump($silabasFinaisSTRING);
+                        }
+
 
                         // A variable $i servirá para asegurar que en cada iteracción do bucle se constrúen os 'input' con atributos 
                         //   'name' e 'id' distintos:
@@ -128,7 +134,7 @@
                                     ?>
                                     <br />
                                     <div class="form-group">
-                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php isset($_POST['silaba'.(print devolveSilabaInicial($silabaFinal)).'']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>" maxlength='2' class="form-control" />
+                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php if(isset($_POST["silaba" . devolveSilabaInicial($silabaFinal)])){ echo $_POST["silaba" . devolveSilabaInicial($silabaFinal)]; }else{ echo ""; } ?>" maxlength='2' class="form-control" />
                                         <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabaFinal; ?>' class="form-control" readonly='readonly' />
                                     </div>
                                     <br />
@@ -160,6 +166,8 @@
 
                 <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
                 <input type="submit" name="refrescar" id="Refrescar" value="Refrescar" />
+                <input type="hidden" name="silabasFinais" value="<?php isset($silabasFinaisSTRING)? print $silabasFinaisSTRING : print ""; ?>" />
+                
                 <?php
                     include('../../layout/pe.php');
                 ?>
@@ -172,4 +180,4 @@
 <?php //isset($_POST['silaba{print devolveSilabaInicial($silabaFinal)']) ? print $silaba{print devolveSilabaInicial($silabaFinal)} : print ""; ?>
 
 <!--MARCOS-->
-<?php //if (isset($_POST["silaba" . devolveSilabaInicial($silabaFinal)])) { $_POST["silaba" . devolveSilabaInicial($silabaFinal)]; } else { echo ""; } ?>
+<?php //if(isset($_POST["silaba" . devolveSilabaInicial($silabaFinal)])){ echo $_POST["silaba" . devolveSilabaInicial($silabaFinal)]; } else { echo ""; } ?>

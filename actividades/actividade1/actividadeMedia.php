@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:24/11/2019
+    // BreoBeceiro:27/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // Arquivo que pode desaparecer:
@@ -7,10 +7,6 @@
 
     // Módulo de funcións de validación e saneamento:
     include('actividadeDoada_moduloFuncions.php');
-
-    if(isset($_POST['enviar'])){
-
-    }
 ?>
 <!doctype html>
 <html lang="gl">
@@ -32,7 +28,9 @@
         <script type="text/javascript" src=""></script>
         <style type="text/css">
 
-            /* CSS */
+            .container { text-align: center; }
+            .imaxe { height: 50%;  margin: auto;}
+            input[type=text] { width: 100%; }
             
         </style>
         <title>
@@ -46,9 +44,44 @@
                 include('../../layout/cabeceira.php');
             ?>
 
-            <?php
-                include('paxinaEnCoiros.php');
-            ?>
+            <h2>Completar Sílabas e Palabras<br />(Intermedio)</h2>
+
+            <div class="row align-items">
+                <?php
+                    $palabras= array("1"=>"PAPA", 
+                                     "2"=>"PATO", 
+                                     "3"=>"RATA", 
+                                     "4"=>"BATA", 
+                                     "5"=>"BOCADILLO", 
+                                     "6"=>"BOSQUE", 
+                                     "7"=>"PERRO", 
+                                     "8"=>"LATA");
+
+                    for($j=1; $j<=2; $j++){
+                        for($i=1; $i<=4; $i++){
+                            ?>
+                                <div class="col-md-3">
+                                    <?php
+                                        if($j==1){
+                                    ?>
+                                            <img src='Imaxes/ProxectoMedio_Imaxe<?php echo $i; ?>.jpg' class='imaxe' />
+                                            <br />
+                                            <input type='text' id='Palabra<?php echo $i; ?>' value='<?php echo $palabras["$i"]; ?>' readonly="readonly" />
+                                    <?php
+                                        }else{
+                                    ?>
+                                            <img src='Imaxes/ProxectoMedio_Imaxe<?php echo $i+4; ?>.jpg' class='imaxe' />
+                                            <br />
+                                            <input type='text' id='Palabra<?php echo $i+4; ?>' value='<?php echo $palabras["$i"+4]; ?>' readonly="readonly" />
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                            <?php
+                        }
+                    }
+                ?>
+            </div>
             
             <?php
                 include('../../layout/pe.php');
