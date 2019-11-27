@@ -70,7 +70,7 @@
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="form-group">
                     <span>Elixe a dificultade:</span><br />
-                    <input type="radio" name="nivel" value="nivel1" id="Nivel1" />
+                    <input type="radio" name="nivel" value="nivel1" id="Nivel1" checked />
                     <label for="Nivel1">Nivel 1 (baixa), a partir de 2 anos de idade:</label>
                     <br />
 
@@ -85,7 +85,7 @@
 
                 <div class="form-group">
                     <span>Elixe o tema gráfico:</span><br />
-                    <input type="radio" name="tema" value="claro" id="Claro" />
+                    <input type="radio" name="tema" value="claro" id="Claro" checked />
                     <label for="Claro">Claro:</label>
                     <br />
 
@@ -96,15 +96,8 @@
 
                 <input type="submit" name="xogar" id="Xogar" value="Xogar!" class="btn btn-primary" />
                 <br />
-
                 
             </form>
-<br />
-            <div class="nota">
-                <p>
-                    Se non marcas ningunha opción, a dificultade será por defecto a menor e o tema, será o claro.
-                </p>
-            </div>
 
             <?php
                 include('../../layout/pe.php');
