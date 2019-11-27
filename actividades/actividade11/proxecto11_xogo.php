@@ -23,14 +23,14 @@
 	</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="estilos/estilosXogo.css">
 	<title>Emparella imaxes</title>
 </head>
 <body>
-	<div class="container-fluid center-block">
+	<div class="container-fluid corpo" align="center">
 	<?php
 		require_once '../../layout/cabeceira.php';
 	?>
@@ -39,7 +39,7 @@
 	<form id="xogo" action="proxecto11_xogo.php" method="get">
 		<?php
 			echo '<div class="row">';
-			echo '<div id="cartas'.$numeroCartas.'" class="col-xs-8 col-sm-8 col-md-8 col-lg-8 center-block">';
+			echo '<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 cartas'.$numeroCartas.'" align="center">';
 			if(isset($_GET['estado'])) {
 				$estado = $_GET['estado'];
 			} else {
@@ -60,13 +60,13 @@
 					}
 					shuffle($froitasNivel);
 					for($i = 0; $i < count($froitasNivel); $i++) {
-						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 center-block">';
+						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						echo '<a href="proxecto11_xogo.php?estado=1&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$i.'"><img src="imaxes/reverso.jpg" height="120px" width="130px"></a>';
 						echo '</div>';
 					}
 					echo '</div>';
-					echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 center-block">';
-					echo '<div id="marcador" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Intentos: '.$intentos.'   ----   Acertos: '.count($froitasAcertadas).'</div>';
+					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.count($froitasAcertadas).'</div>';
 					break;
 				case 1:
 					$froitasNivel = explode(",", $_GET['froitas']);
@@ -74,7 +74,7 @@
 					$intentos = $_GET['intentos'];
 					$froitasAcertadas = explode(",", $_GET['acertos']);
 					for($i = 0; $i < count($froitasNivel); $i++) {
-						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">';
+						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						if (in_array($froitasNivel[$i], $froitasAcertadas)) {
 							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
 						} elseif ($i == $casillaDescuberta1) {
@@ -85,8 +85,8 @@
 						echo '</div>';
 					}
 					echo '</div>';
-					echo '<div id="marcador" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sidenav">';
-					echo '<div class="row">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					break;
 				case 2:
 					$froitasNivel = explode(",", $_GET['froitas']);
@@ -95,7 +95,7 @@
 					$intentos = $_GET['intentos'];
 					$froitasAcertadas = explode(",", $_GET['acertos']);
 					for($i = 0; $i < count($froitasNivel); $i++) {
-						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">';
+						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						if (in_array($froitasNivel[$i], $froitasAcertadas)) {
 							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
 						} elseif ($i == $casillaDescuberta1 || $i == $casillaDescuberta2) {
@@ -121,16 +121,15 @@
 						echo '</script>';
 					}
 					echo '</div>';
-					echo '<div class="row-content">';
-					echo '<div id="marcador" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sidenav">';
-					echo '<div class="row">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					break;
 				case 3:
 					$froitasNivel = explode(",", $_GET['froitas']);
 					$intentos = $_GET['intentos'];
 					$froitasAcertadas = explode(",", $_GET['acertos']);
 					for($i = 0; $i < count($froitasNivel); $i++) {
-						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">';
+						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						if (in_array($froitasNivel[$i], $froitasAcertadas)) {
 							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
 						} else {
@@ -139,8 +138,8 @@
 						echo '</div>';
 					}
 					echo '</div>';
-					echo '<div id="marcador" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sidenav">';
-					echo '<div class="row">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					if (count($froitasAcertadas) == (($numeroCartas / 2) + 1)) {
 						$direccion = '"proxecto11_xogo.php?estado=4&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'"';
 						echo '<script type="text/javascript">';
@@ -152,17 +151,15 @@
 					$froitasNivel = explode(",", $_GET['froitas']);
 					$intentos = $_GET['intentos'];
 					$froitasAcertadas = explode(",", $_GET['acertos']);
-					for($i = 0; $i < count($froitasNivel); $i++) {
-						echo '<div class="ganhador"><img src="imaxes/sandia.gif" height="303px" width="480px"><br>BO TRABALLO!!!!</div>';
-					}
+					echo '<div class="ganhador"><img src="imaxes/sandia.gif" height="303px" width="480px"><br>BO TRABALLO!!!!</div>';
 					echo '</div>';
-					echo '<div id="marcador" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sidenav">';
-					echo '<div class="row">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					break;
 			}
 		?>
 	</form>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 botons" align="center">
+		<div class="botons" align="center">
 			<a class="botonFinal" href="proxecto11_index.php">Menu principal</a>
 			<a class="botonFinal" href="proxecto11_xogo.php?estado=0&numeroCartas=6">Nivel fácil</a>
 			<a class="botonFinal" href="proxecto11_xogo.php?estado=0&numeroCartas=12">Nivel medio</a>
