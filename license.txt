@@ -2,4 +2,33 @@ A licenza para o proxecto é 'Creative Commons Reconocimiento-NoComercial-Compar
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional</a>.
 
-OLLO: Este documento license.txt non pode quedar así. Aquí teñen que vir reflectidos os termos da licencia empregada, os cales deberíamos poder obter na rede. A idea será copiar o texto e pegalo aquí, adaptando as liñas necesarias ao noso caso. Por exemplo, anunciando que a autoría do contido deste sitio pertence aos alumnos e alumnas do módulo de 'desenvolvemento web en contorno servidor' do ciclo de 'Desenvolvemento de Aplicacións Web'.
+
+
+
+Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0).
+
+Esto es un resumen inteligible para humanos de la licencia. 
+
+ADVERTENCIA: Usted es libre de:
+
+    COMPARTIR: Copiar y redistribuir el material en cualquier medio o formato.
+    ADAPTAR: Remezclar, transformar y crear a partir del material.
+
+    El licenciador no puede revocar estas libertades mientras cumpla con los términos de la licencia bajo las condiciones siguientes:
+
+    RECONOCIMIENTO: Debe reconocer adecuadamente la autoría, proporcionar un enlace a la licencia e indicar si se han realizado cambios. Puede hacerlo de cualquier manera razonable, pero no de una manera que sugiera que tiene el apoyo del licenciador o lo recibe por el uso que hace.
+
+    NO COMERCIAL: No puede utilizar el material para una finalidad comercial.
+
+    COMPARTIR IGUAL: Si remezcla, transforma o crea a partir del material, deberá difundir sus contribuciones bajo la misma licencia que el original.
+
+    NO HAY RESTRICCIONES ADICIONALES: No puede aplicar términos legales o medidas tecnológicas que legalmente restrinjan realizar aquello que la licencia permite.
+    
+    AUTORÍA: Alumnos y alumnas del módulo de 'Desenvolvemento web en contorno servidor', perteneciente al Ciclo Superior de 'Desenvolvemento de Aplicacións Web' impartido en el C.I.F.P. Rodolfo Ucha Piñeiro en el curso 2019/2020.
+
+
+Avisos:
+
+    No tiene que cumplir con la licencia para aquellos elementos del material en el dominio público o cuando su utilización esté permitida por la aplicación de una excepción o un límite.
+    No se dan garantías. La licencia puede no ofrecer todos los permisos necesarios para la utilización prevista. Por ejemplo, otros derechos como los de publicidad, privacidad, o los derechos morales pueden limitar el uso del material.
+
