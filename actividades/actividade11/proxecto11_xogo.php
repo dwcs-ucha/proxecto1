@@ -6,8 +6,8 @@
 		* @Autor: Cristóbal Romero
 		* @GitHub: ZerinhoRomero
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 27/11/2019
-		* @Version: 0.0.7b
+		* @UltimaModificacion: 28/11/2019
+		* @Version: 0.0.8b
 		**/
 		require_once '../../layout/head.php';
 		if(isset($_POST['numeroCartas'])) {
@@ -26,7 +26,7 @@
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="estilos/estilosXogo.css">
+	<link rel="stylesheet" href="styles/estilosXogo.css">
 	<title>Emparella imaxes</title>
 </head>
 <body>
@@ -61,7 +61,7 @@
 					shuffle($froitasNivel);
 					for($i = 0; $i < count($froitasNivel); $i++) {
 						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
-						echo '<a href="proxecto11_xogo.php?estado=1&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$i.'"><img src="imaxes/reverso.jpg" height="120px" width="130px"></a>';
+						echo '<a href="proxecto11_xogo.php?estado=1&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$i.'"><img class="img-responsive" src="imaxes/reverso.jpg"></a>';
 						echo '</div>';
 					}
 					echo '</div>';
@@ -76,11 +76,11 @@
 					for($i = 0; $i < count($froitasNivel); $i++) {
 						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						if (in_array($froitasNivel[$i], $froitasAcertadas)) {
-							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
+							echo '<img class="img-responsive" src="imaxes/'.$froitasNivel[$i].'.jpg">';
 						} elseif ($i == $casillaDescuberta1) {
-							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
+							echo '<img class="img-responsive" src="imaxes/'.$froitasNivel[$i].'.jpg">';
 						} else {
-							echo '<a href="proxecto11_xogo.php?estado=2&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$casillaDescuberta1.'&casillaDescuberta2='.$i.'"/><img src="imaxes/reverso.jpg" height="120px" width="130px"></a>';
+							echo '<a href="proxecto11_xogo.php?estado=2&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$casillaDescuberta1.'&casillaDescuberta2='.$i.'"/><img class="img-responsive" src="imaxes/reverso.jpg"></a>';
 						}
 						echo '</div>';
 					}
@@ -97,11 +97,11 @@
 					for($i = 0; $i < count($froitasNivel); $i++) {
 						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						if (in_array($froitasNivel[$i], $froitasAcertadas)) {
-							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
+							echo '<img class="img-responsive" src="imaxes/'.$froitasNivel[$i].'.jpg">';
 						} elseif ($i == $casillaDescuberta1 || $i == $casillaDescuberta2) {
-							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
+							echo '<img class="img-responsive" src="imaxes/'.$froitasNivel[$i].'.jpg">';
 						} else {
-							echo '<a><img src="imaxes/reverso.jpg" height="120px" width="130px"></a>';
+							echo '<a><img class="img-responsive" src="imaxes/reverso.jpg"></a>';
 						}
 						echo '</div>';
 					}
@@ -131,9 +131,9 @@
 					for($i = 0; $i < count($froitasNivel); $i++) {
 						echo '<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 imaxe">';
 						if (in_array($froitasNivel[$i], $froitasAcertadas)) {
-							echo '<img src="imaxes/'.$froitasNivel[$i].'.jpg" height="120px" width="130px">';
+							echo '<img class="img-responsive" src="imaxes/'.$froitasNivel[$i].'.jpg">';
 						} else {
-							echo '<a href="proxecto11_xogo.php?estado=1&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$i.'"><img src="imaxes/reverso.jpg" height="120px" width="130px"></a>';
+							echo '<a href="proxecto11_xogo.php?estado=1&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'&casillaDescuberta1='.$i.'"><img class="img-responsive" src="imaxes/reverso.jpg"></a>';
 						}
 						echo '</div>';
 					}
@@ -151,7 +151,11 @@
 					$froitasNivel = explode(",", $_GET['froitas']);
 					$intentos = $_GET['intentos'];
 					$froitasAcertadas = explode(",", $_GET['acertos']);
-					echo '<div class="ganhador"><img src="imaxes/sandia.gif" height="303px" width="480px"><br>BO TRABALLO!!!!</div>';
+					echo '<div class="row">';
+					echo '<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 baleiro"></div>';
+					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ganhador" align="center"><img src="imaxes/sandia.gif" height="303px" width="480px"></div>';
+					echo '</div>';
+					echo '<div class="row" text-center><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 baleiro"></div><span class="mensaxe">Bo TRABALLo!!!</span></div>';
 					echo '</div>';
 					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
 					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';

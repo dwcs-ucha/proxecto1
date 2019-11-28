@@ -1,0 +1,40 @@
+@font-face {
+	font-family: starborn;
+	src: url(starborn.ttf);
+}
+h1, h2 {
+	text-align: center;
+}
+.menu {
+	padding-top: 50px;
+}
+.botons {
+	margin-top: 50px;
+}
+.miniatura {
+	width: 400px;
+	height: 200px;
+}
+.img-responsive{
+	width: 130px;
+	height: 120px;
+}
+.botonFinal:link, .botonFinal:visited {
+	background-color: #007BFF;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	padding: 8px;
+	text-align: center;
+	text-decoration: none;
+	display: grid;
+	width: 150px;
+}
+.botonsFinal {
+	text-align: center;
+}
+.mensaxe {
+	font-size: 30px;
+	margin-left: 5%;
+	text-align: center;
+	font-family: starborn;
+}
