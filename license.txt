@@ -2,6 +2,7 @@ Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0).
 
 Esto es un resumen inteligible para humanos de la licencia. 
 
+
 ADVERTENCIA: Usted es libre de:
 
     COMPARTIR: Copiar y redistribuir el material en cualquier medio o formato.
@@ -23,4 +24,5 @@ ADVERTENCIA: Usted es libre de:
 AVISOS:
 
     No tiene que cumplir con la licencia para aquellos elementos del material en el dominio público o cuando su utilización esté permitida por la aplicación de una excepción o un límite.
+    
     No se dan garantías. La licencia puede no ofrecer todos los permisos necesarios para la utilización prevista. Por ejemplo, otros derechos como los de publicidad, privacidad, o los derechos morales pueden limitar el uso del material.
