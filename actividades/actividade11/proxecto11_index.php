@@ -27,7 +27,7 @@
 				<img class="img-thumbnail" src="imaxes/emparella.gif">
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
-				<span>Xogo que consiste en emparellar as cartas que están dadas a volta</span>
+				<span>Xogo que consiste en emparellar as cartas de froitas que están viradas boca abaixo</span>
 			</div>
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
 		</div>
