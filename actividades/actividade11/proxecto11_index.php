@@ -37,13 +37,13 @@
 					<h4>Dificultade</h4>
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
 						<label class="btn btn-secondary active btn-success">
-							<input type="radio" name="numeroCartas" value="6" checked/>Fácil
+							<input type="radio" id="numeroCartas" name="numeroCartas" value="6"/>Fácil
 						</label>
 						<label class="btn btn-secondary active btn-warning">
-							<input type="radio" name="numeroCartas" value="12"/>Normal
+							<input type="radio" id="numeroCartas" name="numeroCartas" value="12"/>Normal
 						</label>
 						<label class="btn btn-secondary active btn-danger">
-						<input type="radio" name="numeroCartas" value="18"/>Difícil
+							<input type="radio" id="numeroCartas" name="numeroCartas" value="18"/>Difícil
 						</label>
 					</div>
 				</div>
