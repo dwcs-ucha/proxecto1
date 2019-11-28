@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:27/11/2019
+    // BreoBeceiro:28/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // FALTA IMPLEMENTAR AS PUNTUACIÓNS E LEVALAS AO CSV, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
@@ -30,6 +30,8 @@
         $silabaLO= $_POST['silabaLO'];
         $silabaLU= $_POST['silabaLU'];
 
+        // Se os valores introducidos non superan cadanseu filtro, gárdase unha mensaxe de erro que se amosará
+        //   embaixo de cada campo:
         if(!validaSilaba(strtoupper($silabaLE), "LE")){
             $erroLE= "Tes que poñer LE...";
         }
@@ -50,9 +52,10 @@
             $erroLU= "Tes que poñer LU...";
         }
 
+        // Recupérase a cadea de texto do campo oculto (ese campo de texto era un array na carga anterior da páxina,
+        //   e convertirase de novo nun na presente):
         if(isset($_POST['silabasFinais'])){
             $silabasFinais= explode(",", $_POST['silabasFinais']);
-            var_dump($silabasFinais);
         }
 
         //$silabasIniciais= array("LA"=>$silaba1, "LE"=>$silaba2, "LI"=>$silaba3, "LO"=>$silaba4, "LU"=>$silaba5);
@@ -95,6 +98,7 @@
     <body>
         <div class="container">
             <?php
+                // Inclúese a estrutura da cabeceira común do sitio:
                 include('../../layout/cabeceira.php');
             ?>
             <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
@@ -111,25 +115,37 @@
                     <?php
                         // Ao array $silabasFinais hai que aplicarlle a función shuffle no corpo da páxina, pois facéndoo no
                         //   bloque previo á etiqueta <!doctype html> os seus elementos non cambiaban de posición.
+
+                        // Na primeira carga da páxina, defínese o array $silabasFinais e revólvense os seus elementos (se non,
+                        //   na primeira carga aparecerían sempre na mesma orde, e desta forma, é aleatoria):
                         if(!isset($_POST['enviar'])){
                             $silabasFinais= array("PIZ", "CHE", "BRO", "RO", "NA");
                             shuffle($silabasFinais);
                         }
+
+                        // Cando se pulse en 'Refrescar', revólvense de novo os elementos:
                         if(isset($_POST['refrescar'])){
                             shuffle($silabasFinais);
-                            $silabasFinaisSTRING= implode(",", $silabasFinais);
-                            //var_dump($silabasFinaisSTRING);
                         }
 
+                        // O array $silabasFinais convértese nunha cadea de texto que se gardará nun campo oculto do formulario 
+                        //   para gardar o estado do array na seguinte carga da páxina, se esta se produce por premer en 'Comprobar'
+                        //   xa que se se produce por premer en 'Refrescar', o estado do array cambiará, dado que pasará de novo
+                        //   pola función shuffle():
+                        $silabasFinaisSTRING= implode(",", $silabasFinais);
 
                         // A variable $i servirá para asegurar que en cada iteracción do bucle se constrúen os 'input' con atributos 
-                        //   'name' e 'id' distintos:
+                        //   'name' ou 'id' distintos:
                         $i= 1;
 
+                        // A estrutura seguinte percorre o array $silabasFinais e, en función do valor de cada un dos seus elementos,
+                        //   o contido dos inputs e as imaxes a amosar serán distintos (é dicir, o contido de cada unha das caixas que
+                        //   se producen con cada iteracción do bucle, varía en función do valor do elemento que hai en dita iteracción): 
                         foreach($silabasFinais as $silabaFinal){
                             ?>
                                 <div class="col">
                                     <?php
+                                        // A función devolveImaxe() vai devolver a imaxe correspondente coa sílaba de entrada:
                                         devolveImaxe($silabaFinal);
                                     ?>
                                     <br />
@@ -139,6 +155,9 @@
                                     </div>
                                     <br />
                                     <?php
+                                        // O seguinte SWITCH evalúa o elemento do array e, en función do valor deste, devolve unha
+                                        //   estrutura condicional coa que amosará a variable (se é que existe) que contén a mensaxe
+                                        //   de erro do caso en particular:
                                         switch($silabaFinal){
                                             case "PIZ":
                                                 if(isset($_POST['enviar']) && isset($erroLA)){ echo $erroLA; }
@@ -156,7 +175,11 @@
                                                 if(isset($_POST['enviar']) && isset($erroLU)){ echo $erroLU; }
                                                 break;
                                         }
+
+                                        // Increméntase $i para a seguinte iteracción:
                                         $i++;
+
+                                        // Péchase o div de clase 'col':
                                         echo "</div>";
                         }
                                     ?>
@@ -166,9 +189,12 @@
 
                 <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
                 <input type="submit" name="refrescar" id="Refrescar" value="Refrescar" />
+
+                <?php // Defínese o campo oculto co que se transmitirá a cadea de texto cos valores do array $silabasFinais: ?>
                 <input type="hidden" name="silabasFinais" value="<?php isset($silabasFinaisSTRING)? print $silabasFinaisSTRING : print ""; ?>" />
                 
                 <?php
+                    // Inclúese a estrutura do pé común do sitio:
                     include('../../layout/pe.php');
                 ?>
             </form>
