@@ -21,9 +21,15 @@ display:block;
 text-align:center;
 }
 
-img{
+img {
 display:block;
 margin:auto;
-height:400px;
-width:800px;
+}
+
+#error {
+color:red;
+}
+
+#acierto {
+color:blue;
 }
