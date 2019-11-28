@@ -12,6 +12,7 @@
 ?>
 </head>
 <link rel="stylesheet" href="estilos/estilosPreguntas.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body>
 <?php
 	require_once('../../layout/cabeceira.php');
@@ -28,20 +29,20 @@
 	$fallos = 0;
 	$numeroAleatorio = random_int(0,7);
 	
+
+	
+	
 	if(isset($_POST['btnJugarFacil']) || isset($_POST['btnSiguiente'])){
-		
-	
-	
-	
+
 			switch($numeroAleatorio){
 				
 				case 0:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p> 
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">El animal empieza por <b>Ca </b> y Termina por <b>llo</b></p>
-					<input class="btnAcierto" type="submit"  name="btnAcierto" value="Caballo">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Elefante">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Hipopótamo"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Caballo">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Elefante">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Hipopótamo"></p>';
 				break;
 				
 				
@@ -50,68 +51,69 @@
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">El animal empieza por <b>G </b> y Termina por <b>o</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Gato">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Elefante">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Hipopótamo"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Gato">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Elefante">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Hipopótamo"></p>';
 				break;
 				
 				case 2:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">El vehiculo empieza por <b>M</b> y Termina por <b>o</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Moto">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Barco">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Avión"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Moto">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Barco">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Avión"></p>';
 				break;
 				
 				case 3:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">El animal empieza por <b>D</b> y Termina por <b>ín</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Delfín">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Elefante">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Hipopótamo"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Delfín">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Elefante">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Hipopótamo"></p>';
 				break;
 				
 				case 4:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">El objeto empieza por <b>L</b> y Termina por <b>z</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Lapiz">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Goma">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Papel"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Lapiz">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Goma">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Papel"></p>';
 				break;
 				
 				case 5:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">La bebida empieza por <b>S</b> y Termina por <b>a</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Sopa">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Refresco">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Zumo"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Sopa">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Refresco">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Zumo"></p>';
 				break;
 				
 				case 6:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">La pieza de ropa empieza por <b>Su</b> y Termina por <b>era</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Sudadera">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Camiseta">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Pantalón"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Sudadera">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Camiseta">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Pantalón"></p>';
 				break;
 				
 				case 7:
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p class="pista">El accesorio empieza por <b>Mo</b> y Termina por <b>la</b></p>
-					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Mochila">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Gorra">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Sombrero"></p>';
+					<p><input class="btn btn-info" type="submit"  name="btnAcierto" value="Mochila">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Gorra">&nbsp;
+					<input class="btn btn-info"   type="submit"  name="btnFallo" value="Sombrero"></p>';
 				break;
 				
 				}
 				
-						
+				
+				
 		
 		
 		
@@ -127,19 +129,19 @@
 		if(isset($_POST['btnAcierto'])){
 				$numerosUsados[]= $_POST['valor'];
 				$aciertos++;
-				echo '<img src="'.$arrayImagenes[$_POST['valor']].'">';			
-				echo '<p id="acierto"><input class="btnAcierto" type="button"  name="btnAcierto" value="'.$arrayRespuesta[$_POST['valor']].'">&nbsp;  (HAS ACERTADO) &nbsp; ';
-				echo '<input class="btnSiguiente" type="submit"  name="btnSiguiente" value="Siguiente"></p>';
 				
+				echo '<img src="'.$arrayImagenes[$_POST['valor']].'">			
+				<p id="acierto"><input class="btn btn-info" type="button"  name="btnAcierto" value="'.$arrayRespuesta[$_POST['valor']].'">&nbsp;  (HAS ACERTADO) &nbsp;
+				<input class="btn btn-info" type="submit"  name="btnSiguiente" value="Siguiente"></p>';		
+
 			}
 			
 		if(isset($_POST['btnFallo'])){
 				$numerosUsados[]= $_POST['valor'];
 				$fallos++;
-				echo '<img src="'.$arrayImagenes[$_POST['valor']].'">';			
-				echo '<p id="error">ERROR!,La Respuesta correcta era <input class="btnAcierto" type="button"  name="btnAcierto" value="'.$arrayRespuesta[$_POST['valor']].'">&nbsp;  SIGUE JUGANDO &nbsp;';
-				echo '<input class="btnSiguiente" type="submit"  name="btnSiguiente" value="Siguiente"> </p>';
-				
+				echo '<img src="'.$arrayImagenes[$_POST['valor']].'">		
+				<p id="error">ERROR!,La Respuesta correcta era <input class="btn btn-info" type="button"  name="btnAcierto" value="'.$arrayRespuesta[$_POST['valor']].'">&nbsp;  SIGUE JUGANDO &nbsp;
+				<input class="btn btn-info" type="submit"  name="btnSiguiente" value="Siguiente"> </p>';
 			}	
 	}		
 	
