@@ -8,7 +8,7 @@
 	    /********************************/
 ?>
 <?php
-// include("../layout/cabeceira.php");   
+// include("../../layout/cabeceira.php");   
 $errornome="O nome está baleiro";
 $errordif="Non hai escollida unha dificultade";
 $nome="-";
@@ -28,34 +28,22 @@ if(isset($_POST['entrar'])){
     }else{
        $dif='';
     }   
-/* Se todo esta correcto collemos os valores e rediriximos á paxina adecuada en 
-   cada caso. Enviamos os valores de nome e dificultade porlo Get na ruta á
-   páxina seguinte para asi poder telos e logo gardar os datos no rexistro de 
-   resultados */
+/* Se todo esta correcto collemos os valores e rediriximos á paxina da actividae 
+   Enviamos os valores de nome e dificultade porlo Get na ruta á páxina seguinte
+   para asi poder telos e logo gardar os datos no rexistro de resultados */
      if($_POST['usuario'] !== '' && isset($_POST['dif'])){
        $nome=$_POST['usuario'];
        $dif = $_POST['dif'];
-       switch($dif){
-        case 'facil':
-                header("location:facil.php?nome=$nome&difi=$dif");
-                break;
-        case 'medio':
-                header("location:medio.php?nome=$nome&difi=$dif");
-                break;
-        case 'dificil':
-                header("location:dificil.php?nome=$nome&difi=$dif");
-                break;       
-       }
+       header("location:sumas.php?nome=$nome&difi=$dif");
     }
 }
 ?>
 <html>
 <head>
-        <style>
-                #erro { color: red;}
-        </style>
+<?php include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>  
 </head>
 <body>
+<?php include("../../layout/cabeceira.php"); /* Incluimos a cabeceira */?>
 <?php //Formulario de Acceso, Selección do nivel e do Nome de Usuario ?>
      <div>
         <form action="index.php" method="post">
@@ -98,5 +86,6 @@ if(isset($_POST['entrar'])){
 	</table>
 	</div>
 	<?php } ?>
+	<?php include("../../layout/pe.php"); ?>  
 </body>
 </html>
