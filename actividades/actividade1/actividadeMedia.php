@@ -41,6 +41,7 @@
     <body>
         <div class="container">
             <?php
+                // Inclúese a estrutura da cabeceira común do sitio:
                 include('../../layout/cabeceira.php');
             ?>
 
@@ -84,6 +85,7 @@
             </div>
             
             <?php
+                // Inclúese a estrutura do pé común do sitio:
                 include('../../layout/pe.php');
             ?>
         </div>

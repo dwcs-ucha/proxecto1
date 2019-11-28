@@ -2,27 +2,30 @@ body {
     text-align: center;
 }
 
-h2 {
-    font-size: 30px;
+h1 {
     margin-top: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-a {
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
+h2 {
+    margin-bottom: 40px;
+}
+
+#nenos {
+    position: absolute;
+    top: 200px;
+    left: 170px;
+    width: 400px;
+    height: 400px;
+}
+
+.seleccion {
+    margin-left: 20px;
 }
 
 .dificultades, .tipo_juego {
     margin-left: 200px;
     margin-right: 200px;
-}
-
-.volver_menu {
-    position: absolute;
-    top: 500px;
-    left: 860px;
 }
 
 .titulo {
@@ -39,15 +42,21 @@ a {
     font-weight: bold;
 }
 
-.error, .exito {
+.error, .exito, .lista_errores {
     font-size: 20px;
     font-weight: bold;
 }
 
-.error, .exito {
+.error, .lista_errores {
     color: #890000;
 }
 
 .exito {
     color: #0094ed;
+}
+
+.lista_errores {
+    position: absolute;
+    top: 350px;
+    right: 130px;
 }
