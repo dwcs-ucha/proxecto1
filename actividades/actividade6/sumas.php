@@ -1,9 +1,9 @@
 <?php 
         /********************************/
 	    /*      Luis Corral de Cal      */
-	    /*      26 Novembro 2019	    */
+	    /*	    26 Novembro 2019	    */
     	/*	    Proxecto 1 Avaliacion   */
-    	/*      Nivel Dificil           */
+    	/*      Nivel fácil	            */
     	/*	    Version 1		        */
     	/********************************/
 ?>
@@ -65,30 +65,43 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
                 }
         }
         if(isset($_POST['gardar'])){
-        //echo $aciertos;
             gardar($nome,$dif,$aciertos);
-            
-        
         }
  }
  
 ?>
-<html>
-<head></head>
+<head>
+<?php include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>  
+</head>
 <body>
+<?php include("../../layout/cabeceira.php"); /* Incluimos a cabeceira */?>
 <div class="xogador">
 <h3>Xogador : <?php echo $nome ?> </h3>
-<h4>Dificultade : Dificil </h4>
+<h4>Dificultade : <?php echo $dif ?> </h4>
 </div>
 <div>
-      <form action="dificil.php" method="post">
+      <form action="sumas.php" method="post">
 <?php /* creamos aleatoriamente as sumas */
         if(!isset($_POST['comp'])){
         $numeros_a = array();
         $numeros_b = array();        
         for($i=1;$i<=10;$i++){
-          array_push($numeros_a,rand(1,999));
-          array_push($numeros_b,rand(1,999));
+            switch($dif){
+                case 'facil': 
+                    array_push($numeros_a,rand(1,9));
+                    array_push($numeros_b,rand(1,9));
+                    break;
+                case 'medio':
+                    array_push($numeros_a,rand(1,99));
+                    array_push($numeros_b,rand(1,99));
+                    break;
+                case 'dificil':
+                    array_push($numeros_a,rand(1,999));
+                    array_push($numeros_b,rand(1,999));
+                    break;
+            }
+/*          array_push($numeros_a,rand(1,9));
+          array_push($numeros_b,rand(1,9)); */
         }
         for($i=0;$i<sizeof($numeros_a);$i++){
           $num_a .=$numeros_a[$i] . ',';
@@ -139,5 +152,6 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
      <form action="index.php" method="post">
         <input type="submit" id="volver" name="volver" value="Volver ó inicio">
      </form>
+     <?php include("../../layout/pe.php"); ?>
 </body>
 </html>
