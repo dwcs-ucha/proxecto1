@@ -23,19 +23,20 @@
         <form action="actividade.php" method="post" class="container-fluid">
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col-2">
+                <div class="col-3">
                     <img src="icono.png" height="300" width="300"/>
                 </div>
-                <div class="col">
+                <div class="col-5">
                     <h1>Xogo de agrupar elementos por categorías</h1>
                     <p>
                         Material para traballar a pertenencia ou non pertenencia dun obxeto a unha categoría de vocabulario dada.
                     </p>
                 </div>
+		<div class="col-1"></div>
             </div>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-9">    
+                <div class="col-4"></div>
+                <div class="col-7">    
                     <h4>Dificultade</h4>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active btn-success">
@@ -49,14 +50,15 @@
                         </label>
                     </div>
                 </div>
+                <div class="col-1"></div>
             </div>
             <br/>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-6">
+                <div class="col-4"></div>
+                <div class="col-7">
                     <button class="btn btn-lg btn-success" type="submit" name="enviar" value="enviar">Xogar</button>
                 </div>
-                <div class="col"></div>
+                <div class="col-1"></div>
             </div>
         </form>
         <?php
