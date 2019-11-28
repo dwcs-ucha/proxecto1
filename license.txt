@@ -1,10 +1,3 @@
-A licenza para o proxecto é 'Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional'. Para reflexalo así no sitio, quedou engadida en layout/pe.php a seguinte instrucción HTML:
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Este obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional</a>.
-
-
-
-
 Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0).
 
 Esto es un resumen inteligible para humanos de la licencia. 
@@ -27,8 +20,7 @@ ADVERTENCIA: Usted es libre de:
     AUTORÍA: Alumnos y alumnas del módulo de 'Desenvolvemento web en contorno servidor', perteneciente al Ciclo Superior de 'Desenvolvemento de Aplicacións Web' impartido en el C.I.F.P. Rodolfo Ucha Piñeiro en el curso 2019/2020.
 
 
-Avisos:
+AVISOS:
 
     No tiene que cumplir con la licencia para aquellos elementos del material en el dominio público o cuando su utilización esté permitida por la aplicación de una excepción o un límite.
     No se dan garantías. La licencia puede no ofrecer todos los permisos necesarios para la utilización prevista. Por ejemplo, otros derechos como los de publicidad, privacidad, o los derechos morales pueden limitar el uso del material.
-
