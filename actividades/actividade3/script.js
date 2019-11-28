@@ -7,12 +7,20 @@
 
 /*
  * Utilización de seleccionar(divId,selectId,option): 
- * divId -> div contenedor da pregunta
+ * divId -> id do div contenedor da pregunta
+ * selectId -> id do select contenedor das opcións
+ * option -> o elemento "option" enviado ao servidor
+ *
+ * divme = obxecto do div
+ * selectme = obxecto do select
+ * option = obxecto da opción enviada
 */
 function seleccionar(divId, selectId, option){
     var divme = document.getElementById(divId);
     var selectme = document.getElementById(selectId);
     var pai = option.parentElement;
+    
+
     for(x in selectme.childNodes){
         if(selectme.childNodes[x].nodeName == "OPTION"){
             if(selectme.childNodes[x].value == option.getAttribute("value")){
