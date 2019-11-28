@@ -38,3 +38,16 @@ h1, h2 {
 	text-align: center;
 	font-family: starborn;
 }
+.dificultade {
+	margin-top: 7%;
+}
+.xogar {
+	margin-top: 2%;
+}
+.btn-lg {
+	padding:10px 60px;
+}
+.btn-secondary {
+	
+	padding: 0px 30px;
+}
