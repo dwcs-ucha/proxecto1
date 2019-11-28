@@ -21,6 +21,7 @@
         <h1>SINÓNIMOS Y ANTÓNIMOS</h1>
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
             <h2>Elixe un xogo</h2>
+            <img id="nenos" src="Imagenes/nenos.jpg">
             <label>Sinónimos</label><input class="seleccion" type="radio" name="juego" value="sinonimos" checked><br/>
             <label>Antónimos</label><input class="seleccion" type="radio" name="juego" value="antonimos">
 
@@ -28,8 +29,8 @@
 
             <h2>Elixe unha dificultade</h2>
             Fácil<input type="radio" class="seleccion" name="dificultad" value="facil" checked><br/>
-            Normal<input type="radio" class="seleccion" name="dificultad" value="normal"><br/>
-            Dificil<input type="radio" class="seleccion" name="dificultad" value="dificultad">
+            Normal<input type="radio" class="seleccion" name="dificultad" value="medio"><br/>
+            Dificil<input type="radio" class="seleccion" name="dificultad" value="dificil">
 
             <br/><br/>
 

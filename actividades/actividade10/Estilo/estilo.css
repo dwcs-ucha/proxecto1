@@ -4,11 +4,19 @@ body {
 
 h1 {
     margin-top: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 h2 {
     margin-bottom: 40px;
+}
+
+#nenos {
+    position: absolute;
+    top: 200px;
+    left: 170px;
+    width: 400px;
+    height: 400px;
 }
 
 .seleccion {
