@@ -9,8 +9,8 @@
     <head>
         <?php
         // Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:
-        include 'layout/head.php';
         $directorioRaiz = ".";
+        include 'layout/head.php';
         escribirHead();
         ?>
         <script type="text/javascript" src=""></script>
