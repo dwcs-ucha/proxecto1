@@ -8,8 +8,6 @@
 //   como ficheiros JS coa etiqueta <script> e, naturalmente, o título da páxina con <title>.
 ?>
 <?php
-$directorioRaiz = "";
-
 function escribirHead() {
     global $directorioRaiz;
     ?>
