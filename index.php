@@ -11,7 +11,6 @@
         // Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:
         $directorioRaiz = ".";
         include 'layout/head.php';
-        escribirHead();
         ?>
         <script type="text/javascript" src=""></script>
         <style type="text/css">
@@ -35,7 +34,6 @@
         <div class="container">
             <?php
             include('layout/cabeceira.php');
-            escribirCabeceira();
             ?>
 
             <h2>Proxecto 1ª Avaliación</h2>

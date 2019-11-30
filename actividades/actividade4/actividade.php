@@ -1,14 +1,17 @@
 <html>
     <head>
         <?php
-        require_once '../../layout/head.php'; /* Contén etiquetas coma meta, link, script */
+        $directorioRaiz = "../..";
+        include '../../layout/head.php';
+        escribirHead();
         ?>
-        <title>Título</title>
+        <title>Agrupar elementos</title>
         <meta charset="utf-8"/>
-        <script src="script.js"></script>
+        <script src="seleccionar_elementos.js"></script>
         <style>
-            img {
-                border-style : solid;
+            .ficha {
+                border-style: solid;
+                border-width: 20;
                 width : 150;
                 height : 150;
             }
@@ -16,7 +19,8 @@
     </head>
     <body>
         <?php
-        require_once '../../layout/cabeceira.php'; /* Contén a cabeceira, que consiste nun menú horizontal <nav> [...] </nav> */
+        include '../../layout/cabeceira.php';
+        escribirCabeceira();
         ?>
 
         <?php
@@ -40,11 +44,11 @@
         $arrayFallos = getImagenes(getNumeroAleatorioDistinto(1, $numeroCategorias, $lineaCategoriaAciertos));
         $imagenesFallo = $arrayFallos["imagenes"];
         ?>
-        <form method = "post" action = "prueba.php">
+        <form class = "container" method = "post" action = "prueba.php">
 
             <h1><?= $categoriaAcierto ?></h1>
-            <input type="hidden" name="categoria" value="<?= $categoriaAcierto; ?>"/>
-            <div class="imagenes">
+            <input type = "hidden" name="categoria" value="<?= $categoriaAcierto; ?>"/>
+            <div>
                 <?php escribirImagenes(); ?>
             </div>
             <input type = "submit" value = "Enviar"/>
@@ -56,17 +60,29 @@
             global $proporcionImagenesCorrectas;
             global $imagenesAcierto;
             global $imagenesFallo;
+            $filas = $numeroImagenes / 5;
+
+            $contador = 0;
             
-            for ($i = 0; $i < $numeroImagenes; $i++) {
-                $aleatorio = rand(1, $proporcionImagenesCorrectas + 1);
-                if ($aleatorio <= $proporcionImagenesCorrectas) {
-                    $rutaImagen = next($imagenesAcierto);
-                } else {
-                    $rutaImagen = next($imagenesFallo);
-                }
+            for ($i = 0; $i < $filas; $i++) {
                 ?>
-                <input id = "seleccionada<?= $i; ?>" type = "hidden" name = "seleccionada<?= $i; ?>" value = ""/>
-                <img id = "imagen-<?= $i; ?>" src = "<?= $rutaImagen; ?>" onclick = "seleccionar(this)"/>
+                <div class="row"> 
+                    <?php
+                    for ($j = 0; $j < 5 && ($i * $j) < $numeroImagenes; $j++) {
+                        $aleatorio = rand(1, $proporcionImagenesCorrectas + 1);
+                        if ($aleatorio <= $proporcionImagenesCorrectas) {
+                            $rutaImagen = next($imagenesAcierto);
+                        } else {
+                            $rutaImagen = next($imagenesFallo);
+                        }
+                        ?>
+                        <input id = "seleccionada<?= $contador; ?>" type = "hidden" name = "seleccionada<?= $contador; ?>" value = ""/>
+                        <img class = "ficha col" id = "imagen-<?= $contador; ?>" src = "<?= $rutaImagen; ?>" onclick = "seleccionar(this)"/>
+
+                        <?php
+                    }
+                    ?>
+                </div>
                 <?php
             }
         }
@@ -110,7 +126,6 @@
         function asignarDificultad() {
             global $numeroImagenes;
             global $proporcionImagenesCorrectas;
-            //     switch ("normal") {
             switch ($_POST["dificultade"]) {
                 case "facil":
                     $numeroImagenes = NUMERO_IMAGENES_FACIL;

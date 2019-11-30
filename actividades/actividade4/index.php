@@ -7,7 +7,6 @@
          * */
         $directorioRaiz = "../..";
         include '../../layout/head.php';
-        escribirHead();
         ?>
         <meta charset="utf-8">
         <title>Agrupar elementos</title>
@@ -15,7 +14,6 @@
     <body>
         <?php
         include '../../layout/cabeceira.php';
-        escribirCabeceira();
         ?>
         <h1>Xogo de agrupar elementos por categorías</h1>
         <form id="facil" action="actividade.php" method="post">
