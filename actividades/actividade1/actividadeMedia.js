@@ -5,4 +5,7 @@
 //   COMPARALO COS VALORES CORRECTOS (PODERASE FACER COMPARANDO OS id DOS INPUT DAS IMAXES CORRECTAS
 //   COS class DAS MESMAS, POIS TAERÁN EN COMÚN O NÚMERO DO SEU VALOR: Palabra1 con imaxe1, Palabra2
 //   con imaxe2, etc...)
-    var imaxe= document.getElementsByClassName("imaxe").item;
+    var imaxe= document.getElementsByClassName("imaxe");
+    function alerta(){
+        alert(imaxe);
+    }

@@ -1,12 +1,14 @@
 <?php
-    // BreoBeceiro:27/11/2019
+    // BreoBeceiro:29/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
-    // Arquivo que pode desaparecer:
-    include('actividadeDoada_Utilidades.php');
+    // O XOGADOR FARÁ CLICK NAS IMAXES OU NA PALABRA QUE CONTEÑA A SÍLABA A BUSCAR. AO FACER CLICK,
+    //   O BORDE DO ELEMENTO CAMBIARÁ O SEU ESTILO E SE GARDARÁ O SEU ATRIBUTO name OU id NUN ARRAY
+    //   PARA PASALO LOGO A UN input OCULTO QUE PERMITIRÁ COMPARAR OS SEUS VALORES COS CORRECTOS NA
+    //   SEGUINTE CARGA DA PÁXINA.
 
     // Módulo de funcións de validación e saneamento:
-    include('actividadeDoada_moduloFuncions.php');
+    include('moduloFuncions.php');
 ?>
 <!doctype html>
 <html lang="gl">
@@ -25,7 +27,7 @@
                 echo "<link rel='stylesheet' type='text/css' href='estiloClaro.css'>";
             }
         ?>
-        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="actividadeMedia.js"></script>
         <style type="text/css">
 
             .container { text-align: center; }
@@ -45,7 +47,7 @@
                 include('../../layout/cabeceira.php');
             ?>
 
-            <h2>Completar Sílabas e Palabras<br />(Intermedio)</h2>
+            <h2 onclick="alerta();">Completar Sílabas e Palabras<br />(Intermedio)</h2>
 
             <div class="row align-items">
                 <?php

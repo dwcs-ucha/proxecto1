@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:28/11/2019
+    // BreoBeceiro:29/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // FALTA IMPLEMENTAR AS PUNTUACIÓNS E LEVALAS AO CSV, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
@@ -7,15 +7,9 @@
     // OPCIONALMENTE, FALTARÍA ENGADIR O CAMBIO DA COR DE FONDO DOS ELEMENTOS input NOS CALES ESTÁN
     //   AS SÍLABAS A ESCRIBIR. A IDEA É QUE INICIALMENTE APAREZAN NUNHA COR, E QUE AO ESCRIBILAS
     //   NAS CAIXAS DE ACERTAR, A COR DE FONDO CAMBIE.
-    // O ESTADO DO ARRAY $silabasFinais TES QUE CONSERVALO CUN input hidden, empregando as funcións explode()
-    //   e implode(), pois os campos hidden non aceptan matrices (hai que convertir o array nun string antes de 
-    //   mandalo ao input, e logo recuperalo).
-
-    // Arquivo que pode desaparecer:
-    include('actividadeDoada_Utilidades.php');
 
     // Módulo de funcións de validación e saneamento:
-    include('actividadeDoada_moduloFuncions.php');
+    include('moduloFuncions.php');
 
     // Ficheiro de funcións comúns do sitio:
     include('../../librerias/utils.php');

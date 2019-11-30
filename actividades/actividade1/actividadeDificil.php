@@ -1,16 +1,9 @@
 <?php
-    // BreoBeceiro:24/11/2019
+    // BreoBeceiro:29/11/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
-    // Arquivo que pode desaparecer:
-    include('actividadeDoada_Utilidades.php');
-
     // Módulo de funcións de validación e saneamento:
-    include('actividadeDoada_moduloFuncions.php');
-
-    if(isset($_POST['enviar'])){
-
-    }
+    include('moduloFuncions.php');
 ?>
 <!doctype html>
 <html lang="gl">
