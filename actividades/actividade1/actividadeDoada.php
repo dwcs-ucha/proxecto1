@@ -24,26 +24,43 @@
         $silabaLO= $_POST['silabaLO'];
         $silabaLU= $_POST['silabaLU'];
 
+        $puntos= 0;
+
         // Se os valores introducidos non superan cadanseu filtro, gárdase unha mensaxe de erro que se amosará
         //   embaixo de cada campo:
         if(!validaSilaba(strtoupper($silabaLE), "LE")){
-            $erroLE= "Tes que poñer LE...";
+            $erroLE= "A sílaba correcta era LE.";
+        }else{
+            $noraboaLE= "Moi ben!";
+            $puntos++;
         }
 
         if(!validaSilaba(strtoupper($silabaLA), "LA")){
-            $erroLA= "Tes que poñer LA...";
+            $erroLA= "A sílaba correcta era LA.";
+        }else{
+            $noraboaLA= "Moi ben!";
+            $puntos++;
         }
 
         if(!validaSilaba(strtoupper($silabaLI), "LI")){
-            $erroLI= "Tes que poñer LI...";
+            $erroLI= "A sílaba correcta era LI.";
+        }else{
+            $noraboaLI= "Moi ben!";
+            $puntos++;
         }
 
         if(!validaSilaba(strtoupper($silabaLO), "LO")){
-            $erroLO= "Tes que poñer LO...";
+            $erroLO= "A sílaba correcta era LO.";
+        }else{
+            $noraboaLO= "Moi ben!";
+            $puntos++;
         }
 
         if(!validaSilaba(strtoupper($silabaLU), "LU")){
-            $erroLU= "Tes que poñer LU...";
+            $erroLU= "A sílaba correcta era LU.";
+        }else{
+            $noraboaLU= "Moi ben!";
+            $puntos++;
         }
 
         // Recupérase a cadea de texto do campo oculto (ese campo de texto era un array na carga anterior da páxina,
@@ -84,6 +101,12 @@
             .col input[type=text] { width: 45%;
                                     font-size: 30px;
                                     margin: auto; }
+            .formPuntos { width: 45%;
+                          margin: auto; }
+            form fieldset { border: 1px solid black; 
+                            padding: 5px;
+                            margin: 15px 1px; }
+            .enviaPuntos { float: left; }
         </style>
         <title>
             Completar sílabas e palabras | Nivel 1
@@ -96,7 +119,9 @@
                 // Inclúese a estrutura da cabeceira común do sitio:
                 include('../../layout/cabeceira.php');
             ?>
+
             <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
+
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="text" name="silabaLA" class="opcions" value="LA" readonly="readonly" />
                 <input type="text" name="silabaLE" class="opcions" value="LE" readonly="readonly" />
@@ -156,18 +181,23 @@
                                         switch($silabaFinal){
                                             case "PIZ":
                                                 if(isset($_POST['enviar']) && isset($erroLA)){ echo $erroLA; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLA)){ echo $noraboaLA; }
                                                 break;
                                             case "CHE":
                                                 if(isset($_POST['enviar']) && isset($erroLE)){ echo $erroLE; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLE)){ echo $noraboaLE; }
                                                 break;
                                             case "BRO":
                                                 if(isset($_POST['enviar']) && isset($erroLI)){ echo $erroLI; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLI)){ echo $noraboaLI; }
                                                 break;
                                             case "RO":
                                                 if(isset($_POST['enviar']) && isset($erroLO)){ echo $erroLO; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLO)){ echo $noraboaLO; }
                                                 break;
                                             case "NA":
                                                 if(isset($_POST['enviar']) && isset($erroLU)){ echo $erroLU; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLU)){ echo $noraboaLU; }
                                                 break;
                                         }
 
@@ -187,12 +217,33 @@
 
                 <?php // Defínese o campo oculto co que se transmitirá a cadea de texto cos valores do array $silabasFinais: ?>
                 <input type="hidden" name="silabasFinais" value="<?php isset($silabasFinaisSTRING)? print $silabasFinaisSTRING : print ""; ?>" />
-                
-                <?php
-                    // Inclúese a estrutura do pé común do sitio:
-                    include('../../layout/pe.php');
-                ?>
             </form>
+            <?php
+                if(isset($puntos)){
+                    ?>
+                        <div class="row">
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="formPuntos">
+                                <fieldset>
+                                    <span>Gañaches <?php echo $puntos; ?> puntos, queres gardar esta puntuación?</span>
+                                    <div class="col-md-12">
+                                        <input type="radio" name="gardaPuntos" id="GardaPuntos" value="si" />
+                                        <label for="GardaPuntos">Sí</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="radio" name="gardaPuntos" id="NonGardaPuntos" value="non" />
+                                        <label for="NonGardaPuntos">Non</label>
+                                    </div>
+                                    <input type="submit" name="enviaPuntos" class="enviaPuntos" />
+                                </fieldset>
+                            </form>
+                        </div>
+                    <?php
+                }
+                    ?>
+            <?php
+                // Inclúese a estrutura do pé común do sitio:
+                include('../../layout/pe.php');
+            ?>
         </div>
     </body>
 </html>

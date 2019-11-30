@@ -9,6 +9,9 @@
 
     // Módulo de funcións de validación e saneamento:
     include('moduloFuncions.php');
+
+    // Ficheiro de funcións comúns do sitio:
+    include('../../librerias/utils.php');
 ?>
 <!doctype html>
 <html lang="gl">
