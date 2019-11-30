@@ -61,6 +61,7 @@
     <head>
         <?php
             // Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:
+            $directorioRaiz ="../..";
             include('../../layout/head.php');
 
             // En función do valor do parámetro 'tema' que veña pola URL, se é que ven, empregarase unha capa de CSS

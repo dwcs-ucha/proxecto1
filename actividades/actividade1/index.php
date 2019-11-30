@@ -5,6 +5,7 @@
 <html lang="gl">
     <head>
         <?php
+            $directorioRaiz ="../..";
             include('../../layout/head.php');
         ?>
         <style type="text/css">
