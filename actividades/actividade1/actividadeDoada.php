@@ -1,9 +1,8 @@
 <?php
-    // BreoBeceiro:29/11/2019
+    // BreoBeceiro:01/12/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // FALTA IMPLEMENTAR AS PUNTUACIÓNS E LEVALAS AO CSV, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
-    // HAI QUE REFINAR A RECARGA DA PÁXINA SEN QUE SE REORDENE O CONTIDO DAS CAIXAS.
     // OPCIONALMENTE, FALTARÍA ENGADIR O CAMBIO DA COR DE FONDO DOS ELEMENTOS input NOS CALES ESTÁN
     //   AS SÍLABAS A ESCRIBIR. A IDEA É QUE INICIALMENTE APAREZAN NUNHA COR, E QUE AO ESCRIBILAS
     //   NAS CAIXAS DE ACERTAR, A COR DE FONDO CAMBIE.
@@ -106,7 +105,10 @@
             form fieldset { border: 1px solid black; 
                             padding: 5px;
                             margin: 15px 1px; }
-            .enviaPuntos { float: left; }
+            .row .col-md-12 { margin: 5px 1px; }
+            .row input[type=text] { width: 65%; }
+            .enviaPuntos { float: left;
+                           margin: 1px 3px; }
         </style>
         <title>
             Completar sílabas e palabras | Nivel 1
@@ -210,7 +212,7 @@
                                     ?>
                 </div>
 
-                <br /><br />
+                <br /><?php isset($erroDatos)? print $erroDatos : print "" ?><br />
 
                 <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
                 <input type="submit" name="refrescar" id="Refrescar" value="Refrescar" />
@@ -219,6 +221,8 @@
                 <input type="hidden" name="silabasFinais" value="<?php isset($silabasFinaisSTRING)? print $silabasFinaisSTRING : print ""; ?>" />
             </form>
             <?php
+                // A variable $puntos só existe cando se premeu no botón 'Comprobar', de modo que o bloque seguinte execútase
+                //   nese caso, no cal dita variable existe cun valor entre 0 e 5:
                 if(isset($puntos)){
                     ?>
                         <div class="row">
@@ -226,18 +230,34 @@
                                 <fieldset>
                                     <span>Gañaches <?php echo $puntos; ?> puntos, queres gardar esta puntuación?</span>
                                     <div class="col-md-12">
-                                        <input type="radio" name="gardaPuntos" id="GardaPuntos" value="si" />
-                                        <label for="GardaPuntos">Sí</label>
+                                        <label for="Nome">Nome/Alias:</label>
+                                        <input type="text" name="nome" id="Nome" />
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="radio" name="gardaPuntos" id="NonGardaPuntos" value="non" />
-                                        <label for="NonGardaPuntos">Non</label>
+                                        <label for="Contrasinal">Contrasinal:</label>
+                                        <input type="text" name="contrasinal" id="Contrasinal" />
                                     </div>
-                                    <input type="submit" name="enviaPuntos" class="enviaPuntos" />
+                                    
+                                    <input type="submit" name="enviaPuntos" class="enviaPuntos" value="Gardar" />
+                                    <input type="submit" name="refrescar" class="enviaPuntos" value="Refrescar" />
+
+                                    <?php // Defínese o campo oculto co que se transmitirá a mensaxe de erro dos campos Alias/Contrasinal do xogador á seguinte carga da páxina: ?>
+                                    <input type="hidden" name="erroDatos" value="<?php isset($erroDatos)? print $erroDatos : print ""; ?>" />
                                 </fieldset>
                             </form>
                         </div>
                     <?php
+                        if(isset($_POST['enviaPuntos'])){
+                            $nome= $_POST['nome'];
+                            $contrasinal= $_POST['contrasinal'];
+
+                            if(empty($nome) || empty($contrasinal)){
+                                $erroDatos= "Ambolos dous campos son obrigatorios.";
+                            }else{
+                                $datos= array($nome, $contrasinal, $puntos);
+                                escribirCSV("datos/xogadores.csv", "a", $datos);
+                            }
+                        }
                 }
                     ?>
             <?php
