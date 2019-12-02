@@ -2,8 +2,8 @@
     
 }
 .opcion {
-    border: 1px solid;
-    border-radius: 3px #333;
+    border: 1px solid #333;
+    border-radius: 3px;
     box-shadow: 3px 0px 5px #333;
     font-weight: bold;
     text-align: center;
@@ -15,14 +15,16 @@
     cursor: pointer;
 }
 .seleccionado{
-    background-color: #226666;
-    color: red;
+    border: 1px solid;
+    background-color: #022f2f;;
+    color: white;
 }
 
 div[id^="preg"] {
     border-radius: 3px;
     display: inline;
     margin: 5px;
+    margin-bottom: 50px;
 }
 
 div[id^="preg"] select {
