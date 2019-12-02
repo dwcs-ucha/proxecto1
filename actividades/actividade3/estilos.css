@@ -31,7 +31,6 @@ div[id^="preg"] select {
 
 div[id^="preg"] h1, div[id^="preg"] h2{
     text-align: center;
-    box-shadow: 1px 0px 0px #333;
 }
 
 .imaxe-max {
