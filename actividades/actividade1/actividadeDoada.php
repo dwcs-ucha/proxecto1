@@ -246,7 +246,6 @@
                                     </div>
                                     
                                     <input type="submit" name="enviaPuntos" class="enviaPuntos" value="Gardar" />
-                                    <input type="submit" name="refrescar" class="enviaPuntos" value="Refrescar" />
 
                                     <?php // Defínese o campo oculto co que se transmitirá a mensaxe de erro dos campos Alias/Contrasinal do xogador á seguinte carga da páxina: ?>
                                     <input type="hidden" name="erroDatos" value="<?php isset($erroDatos)? print $erroDatos : print ""; ?>" />
@@ -268,7 +267,7 @@
                                 $erroDatos= "Ambolos dous campos son obrigatorios.";
                             }else{
                                 $datos= array($nome, $contrasinal, $puntos);
-                                escribirCSV("Datos/xogadores.csv", "a", $datos);
+                                var_dump(escribirCSV("Datos/xogadores.csv", "a", $datos));
                             }
                         }
                 }
