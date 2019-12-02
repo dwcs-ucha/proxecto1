@@ -1,5 +1,16 @@
+@font-face {
+	font-family: starborn;
+	src: url(starborn.ttf);
+}
+h1, h2, h3 {
+	font-family: starborn;
+}
+.navbar {
+ margin-bottom: 15px;
+}
 .footer {
  background-color: #17a2b8;
+ margin-top: 15px;
 }
 
 .copyright {

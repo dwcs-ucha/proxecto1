@@ -8,7 +8,7 @@
 		* @UltimaModificacion: 28/11/2019
 		* @Version: 0.0.8b
 		**/
-		
+		$directorioRaiz = '../..';
 		include '../../layout/head.php';
 	?>
 	<meta charset="utf-8">
