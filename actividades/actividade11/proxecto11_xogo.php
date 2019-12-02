@@ -9,7 +9,7 @@
 		* @UltimaModificacion: 28/11/2019
 		* @Version: 0.0.8b
 		**/
-		$directorioRaiz = '../../';
+		$directorioRaiz = '../..';
 		require_once '../../layout/head.php';
 		if(isset($_POST['numeroCartas'])) {
 			$numeroCartas = $_POST['numeroCartas'];
