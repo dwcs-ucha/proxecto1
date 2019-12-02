@@ -20,7 +20,6 @@ function seleccionar(divId, selectId, option){
     var selectme = document.getElementById(selectId);
     var pai = option.parentElement;
     
-
     for(x in selectme.childNodes){
         if(selectme.childNodes[x].nodeName == "OPTION"){
             if(selectme.childNodes[x].value == option.getAttribute("value")){

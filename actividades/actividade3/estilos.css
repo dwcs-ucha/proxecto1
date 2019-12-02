@@ -1,0 +1,66 @@
+.c-opcions div{
+    
+}
+.opcion {
+    border: 1px solid;
+    border-radius: 3px #333;
+    box-shadow: 3px 0px 5px #333;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+
+}
+.opcion:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+.seleccionado{
+    background-color: #226666;
+    color: red;
+}
+
+div[id^="preg"] {
+    border-radius: 3px;
+    display: inline;
+    margin: 5px;
+}
+
+div[id^="preg"] select {
+    display: none;
+}
+
+div[id^="preg"] h1, div[id^="preg"] h2{
+    text-align: center;
+    box-shadow: 1px 0px 0px #333;
+}
+
+.imaxe-max {
+    width: %100;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.imaxe-max img{
+    width: 230px;
+    height: 200px;
+    border-radius: 30px;
+}
+
+@media only screen and (max-width: 240px) {
+  .imaxe-max img {
+    width: 100px;
+      height: 70px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .imaxe-max img {
+    width: 150px;
+      height: 120px;
+  }
+}
+@media only screen and (max-width: 170px) {
+  .imaxe-max img {
+    width: 70px;
+      height: 40px;
+  }
+}
