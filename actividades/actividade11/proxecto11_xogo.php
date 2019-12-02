@@ -9,6 +9,7 @@
 		* @UltimaModificacion: 28/11/2019
 		* @Version: 0.0.8b
 		**/
+		$directorioRaiz = '../../';
 		require_once '../../layout/head.php';
 		if(isset($_POST['numeroCartas'])) {
 			$numeroCartas = $_POST['numeroCartas'];
@@ -66,7 +67,7 @@
 					}
 					echo '</div>';
 					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
-					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.count($froitasAcertadas).'</div>';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.count($froitasAcertadas).'</div>';
 					break;
 				case 1:
 					$froitasNivel = explode(",", $_GET['froitas']);
@@ -86,7 +87,7 @@
 					}
 					echo '</div>';
 					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
-					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					break;
 				case 2:
 					$froitasNivel = explode(",", $_GET['froitas']);
@@ -122,7 +123,7 @@
 					}
 					echo '</div>';
 					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
-					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					break;
 				case 3:
 					$froitasNivel = explode(",", $_GET['froitas']);
@@ -139,7 +140,7 @@
 					}
 					echo '</div>';
 					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
-					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					if (count($froitasAcertadas) == (($numeroCartas / 2) + 1)) {
 						$direccion = '"proxecto11_xogo.php?estado=4&numeroCartas='.$numeroCartas.'&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'&froitas='.implode(",", $froitasNivel).'"';
 						echo '<script type="text/javascript">';
@@ -158,7 +159,7 @@
 					echo '<div class="row" text-center><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 baleiro"></div><span class="mensaxe">Bo TRABALLo!!!</span></div>';
 					echo '</div>';
 					echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
-					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   ----   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+					echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 					break;
 			}
 		?>

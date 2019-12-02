@@ -21,7 +21,7 @@
             .container p { margin: 5px 1px; }
 
             .imaxe { display: block;
-                     width: 42%;
+                     width: 30%;
                      margin: auto; }
 
         </style>
@@ -36,7 +36,7 @@
             include('layout/cabeceira.php');
             ?>
 
-            <h2>Proxecto 1ª Avaliación</h2>
+            <h2>Proxecto 1ª avAliAcion</h2>
             <p>
                 Benvid@s ao sitio web de xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros
                 problemas psicosociais.
@@ -50,7 +50,7 @@
             </p>
 
             <br />
-            <img src="imaxes/arcoIris.jpg" alt="Globo con cara feliz" class="imaxe" />
+            <img src="imaxes/nenos.jpg" alt="Globo con cara feliz" class="imaxe" />
 
             <?php
             include('layout/pe.php');
