@@ -1,8 +1,15 @@
 <?php
-    // BreoBeceiro:01/12/2019
+    // BreoBeceiro:02/12/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
-    // FALTA IMPLEMENTAR AS PUNTUACIÓNS E LEVALAS AO CSV, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
+    // FALTA REMATAR A FUNCIÓN escribirCSV() PARA GARDAR A PUNTUACIÓN, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
+    // FALTA REVISAR A VISUALIZACIÓN DA MENSAXE DE ERRO SE OS CAMPOS COS DATOS DO XOGADOR VAN BALEIROS, POIS
+    //   TAL E COMO ESTÁ AGORA, NON SE AMOSA (NIN SE QUERA CHEGA A GARDARSE A VARIABLE QUE CONTÉN A MENSAXE NO
+    //   CAMPO OCULTO CORRESPONDENTE)
+    // PÓDESE REVISAR O GARDADO DOS values NAS CAIXAS DE TEXTO DAS SÍLABAS INICIAIS DAS PALABRAS, POIS AO DARLLE
+    //   A 'Comprobar', PERMANECEN NAS CAIXAS; SEN EMBARGO, TAMÉN PODE RESULTAR INTERESANTE DEIXALO ASÍ, POIS
+    //   LOGO NO SEGUINTE TURNO O XOGADOR TERÁ GARDADO O PROGRESO DA ANTERIOR TIRADA, DE FORMA QUE PODERÁ PROGRESAR
+    //   DE FORMA MÁIS DOADA (A FIN DE CONTAS, ESTA É A PÁXINA CO XOGO DE DIFICULTADE MÁIS BAIXA).
     // OPCIONALMENTE, FALTARÍA ENGADIR O CAMBIO DA COR DE FONDO DOS ELEMENTOS input NOS CALES ESTÁN
     //   AS SÍLABAS A ESCRIBIR. A IDEA É QUE INICIALMENTE APAREZAN NUNHA COR, E QUE AO ESCRIBILAS
     //   NAS CAIXAS DE ACERTAR, A COR DE FONDO CAMBIE.
@@ -231,11 +238,11 @@
                                     <span>Gañaches <?php echo $puntos; ?> puntos, queres gardar esta puntuación?</span>
                                     <div class="col-md-12">
                                         <label for="Nome">Nome/Alias:</label>
-                                        <input type="text" name="nome" id="Nome" />
+                                        <input type="text" name="nome" id="Nome" maxlength="5" />
                                     </div>
                                     <div class="col-md-12">
                                         <label for="Contrasinal">Contrasinal:</label>
-                                        <input type="text" name="contrasinal" id="Contrasinal" />
+                                        <input type="password" name="contrasinal" id="Contrasinal" maxlength="4" />
                                     </div>
                                     
                                     <input type="submit" name="enviaPuntos" class="enviaPuntos" value="Gardar" />
@@ -247,6 +254,12 @@
                             </form>
                         </div>
                     <?php
+                        // Ao pulsar en 'Gardar', compróbase que os campos non vaian baleiros (dáselle bastante liberdade ao
+                        //   xogador á hora de elexir os caracteres do seu alias, dado que é habitual que estos leven números
+                        //   e caracteres extraños polo medio, como 'N1nj4' ou 'Su$an4_29') e, se levan datos, fórmase o array
+                        //   cos datos a escribir (Nome, Contrasinal e Puntos da partida) para logo chamar á función escribirCSV
+                        //   pasándolle os parámetros correspondentes (a URL da orixe do ficheiro CSV, o modo de escritura e
+                        //   o array cos datos do xogador/a:
                         if(isset($_POST['enviaPuntos'])){
                             $nome= $_POST['nome'];
                             $contrasinal= $_POST['contrasinal'];
@@ -255,7 +268,7 @@
                                 $erroDatos= "Ambolos dous campos son obrigatorios.";
                             }else{
                                 $datos= array($nome, $contrasinal, $puntos);
-                                escribirCSV("datos/xogadores.csv", "a", $datos);
+                                escribirCSV("Datos/xogadores.csv", "a", $datos);
                             }
                         }
                 }
