@@ -82,8 +82,8 @@
 					echo '<p><img src="'.$arrayImagenes[$numeroAleatorio].'"></p>
 					<input name="valor" type="hidden" value="'.$numeroAleatorio.'"
 					<p><input class="btnAcierto" type="submit"  name="btnAcierto" value="Sopa">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Cubata">&nbsp;
-					<input class="btnFallo"   type="submit"  name="btnFallo" value="Licor Café"></p>';
+					<input class="btnFallo"   type="submit"  name="btnFallo" value="Refresco">&nbsp;
+					<input class="btnFallo"   type="submit"  name="btnFallo" value="Zumo"></p>';
 				break;
 				
 				case 6:
