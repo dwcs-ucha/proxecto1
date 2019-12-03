@@ -3,7 +3,6 @@
         <?php
         $directorioRaiz = "../..";
         include '../../layout/head.php';
-        escribirHead();
         ?>
         <title>Agrupar elementos</title>
         <meta charset="utf-8"/>
@@ -20,7 +19,6 @@
     <body>
         <?php
         include '../../layout/cabeceira.php';
-        escribirCabeceira();
         ?>
 
         <?php
@@ -75,6 +73,7 @@
                         } else {
                             $rutaImagen = next($imagenesFallo);
                         }
+			$contador++;
                         ?>
                         <input id = "seleccionada<?= $contador; ?>" type = "hidden" name = "seleccionada<?= $contador; ?>" value = ""/>
                         <img class = "ficha col" id = "imagen-<?= $contador; ?>" src = "<?= $rutaImagen; ?>" onclick = "seleccionar(this)"/>
