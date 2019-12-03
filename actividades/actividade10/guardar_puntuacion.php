@@ -10,7 +10,7 @@ require "Funcionalidad/funcionalidad.inc.php";//Se incluye el fichero con la fun
 ?>
 <html>
     <head>
-        <title>Menú Sinónimos</title>
+        <title>Guardar Puntuación</title>
         <?php require "../../layout/head.php";//Se incluye todo lo relacionado con los estilos y scripts comunes de la página web ?>
         <link rel="stylesheet" type="text/css" href="Estilo/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../estilos/estilos.css">

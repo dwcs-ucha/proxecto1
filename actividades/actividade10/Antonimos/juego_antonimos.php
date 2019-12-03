@@ -23,8 +23,8 @@ $comprobacion_campos = array();//Comprueba si los campos están cubiertos correc
         <link rel="stylesheet" type="text/css" href="../../../estilos/estilos.css">
     </head>
     <body>
-        <div class="container">
-            <?php require "../../../layout/cabeceira.php";//Se incluye la cabecera de la página web ?>
+        <?php require "../../../layout/cabeceira.php";//Se incluye la cabecera de la página web ?>
+        <div class="container">  
             <h1 class="titulo">ANTÓNIMOS</h1>
             <form method="post">
                 <?php

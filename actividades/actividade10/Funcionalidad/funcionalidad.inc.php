@@ -14,8 +14,6 @@ $juego_usuario = $_POST['juego'];//Juego que eligió el usuario
 $dificultad_usuario = $_POST['dificultad'];//Dificultad que eligió el usuario
 $jugar_juego = $_POST['jugar'];//Botón para jugar a un juego con su dificultad
 $indice = 1;//Índice de palabra
-$intentos = 0;//Número de intentos
-
 
 if (isset($_POST['num_intentos'])) {//Si está inicializada la variable oculta de "num_intentos", se guarda ese valor en una variable
     $num_intentos = $_POST['num_intentos'];
@@ -49,7 +47,7 @@ global $jugar_juego, $juego_usuario, $dificultad_usuario, $dificultad;//Se cogen
                     case "dificil":
                         $dificultad = "dificil";
                 }
-                header("Location: Sinonimos/juego_sinonimos.php?dificultad=" . $dificultad);
+                header("Location: Sinonimos/juego_sinonimos.php?dificultad=" . $dificultad . "&num_intentos=0");
             }
             if ($juego_usuario == "antonimos") {//Si el juego que se eligió es el de los antónimos, se pone la dificultad puesta por el usuario y se va a la página de "juego_antonimos.php"
                 switch($dificultad_usuario) {
@@ -190,10 +188,10 @@ function puntuacionJugador($todo_correcto) {
         }
     }
     
-    if ($correcto) {//Si la variable "$correcto" es true, se va a la página de completado y login
+    if ($correcto) {//Si la variable "$correcto" es true, aparece el menú de completado y login
         include("../completado.php");
     } else {//Por lo contrario, se suma uno al número de intentos
-        $intentos++;
+        $num_intentos++;
     }
 }
 
