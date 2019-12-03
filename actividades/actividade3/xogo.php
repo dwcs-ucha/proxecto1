@@ -8,6 +8,7 @@
 
 include_once 'validacion_xogo.php';
 include '../../librerias/utils.php';
+/*var_dump($_POST);*/
 $difRango = array(
     "min" => 1,
     "max" => 3,
@@ -29,16 +30,16 @@ switch ($dif){
         $preguntas = 2;
         break;
 }
-var_dump($dif, $preguntas);
+/*var_dump($dif, $preguntas);*/
 $ruta = "csv/";
 $cosa = lerCSV("$ruta"."cosa.csv", "r", ","); $contar = count(file("$ruta"."cosa.csv"));
 $imaxe = lerCSV("$ruta"."imaxe.csv", "r", ",");
 $manexo = lerCSV("$ruta"."manexo.csv", "r", ",");
 $utilidade = lerCSV("$ruta"."utilidade.csv", "r", ",");
-var_dump($cosa);
+/*var_dump($cosa);
 var_dump($imaxe);
 var_dump($manexo);
-var_dump($utilidade);
+var_dump($utilidade);*/
 ?>
 <!DOCTYPE html>
 <html lang="gl">
@@ -59,13 +60,14 @@ var_dump($utilidade);
             <?php
             include '../../layout/cabeceira.php'; //Debe escribirse ao principio do body
             ?>
+            <h1 class="text-center titulo-h1">Xogo de preguntas con obxetos</h1>
             <div class="row">
                 <?php
                 $numero = 1;
                 for($celdas = 0; $celdas < $contar; $celdas++){
                 ?>
                 <div id="preg<?php echo $numero; ?>" class="col-md-6 mx-auto">
-                    <h2>Que é?</h2>
+                    <h2>Que e?</h2>
                     <div class="imaxe-max">
                         <img class="" src="<?php echo $imaxe[$celdas][0];?>">
                     </div>

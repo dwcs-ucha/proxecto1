@@ -1,84 +1,59 @@
-<?php 
-if(!empty($_GET)){
-    print_r($_GET);
-}
-?>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title> Testing JS</title>
-        <style>
-            .hi {
-                color: yellow;
-            }
-
-            .opcion {
-                border: 1px solid;
-                border-radius: 3px #333;
-                box-shadow: 3px 0px 5px #333;
-                font-weight: bold;
-                text-align: center;
-                user-select: none;
-                width: 150px;
-            }
-            .opcion:hover {
-                background-color: grey;
-                cursor: pointer;
-            }
-            .seleccionado{
-                background-color: #226666;
-                color: red;
-            }
-        </style>
+        <?php
+        /**
+         * @Autor: Santiago Calvo Piñeiro
+         * */
+        $directorioRaiz = "../..";
+        include '../../layout/head.php';
+        ?>
+        <meta charset="utf-8">
+        <title>Que é? Para que serve? Para que se utiliza?</title>
     </head>
     <body>
-        <form id="testform" method="get">
+        <?php
+        include '../../layout/cabeceira.php';
+        ?>
+        <h1>Xogo de responder preguntas sobre obxetos</h1>
+        <form id="facil" action="xogo.php" method="post">
+            <div class="container-fluid corpo">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 imaxe">
+                        <img src="icono.png" height="300" width="300"/>
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
+                        <span>Responde correctamente ás preguntas sobre o obxeto da imaxe</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dificultade" align="center">
+                        <h4>Dificultade</h4>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary active btn-success">
+                                <input type="radio" name="dificultade" value="1" form="facil"/>Fácil
+                            </label>
+                            <label class="btn btn-secondary active btn-warning">
+                                <input type="radio" name="dificultade" value="2" form="facil"/>Normal
+                            </label>
+                            <label class="btn btn-secondary active btn-danger">
+                                <input type="radio" name="dificultade" value="3" form="facil"/>Difícil
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 xogar" align="center">
+                        <br/>
+                        <button class="btn btn-lg btn-success" type="submit" form="facil">Xogar</button>
+                    </div>
+                </div>
+            </div>
         </form>
-        <div id="preg1">
-            <select name="animal1" id="animal1" form="testform">
-                <option value=""></option>
-                <option value="miaw">Cat</option>
-                <option value="woof">Dog</option>
-                <option value="pika pika">Pikachu</option>
-            </select>
-            <div>
-                <div class="opcion" value="miaw" onclick='seleccionar("preg1", "animal1", this)'>Cat</div>
-                <div class="opcion" value="woof" onclick='seleccionar("preg1", "animal1", this)'>Dog</div>
-                <div class="opcion" value="pika pika" onclick='seleccionar("preg1", "animal1", this)'>Pikachu</div>
-            </div>
-
-            <select name="vehicles1" id="vehicles1" form="testform">
-                <option value=""></option>
-                <option value="car">Car</option>
-                <option value="motorbike">Motorbike</option>
-                <option value="plane">Plane</option>
-            </select>
-
-            <div>
-                <div class="opcion" value="car" onclick='seleccionar("preg1", "vehicles1", this)'>Car</div>
-                <div class="opcion" value="motorbike" onclick='seleccionar("preg1", "vehicles1", this)'>Motorbike</div>
-                <div class="opcion" value="plane" onclick='seleccionar("preg1", "vehicles1", this)'>Plane</div>
-            </div>
-        </div>
-
-        <div id="preg2">
-            <select name="animal2" id="animal2" form="testform">
-                <option value=""></option>
-                <option value="miaw">Cat</option>
-                <option value="woof">Dog</option>
-                <option value="pika pika">Pikachu</option>
-            </select>
-            <div>
-                <div class="opcion" value="miaw" onclick='seleccionar("preg2", "animal2", this)'>Cat</div>
-                <div class="opcion" value="woof" onclick='seleccionar("preg2", "animal2", this)'>Dog</div>
-                <div class="opcion" value="pika pika" onclick='seleccionar("preg2", "animal2", this)'>Pikachu</div>
-            </div>
-            
-        </div>
-        <button form="testform">Test</button>
-        <p id="texto"></p>
-        <div onclick='seleccionar("Dog")'>Seleccioname</div>
+        <?php
+        include '../../layout/pe.php';
+        ?>
     </body>
-    <script src="script.js"></script>
 </html>
