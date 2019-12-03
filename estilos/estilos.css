@@ -12,6 +12,8 @@ h1, h2, h3 {
 .footer {
  background-color: #17a2b8;
  margin-top: 15px;
+ position: absolute;
+ bottom: 0;
 }
 
 .copyright {
