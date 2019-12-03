@@ -6,6 +6,9 @@ h1, h2 {
 	text-align: center;
 	font-family: starborn;
 }
+.miniatura, .resumo {
+	margin-top: 6%;
+}
 .menu {
 	padding-top: 50px;
 }
@@ -16,9 +19,15 @@ h1, h2 {
 	width: 400px;
 	height: 200px;
 }
-.img-responsive{
+.carta{
 	width: 130px;
 	height: 120px;
+}
+.cartas6 {
+	margin-top: 10%;
+}
+.cartas12 {
+	margin-top: 5%;
 }
 .botonFinal:link, .botonFinal:visited {
 	background-color: #007BFF;
@@ -34,17 +43,14 @@ h1, h2 {
 	text-align: center;
 }
 .marcador {
-	font-size: 120%;
+	font-size: 100%;
 	font-family: starborn;
 }
 .mensaxe {
-	font-size: 220%;
-	margin-left: 5%;
+	font-size: 200%;
+	margin-left: 9%;
 	text-align: center;
 	font-family: starborn;
-}
-.dificultade {
-	margin-top: 7%;
 }
 .xogar {
 	margin-top: 2%;
@@ -55,4 +61,8 @@ h1, h2 {
 .btn-secondary {
 	
 	padding: 0px 30px;
+}
+.gardar {
+	margin-left: 3%;
+	background-color: #007BFF;
 }

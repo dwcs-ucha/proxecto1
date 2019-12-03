@@ -19,6 +19,12 @@ h2 {
     height: 400px;
 }
 
+#victoria {
+    position: absolute;
+    left: 130px;
+    top: 150px;
+}
+
 .seleccion {
     margin-left: 20px;
 }
@@ -59,4 +65,12 @@ h2 {
     position: absolute;
     top: 350px;
     right: 130px;
+}
+
+.enlace {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 20px;
 }

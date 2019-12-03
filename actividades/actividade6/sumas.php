@@ -7,7 +7,8 @@
     	/*	    Version 1		        */
     	/********************************/
 ?>
-<?php /*Funcion para gardar a puntuacion*/
+<?php 
+/*Funcion para gardar a puntuacion*/
 /* Pasamoslle como parámetro o nome, a dificultade e a puntuacion da partida */
  function gardar($nome,$dif,$punt){
     $rexistros = array();//Array que usaremos para ordear as puntuacións
@@ -35,17 +36,18 @@
  }
 ?>
 <?php 
+$directorioRaiz ="../..";
 $num_a='';
 $num_b='';
-$nome='';
+//$nome='';
 $dif='';
 //recollemos o nome e a dificultade
-if(isset($_GET['nome'])){
-    $nome = $_GET['nome'];
+if(isset($_GET['difi'])){
+//    $nome = $_GET['nome'];
     $dif = $_GET['difi'];
 }
-if(isset($_POST['nome'])){
-    $nome = $_POST['nome'];
+if(isset($_POST['dif'])){
+//    $nome = $_POST['nome'];
     $dif = $_POST['dif'];
 }
 //recollemos os numeros mostrados para as sumas do POST e os reconvertimos en array
@@ -72,18 +74,27 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
         o nome a dificultade e os aciertos */
         }
  }
- 
 ?>
 <head>
-<?php include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>  
+<?php 
+    /**
+		* @Autor: Luis Corral
+		* @GitHub: luiscorraldc
+		* @DataCreacion: 12/11/2019
+		* @UltimaModificacion: 3/12/2019
+		* @Version: 1.1
+    **/
+    include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?> 
+<meta charset="utf-8">
+	<link rel="stylesheet" href="styles/estilosXogo.css">
+	<title>Caderno de Sumas</title> 
 </head>
 <body>
 <?php include("../../layout/cabeceira.php"); /* Incluimos a cabeceira */?>
-<div class="xogador">
-<h3>Xogador : <?php echo $nome ?> </h3>
-<h4>Dificultade : <?php echo $dif ?> </h4>
-</div>
-<div>
+<?php /*<div class="xogador"> */?>
+<?php /* <h3>Xogador : <?php echo $nome ?> </h3> */ ?>
+<h2>Dificultade : <?php echo $dif; ?></h2>
+<?php /* </div> */ ?>
       <form action="sumas.php" method="post">
 <?php /* creamos aleatoriamente as sumas */
         if(!isset($_POST['comp'])){
@@ -115,7 +126,7 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
         }
 /* Sacamos as sumas por pantalla */
         for($i=1;$i<=10;$i++){ 
-?>
+?>      
         <label><? /* Se existe unha xogada anterior a recuperamos en pantalla */?>
         <?php if(isset($_POST['comp'])){ 
                 echo $nume_a[$i-1];
@@ -144,13 +155,13 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
    <input type="submit" id="gardar" name="gardar" value="Gardar Resultados">
    <input type="hidden" id="num_a" name="num_a" value="<?php echo $num_a;?>">
    <input type="hidden" id="num_b" name="num_b" value="<?php echo $num_b;?>">
-   <input type="hidden" id="nome" name="nome" value="<?php echo $nome;?>">
+<?php /*<input type="hidden" id="nome" name="nome" value="<?php echo $nome;?>">*/?>
    <input type="hidden" id="dif" name="dif" value="<?php echo $dif;?>">    
      </form>
 <?php if(isset($_POST['comp'])){ ?>
         <h2>Resultado ---> <?php echo  $aciertos;?> Aciertos </h2>
 <?php } ?>
-     </div>
+   <?php /*  </div> */ ?>
      <form action="index.php" method="post">
         <input type="submit" id="volver" name="volver" value="Volver ó inicio">
      </form>

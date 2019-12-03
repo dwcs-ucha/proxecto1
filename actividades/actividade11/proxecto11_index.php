@@ -5,8 +5,8 @@
 		* @Autor: Cristóbal Romero
 		* @GitHub: ZerinhoRomero
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 28/11/2019
-		* @Version: 0.0.8b
+		* @UltimaModificacion: 02/12/2019
+		* @Version: 0.0.9b
 		**/
 		$directorioRaiz = '../..';
 		include '../../layout/head.php';
@@ -16,15 +16,15 @@
 	<title>Emparella imaxes</title>
 </head>
 <body>
-	<?php
-		include '../../layout/cabeceira.php';
-	?>
-	<h1>Emparella imaxes</h1>
-	<form id="facil" action="proxecto11_xogo.php" method="post">
-		<div class="container-fluid corpo">
+	<div class="container corpo">
+		<?php
+			include '../../layout/cabeceira.php';
+		?>
+		<h1>Emparella imaxes</h1>
+		<form id="facil" action="proxecto11_xogo.php" method="post">
 			<div class="row">
 				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 imaxe">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 miniatura">
 					<img class="img-thumbnail" src="imaxes/emparella.gif">
 				</div>
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
@@ -53,10 +53,10 @@
 					 <button class="btn btn-lg btn-success" type="submit" name="enviar" value="enviar">Xogar</button>
 				</div>
 			</div>
-		</div>
-	</form>
+		</form>
 	<?php
 		include '../../layout/pe.php';
 	?>
+	</div>
 </body>
 </html>
