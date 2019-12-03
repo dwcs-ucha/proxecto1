@@ -1,5 +1,5 @@
 <?php
-//03/11/2019 | Versión 1.2
+//03/12/2019 | Versión 1.2
 //PROPOSTA DUNHA ESTRUTURA PARA A CABECEIRA DO SITIO CON BootStrap 4.
 ?>
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
