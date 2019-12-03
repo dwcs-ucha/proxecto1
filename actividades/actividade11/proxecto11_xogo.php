@@ -13,8 +13,10 @@
 		require_once '../../layout/head.php';
 		if(isset($_POST['numeroCartas'])) {
 			$numeroCartas = $_POST['numeroCartas'];
-		} else {
+		} elseif (isset($_GET['numeroCartas'])) {
 			$numeroCartas = $_GET['numeroCartas'];
+		} else {
+			$numeroCartas = 6;
 		}
 	?>
 	<script type="text/javascript">
@@ -23,7 +25,8 @@
 		}
 	</script>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -31,7 +34,8 @@
 	<title>Emparella imaxes</title>
 </head>
 <body>
-	<div class="container corpo" align="center">
+	<wrapper class="d-flex flex-column">
+	<main class="container corpo" align="center">
 		<?php
 			require_once '../../layout/cabeceira.php';
 		?>
@@ -175,6 +179,7 @@
 		<?php
 			require_once '../../layout/pe.php';
 		?>
-	</div>	
+	</main>	
+	</wrapper>
 </body>
 </html>

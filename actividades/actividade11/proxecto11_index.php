@@ -12,16 +12,19 @@
 		include '../../layout/head.php';
 	?>
 	<meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="styles/estilosXogo.css">
 	<title>Emparella imaxes</title>
 </head>
 <body>
-	<div class="container corpo">
+	<wrapper class="d-flex flex-column">
+	<main class="container corpo">
 		<?php
 			include '../../layout/cabeceira.php';
 		?>
-		<h1>Emparella imaxes</h1>
-		<form id="facil" action="proxecto11_xogo.php" method="post">
+		<h1>EmpArellA imaxes</h1>
+		<form id="numeroCartas" action="proxecto11_xogo.php" method="post">
 			<div class="row">
 				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 miniatura">
@@ -37,13 +40,13 @@
 					<h4>Dificultade</h4>
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
 						<label class="btn btn-secondary active btn-success">
-							<input type="radio" id="numeroCartas" name="numeroCartas" value="6"/>Fácil
+							<input type="radio" name="numeroCartas" value="6"/>Fácil
 						</label>
 						<label class="btn btn-secondary active btn-warning">
-							<input type="radio" id="numeroCartas" name="numeroCartas" value="12"/>Normal
+							<input type="radio" name="numeroCartas" value="12"/>Normal
 						</label>
 						<label class="btn btn-secondary active btn-danger">
-							<input type="radio" id="numeroCartas" name="numeroCartas" value="18"/>Difícil
+							<input type="radio" name="numeroCartas" value="18"/>Difícil
 						</label>
 					</div>
 				</div>
@@ -57,6 +60,7 @@
 	<?php
 		include '../../layout/pe.php';
 	?>
-	</div>
+	</main>
+	</wrapper>
 </body>
 </html>

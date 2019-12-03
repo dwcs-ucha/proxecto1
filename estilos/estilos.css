@@ -10,10 +10,11 @@ h1, h2, h3 {
  margin-bottom: 15px;
 }
 .footer {
- background-color: #17a2b8;
- margin-top: 15px;
- position: absolute;
+ position: relative;
  bottom: 0;
+ text-align: center;
+ background-color: #007BFF;
+ margin-top: 15px;
 }
 
 .copyright {
