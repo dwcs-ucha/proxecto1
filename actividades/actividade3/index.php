@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 imaxe">
-                        <img src="icono.png" height="300" width="300"/>
+                        <img class="img-thumbnail" src="icono.png" height="300" width="300"/>
                     </div>
                     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
                         <span>Responde correctamente ás preguntas sobre o obxeto da imaxe</span>
