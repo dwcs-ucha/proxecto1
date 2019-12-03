@@ -46,7 +46,10 @@ $comprobacion_campos = array();//Comprueba si los campos están cubiertos correc
                         $comprobacion_campos[] = corregirPalabra($archivo_sinonimos, $palabras[$cont - 1], $resultados[$cont - 1]);
                     }
                     echo "</div>";
+
+                    echo "<div id='victoria'>";
                     puntuacionJugador($comprobacion_campos);//Se ejecuta la función "puntuacionJugador()" pasando como parámetro la variable "$comprobacion_campos"
+                    echo "</div>";
                 } else {//Por lo contrario, manda un mensaje de error de que todos los campos tienen que estar cubiertos
                     echo "<div class='error'>Todos os campos ten que estar cubertos</div>";
                 }

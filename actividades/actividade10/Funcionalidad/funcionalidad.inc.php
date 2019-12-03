@@ -189,9 +189,9 @@ function puntuacionJugador($todo_correcto) {
             $correcto = false;
         }
     }
-
+    
     if ($correcto) {//Si la variable "$correcto" es true, se va a la página de completado y login
-        header("Location: ../../completado.php?num_intentos=" . $intentos);
+        include("../completado.php");
     } else {//Por lo contrario, se suma uno al número de intentos
         $intentos++;
     }
@@ -202,9 +202,9 @@ function puntuacionJugador($todo_correcto) {
  * Descripcion: Se guarda la puntuación del jugador junto con su nombre y contraseña
  */
 function guardarPuntuacion($lista_jugadores) {
-    global $guardar_puntuacion, $nombre_jugador, $contrasena_jugador, $num_intentos;//Se cogen las variables globales "$guardar_puntuacion", "$nombre_jugador", "$contrasena_jugador" y "$num_intentos"
+    global $guardar_puntuacion, $nombre_jugador, $contrasena_jugador, $dificultad_usuario, $num_intentos;//Se cogen las variables globales "$guardar_puntuacion", "$nombre_jugador", "$contrasena_jugador" y "$num_intentos"
 
-    $datos = array($nombre_jugador, $contrasena_jugador, $num_intentos);//Se guardan los datos del jugador en un array ($datos)
+    $datos = array($nombre_jugador, $contrasena_jugador, $dificultad_usuario, $num_intentos);//Se guardan los datos del jugador en un array ($datos)
 
     if (isset($guardar_puntuacion)) {//Si se pulsó el botón de guardar puntuación, sucede lo siguiente
         if (!empty($nombre_jugador) && !empty($contrasena_jugador)) {//Si no está vacío los campos de nombre y contraseña:
@@ -242,14 +242,15 @@ function consultarPuntuacion() {
                     if ($jugador[0] == $nombre_jugador && $jugador[1] == $contrasena_jugador) {//Si concuerda con lo que escribió el usuario, se muestra el nombre y el número de intentnos de ese jugador
                         echo "<ul>";
                             echo "<li>Nombre: " . $jugador[0] . "</li>";
-                            echo "<li>Número de intentos: " . $jugador[2] . "</li>";
+                            echo "<li>Dificultad: " . $jugador[2] . "</li>";
+                            echo "<li>Número de intentos: " . $jugador[3] . "</li>";
                         echo "</ul>";
                     }
                 }
                 fclose($fp);//Se cierra el fichero
             }
         } else {//Por el contrario, se muestra un mensaje de error para avisar de que es necesario cubrir los dos campos
-            echo "<div class='error'>Tiene que cubrir los dos campos</div>";
+            echo "<div class='error'>Tes que cubrir os dous campos</div>";
         }
     }
 }
