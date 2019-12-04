@@ -38,7 +38,7 @@
             include('layout/cabeceira.php');
             ?>
 
-            <h2>Proxecto 1ª avAliAción</h2>
+            <h2>Proxecto 1ª AvAliAciOn</h2>
             <p>
                 Benvid@s ao sitio web de xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros
                 problemas psicosociais.

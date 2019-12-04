@@ -53,7 +53,8 @@ var_dump($utilidade);*/
         <script src="script.js"></script>
     </head>
     <body>
-        <div class="container">
+		<wrapper class="d-flex flex-column">
+		<main class="container corpo">
             <form id="xogo" method="post">
                 <input type="hidden" value="<?php echo $dif; ?>" name="dificultade">
             </form>
@@ -140,7 +141,8 @@ var_dump($utilidade);*/
             <?php
             include '../../layout/pe.php'; //Debe escribirse ao final do body
             ?>
-        </div>
+        </main>
+		</wrapper>
     </body>
 
 </html>

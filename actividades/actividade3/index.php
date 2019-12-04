@@ -13,12 +13,12 @@
         <title>Que é? Para que serve? Para que se utiliza?</title>
     </head>
     <body>
+		<wrapper class="d-flex flex-column">
+		<main class="container corpo">
         <?php
         include '../../layout/cabeceira.php';
         ?>
-		<wrapper class="d-flex flex-column">
-		<main class="container corpo">
-        <h1>Xogo de responder preguntas sobre obxetos</h1>
+        <h1>Responde preguntas sobre obxetos</h1>
         <form id="facil" action="xogo.php" method="post">
             <div class="container-fluid corpo">
                 <div class="row">
@@ -59,6 +59,6 @@
         include '../../layout/pe.php';
         ?>
 		</main>
-		<wrapper class="d-flex flex-column">
+		</wrapper class="d-flex flex-column">
     </body>
 </html>
