@@ -46,10 +46,7 @@
     // Recibe como parámetros a ruta ao ficheiro no cal escribir os datos, o modo no cal levar a cabo a escritura,
     //   e o array de datos a escribir no ficheiro.
     // Devolve FALSE en caso de erro e TRUE, en caso de éxito.
-    // OLLO: ESTA FUNCIÓN NON ESTÁ REMATADA, POIS NON SUPEROU AS PROBAS EFECTUADAS SOBRE ELA AO DEVOLVER VALORES INESPERADOS
-    //   EN CERTOS CASOS. HAI QUE REVISALA E REMATALA. ESTÁ COMPARTIDA AQUÍ POR SE ALGUÉN VE CAL É O PROBLEMA E LOGRA CORRIXILO.
     function escribirCSV($ficheiro, $modo, $datos){
-        //var_dump($datos);
         if($escritura= fopen($ficheiro, $modo)){
             foreach ($datos as $dato){
                 fputcsv($escritura, $dato);
@@ -61,9 +58,4 @@
         fclose($escritura);
         return true;
     }
-
-    //SAE O AVISO DE 'invalid argument supplied for foreach':
-    //$datos= array("uno", "dos", "tres");
-    //var_dump(escribirCSV("bla", "a", "datos"));
-
 ?>
