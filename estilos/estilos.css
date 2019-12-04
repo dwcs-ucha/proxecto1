@@ -6,6 +6,11 @@ h1, h2, h3 {
 	font-family: starborn;
 	text-align: center;
 }
+
+#logo-xogoteca {
+ height: 80px;
+ width: 210px;
+}
 .navbar {
  margin-bottom: 15px;
 }
