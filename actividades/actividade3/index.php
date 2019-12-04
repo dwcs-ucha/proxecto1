@@ -9,12 +9,15 @@
         include '../../layout/head.php';
         ?>
         <meta charset="utf-8">
+		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
         <title>Que é? Para que serve? Para que se utiliza?</title>
     </head>
     <body>
         <?php
         include '../../layout/cabeceira.php';
         ?>
+		<wrapper class="d-flex flex-column">
+		<main class="container corpo">
         <h1>Xogo de responder preguntas sobre obxetos</h1>
         <form id="facil" action="xogo.php" method="post">
             <div class="container-fluid corpo">
@@ -55,5 +58,7 @@
         <?php
         include '../../layout/pe.php';
         ?>
+		</main>
+		<wrapper class="d-flex flex-column">
     </body>
 </html>

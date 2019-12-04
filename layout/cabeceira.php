@@ -3,7 +3,7 @@
 //PROPOSTA DUNHA ESTRUTURA PARA A CABECEIRA DO SITIO CON BootStrap 4.
 ?>
 <nav class="navbar sticky-top container navbar-expand-sm bg-primary navbar-dark cabeceira">
-    <a class="navbar-brand" href="<?php echo $directorioRaiz; ?>/index.php">Proxecto 1ª</a>
+    <a class="navbar-brand" href="<?php echo $directorioRaiz; ?>/index.php"><img src="<?php echo $directorioRaiz; ?>/imaxes/logo2.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#navbarSupportedContent2,#navbarSupportedContent3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,6 +16,7 @@
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade15">O xogo das pistas</a>
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade8">Preguntas de estimulación</a>
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade3">Que é? Para que serve? Como se utiliza?</a>
+			<a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade10">Sinónimos e antónimos</a>
         </div>
     </div>
     <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent2">
