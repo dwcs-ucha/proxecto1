@@ -8,7 +8,7 @@
     //   SEGUINTE CARGA DA PÁXINA.
 
     // Módulo de funcións de validación e saneamento:
-    include('moduloFuncions.php');
+    include('moduloFuncions.inc.php');
 
     // Ficheiro de funcións comúns do sitio:
     include('../../librerias/utils.php');

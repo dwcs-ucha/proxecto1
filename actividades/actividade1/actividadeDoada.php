@@ -2,7 +2,6 @@
     // BreoBeceiro:02/12/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
-    // FALTA REMATAR A FUNCIÓN escribirCSV() PARA GARDAR A PUNTUACIÓN, NO CASO DE QUE O XOGADOR ASÍ O QUEIRA.
     // FALTA REVISAR A VISUALIZACIÓN DA MENSAXE DE ERRO SE OS CAMPOS COS DATOS DO XOGADOR VAN BALEIROS, POIS
     //   TAL E COMO ESTÁ AGORA, NON SE AMOSA (NIN SE QUERA CHEGA A GARDARSE A VARIABLE QUE CONTÉN A MENSAXE NO
     //   CAMPO OCULTO CORRESPONDENTE)
@@ -14,8 +13,10 @@
     //   AS SÍLABAS A ESCRIBIR. A IDEA É QUE INICIALMENTE APAREZAN NUNHA COR, E QUE AO ESCRIBILAS
     //   NAS CAIXAS DE ACERTAR, A COR DE FONDO CAMBIE.
 
+    // A VARIABLE $puntos DEBE GARDARSE NUN CAMPO OCULTO.
+
     // Módulo de funcións de validación e saneamento:
-    include('moduloFuncions.php');
+    include('moduloFuncions.inc.php');
 
     // Ficheiro de funcións comúns do sitio:
     include('../../librerias/utils.php');
@@ -266,7 +267,7 @@
                             if(empty($nome) || empty($contrasinal)){
                                 $erroDatos= "Ambolos dous campos son obrigatorios.";
                             }else{
-                                $datos= array($nome, $contrasinal, $puntos);
+                                $datos= array($nome, $contrasinal, $puntos, "0", "0");
                                 var_dump(escribirCSV("Datos/xogadores.csv", "a", $datos));
                             }
                         }

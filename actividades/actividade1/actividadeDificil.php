@@ -3,7 +3,7 @@
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // Módulo de funcións de validación e saneamento:
-    include('moduloFuncions.php');
+    include('moduloFuncions.inc.php');
 
     // Ficheiro de funcións comúns do sitio:
     include('../../librerias/utils.php');
@@ -44,7 +44,7 @@
             ?>
 
             <?php
-                include('paxinaEnCoiros.php');
+                include('paxinaEnCoiros.inc.php');
             ?>
             
             <?php

@@ -63,10 +63,9 @@
                             $url= "actividadeDoada.php?nivel1=true&tema=claro";
                         }
                     }
-                    //header('Location: '. $url .'');
                     ?>
                     <script type="text/javascript">
-                        // Con JavaScript, envíase ao usuario á páxina resultante das súas seleccións no formulario anterio:
+                        // Con JavaScript, envíase ao usuario á páxina resultante das súas seleccións no formulario anterior:
                         window.location.href= "<?php echo $url; ?>";
                     </script>
                     <?php
