@@ -1,10 +1,15 @@
 <?php
     // 02/12/2019 | Versión 1.0
+
 	// ACTUALIZACIÓN (22/11/2019): A primeira función lerCSV() queda comentada, pois ao cargar este arquivo xérase unha excepción
 	//   'fatal error' por non poder sobreescribirse a mesma función; isto débese a que, aínda que en PHP existe a sobrecarga de 
 	//   funcións, hai que habilitala no php.ini, sen embargo, está desaconsellada. Por tanto, a función lerCSV() que queda dispoñible
 	//   para empregar, é a máis polivalente, é dicir, a segunda, pois nela pódense empregar CSVs con delimitadores distintos da
 	//   coma (,), o cal na primeira non era posible.
+
+    // ACTUALIZACIÓN (03/12/2019): A función escribirCSV() está dispoñible e operativa para usos xerais. Os comentarios que a preceden
+    //   explican os parámetros que recibe e os valores que devolve.
+
 
     // Recibe como parámetros a ruta ao ficheiro do cal ler o contido e o modo no cal levar a cabo a lectura.
     // Devolve FALSE en caso de erro e o array de datos, en caso de éxito.
@@ -25,6 +30,7 @@
         return $datos;
     }*/
 
+
     // Recibe como parámetros a ruta ao ficheiro do cal ler o contido, o modo no cal levar a cabo a lectura,
     //   e o delimitador empregado no CSV para separar os campos nas filas (a función anterior emprega a coma
     //   como delimitador).
@@ -38,19 +44,17 @@
         }else{
             return false;
         }
-        fclose($lectura);
 
+        fclose($lectura);
         return $datos;
     }
 
     // Recibe como parámetros a ruta ao ficheiro no cal escribir os datos, o modo no cal levar a cabo a escritura,
-    //   e o array de datos a escribir no ficheiro.
+    //   e o array UNIDIMENSIONAL de datos a escribir no ficheiro.
     // Devolve FALSE en caso de erro e TRUE, en caso de éxito.
     function escribirCSV($ficheiro, $modo, $datos){
         if($escritura= fopen($ficheiro, $modo)){
-            foreach ($datos as $dato){
-                fputcsv($escritura, $dato);
-            }
+                fputcsv($escritura, $datos);
         }else{
             return false;
         }
