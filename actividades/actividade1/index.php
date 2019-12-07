@@ -2,33 +2,28 @@
   // BreoBeceiro:22/11/2019
   // PROXECTO 1ª AVALIACIÓN | Versión 1.0
 ?>
+<!doctype html>
 <html lang="gl">
-    <head>
-        <?php
-            $directorioRaiz ="../..";
-            include('../../layout/head.php');
-        ?>
-        <style type="text/css">
+	<head>
+		<?php
+			$directorioRaiz ="../..";
+			include '../../layout/head.php';
+		?>
+		<link rel="stylesheet" href="../estilos/estilos.css">
+		<style type="text/css">
+			
+			.col { border: solid black 1px; }
+			h1 { text-align: center; }
+			img { width: 95%; }
 
-            h3 { text-align: center;
-                 margin-top: 5px; }
-            form { width: 80%; margin: auto; }
-            input[type=submit] { margin: auto; }
-            .nota{ text-align: center; margin-top: 5px; }
-
-        </style>
-        <script type="text/javascript">
-
-            // JS
-
-        </script>
-        <title>
-            Actividade 1 | Inicio
-        </title>
-    </head>
-
-    <body>
-        <div class="container">
+		</style>
+		<script type="text/javascript" src=""></script>
+		<title>
+			Actividade 1 | Inicio
+		</title>
+	</head>
+	<body>
+		<div class="container">
             <?php
                 include('../../layout/cabeceira.php');
 
@@ -71,43 +66,72 @@
                     <?php
                 }
             ?>
-        
-            <h3>Benvid@ a 'Completar sílabas e palabras'!</h3>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <div class="form-group">
-                    <span>Elixe a dificultade:</span><br />
-                    <input type="radio" name="nivel" value="nivel1" id="Nivel1" checked />
-                    <label for="Nivel1">Nivel 1 (baixa), a partir de 2 anos de idade:</label>
-                    <br />
+			<div class="row align-items" >
+				<div class="col-md-12">
+					<h1>Completar sílabas e palabras</h1>
+				</div>
+				<div class="col-md-12">
+					<p>
+						Nesta actividade terás que inserir as sílabas que faltan nunha serie de palabras que verás en pantalla
+						atendendo ás imaxes que as acompañan, pois as palabras correspóndense coas imaxes.
+                        Dependendo da dificultade que escollas, terás que inserir unha soa sílaba por palabra ou a palabra
+                        enteira, pero sempre co apoio de que as imaxes que verás serán as que te indiquen que palabras son as
+                        correctas.
+						<br />
+						Se queres traballar o teu léxico e a túa memoria asociativa, sen dúbida esta é a túa actividade, así que
+                        non agardes máis e non te cortes, proba sorte!
+					</p>
+				</div>
+			</div>
+			<div class="row">
 
-                    <input type="radio" name="nivel" value="nivel2" id="Nivel2" />
-                    <label for="Nivel2">Nivel 2 (media), a partir de 3 anos de idade:</label>
-                    <br />
+					<div class="col-md-6">
+	            		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	            			<fieldset>
+	            				<legend>Elixe a dificultade</legend>
+				                <div class="form-group">
+				                    <input type="radio" name="nivel" value="nivel1" id="Nivel1" checked />
+				                    <label for="Nivel1">Nivel 1 (baixa), a partir de 2 anos de idade:</label>
+				                    <br />
 
-                    <input type="radio" name="nivel" value="nivel3" id="Nivel3" />
-                    <label for="Nivel3">Nivel 3 (alta), a partir de 4 anos de idade:</label>
-                    <br />
-                </div>
+				                    <input type="radio" name="nivel" value="nivel2" id="Nivel2" />
+				                    <label for="Nivel2">Nivel 2 (media), a partir de 3 anos de idade:</label>
+				                    <br />
 
-                <div class="form-group">
-                    <span>Elixe o tema gráfico:</span><br />
-                    <input type="radio" name="tema" value="claro" id="Claro" checked />
-                    <label for="Claro">Claro:</label>
-                    <br />
+				                    <input type="radio" name="nivel" value="nivel3" id="Nivel3" />
+				                    <label for="Nivel3">Nivel 3 (alta), a partir de 4 anos de idade:</label>
+				                    <br />
+				                </div>
+			            	</fieldset>
 
-                    <input type="radio" name="tema" value="escuro" id="Escuro" />
-                    <label for="Escuro">Escuro:</label>
-                    <br />
-                </div>
+			            	<fieldset>
+			            		<legend>Elixe o tema gráfico</legend>
+				                <div class="form-group">
+				                    <input type="radio" name="tema" value="claro" id="Claro" checked />
+				                    <label for="Claro">Claro:</label>
+				                    <br />
 
-                <input type="submit" name="xogar" id="Xogar" value="Xogar!" class="btn btn-primary" />
-                <br />
-                
-            </form>
+				                    <input type="radio" name="tema" value="escuro" id="Escuro" />
+				                    <label for="Escuro">Escuro:</label>
+				                    <br />
+				                </div>
+			            	</fieldset>
 
-            <?php
-                include('../../layout/pe.php');
-            ?>
-        </div>
-    </body>
+			                <input type="submit" name="xogar" id="Xogar" value="Xogar!" class="btn btn-primary" />
+			                <br />
+	                
+	            		</form>
+            		</div>
+            		<div class="col-md-6">
+            			<img src="Imaxes/actividade1_Nivel1.png" alt="Imaxe da actividade" />
+            		</div>
+
+				<div class="col-md-6">
+				</div>
+			</div>
+			<?php
+				include '../../layout/pe.php';
+			?>
+		</div>
+	</body>
 </html>
