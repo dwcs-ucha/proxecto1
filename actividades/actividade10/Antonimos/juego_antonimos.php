@@ -3,7 +3,7 @@
  * Autor: Azael Otero Santamariña
  * Fecha: 12 de Octubre de 2019
  * Descripción: Juego de los antónimos
- * Versión: 1.1
+ * Versión: 1.2
  */
 require "../Funcionalidad/funcionalidad.inc.php";//Se incluye el fichero con la funcionalidad del programa
 irPaginaAnterior();//Dependiendo de que botón se pulse, se vuelve a una página u otra (En este caso se vuelve al menú de antónimos)
@@ -18,18 +18,23 @@ $comprobacion_campos = array();//Comprueba si los campos están cubiertos correc
 <html>
     <head>
         <title>Antónimos</title>
-        <?php require "../../layout/head.php";//Se incluye todo lo relacionado con los estilos y scripts comunes de la página web ?>
+        <?php require "../../../layout/head.php";//Se incluye todo lo relacionado con los estilos y scripts comunes de la página web ?>
         <link rel="stylesheet" type="text/css" href="../Estilo/estilo.css">
         <link rel="stylesheet" type="text/css" href="../../../estilos/estilos.css">
     </head>
     <body>
         <?php require "../../../layout/cabeceira.php";//Se incluye la cabecera de la página web ?>
         <div class="container">  
-            <h1 class="titulo">ANTÓNIMOS</h1>
-            <form method="post">
+            <h1 class="titulo">ANTONIMOS</h1>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                 <?php
                 imprimirFormulario($lista);//Se ejecuta la función imprimirFormulario pasando como parámetro la variable "$lista"
                 ?>
+
+                <input type="hidden" name="dificultad_oculta" value="<?php echo $dificultad ?>">
+                <input type="hidden" name="intentos" value="<?php echo $num_intentos ?>">
+                <input type="hidden" name="juego_actual" value="antonimos">
+
                 <input type="submit" name="corregir" value="Corregir Datos">
                 <input type="submit" name="volver_antonimos" value="Volver al menú">
             </form>
@@ -40,10 +45,15 @@ $comprobacion_campos = array();//Comprueba si los campos están cubiertos correc
                     * Cada vez que se ejecuta este bucle, se ejecuta la función "corregirPalabra()" con los parámetros "$archivo_sinonimos", "$palabras" y "$resultados" que
                     * corrige cada resultado acorde a la palabra a la que pertenecen
                     */
+                    echo "<div class='lista_errores'>";
                     for ($cont = 1; $cont <= count($palabras); $cont++) {
                         $comprobacion_campos[] = corregirPalabra($archivo_antonimos, $palabras[$cont - 1], $resultados[$cont - 1]);
                     }
+                    echo "</div>";
+
+                    echo "<div id='victoria'>";
                     puntuacionJugador($comprobacion_campos);//Se ejecuta la función "puntuacionJugador()" pasando como parámetro la variable "$comprobacion_campos"
+                    echo "</div>";
                 } else {//Por lo contrario, manda un mensaje de error de que todos los campos tienen que estar cubiertos
                     echo "<div class='error'>Todos os campos ten que estar cubertos</div>";
                 }  

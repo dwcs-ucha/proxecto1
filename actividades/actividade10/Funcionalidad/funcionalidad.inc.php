@@ -3,20 +3,21 @@
  * Nombre: Azael Otero Santamariña
  * Fecha: 12 de Octubre de 2019
  * Descripción: Colección de funciones para añadir funcionalidad al juego de sinónimos y antónimos
- * Versión: 1.1
+ * Versión: 1.2
  */
 
+$corregir_datos = $_POST['corregir'];//Se recoge la información del botón de corregir para comprobar si se pulsó o no
 $nombre_jugador = $_POST['nombre'];//Nombre del jugador
 $contrasena_jugador = $_POST['contrasena'];//Contraseña del jugador
-$corregir_datos = $_POST['corregir'];//Se recoge la información del botón de corregir para comprobar si se pulsó o no
 $guardar_puntuacion = $_POST['guardar'];//Botón de guardar la puntuación del jugador
+$consultar_puntuacion = $_POST['consultar'];//Botón para consultar la puntuación del jugador
 $juego_usuario = $_POST['juego'];//Juego que eligió el usuario
 $dificultad_usuario = $_POST['dificultad'];//Dificultad que eligió el usuario
 $jugar_juego = $_POST['jugar'];//Botón para jugar a un juego con su dificultad
 $indice = 1;//Índice de palabra
 
-if (isset($_POST['num_intentos'])) {//Si está inicializada la variable oculta de "num_intentos", se guarda ese valor en una variable
-    $num_intentos = $_POST['num_intentos'];
+if (isset($_POST['intentos'])) {//Si está inicializada la variable oculta de "intentos", se guarda ese valor en una variable
+    $num_intentos = $_POST['intentos'];
 } else {//Por el contrario, se pone un valor de inicio
     $num_intentos = $_GET['num_intentos'];
 }
@@ -27,49 +28,10 @@ if (isset($_POST['dificultad_oculta'])) {//Si está inicializada la variable ocu
     $dificultad = $_GET['dificultad'];
 }
 
-/**
- * Nombre: irPaginaCorrespondiente()
- * Descripción: Dependiendo de lo que eligió el usuario en el menú principal, se va a un juego con la dificultad correspondiente
- */
-function irPaginaCorrespondiente() {
-global $jugar_juego, $juego_usuario, $dificultad_usuario, $dificultad;//Se cogen las variables globales "$jugar_juego", "$juego_usuario", "$dificultad_usuario" y "$dificultad"
-
-    if (isset($jugar_juego)) {//Si se pulsó el botón de jugar, sucede lo siguiente
-        if (isset($juego_usuario) && isset($dificultad_usuario)) {//Si se puso el juego y la dificultad:
-            if ($juego_usuario == "sinonimos") {//Si el juego que se eligió es el de los sinónimos, se pone la dificultad puesta por el usuario y se va a la página de "juego_sinonimos.php"
-                switch($dificultad_usuario) {
-                    case "facil":
-                        $dificultad = "facil";
-                        break;
-                    case "medio":
-                        $dificultad = "medio";
-                        break;
-                    case "dificil":
-                        $dificultad = "dificil";
-                }
-                header("Location: Sinonimos/juego_sinonimos.php?dificultad=" . $dificultad . "&num_intentos=0");
-            }
-            if ($juego_usuario == "antonimos") {//Si el juego que se eligió es el de los antónimos, se pone la dificultad puesta por el usuario y se va a la página de "juego_antonimos.php"
-                switch($dificultad_usuario) {
-                    case "facil":
-                        $dificultad = "facil";
-                        break;
-                    case "medio":
-                        $dificultad = "medio";
-                        break;
-                    case "dificil":
-                        $dificultad = "dificil";
-                }
-                header("Location: Antonimos/juego_antonimos.php");
-            }
-        }
-        if (!isset($juego_usuario)) {//Si no se eligió el juego, sale un mensaje de error que pide eligir un juego
-            echo "<div class='error'>Elixe un xogo</div>";
-        }
-        if (!isset($dificultad_usuario)) {//Si no se eligió la dificultad, sale un mensaje de error que pide eligir una dificultad
-            echo "<div class='error'>Elixe unha dificultade</div>";
-        } 
-    }
+if (isset($_POST['juego_a'])) {
+    $juego_actual = $_POST['juego_a'];
+} else {
+    $juego_actual = $_GET['juego_actual'];
 }
 
 /**
@@ -79,6 +41,9 @@ global $jugar_juego, $juego_usuario, $dificultad_usuario, $dificultad;//Se cogen
 function irPaginaAnterior() {
     if (isset($_POST['volver_sinonimos']) || isset($_POST['volver_antonimos'])) {//Si se pulsa el botón de "volver al menú" en el juego de los sinónimos o antónimos se va a la página del menú principal
         header("Location: ../index.php");
+    }
+    if (isset($_POST['volver_consulta'])) {//Si se pulsa el botón de "volver al menú" en la consulta de puntuaciones, se vuelve al menú principal
+        header("Location: index.php");
     }
 }
 /**
@@ -117,7 +82,7 @@ function imprimirFormulario($array) {
         }
     } else {//De lo contrario, sucede lo siguiente
         for ($cont = 1; $cont <= count($array); $cont++) {//Cada vez que se ejecuta el bucle se ponen las palabras del array "array" y el cuadro del texto al lado de cada uno
-            echo "<label    class='palabra'>" . $cont . " - " . $array[$cont - 1] . "</label><br/>";
+            echo "<label class='palabra'>" . $cont . " - " . $array[$cont - 1] . "</label><br/>";
             echo "<input id='resultado$cont' name='resultado$cont' type='text' value='" . $_POST["resultado" . $cont] . "' autocomplete='off'><br/><br/>";
             echo "<input id='palabra$cont' name='palabra$cont' type='hidden' value='" . $array[$cont - 1] . "'>";
         }
@@ -178,7 +143,7 @@ function comprobarCampos($palabras) {
  * Descripcion: Dependiendo de si el jugador falla o no, se acumula puntos de intentos o se va a la página de completado y login
  */
 function puntuacionJugador($todo_correcto) {
-    global $num_intentos;//Se recoge la variable global "$num_intentos"
+    global $num_intentos;//Se recoge las variables globales "$num_intentos"
 
     $correcto = true;//Por predeterminado todo fue con éxito
 
@@ -188,36 +153,11 @@ function puntuacionJugador($todo_correcto) {
         }
     }
     
-    if ($correcto) {//Si la variable "$correcto" es true, aparece el menú de completado y login
+    if ($correcto) {//Si la variable "$correcto" es true, aparece el menú de completado y login y se oculta los botones del juego
         include("../completado.php");
     } else {//Por lo contrario, se suma uno al número de intentos
         $num_intentos++;
-    }
-}
-
-/**
- * Nombre: guardarPuntuacion()
- * Descripcion: Se guarda la puntuación del jugador junto con su nombre y contraseña
- */
-function guardarPuntuacion($lista_jugadores) {
-    global $guardar_puntuacion, $nombre_jugador, $contrasena_jugador, $dificultad_usuario, $num_intentos;//Se cogen las variables globales "$guardar_puntuacion", "$nombre_jugador", "$contrasena_jugador" y "$num_intentos"
-
-    $datos = array($nombre_jugador, $contrasena_jugador, $dificultad_usuario, $num_intentos);//Se guardan los datos del jugador en un array ($datos)
-
-    if (isset($guardar_puntuacion)) {//Si se pulsó el botón de guardar puntuación, sucede lo siguiente
-        if (!empty($nombre_jugador) && !empty($contrasena_jugador)) {//Si no está vacío los campos de nombre y contraseña:
-            $fp = fopen($lista_jugadores, "a");//Se abre el archivo en modo escritura desde final del fichero añadiendo al mismo
-
-            if (!$fp = fopen($lista_jugadores, "a")) {//Si no puede abrir el fichero sale un mensaje de error
-                echo "<div class='error'>Non se pode ler o ficheiro</div>";
-            } else {//Por el contrario, se pone la información en el archivo .csv, se cierra y lleva a la página de inicio
-                fputcsv($fp, $datos);
-                fclose($fp);
-                header("Location: index.php");
-            }
-        } else {//Por el contrario, sale un mensaje de error
-            echo "<div class='error'>Tes que cubrir os dous campos</div>";
-        }
+        echo "<script>document.getElementsByName('intentos')[0].value = $num_intentos</script>";
     }
 }
 
@@ -225,27 +165,41 @@ function guardarPuntuacion($lista_jugadores) {
  * Nombre: consultarPuntuacion()
  * Descripción: Consulta la puntuación de un determinado usuario si existe en el archivo
  */
-function consultarPuntuacion() {
-    global $guardar_puntuacion, $nombre_jugador, $contrasena_jugador;//Se cogen las variables globales "$guardar_puntuacion", "$nombre_jugador" y "$contrasena_jugador"
+function consultarPuntuacion($lista_jugadores) {
+    global $consultar_puntuacion, $nombre_jugador, $contrasena_jugador;//Se cogen las variables globales "$consultar_puntuacion", "$nombre_jugador" y "$contrasena_jugador"
 
-    if (isset($guardar_puntuacion)) {//Si se pulsó el botón de consultar puntuación:
+    $nombre_jugador = trim($nombre_jugador);//Se eliminan espacios en blanco al principio y al final del nombre para evitar problemas
+    $contrasena_jugador = trim($contrasena_jugador);//Se eliminan espacios en blanco al principio y al final de la contraseña para evitar problemas
+    $usuario_encontrado = false;//Por defecto no se encontró el usuario escecificado (false)
+
+    if (isset($consultar_puntuacion)) {//Si se pulsó el botón de consultar puntuación:
         if (!empty($nombre_jugador) && !empty($contrasena_jugador)) {//Si no están vacíos los dos campos se ejecuta lo siguiente
-            $fp = fopen($lista_jugadores, "a");//Se abre el fichero en modo escritura desde el final añadiendo a lo que ya había en el fichero
+            $fp = fopen($lista_jugadores, "r");//Se abre el fichero en modo escritura desde el final añadiendo a lo que ya había en el fichero
 
-            if (!$fp = fopen($lista_jugadores, "a")) {//Si no existe o no se puede abrir, muestra un mensaje de error
+            if (!$fp = fopen($lista_jugadores, "r")) {//Si no existe o no se puede abrir, muestra un mensaje de error
                 echo "<div class='error'>Non se pode ler o ficheiro</div>";
             } else {//Por el contrario:
                 while (!feof($fp)) {//Mientras el puntero interno no se localize al final del fichero:
                     $jugador = fgetcsv($fp);//Se coge la información de un jugador
-                    if ($jugador[0] == $nombre_jugador && $jugador[1] == $contrasena_jugador) {//Si concuerda con lo que escribió el usuario, se muestra el nombre y el número de intentnos de ese jugador
-                        echo "<ul>";
-                            echo "<li>Nombre: " . $jugador[0] . "</li>";
-                            echo "<li>Dificultad: " . $jugador[2] . "</li>";
-                            echo "<li>Número de intentos: " . $jugador[3] . "</li>";
-                        echo "</ul>";
+                    if ($jugador[0] == $nombre_jugador && $jugador[1] == $contrasena_jugador) {//Si concuerda con lo que escribió el usuario, se pone la variable "$usuario_encontrado" a verdadero (true) y se guardan en las variables correspondientes el juego, la dificultad y el número de intentos
+                        $usuario_encontrado = true;
+                        $juego = ucfirst($jugador[2]);
+                        $dificultad = ucfirst($jugador[3]);
+                        $numero_intentos = $jugador[4];
                     }
                 }
                 fclose($fp);//Se cierra el fichero
+
+                if ($usuario_encontrado) {//Si se encontró el usuario (true), se imprime el nombre, dificultad y número de intentos por pantalla
+                    echo "<ul id='lista_puntuacion'>";
+                        echo "<li>Nombre: " . $nombre_jugador . "</li>";
+                        echo "<li>Juego: " . $juego . "</li>";
+                        echo "<li>Dificultad: " . $dificultad . "</li>";
+                        echo "<li>Número de intentos: " . $numero_intentos . "</li>";
+                    echo "</ul>";
+                } else {//Por el contrario, se muestra un mensaje de error
+                    echo "<div class='error'>O usuario ou o contrasinal están mail postos ou o usuario non existe</div>";
+                }
             }
         } else {//Por el contrario, se muestra un mensaje de error para avisar de que es necesario cubrir los dos campos
             echo "<div class='error'>Tes que cubrir os dous campos</div>";

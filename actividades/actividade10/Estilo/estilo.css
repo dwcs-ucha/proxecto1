@@ -11,6 +11,12 @@ h2 {
     margin-bottom: 40px;
 }
 
+#lista_puntuacion {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 #nenos {
     position: absolute;
     top: 200px;
@@ -21,7 +27,7 @@ h2 {
 
 #victoria {
     position: absolute;
-    left: 130px;
+    left: 80px;
     top: 150px;
 }
 

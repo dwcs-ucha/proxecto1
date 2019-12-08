@@ -3,7 +3,7 @@
  * Autor: Azael Otero Santamariña
  * Fecha: 12 de Octubre de 2019
  * Descripción: Juego de los sinónimos
- * Versión: 1.1
+ * Versión: 1.2
  */
 require "../Funcionalidad/funcionalidad.inc.php";//Se incluye el fichero con la funcionalidad del programa
 irPaginaAnterior();//Dependiendo de que botón se pulse, se vuelve a una página u otra (En este caso se vuelve al menú de sinónimos)
@@ -25,14 +25,19 @@ $comprobacion_campos = array();//Comprueba si los campos están cubiertos correc
     <body>
         <?php require "../../../layout/cabeceira.php";//Se incluye la cabecera de la página web ?>
         <div class="container">
-            <h1 class="titulo">SINÓNIMOS</h1>
-            <form method="post">
+            <h1 class="titulo">SINONIMOS</h1>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                 <?php
                 imprimirFormulario($lista);//Se ejecuta la función imprimirFormulario pasando como parámetro la variable "$lista"
                 ?>
+                
                 <input type="hidden" name="dificultad_oculta" value="<?php echo $dificultad ?>">
-                <input type="submit" name="corregir" value="Corregir Datos">
-                <input type="submit" name="volver_sinonimos" value="Volver al menú">
+                <input type="hidden" name="intentos" value="<?php echo $num_intentos ?>">
+                <input type="hidden" name="juego_actual" value="sinonimos">
+
+                <input type='submit' name='corregir' value='Corregir Datos'>
+                <input type='submit' name='volver_sinonimos' value='Volver al menú'>
+                
             </form>
             <?php
             if (isset($corregir_datos)) {//Si se pulsó el botón y se cubrieron todos los campos, sucede lo siguiente
