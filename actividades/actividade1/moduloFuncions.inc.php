@@ -33,6 +33,7 @@
     //   final.
     function devolveSilabaInicial($silabaFinal){
         switch($silabaFinal){
+            // UN
             case "PIZ":
                 $silabaInicial= "LA";
                 break;
@@ -48,6 +49,22 @@
             case "NA":
                 $silabaInicial= "LU";
                 break;
+            // DOUS
+            case "NA":
+                $silabaInicial= "RA";
+                break;
+            case "NO":
+                $silabaInicial= "RE";
+                break;
+            case "O":
+                $silabaInicial= "RI";
+                break;
+            case "CA":
+                $silabaInicial= "RO";
+                break;
+            case "SIA":
+                $silabaInicial= "RU";
+                break;
             default:
                 return false;
         }
@@ -57,6 +74,7 @@
     // devolveImaxe() recibe a sílaba final dunha palabra do xogo e, en función dela, amosa a imaxe correspondente coa palabra.
     function devolveImaxe($silabaFinal){
         switch($silabaFinal){
+            // UN
             case "PIZ":
                 $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe1.jpg' class='imaxesNivel1' />";
                 break;
@@ -71,6 +89,22 @@
                 break;
             case "NA":
                 $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe5.jpg' class='imaxesNivel1' />";
+                break;
+            // DOUS
+            case "NA":
+                $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe6.jpg' class='imaxesNivel1' />";
+                break;
+            case "NO":
+                $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe7.jpg' class='imaxesNivel1' />";
+                break;
+            case "O":
+                $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe8.jpg' class='imaxesNivel1' />";
+                break;
+            case "CA":
+                $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe9.jpg' class='imaxesNivel1' />";
+                break;
+            case "SIA":
+                $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe10.jpg' class='imaxesNivel1' />";
                 break;
             default:
                 return false;

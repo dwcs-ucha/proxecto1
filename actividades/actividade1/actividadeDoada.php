@@ -1,10 +1,11 @@
 <?php
-    // BreoBeceiro:02/12/2019
+    // BreoBeceiro:08/12/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // FALTA REVISAR A VISUALIZACIÓN DA MENSAXE DE ERRO SE OS CAMPOS COS DATOS DO XOGADOR VAN BALEIROS, POIS
     //   TAL E COMO ESTÁ AGORA, NON SE AMOSA (NIN SE QUERA CHEGA A GARDARSE A VARIABLE QUE CONTÉN A MENSAXE NO
-    //   CAMPO OCULTO CORRESPONDENTE)
+    //   CAMPO OCULTO CORRESPONDENTE). O MÁIS PROBABLE É QUE HAXA QUE GARDALOS NUN CAMPO OCULTO (POLA RECARGA
+    //   DA PÁXINA).
     // PÓDESE REVISAR O GARDADO DOS values NAS CAIXAS DE TEXTO DAS SÍLABAS INICIAIS DAS PALABRAS, POIS AO DARLLE
     //   A 'Comprobar', PERMANECEN NAS CAIXAS; SEN EMBARGO, TAMÉN PODE RESULTAR INTERESANTE DEIXALO ASÍ, POIS
     //   LOGO NO SEGUINTE TURNO O XOGADOR TERÁ GARDADO O PROGRESO DA ANTERIOR TIRADA, DE FORMA QUE PODERÁ PROGRESAR
@@ -21,8 +22,12 @@
     // Ficheiro de funcións comúns do sitio:
     include('../../librerias/utils.php');
 
-    //var_dump(validaSilaba("LE", "LA")); // Mándaselle un LE, e ten que haber un LA -> Devolve FALSE
-    //var_dump(sizeSilaba("L")); // Mándaselle un caracter e teñen que ser dous -> Devolve FALSE
+    // A variable $contido recibe os datos do CSV onde se gardan as sílabas finais das palabras do xogo. En cada unha das 
+    //   filas, que soamente son dúas, atópanse as sílabas que completan o set de cinco palabras que pode haber nunha partida.
+    // Posteriormente, unha variable recibirá aleatoriamente as sílabas da primeira fila ou da segunda, e en función diso,
+    //   as imaxes que se amosarán no navegador e as sílabas iniciais que se esperará recibir nas casillas serán unhas ou 
+    //   outras.
+    $contido= lerCSV("Datos/actividadeDoada_Contido.csv", "r", ",");
 
     if(isset($_POST['enviar'])){
         $silabaLA= $_POST['silabaLA'];
@@ -133,6 +138,11 @@
             <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
 
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <?php 
+                    // A estrutura de INPUTs a continuación permanece estática e habería que modificala para que amose as 
+                    //   sílabas iniciais que haberá que rechear no caso de que as palabras a completar sean as da segunda
+                    //   liña do CSV (pois as que aparecen tal e como está se corresponden coas da primeira liña).
+                ?>
                 <input type="text" name="silabaLA" class="opcions" value="LA" readonly="readonly" />
                 <input type="text" name="silabaLE" class="opcions" value="LE" readonly="readonly" />
                 <input type="text" name="silabaLI" class="opcions" value="LI" readonly="readonly" />
@@ -149,7 +159,8 @@
                         // Na primeira carga da páxina, defínese o array $silabasFinais e revólvense os seus elementos (se non,
                         //   na primeira carga aparecerían sempre na mesma orde, e desta forma, é aleatoria):
                         if(!isset($_POST['enviar'])){
-                            $silabasFinais= array("PIZ", "CHE", "BRO", "RO", "NA");
+                            // A variable $silabasFinais é un array que obtén os valores dunha dimensión ao azar da matriz $contido.
+                            $silabasFinais= $contido[rand(0,1)];
                             shuffle($silabasFinais);
                         }
 
