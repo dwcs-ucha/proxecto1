@@ -6,7 +6,7 @@
     //   TAL E COMO ESTÁ AGORA, NON SE AMOSA (NIN SE QUERA CHEGA A GARDARSE A VARIABLE QUE CONTÉN A MENSAXE NO
     //   CAMPO OCULTO CORRESPONDENTE). O MÁIS PROBABLE É QUE HAXA QUE GARDALOS NUN CAMPO OCULTO (POLA RECARGA
     //   DA PÁXINA).
-    // PÓDESE REVISAR O GARDADO DOS values NAS CAIXAS DE TEXTO DAS SÍLABAS INICIAIS DAS PALABRAS, POIS AO DARLLE
+    // FALTA REVISAR O GARDADO DOS values NAS CAIXAS DE TEXTO DAS SÍLABAS INICIAIS DAS PALABRAS, POIS AO DARLLE
     //   A 'Comprobar', PERMANECEN NAS CAIXAS; SEN EMBARGO, TAMÉN PODE RESULTAR INTERESANTE DEIXALO ASÍ, POIS
     //   LOGO NO SEGUINTE TURNO O XOGADOR TERÁ GARDADO O PROGRESO DA ANTERIOR TIRADA, DE FORMA QUE PODERÁ PROGRESAR
     //   DE FORMA MÁIS DOADA (A FIN DE CONTAS, ESTA É A PÁXINA CO XOGO DE DIFICULTADE MÁIS BAIXA).
@@ -39,7 +39,9 @@
         $puntos= 0;
 
         // Se os valores introducidos non superan cadanseu filtro, gárdase unha mensaxe de erro que se amosará
-        //   embaixo de cada campo:
+        //   embaixo de cada campo; se pasan o filtro, gárdase unha mensaxe de felicitación e increméntanse os
+        //   puntos nunha unidade.
+        // Valídanse as sílabas iniciais cando estas correspóndense coas da primeira liña do CSV 'actividadeDoada_Contido.csv'.
         if(!validaSilaba(strtoupper($silabaLE), "LE")){
             $erroLE= "A sílaba correcta era LE.";
         }else{
@@ -75,6 +77,44 @@
             $puntos++;
         }
 
+        // A partir de aquí valídanse as sílabas iniciais para os casos da segunda liña do CSV 'actividadeDoada_Contido.csv'.
+        // Son consciente de que van moitas estruturas repetidas, pero teño que rematar todavía a presentación e prefiro mandar
+        //   esto así aínda que non vaia moi bonito, pois polo menos é funcional.
+        if(!validaSilaba(strtoupper($silabaLA), "RA")){
+            $erroRA= "A sílaba correcta era RA.";
+        }else{
+            $noraboaRA= "Moi ben!";
+            $puntos++;
+        }
+
+        if(!validaSilaba(strtoupper($silabaLE), "RE")){
+            $erroRE= "A sílaba correcta era RE.";
+        }else{
+            $noraboaRE= "Moi ben!";
+            $puntos++;
+        }
+
+        if(!validaSilaba(strtoupper($silabaLI), "RI")){
+            $erroRI= "A sílaba correcta era RI.";
+        }else{
+            $noraboaRI= "Moi ben!";
+            $puntos++;
+        }
+
+        if(!validaSilaba(strtoupper($silabaLO), "RO")){
+            $erroRO= "A sílaba correcta era RO.";
+        }else{
+            $noraboaRO= "Moi ben!";
+            $puntos++;
+        }
+
+        if(!validaSilaba(strtoupper($silabaLU), "RU")){
+            $erroRU= "A sílaba correcta era RU.";
+        }else{
+            $noraboaRU= "Moi ben!";
+            $puntos++;
+        }
+    
         // Recupérase a cadea de texto do campo oculto (ese campo de texto era un array na carga anterior da páxina,
         //   e convertirase de novo nun na presente):
         if(isset($_POST['silabasFinais'])){
@@ -219,6 +259,26 @@
                                             case "NA":
                                                 if(isset($_POST['enviar']) && isset($erroLU)){ echo $erroLU; }
                                                 if(isset($_POST['enviar']) && isset($noraboaLU)){ echo $noraboaLU; }
+                                                break;
+                                            case "TA":
+                                                if(isset($_POST['enviar']) && isset($erroRA)){ echo $erroRA; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRA)){ echo $noraboaRA; }
+                                                break;
+                                            case "NO":
+                                                if(isset($_POST['enviar']) && isset($erroRE)){ echo $erroRE; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRE)){ echo $noraboaRE; }
+                                                break;
+                                            case "O":
+                                                if(isset($_POST['enviar']) && isset($erroRI)){ echo $erroRI; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRI)){ echo $noraboaRI; }
+                                                break;
+                                            case "CA":
+                                                if(isset($_POST['enviar']) && isset($erroRO)){ echo $erroRO; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRO)){ echo $noraboaRO; }
+                                                break;
+                                            case "SIA":
+                                                if(isset($_POST['enviar']) && isset($erroRU)){ echo $erroRU; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRU)){ echo $noraboaRU; }
                                                 break;
                                         }
 

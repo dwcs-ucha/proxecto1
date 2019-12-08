@@ -50,7 +50,7 @@
                 $silabaInicial= "LU";
                 break;
             // DOUS
-            case "NA":
+            case "TA":
                 $silabaInicial= "RA";
                 break;
             case "NO":
@@ -91,7 +91,7 @@
                 $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe5.jpg' class='imaxesNivel1' />";
                 break;
             // DOUS
-            case "NA":
+            case "TA":
                 $imaxe= "<img src='Imaxes/ProxectoFacil_Imaxe6.jpg' class='imaxesNivel1' />";
                 break;
             case "NO":
