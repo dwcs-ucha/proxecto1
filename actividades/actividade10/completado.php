@@ -7,8 +7,8 @@
  */
 ?>
 <h1 class="titulo">VICTORIA</h1>
-<h2>LO CONSEGUISTE, ENHORABUENA!!!</h2>
-<h3>Quieres guardar la puntuacion?</h3>
+<h2>O CONSEGUICHES, ENHORABOA!!!</h2>
+<h3>Queres gardar a puntuacion?</h3>
 
 <a class="enlace" href="<?php echo "../guardar_puntuacion.php?dificultad=" . $_GET["dificultad"] . "&num_intentos=" . $num_intentos . "&juego_actual=" . $_POST["juego_actual"]?>">Sí</a><!-- Lleva a la página de guardar puntuación con la dificultad, número de intentos y juego correspondientes -->
-<a class="enlace" href="../index.php">No</a><!-- Se va a la página de inicio -->
+<a class="enlace" href="../index.php">Non</a><!-- Se va a la página de inicio -->
