@@ -1,13 +1,13 @@
 body{
 
-background-image: url("/proxecto1/actividades/actividad5/imagenes/fondo.jpg");
+background-image: url("../imagenes/fondo.jpg");
 
 }
 
 img#son{
 
-width:60px;
-height:60px;
+width:120px;
+height:120px;
 border: 2px solid grey;
 border-radius: 5px;
 
