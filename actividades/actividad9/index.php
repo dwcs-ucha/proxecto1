@@ -13,12 +13,12 @@
         include '../../layout/cabeceira.php';
         ?>
         <h1>Secuencias temporais</h1>
-        <form id="facil" action="actividade.php" method="post">
+        <form id="facil" action="secuencias.php" method="post">
             <div class="container-fluid corpo">
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 imaxe">
-                        <img src="" height="300" width="300"/>
+                        <img src="imagen portada.png" height="300" width="300"/>
                     </div>
                     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
                         <span>Ordea unha serie de debuxos o fotografias no orde cronoloxico correcto.</br>O traballar nesta actividade esperase:</br>-Axudar a enteder que as situacions ocorren nun orde, primero ocorre unha cousa e despois outra.</br>-Fomentar a percepcion e a agudeza visual.</span>
