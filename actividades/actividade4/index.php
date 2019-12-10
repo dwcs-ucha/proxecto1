@@ -36,7 +36,7 @@
                                 <input type="radio" name="dificultade" value="facil"/>Fácil
                             </label>
                             <label class="btn btn-secondary active btn-warning">
-                                <input type="radio" name="dificultade" value="normal"/>Normal
+                                <input type="radio" name="dificultade" value="normal" checked/>Normal
                             </label>
                             <label class="btn btn-secondary active btn-danger">
                                 <input type="radio" name="dificultade" value="dificil"/>Difícil

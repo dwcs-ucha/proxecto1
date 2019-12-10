@@ -6,13 +6,17 @@
         ?>
         <title>Agrupar elementos</title>
         <meta charset="utf-8"/>
-        <script src="seleccionar_elementos.js"></script>
+        <script src="seleccionar.js"></script>
         <style>
             .ficha {
                 border-style: solid;
                 border-width: 20;
+                margin: 20 0;
                 width : 150;
                 height : 150;
+            }
+            .btn-lg {
+                padding: 10 70;
             }
         </style>
     </head>
@@ -24,7 +28,7 @@
         <?php
         define("NUMERO_IMAGENES_FACIL", 5);
         define("NUMERO_IMAGENES_NORMAL", 10);
-        define("NUMERO_IMAGENES_DIFICIL", 20);
+        define("NUMERO_IMAGENES_DIFICIL", 15);
 
         define("PROPORCION_IMAGENES_CORRECTAS_FACIL", 3);
         define("PROPORCION_IMAGENES_CORRECTAS_NORMAL", 2);
@@ -42,14 +46,16 @@
         $arrayFallos = getImagenes(getNumeroAleatorioDistinto(1, $numeroCategorias, $lineaCategoriaAciertos));
         $imagenesFallo = $arrayFallos["imagenes"];
         ?>
-        <form class = "container" method = "post" action = "prueba.php">
+        <form class = "container" method = "post" action = "respuestas.php">
 
             <h1><?= $categoriaAcierto ?></h1>
             <input type = "hidden" name="categoria" value="<?= $categoriaAcierto; ?>"/>
             <div>
                 <?php escribirImagenes(); ?>
             </div>
-            <input type = "submit" value = "Enviar"/>
+            <div align = "center">
+                <input class = "btn-lg btn-success"  type = "submit" value = "Enviar"/>
+            </div>
         </form>
         <?php
 
@@ -61,10 +67,10 @@
             $filas = $numeroImagenes / 5;
 
             $contador = 0;
-            
+
             for ($i = 0; $i < $filas; $i++) {
                 ?>
-                <div class="row"> 
+                <div class="d-flex"> 
                     <?php
                     for ($j = 0; $j < 5 && ($i * $j) < $numeroImagenes; $j++) {
                         $aleatorio = rand(1, $proporcionImagenesCorrectas + 1);
@@ -73,11 +79,12 @@
                         } else {
                             $rutaImagen = next($imagenesFallo);
                         }
-			$contador++;
+                        $contador++;
                         ?>
-                        <input id = "seleccionada<?= $contador; ?>" type = "hidden" name = "seleccionada<?= $contador; ?>" value = ""/>
-                        <img class = "ficha col" id = "imagen-<?= $contador; ?>" src = "<?= $rutaImagen; ?>" onclick = "seleccionar(this)"/>
-
+                        <div class="flex-fill">
+                            <input id = "enviada<?= $contador; ?>" type = "hidden" name = "imagen<?= $contador; ?>" value = "<?= $rutaImagen; ?>-n"/>
+                            <img class = "ficha" id = "imagen-<?= $contador; ?>" src = "<?= $rutaImagen; ?>" onclick = "seleccionar(this)"/>
+                        </div>
                         <?php
                     }
                     ?>

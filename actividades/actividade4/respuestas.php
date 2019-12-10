@@ -12,16 +12,30 @@
         $categoria = $_POST["categoria"];
         $seleccionados = getSeleccionadas();
         $correctas = getCorrectas($categoria);
-        $aciertos = array_intersect($correctas, $seleccionados);
+        $imagenes = getImagenes();
+        $aciertos = 0;
+        if ($seleccionados != null) {
+            $aciertos = array_intersect($correctas, $seleccionados);
+        }
         ?>
         <h1>Tiveches <?= count($aciertos); ?> acertos</h1>
 
 
         <?php
 
+        function getImagenes(){
+            for ($i = 1; isset($_POST["imagen" . $i]); $i++) {
+                $imagenes[] = $imagenActual = explode("-", $_POST["imagen" . $i])[0];
+            }
+            return $imagenes;
+        }
         function getSeleccionadas() {
-            for ($i = 0; isset($_POST["seleccionada" . $i]); $i++) {
-                $seleccionados[] = $_POST["seleccionada" . $i];
+            $seleccionados = null;
+            for ($i = 1; isset($_POST["imagen" . $i]); $i++) {
+                $imagenActual = explode("-", $_POST["imagen" . $i]);
+                if ($imagenActual[1] == "s") {
+                    $seleccionados[] = $imagenActual[0];
+                }
             }
             return $seleccionados;
         }
