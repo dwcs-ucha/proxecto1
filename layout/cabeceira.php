@@ -27,6 +27,7 @@
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade11/proxecto11_index.php">Emparellar</a>
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividad9">Ordenar secuencias temporais</a>
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade4">Ordenar obxetos por categoría</a>
+            			<a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade12">Estados de animo</a>
         </div>
     </div>
     <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent3">
