@@ -6,8 +6,8 @@
 		* @Autor: Cristóbal Romero
 		* @GitHub: ZerinhoRomero
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 02/12/2019
-		* @Version: 0.0.9b
+		* @UltimaModificacion: 10/12/2019
+		* @Version: 0.0.91b
 		**/
 		$directorioRaiz = '../..';
 		require_once '../../layout/head.php';
