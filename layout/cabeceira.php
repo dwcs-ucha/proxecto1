@@ -36,7 +36,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade6">Caderno de sumas</a>
             <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade10">Sinónimos e antónimos</a>
-            <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividade16">Son visual</a>
+            <a class="dropdown-item" href="<?php echo $directorioRaiz;?>/actividades/actividad5">Son visual</a>
         </div>
     </div>
 </nav>
