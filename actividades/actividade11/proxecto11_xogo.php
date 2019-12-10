@@ -158,10 +158,53 @@
 						$froitasAcertadas = explode(",", $_GET['acertos']);
 						echo '<div class="row">';
 						echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 baleiro"></div>';
-						echo '<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 ganhador" align="center"><img src="imaxes/sandia.gif" class="img-responsive"></div>';
+						echo '<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 ganhador'.$numeroCartas.'" align="center"><img src="imaxes/sandia.gif" class="img-responsive"></div>';
 						echo '</div>';
 						echo '<div class="row" text-center><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 baleiro"></div><span class="mensaxe">Bo TRABALLo!!!</span></div>';
-						echo '<div class="row"><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 baleiro"></div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 botonGardar" align="center"><button type="submit" class="btn btn-primary gardar">¿Queres gardar a puntuación?</button></div></div>';
+						echo '<div class="row"><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 baleiro"></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 botonGardar" align="center"><a class="botonFinal" href="proxecto11_xogo.php?estado=5&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'">¿Queres gardar a puntuación?</a></div></div></div>';
+						echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+						echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+						break;
+					case 5:
+						$intentos = $_GET['intentos'];
+						$froitasAcertadas = explode(",", $_GET['acertos']);
+						echo '<div class="row">';
+						echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 baleiro"></div>';
+						echo '<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" align="center"><div class="usuario"><span class="nome">Nome:</span><input name="user "type="text" size="30"></input><br/></br><span class="pass">Contrasinal:</span><input type="password" name="pass" size="30"></input></div></div></div>';
+						echo '<div class="row" text-center><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 baleiro"></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 botonGardar" align="center"><a class="botonFinal" href="proxecto11_xogo.php?estado=6&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'">Gardar</a></div></div></div>';
+						echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
+						echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
+						break;
+					case 6:
+						$intentos = $_GET['intentos'];
+						$froitasAcertadas = explode(",", $_GET['acertos']);
+						if (!isset($_GET['user']) && !isset($_GET['pass'])) {
+							echo '<div class="row">';
+							echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 baleiro"></div>';
+							echo '<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" align="center"><span class="aviso">Todos os campos requeridos</span><br/><div class="usuario"><span class="nome">Nome:</span><input type="text" size="30"></input><br/></br><span class="pass">Contrasinal:</span><input type="password" size="30"></input></div></div></div>';
+							echo '<div class="row" text-center><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 baleiro"></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 botonGardar" align="center"><a class="botonFinal" href="proxecto11_xogo.php?estado=6&intentos='.$intentos.'&acertos='.implode(",", $froitasAcertadas).'">Gardar</a></div></div></div>';
+						} elseif (isset($_GET['user']) && isset($_GET['pass'])) {
+							$arquivoDatos = stats.csv;
+							$usuario = $_GET['user'];
+							$contrasinal = $_GET['pass'];
+							$arrayDatos = array();
+							if ($arquivoAberto = fopen($arquivoDatos, 'rw')) {
+								while ($datos = fgetcsv($arquivoAberto, 1000, ",")) {
+									$arrayDatos[] = $datos;	
+								}
+							}
+							fclose($arquivoAberto);
+							$novoRexistro = array($usuario, $contrasinal, $intentos, ($acertos - 1));
+							$arrayDatos[] = $novoRexistro;
+							$arquivoAberto = fopen($arquivoCsv, "w");
+							foreach($arrayDatos as $fila) {
+								fputcsv($arquivoAberto, $fila);
+							}
+							fclose($arquivoAberto);
+							echo '<div class="row">';
+							echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 baleiro"></div>';
+							echo '<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" align="center"><span>Partida gardada. Grazas por xogar, '.$usuario.'</span></div></div></div>';
+						}
 						echo '<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 menu">';
 						echo '<div class="marcador" align="center">Intentos: '.$intentos.'   --   Acertos: '.(count($froitasAcertadas) - 1).'</div>';
 						break;

@@ -29,6 +29,12 @@ h1, h2 {
 .cartas12 {
 	margin-top: 5%;
 }
+.ganhador6 {
+	margin-top: -10%;
+}
+.ganhador12 {
+	margin-top: -5%;
+}
 .botonFinal:link, .botonFinal:visited {
 	background-color: #007BFF;
 	color: #ffffff;
@@ -65,4 +71,19 @@ h1, h2 {
 .gardar {
 	margin-left: 3%;
 	background-color: #007BFF;
+}
+.usuario {
+	padding-bottom: 30px;
+}
+.nome {
+	text-align: right;
+	margin-right: 40px;
+}
+.pass {
+	text-align: right;
+	margin-right: 10px;
+}
+.aviso {
+	margin-left: 15%;
+	color: red;
 }
