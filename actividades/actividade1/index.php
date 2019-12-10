@@ -1,5 +1,5 @@
 <?php
-  // BreoBeceiro:22/11/2019
+  // BreoBeceiro:10/12/2019
   // PROXECTO 1ª AVALIACIÓN | Versión 1.0
 ?>
 <!doctype html>
@@ -84,49 +84,54 @@
 				</div>
 			</div>
 			<div class="row">
-
-					<div class="col-md-6">
-	            		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	            			<fieldset>
-	            				<legend>Elixe a dificultade</legend>
-				                <div class="form-group">
-				                    <input type="radio" name="nivel" value="nivel1" id="Nivel1" checked />
-				                    <label for="Nivel1">Nivel 1 (baixa), a partir de 2 anos de idade:</label>
-				                    <br />
-
-				                    <input type="radio" name="nivel" value="nivel2" id="Nivel2" />
-				                    <label for="Nivel2">Nivel 2 (media), a partir de 3 anos de idade:</label>
-				                    <br />
-
-				                    <input type="radio" name="nivel" value="nivel3" id="Nivel3" />
-				                    <label for="Nivel3">Nivel 3 (alta), a partir de 4 anos de idade:</label>
-				                    <br />
-				                </div>
-			            	</fieldset>
-
-			            	<fieldset>
-			            		<legend>Elixe o tema gráfico</legend>
-				                <div class="form-group">
-				                    <input type="radio" name="tema" value="claro" id="Claro" checked />
-				                    <label for="Claro">Claro:</label>
-				                    <br />
-
-				                    <input type="radio" name="tema" value="escuro" id="Escuro" />
-				                    <label for="Escuro">Escuro:</label>
-				                    <br />
-				                </div>
-			            	</fieldset>
-
-			                <input type="submit" name="xogar" id="Xogar" value="Xogar!" class="btn btn-primary" />
-			                <br />
-	                
-	            		</form>
-            		</div>
-            		<div class="col-md-6">
-            			<img src="Imaxes/actividade1_Nivel1.png" alt="Imaxe da actividade" />
-            		</div>
-
 				<div class="col-md-6">
+					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+						<fieldset>
+							<legend>Elixe a dificultade</legend>
+							<div class="form-group">
+								<input type="radio" name="nivel" value="nivel1" id="Nivel1" checked />
+								<label for="Nivel1">Nivel 1 (baixa), a partir de 2 anos de idade:</label>
+								<br />
+
+								<input type="radio" name="nivel" value="nivel2" id="Nivel2" />
+								<label for="Nivel2">Nivel 2 (media), a partir de 3 anos de idade:</label>
+								<br />
+
+								<input type="radio" name="nivel" value="nivel3" id="Nivel3" />
+								<label for="Nivel3">Nivel 3 (alta), a partir de 4 anos de idade:</label>
+								<br />
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>Elixe o tema gráfico</legend>
+							<div class="form-group">
+								<input type="radio" name="tema" value="claro" id="Claro" checked />
+								<label for="Claro">Claro:</label>
+								<br />
+
+								<input type="radio" name="tema" value="escuro" id="Escuro" />
+								<label for="Escuro">Escuro:</label>
+								<br />
+							</div>
+						</fieldset>
+
+						<input type="submit" name="xogar" id="Xogar" value="Xogar!" class="btn btn-primary" />
+						<br />
+				
+					</form>
+				</div>
+				<div class="col-md-6">
+					<img src="Imaxes/actividade1_Nivel1.png" alt="Imaxe da actividade" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				</div>
+				<div class="col-md-6">
+					<p>
+						Queres descargar o manual da actividade? <a href="Documentacion/manual.pdf">Preme aquí.</a>
+					</p>
 				</div>
 			</div>
 			<?php
