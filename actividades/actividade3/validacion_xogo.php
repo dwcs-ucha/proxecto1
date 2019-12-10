@@ -24,4 +24,21 @@ function validarDificultade($difRango, $difPost){
         return $difPost;
     }
 }
+
+function azarCsv($ficheiro, $preguntas){
+    $resultado = array();
+    for($linha = 0; $linha < count($ficheiro); $linha++){
+        for($columna = 0; $columna < $preguntas; $columna++){
+            if($columna == 0){
+                $resultado[$linha][0] = $ficheiro[$linha][$columna];
+            } else {
+                $resultado[$linha][$columna] = $ficheiro[$linha][$columna];
+                if($preguntas - $columna == 1){
+                    shuffle($resultado[$linha]);
+                }
+            }
+        }
+    }
+    return $resultado;
+}
 ?>

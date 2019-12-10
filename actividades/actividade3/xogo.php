@@ -30,6 +30,7 @@ switch ($dif){
         $preguntas = 2;
         break;
 }
+
 /*var_dump($dif, $preguntas);*/
 $ruta = "csv/";
 $cosa = lerCSV("$ruta"."cosa.csv", "r", ","); $contar = count(file("$ruta"."cosa.csv"));
@@ -40,6 +41,10 @@ $utilidade = lerCSV("$ruta"."utilidade.csv", "r", ",");
 var_dump($imaxe);
 var_dump($manexo);
 var_dump($utilidade);*/
+$cosa = azarCsv($cosa, $preguntas);
+$manexo = azarCsv($manexo, $preguntas);
+$utilidade = azarCsv($utilidade, $preguntas);
+
 ?>
 <!DOCTYPE html>
 <html lang="gl">
