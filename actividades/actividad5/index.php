@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Jugando con sonidos</title>
-<link rel="stylesheet" href="/proxecto1/actividades/actividad5/css/sonidos.css">
+<link rel="stylesheet" href="css/sonidos.css">
  <?php
  /**
          * @Autor: Javier Torrón González
