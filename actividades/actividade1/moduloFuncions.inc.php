@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:29/11/2019
+    // BreoBeceiro:10/12/2019
     // PROXECTO 1º AVALIACIÓN | Versión 1.0
 
     // validaSilaba() comprobará que nas caixas de texto vaian as sílabas que teñen

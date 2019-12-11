@@ -45,55 +45,57 @@
     </head>
 
     <body>
-        <div class="container">
-            <?php
-                // Inclúese a estrutura da cabeceira común do sitio:
-                include('../../layout/cabeceira.php');
-            ?>
-
-            <h2 onclick="alerta();">Completar Sílabas e Palabras<br />(Intermedio)</h2>
-
-            <div class="row align-items">
+        <wrapper class="d-flex flex-column">
+            <main class="container corpo">
                 <?php
-                    $palabras= array("1"=>"PAPA", 
-                                     "2"=>"PATO", 
-                                     "3"=>"RATA", 
-                                     "4"=>"BATA", 
-                                     "5"=>"BOCADILLO", 
-                                     "6"=>"BOSQUE", 
-                                     "7"=>"PERRO", 
-                                     "8"=>"LATA");
-
-                    for($j=1; $j<=2; $j++){
-                        for($i=1; $i<=4; $i++){
-                            ?>
-                                <div class="col-md-3">
-                                    <?php
-                                        if($j==1){
-                                    ?>
-                                            <img src='Imaxes/ProxectoMedio_Imaxe<?php echo $i; ?>.jpg' class='imaxe' />
-                                            <br />
-                                            <input type='text' id='Palabra<?php echo $i; ?>' value='<?php echo $palabras["$i"]; ?>' readonly="readonly" />
-                                    <?php
-                                        }else{
-                                    ?>
-                                            <img src='Imaxes/ProxectoMedio_Imaxe<?php echo $i+4; ?>.jpg' class='imaxe' />
-                                            <br />
-                                            <input type='text' id='Palabra<?php echo $i+4; ?>' value='<?php echo $palabras["$i"+4]; ?>' readonly="readonly" />
-                                            <?php
-                                        }
-                                    ?>
-                                </div>
-                            <?php
-                        }
-                    }
+                    // Inclúese a estrutura da cabeceira común do sitio:
+                    include('../../layout/cabeceira.php');
                 ?>
-            </div>
-            
-            <?php
-                // Inclúese a estrutura do pé común do sitio:
-                include('../../layout/pe.php');
-            ?>
-        </div>
+
+                <h2 onclick="alerta();">Completar Sílabas e Palabras<br />(Intermedio)</h2>
+
+                <div class="row align-items">
+                    <?php
+                        $palabras= array("1"=>"PAPA", 
+                                        "2"=>"PATO", 
+                                        "3"=>"RATA", 
+                                        "4"=>"BATA", 
+                                        "5"=>"BOCADILLO", 
+                                        "6"=>"BOSQUE", 
+                                        "7"=>"PERRO", 
+                                        "8"=>"LATA");
+
+                        for($j=1; $j<=2; $j++){
+                            for($i=1; $i<=4; $i++){
+                                ?>
+                                    <div class="col-md-3">
+                                        <?php
+                                            if($j==1){
+                                        ?>
+                                                <img src='Imaxes/ProxectoMedio_Imaxe<?php echo $i; ?>.jpg' class='imaxe' />
+                                                <br />
+                                                <input type='text' id='Palabra<?php echo $i; ?>' value='<?php echo $palabras["$i"]; ?>' readonly="readonly" />
+                                        <?php
+                                            }else{
+                                        ?>
+                                                <img src='Imaxes/ProxectoMedio_Imaxe<?php echo $i+4; ?>.jpg' class='imaxe' />
+                                                <br />
+                                                <input type='text' id='Palabra<?php echo $i+4; ?>' value='<?php echo $palabras["$i"+4]; ?>' readonly="readonly" />
+                                                <?php
+                                            }
+                                        ?>
+                                    </div>
+                                <?php
+                            }
+                        }
+                    ?>
+                </div>
+                
+                <?php
+                    // Inclúese a estrutura do pé común do sitio:
+                    include('../../layout/pe.php');
+                ?>
+            </main>
+        </wrapper>
     </body>
 </html>

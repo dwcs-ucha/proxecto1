@@ -38,18 +38,20 @@
     </head>
 
     <body>
-        <div class="container">
-            <?php
-                include('../../layout/cabeceira.php');
-            ?>
+        <wrapper class="d-flex flex-column">
+            <main class="container corpo">
+                <?php
+                    include('../../layout/cabeceira.php');
+                ?>
 
-            <?php
-                include('paxinaEnCoiros.inc.php');
-            ?>
-            
-            <?php
-                include('../../layout/pe.php');
-            ?>
-        </div>
+                <?php
+                    include('paxinaEnCoiros.inc.php');
+                ?>
+                
+                <?php
+                    include('../../layout/pe.php');
+                ?>
+            </main>
+        </wrapper>
     </body>
 </html>
