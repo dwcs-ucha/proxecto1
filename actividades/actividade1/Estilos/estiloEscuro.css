@@ -3,7 +3,7 @@
     PROXECTO 1º AVALIACIÓN | Versión 1.0
 */
 
-.container { background-color: #9C9C9C; }
+.container, input[type=text] { background-color: #777; }
 
 .container h2 { text-align: center; }
 

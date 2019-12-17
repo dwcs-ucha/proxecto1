@@ -141,11 +141,11 @@
             // En función do valor do parámetro 'tema' que veña pola URL, se é que ven, empregarase unha capa de CSS
             //   ou outra (sendo as existentes dúas, unha de estilo claro, e outra de estilo escuro):
             if(empty($_GET['tema'])){
-                echo "<link rel='stylesheet' type='text/css' href='estiloClaro.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='Estilos/estiloClaro.css'>";
             }elseif($_GET['tema']== "escuro"){
-                echo "<link rel='stylesheet' type='text/css' href='estiloEscuro.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='Estilos/estiloEscuro.css'>";
             }elseif($_GET['tema']== "claro"){
-                echo "<link rel='stylesheet' type='text/css' href='estiloClaro.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='Estilos/estiloClaro.css'>";
             }
         ?>
         <script type="text/javascript" src=""></script>
@@ -336,7 +336,7 @@
                             //   e caracteres extraños polo medio, como 'N1nj4' ou 'Su$an4_29') e, se levan datos, fórmase o array
                             //   cos datos a escribir (Nome, Contrasinal e Puntos da partida) para logo chamar á función escribirCSV
                             //   pasándolle os parámetros correspondentes (a URL da orixe do ficheiro CSV, o modo de escritura e
-                            //   o array cos datos do xogador/a:
+                            //   o array cos datos do xogador/a):
                             if(isset($_POST['enviaPuntos'])){
                                 $nome= $_POST['nome'];
                                 $contrasinal= $_POST['contrasinal'];
