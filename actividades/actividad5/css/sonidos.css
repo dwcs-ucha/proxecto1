@@ -1,56 +1,81 @@
-body{
-
-background-image: url("../imagenes/fondo.jpg");
-
+body {
+  background-image: url("../imagenes/fondoobjetos.png");
 }
 
-img#son{
-
-width:120px;
-height:120px;
-border: 2px solid grey;
-border-radius: 5px;
-
-}
-img#ini{
-
-display:block;
-margin:auto;
-
-}
-audio{
-
-border-radius: 5px;
-margin-left: 35%;
-}
-h1, h3, p {
-
-text-align:center;
+img#son {
+  width: 60px;
+  height: 60px;
+  border: 2px solid grey;
+  border-radius: 5px;
 }
 
+img#ini {
+  display: block;
+  margin: auto;
+}
+
+audio {
+  border-radius: 5px;
+  margin-left: 35%;
+}
+
+h1, h3, p, form {
+  text-align: center;
+}
 
 .boton {
-
-background-color: #555555;
-color: white;
-border-radius: 5px;
-width:100px;
-height: 50px;
-font-size: 1.5em;
-margin-left:47%;
+  background-color: #555555;
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
+  font-size: 1.5em;
 
 }
 
-#sonidos{
+#sonidos, audio {
   border: 10px solid grey;
   padding: 5% 29% 5% 25%;
   margin: auto;
-
+  display: block;
 }
 
-#inicio{
-
-background-color:lightblue;
-margin: 30px 200px 30px 200px;
+#inicio {
+  background-color: lightblue;
+  margin: 30px 200px 30px 200px;
+  padding-bottom: 20px;
 }
 
+.acierto {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+
+#puntuacion {
+  display: block;
+  text-align: right;
+  margin-right: 15px;
+}
+
+#puntuacion img {
+  width: 100px;
+  height: 50px;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+span p {
+  font-size: 30px;
+}
+button{
+  display: block;
+  margin: auto;
+}
+.table-striped{
+
+  border: 2px solid grey;
+  text-align: center;
+}
