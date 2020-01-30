@@ -28,26 +28,28 @@
                 border-width: 3px;
             }
         </style>
+        <script type="text/javascript">
+            function cambiarDificultade() {
+                var t = 1;
+                setInterval(function () {
+                    t--;
+                    if (t == 0) {
+                        document.formularioDificultade.submit();
+                    }
+                }, 10, "JavaScript");
+            }
+        </script>
     </head>
     <body>
         <?php
         include '../../layout/cabeceira.php';
 
         $categorias = getCategorias();
-        shuffle($categorias);
-        $dificultade = isset($_POST["dificultade"]) ? $_POST["dificultade"] : "normal";
+        $dificultade = isset($_GET["dificultade"]) ? $_GET["dificultade"] : "normal";
         $rutaImaxes = "Imagenes/";
-
-        switch ($dificultade) {
-            case "facil":
-                $categorias = array_slice($categorias, 0, 2);
-                break;
-            case "normal":
-                $categorias = array_slice($categorias, 0, 3);
-                break;
-            case "dificil":
-                $categorias = array_slice($categorias, 0, 4);
-                break;
+        $categoriasSeleccionadas = getCategoriasSeleccionadas($categorias);
+        if (empty($categoriasSeleccionadas)) {
+            $categoriasSeleccionadas = seleccionarCategoriasAleatoriamente($categorias, $dificultade);
         }
 
         function getCategorias() {
@@ -56,6 +58,36 @@
                 $categorias[] = array($datos[0], $datos[1]);
             }
             fclose($ficheiro);
+            return $categorias;
+        }
+
+        function getCategoriasSeleccionadas($categorias) {
+            if (isset($_GET["categorias"])) {
+                $nomesCategorias = explode(",", $_GET["categorias"]);
+                for ($i = count($categorias) - 1; $i >= 0; $i--) {
+                    if (!in_array($categorias[$i][0], $nomesCategorias)) {
+                        unset($categorias[$i]);
+                    }
+                }
+                return $categorias;
+            } else {
+                return "";
+            }
+        }
+
+        function seleccionarCategoriasAleatoriamente($categorias, $dificultade) {
+            shuffle($categorias);
+            switch ($dificultade) {
+                case "facil":
+                    $categorias = array_slice($categorias, 0, 2);
+                    break;
+                case "normal":
+                    $categorias = array_slice($categorias, 0, 3);
+                    break;
+                case "dificil":
+                    $categorias = array_slice($categorias, 0, 4);
+                    break;
+            }
             return $categorias;
         }
         ?>
@@ -74,35 +106,33 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " align="center">
-                    <form action="index.php" method="post">
+                    <form action="index.php" method="get" name="formularioDificultade">
                         <h4>Dificultade</h4>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-secondary active btn-success">
+                            <label class="btn btn-secondary <?php if ($dificultade == "facil") {
+                                echo "active";
+                            }
+                            ?>  btn-success" onclick="cambiarDificultade()">
                                 <input type="radio" name="dificultade" value="facil" 
-                                <?php
-                                if ($dificultade == "facil") {
-                                    echo "cheked";
-                                }
-                                ?>/>Fácil
+                                       />Fácil
                             </label>
-                            <label class="btn btn-secondary active btn-warning">
+                            <label class="btn btn-secondary <?php
+                            if ($dificultade == "normal") {
+                                echo "active";
+                            }
+                            ?> btn-warning" onclick="cambiarDificultade()">
                                 <input type="radio" name="dificultade" value="normal" 
-                                <?php
-                                if ($dificultade == "normal") {
-                                    echo "cheked";
-                                }
-                                ?>/>Normal
+                                       />Normal
                             </label>
-                            <label class="btn btn-secondary active btn-danger">
+                            <label class="btn btn-secondary <?php
+                            if ($dificultade == "dificil") {
+                                echo "active";
+                            }
+                            ?> btn-danger" onclick="cambiarDificultade()">
                                 <input type="radio" name="dificultade" value="dificil" 
-                                <?php
-                                if ($dificultade == "dificil") {
-                                    echo "cheked";
-                                }
-                                ?>/>Difícil
+                                       />Difícil
                             </label>
                         </div>
-                        <button class = "btn btn-secondary" type="submit" name="enviarDificultade">Seleccionar dificultade</button>
                     </form>
                 </div>
             </div>
@@ -114,7 +144,7 @@
                         <h4 class="flex">Categorías </h4>
                     </div>
                     <div class="d-flex">
-                        <?php foreach ($categorias as $categoria) { ?>
+                        <?php foreach ($categoriasSeleccionadas as $categoria) { ?>
                             <div class="flex ficha">
                                 <img src="<?= $rutaImaxes . $categoria[0] . "/" . $categoria[1] ?>" />
                                 <h6><?= $categoria[0] ?></h6>
@@ -122,15 +152,20 @@
                         <?php } ?>
                     </div>
                     <form action="categorias.php" method="post">
-                        <input type="hidden" name="dificultade" value="<?=$dificultade ?>"/>
+                        <input type="hidden" name="dificultade" value="<?= $dificultade ?>"/>
                         <button class = "btn btn-secondary" type="submit">Seleccionar categorías</button>
                     </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 xogar" align="center">
-                    <br/>
-                    <button class="btn btn-lg btn-success" type="submit" name="enviar" value="enviar">Xogar</button>
+                    <form action="respostas.php" method="get">
+                        Número imaxes por categoría <input type="number" name="numImaxes" value="5" min="5" max="10"/>
+                        <input type="hidden" name="categorias" value="<?= implode(",", array_column($categoriasSeleccionadas, 0)) ?>"/>
+                        <input type="hidden" name="dificultade" value="<?= $dificultade ?>"/>
+                        <br/>
+                        <button class="btn btn-lg btn-success" type="submit" name="enviar" value="enviar">Xogar</button>
+                    </form>
                 </div>
             </div>
         </div>

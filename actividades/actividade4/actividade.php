@@ -6,149 +6,150 @@
         ?>
         <title>Agrupar elementos</title>
         <meta charset="utf-8"/>
-        <script src="seleccionar.js"></script>
-        <style>
-            .ficha {
-                border-style: solid;
-                border-width: 20;
-                margin: 20 0;
-                width : 150;
-                height : 150;
+        <script type="text/javascript">
+            function seleccionar(categoriaSeleccionada) {
+                var seleccion = document.getElementById("seleccionado");
+                seleccion.value = categoriaSeleccionada;
+                document.formulario.submit();
             }
-            .btn-lg {
-                padding: 10 70;
+        </script>
+        <style>
+            .ocultar {
+                display: none;
+            }
+            .cabeceira {
+                position: relative;
+            }
+            .contenedor {
+                border-style: solid;
+                width: 80%;
+                margin: 50px auto;
+            }
+            #puntuacion {
+                text-align: right;
+            }
+            #puntuacion h5 {
+                margin: 20px 40px;
+            }
+            .categorias {
+                text-align: center;
+            }
+            .ficha {
+                display: inline-block;
+                text-align: center;
+                margin: 10px 20px;
+                padding: 15px;
+                background-color: slateblue;
+            }
+            .ficha:hover{
+                background-color: green;
+                cursor: pointer;
+            }
+            .ficha img {
+                width : 140px;
+                height : 100px;
+                background-color: white;
+            }
+            .elementos {
+                margin: 50px auto;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .erro {
+                margin-top: 0px;
+                text-align: center;
+                color: red;
+                font-size: 40px;
+                font-weight: bold;
             }
         </style>
     </head>
     <body>
         <?php
         include '../../layout/cabeceira.php';
+        if (isset($_POST["inicioXogo"])) {
+            $puntuacion = 0;
+            $claseOcultar = "ocultar";
+            for ($i = 0; isset($_POST["categoria$i"]); $i++) {
+                $categorias[] = $_POST["categoria$i"];
+            }
+            for ($i = 0; isset($_POST["imaxe$i"]); $i++) {
+                $imaxesMisturadas[] = $_POST["imaxe$i"];
+            }
+            shuffle($imaxesMisturadas);
+        } else {
+            $puntuacion = $_POST["puntuacion"];
+            for ($i = 0; isset($_POST["categorias$i"]); $i++) {
+                $categorias[] = $_POST["categorias$i"];
+            }
+            //     echo var_dump($categorias);
+            $categoriaSeleccionada = $_POST["categoriaSeleccionada"];
+            $imaxesMisturadas = explode(",", $_POST["imaxes"]);
+            $elementoSeleccionado = $_POST["elementoSeleccionado"];
+
+            $categoriasTotais = getCategorias();
+            $indexCategoriaSeleccionada = array_search($categoriaSeleccionada, array_column($categoriasTotais, 0));
+            $directoriosElementoSeleccionado = explode("/", $elementoSeleccionado);
+            if (in_array($directoriosElementoSeleccionado[count($directoriosElementoSeleccionado) - 1], $categoriasTotais[$indexCategoriaSeleccionada])) {
+                $puntuacion++;
+                $claseOcultar = "ocultar";
+                unset($imaxesMisturadas[0]);
+                $imaxesMisturadas = array_slice($imaxesMisturadas, 0);
+                if (empty($imaxesMisturadas)) {
+                    finalizarXogo($puntuacion); //Facer despois das estadisticas
+                }
+            } else {
+                if ($puntuacion > 0) {
+                    $puntuacion--;
+                }
+                $claseOcultar = "";
+            }
+        }
+
+        function getCategorias() {
+            $ficheiro = fopen("categorias.csv", "r");
+            while (($datos = fgetcsv($ficheiro, 0, ";")) != false) {
+                $categorias[] = $datos;
+            }
+            fclose($ficheiro);
+            return $categorias;
+        }
         ?>
 
-        <?php
-        define("NUMERO_IMAGENES_FACIL", 5);
-        define("NUMERO_IMAGENES_NORMAL", 10);
-        define("NUMERO_IMAGENES_DIFICIL", 15);
-
-        define("PROPORCION_IMAGENES_CORRECTAS_FACIL", 3);
-        define("PROPORCION_IMAGENES_CORRECTAS_NORMAL", 2);
-        define("PROPORCION_IMAGENES_CORRECTAS_DIFICIL", 1);
-        asignarDificultad();
-
-        $rutaImagenes = "Imagenes/";
-        $numeroCategorias = getLineasFichero();
-        $lineaCategoriaAciertos = rand(1, $numeroCategorias);
-
-        $arrayAciertos = getImagenes($lineaCategoriaAciertos);
-        $imagenesAcierto = $arrayAciertos["imagenes"];
-        $categoriaAcierto = $arrayAciertos["categoria"];
-
-        $arrayFallos = getImagenes(getNumeroAleatorioDistinto(1, $numeroCategorias, $lineaCategoriaAciertos));
-        $imagenesFallo = $arrayFallos["imagenes"];
-        ?>
-        <form class = "container" method = "post" action = "respuestas.php">
-
-            <h1><?= $categoriaAcierto ?></h1>
-            <input type = "hidden" name="categoria" value="<?= $categoriaAcierto; ?>"/>
-            <div>
-                <?php escribirImagenes(); ?>
-            </div>
-            <div align = "center">
-                <input class = "btn-lg btn-success"  type = "submit" value = "Enviar"/>
-            </div>
-        </form>
-        <?php
-
-        function escribirImagenes() {
-            global $numeroImagenes;
-            global $proporcionImagenesCorrectas;
-            global $imagenesAcierto;
-            global $imagenesFallo;
-            $filas = $numeroImagenes / 5;
-
-            $contador = 0;
-
-            for ($i = 0; $i < $filas; $i++) {
-                ?>
-                <div class="d-flex"> 
-                    <?php
-                    for ($j = 0; $j < 5 && ($i * $j) < $numeroImagenes; $j++) {
-                        $aleatorio = rand(1, $proporcionImagenesCorrectas + 1);
-                        if ($aleatorio <= $proporcionImagenesCorrectas) {
-                            $rutaImagen = next($imagenesAcierto);
-                        } else {
-                            $rutaImagen = next($imagenesFallo);
-                        }
-                        $contador++;
-                        ?>
-                        <div class="flex-fill">
-                            <input id = "enviada<?= $contador; ?>" type = "hidden" name = "imagen<?= $contador; ?>" value = "<?= $rutaImagen; ?>-n"/>
-                            <img class = "ficha" id = "imagen-<?= $contador; ?>" src = "<?= $rutaImagen; ?>" onclick = "seleccionar(this)"/>
+        <div>
+            <h1>Selecciona a categoria a que pertence o elemento</h1>
+        </div>
+        <div class="contenedor">
+            <form action="actividade.php" method="post" name="formulario">
+                <div id="puntuacion">
+                    <input type="hidden" name="puntuacion" value="<?= $puntuacion ?>"/>
+                    <h5>Puntuacion: <?= $puntuacion ?></h5>
+                </div>
+                <div>
+                    <h3>Categorias</h3>
+                </div>
+                <div class="categorias">
+                    <input type="hidden" id="seleccionado" name="categoriaSeleccionada" value="" />
+                    <?php for ($i = 0; $i < count($categorias); $i++) { ?>
+                        <div class="ficha" onclick="seleccionar('<?= explode(",", $categorias[$i])[0] ?>')">
+                            <input type="hidden" name="categorias<?= $i ?>" value="<?= $categorias[$i] ?>"/>
+                            <img src="<?= explode(",", $categorias[$i])[1] ?>"/>
+                            <h3><?= explode(",", $categorias[$i])[0] ?></h3>
                         </div>
-                        <?php
-                    }
+                    <?php }
                     ?>
                 </div>
-                <?php
-            }
-        }
-
-        function getLineasFichero() {
-            global $rutaImagenes;
-
-            $contador = 0;
-            $archivo = fopen("categorias.csv", "r");
-            while ($linea = fgetcsv($archivo) != false) {
-                $contador++;
-            }
-            fclose($archivo);
-            return $contador;
-        }
-
-        function getImagenes($indexLinea) {
-            global $rutaImagenes;
-
-            $archivo = fopen("categorias.csv", "r");
-            for ($i = 0; $i < $indexLinea - 1; $i++) {
-                fgetcsv($archivo);
-            }
-            $linea = fgetcsv($archivo, 0, ";");
-            $categoria = $linea[0];
-            for ($columna = 1; $columna < count($linea); $columna++) {
-                $buenos[] = $rutaImagenes . $categoria . "/" . $linea[$columna];
-            }
-            fclose($archivo);
-            shuffle($buenos);
-            return array("categoria" => $categoria, "imagenes" => $buenos);
-        }
-
-        function getNumeroAleatorioDistinto($min, $max, $distinto) {
-            do {
-                $aleatorio = rand($min, $max);
-            } while ($aleatorio == $distinto);
-            return $aleatorio;
-        }
-
-        function asignarDificultad() {
-            global $numeroImagenes;
-            global $proporcionImagenesCorrectas;
-            switch ($_POST["dificultade"]) {
-                case "facil":
-                    $numeroImagenes = NUMERO_IMAGENES_FACIL;
-                    $proporcionImagenesCorrectas = PROPORCION_IMAGENES_CORRECTAS_FACIL;
-                    break;
-                case "normal":
-                    $numeroImagenes = NUMERO_IMAGENES_NORMAL;
-                    $proporcionImagenesCorrectas = PROPORCION_IMAGENES_CORRECTAS_NORMAL;
-                    break;
-                case "dificil":
-                    $numeroImagenes = NUMERO_IMAGENES_DIFICIL;
-                    $proporcionImagenesCorrectas = PROPORCION_IMAGENES_CORRECTAS_DIFICIL;
-                    break;
-            }
-        }
-        ?>
-
+                <div class="elementos">
+                    <input type="hidden" name="imaxes" value="<?= implode(",", $imaxesMisturadas) ?>"/>
+                    <input type="hidden" name="elementoSeleccionado" value="<?= $imaxesMisturadas[0] ?>"/>
+                    <img src="<?= $imaxesMisturadas[0] ?>"/>
+                    <h3>Elemento</h3>
+                </div>
+                <div class="erro <?= $claseOcultar ?>">
+                    Intentao de novo
+                </div>
+            </form>
+        </div>
         <?php
         require_once '../../layout/pe.php'; /* Contén o pé da páxina (<footer>[...]</footer>) */
         ?>
