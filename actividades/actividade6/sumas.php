@@ -1,16 +1,16 @@
 <?php 
         /********************************/
-	    /*      Luis Corral de Cal      */
-	    /*	    28 Novembro 2019	    */
-    	/*	    Proxecto 1 Avaliacion   */
+	/*      Luis Corral de Cal      */
+	/*	02 Febreiro 2020	*/
+    	/*	Proxecto 1 Avaliacion   */
     	/*      Páxina da Actividade    */
-    	/*	    Version 1		        */
+    	/*	Version 1	        */
     	/********************************/
 ?>
 <?php 
 /*Funcion para gardar a puntuacion*/
 /* Pasamoslle como parámetro o nome, a dificultade e a puntuacion da partida */
- function gardar($nome,$dif,$punt){
+/* function gardar($nome,$dif,$punt){
     $rexistros = array();//Array que usaremos para ordear as puntuacións
     $ficheiro = fopen('clasificacion.csv', "r+");//abrimos o ficheiro en lectura
     while($celdas = fgetcsv($ficheiro,',')){
@@ -28,26 +28,24 @@
         $rexistros[$i][0] = $i + 1; //Modificamos o identificador
     }
     /*Abrimos o ficheiro en modo escritura e que sobreescriba o que hai*/
-    $ficheiro = fopen('clasificacion.csv', "w+");
+  /*  $ficheiro = fopen('clasificacion.csv', "w+");
     for($i=0;$i<sizeof($rexistros);$i++){
       fputcsv($ficheiro,$rexistros[$i]);//Escribimos os rexistros no csv
   }
   fclose($ficheiro);//pechamos o ficheiro
  }
+ */
 ?>
 <?php 
 $directorioRaiz ="../..";
 $num_a='';
 $num_b='';
-//$nome='';
 $dif='';
-//recollemos o nome e a dificultade
+//recollemos a dificultade
 if(isset($_GET['difi'])){
-//    $nome = $_GET['nome'];
     $dif = $_GET['difi'];
 }
 if(isset($_POST['dif'])){
-//    $nome = $_POST['nome'];
     $dif = $_POST['dif'];
 }
 //recollemos os numeros mostrados para as sumas do POST e os reconvertimos en array
@@ -68,8 +66,8 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
                     $resultados[$i] = false;
                 }
         }
-        if(isset($_POST['gardar'])){
-            gardar($nome,$dif,$aciertos);
+        if(isset($_POST['gardar'])){    
+        //     gardar($nome,$dif,$aciertos);
         /*Se pulsamos gardar chámase a función e pasamoslle como parámetros
         o nome a dificultade e os aciertos */
         }
@@ -81,20 +79,23 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
 		* @Autor: Luis Corral
 		* @GitHub: luiscorraldc
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 3/12/2019
+		* @UltimaModificacion: 3/02/2020
 		* @Version: 1.1
     **/
     include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?> 
 <meta charset="utf-8">
 	<link rel="stylesheet" href="styles/estilosXogo.css">
+	<style>
+	.xogo {	margin-left: 40%;
+		vertical-align: center;	}	
+	</style>
 	<title>Caderno de Sumas</title> 
 </head>
 <body>
 <?php include("../../layout/cabeceira.php"); /* Incluimos a cabeceira */?>
-<?php /*<div class="xogador"> */?>
-<?php /* <h3>Xogador : <?php echo $nome ?> </h3> */ ?>
 <h2>Dificultade : <?php echo $dif; ?></h2>
-<?php /* </div> */ ?>
+	<div class="xogo">
+	
       <form action="sumas.php" method="post">
 <?php /* creamos aleatoriamente as sumas */
         if(!isset($_POST['comp'])){
@@ -125,8 +126,7 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
           $num_b = $_POST['num_b'];
         }
 /* Sacamos as sumas por pantalla */
-        for($i=1;$i<=10;$i++){ 
-?>      
+	for($i=1;$i<=10;$i++){ ?>      
         <label><? /* Se existe unha xogada anterior a recuperamos en pantalla */?>
         <?php if(isset($_POST['comp'])){ 
                 echo $nume_a[$i-1];
@@ -155,16 +155,17 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
    <input type="submit" id="gardar" name="gardar" value="Gardar Resultados">
    <input type="hidden" id="num_a" name="num_a" value="<?php echo $num_a;?>">
    <input type="hidden" id="num_b" name="num_b" value="<?php echo $num_b;?>">
-<?php /*<input type="hidden" id="nome" name="nome" value="<?php echo $nome;?>">*/?>
    <input type="hidden" id="dif" name="dif" value="<?php echo $dif;?>">    
      </form>
+
 <?php if(isset($_POST['comp'])){ ?>
         <h2>Resultado ---> <?php echo  $aciertos;?> Aciertos </h2>
 <?php } ?>
-   <?php /*  </div> */ ?>
+   
      <form action="index.php" method="post">
         <input type="submit" id="volver" name="volver" value="Volver ó inicio">
      </form>
+</div>
      <?php include("../../layout/pe.php"); ?>
 </body>
 </html>
