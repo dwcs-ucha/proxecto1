@@ -1,130 +1,96 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <?php
         /**
-         * @Autor: Santiago Calvo Pi�eiro
-         * */
+         * @author Santiago Calvo Piñeiro
+         */
         $directorioRaiz = "../..";
         include '../../layout/head.php';
         ?>
         <meta charset="utf-8">
         <title>Categorias</title>
-        <style>
-            .ficha {
-                border-style: solid;
-                border-width: 500;
-                margin: 20px;
-                text-align: center;
-                padding: 10px;
+        <link href="estilos.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript">
+            function seleccionarCategoria(elemento, categoria) {
+                if (elemento.style.backgroundColor != "green") {
+                    elemento.children[0].value = categoria;
+                    elemento.style.backgroundColor = "green";
+                } else {
+                    elemento.children[0].value = "";
+                    elemento.style.backgroundColor = "";
+                }
             }
-            .ficha img {
-                width : 270px;
-                height : 200px;
-            }
-        </style>
-        <script src="seleccionar.js" type="text/javascript"></script>
+        </script>
     </head>
     <body>
         <?php
+        include 'funcionsActividade.php';
         $dificultade = $_POST["dificultade"];
         $numCategoriasSeleccionar = getNumCategoriasSeleccionar($dificultade);
         $mensaxeErro = "";
         if (isset($_POST["enviarCategorias"])) {
-            eventoBotonSeleccionarCategorias($numCategoriasSeleccionar, $dificultade);
+            eventoBotonSeleccionarCategorias($numCategoriasSeleccionar, $dificultade, $mensaxeErro);
         }
-        include '../../layout/cabeceira.php';
         $rutaImaxes = "Imagenes/";
-        $categorias = getCategorias();
+        $categorias = getNomesImaxesCategoriasFicheiro();
+        
+        //Número de imaxes a mostrar en cada liña da páxina
         $columnas = 4;
+
+        //Número de filas completas
         $filas = intdiv(count($categorias), $columnas);
+
+        //Engade 1 fila nova aínda que o número de imaxes non ocupe todo o espazo reservado á fila.
         $filas += (count($categorias) % $columnas) == 0 ? 0 : 1;
         ?>
-
-        <form action="categorias.php" method="post">
+        <div class="container">
             <?php
-            for ($indexFila = 0; $indexFila < $filas; $indexFila++) {
+            include '../../layout/cabeceira.php';
+            ?>
+
+            <form action="categorias.php" method="post">
+                <?php
+                $indexCategoriaActual = 0;
+                for ($indexFila = 0; $indexFila < $filas; $indexFila++) {
+                    ?>
+                    <div class="d-flex justify-content-center">
+                        <?php
+                        $indexColumna = 0;
+                        while (($indexColumna < $columnas) && ($indexCategoriaActual < count($categorias))) {
+                            $categoriaActual = $categorias[$indexCategoriaActual];
+                            $nomeCategoriaActual = $categoriaActual[INDEX_CATEGORIA_NOME];
+                            $imaxeCategoriaActual = $categoriaActual[INDEX_CATEGORIA_IMAXE_PRINCIPAL];
+                            $rutaImaxeCategoriaActual = $rutaImaxes . $nomeCategoriaActual . "/" . $imaxeCategoriaActual;
+                            ?>
+                            <div class="flex ficha" onclick="seleccionarCategoria(this, '<?= $nomeCategoriaActual ?>')">
+                                <input type="hidden" name="nomeCategoriaSeleccionada<?= $indexCategoriaActual ?>" value=""/>
+                                <img src="<?= $rutaImaxeCategoriaActual ?>" />
+                                <h2><?= $nomeCategoriaActual ?></h2>
+                            </div>
+                            <?php
+                            $indexCategoriaActual++;
+                            $indexColumna++;
+                        }
+                        ?>
+                    </div>
+
+                <?php }
                 ?>
                 <div class="d-flex justify-content-center">
-                    <?php
-                    for ($indexColumna = 0; ($indexColumna < $columnas) && (($indexFila * $columnas) + $indexColumna < count($categorias)); $indexColumna++) {
-                        $posicionArray = ($indexFila * $columnas) + $indexColumna;
-                        ?>
-                        <div class="flex ficha" onclick="seleccionarCategoria(this, '<?= $categorias[$posicionArray][0] ?>', '<?= $categorias[$posicionArray][1] ?>')">
-                            <input type="hidden" name="seleccionada<?= $posicionArray ?>" value=""/>
-                            <input type="hidden" name="seleccionadaImaxe<?= $posicionArray ?>" value=""/>
-                            <img src="<?= $rutaImaxes . $categorias[$posicionArray][0] . "/" . $categorias[$posicionArray][1] ?>" />
-                            <h2><?= $categorias[$posicionArray][0] ?></h2>
-                        </div>
-                    <?php }
-                    ?>
+                    <button class="btn btn-lg btn-success" type="submit" name="enviarCategorias" value="enviado">Seleccionar categorías</button>
                 </div>
-
-            <?php }
+                <div class="d-flex justify-content-center erro">
+                    <?= $mensaxeErro ?>
+                </div>
+                <input type="hidden" name="dificultade" value="<?= $dificultade ?>"/>
+            </form>
+            <?php
+            include '../../layout/pe.php';
             ?>
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-lg btn-success" type="submit" name="enviarCategorias" value="enviado">Seleccionar categorías</button>
-            </div>
-            <div class="d-flex justify-content-center">
-                <?= $mensaxeErro ?>
-            </div>
-            <input type="hidden" name="dificultade" value="<?= $dificultade ?>"/>
-        </form>
+        </div>
+
         <?php
-        include '../../layout/pe.php';
-        ?>
-        
-        
-        <?php
-
-        function eventoBotonSeleccionarCategorias($numCategoriasSeleccionar, $dificultade) {
-            global $mensaxeErro;
-            $categoriasSeleccionadas = getCategoriasSeleccionadas();
-            if (count($categoriasSeleccionadas) != $numCategoriasSeleccionar) {
-                $mensaxeErro = "Debes seleccionar $numCategoriasSeleccionar categorías";
-            } else {
-                redirixirPaxinaInicio($categoriasSeleccionadas, $dificultade);
-            }
-        }
-
-        function getCategorias() {
-            $ficheiro = fopen("categorias.csv", "r");
-            while (($datos = fgetcsv($ficheiro, 0, ";")) != false) {
-                $categorias[] = array($datos[0], $datos[1]);
-            }
-            fclose($ficheiro);
-            return $categorias;
-        }
-
-        function getNumCategoriasSeleccionar($dificultade) {
-            switch ($dificultade) {
-                case "facil":
-                    $numCategoriasSeleccionar = 2;
-                    break;
-                case "normal":
-                    $numCategoriasSeleccionar = 3;
-                    break;
-                case "dificil":
-                    $numCategoriasSeleccionar = 4;
-                    break;
-            }
-            return $numCategoriasSeleccionar;
-        }
-
-        function getCategoriasSeleccionadas() {
-            for ($i = 0; isset($_POST["seleccionada$i"]); $i++) {
-                if (!empty($_POST["seleccionada$i"])) {
-                    $categoriasSeleccionadas[] = $_POST["seleccionada$i"];
-                }
-            }
-            return $categoriasSeleccionadas;
-        }
-
-        function redirixirPaxinaInicio($categoriasSeleccionadas, $dificultade) {
-            $categoriasString = implode(",", $categoriasSeleccionadas);
-            header("Location:" . urldecode("index.php?categorias=" . $categoriasString . "&dificultade=" . $dificultade));
-            exit();
-        }
         ?>
     </body>
 </html>

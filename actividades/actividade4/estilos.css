@@ -1,0 +1,53 @@
+
+.dificultade {
+    border-style: solid;
+    border-width: 3px;
+}
+.ocultar {
+    display: none;
+}
+.cabeceira {
+    position: relative;
+}
+.contenedor {
+    border-style: solid;
+    width: 80%;
+    margin: 50px auto;
+}
+#puntuacion {
+    text-align: right;
+}
+#puntuacion h5 {
+    margin: 20px 40px;
+}
+.categorias {
+    text-align: center;
+}
+.ficha {
+    display: inline-block;
+    text-align: center;
+    margin: 10px 20px;
+    padding: 15px;
+    background-color: slateblue;
+}
+.ficha:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.ficha img {
+    width : 140px;
+    height : 100px;
+    background-color: white;
+}
+.elementos {
+    margin: 50px auto;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.erro {
+    margin-top: 0px;
+    text-align: center;
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+}
