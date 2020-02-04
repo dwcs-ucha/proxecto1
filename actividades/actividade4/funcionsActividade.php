@@ -21,7 +21,7 @@ define("INDEX_CATEGORIA_INICIO_IMAXES_XOGO", 2);
  * @return array Array multidimensional que contén as categorías do arquivo "categorias.csv". Cada categoría é un array
  * que contén o seu nome e a súa imaxe principal para mostrar.
  */
-function getNomesImaxesCategoriasFicheiro(): array {
+function getNomesImaxesCategoriasFicheiro() {
     $ficheiro = fopen("categorias.csv", "r");
     while (($lineaFicheiro = fgetcsv($ficheiro, 0, ";")) != false) {
         $categoriasNomeEImaxes[] = array($lineaFicheiro[INDEX_CATEGORIA_NOME], $lineaFicheiro[INDEX_CATEGORIA_IMAXE_PRINCIPAL]);
@@ -39,7 +39,7 @@ function getNomesImaxesCategoriasFicheiro(): array {
  * @return array Array multidimensional que conten as categorias que van a usarse na partida
  * actual. So garda o nome e a imaxe de cada categoria.
  */
-function getCategoriasPartida(array $categoriasFicheiro, string $dificultade): array {
+function getCategoriasPartida(array $categoriasFicheiro, string $dificultade) {
     if (isCategoriasSeleccionadasManualmente()) {
         $categoriasPartida = getCategoriasSeleccionadasManualmente($categoriasFicheiro);
     } else {
@@ -53,7 +53,7 @@ function getCategoriasPartida(array $categoriasFicheiro, string $dificultade): a
  * @return bool TRUE se o usuario seleccionou as categorías da partida. FALSE se o usuario non seleccionou as
  * categorias da partida.
  */
-function isCategoriasSeleccionadasManualmente(): bool {
+function isCategoriasSeleccionadasManualmente() {
     return isset($_GET["categorias"]);
 }
 
@@ -64,7 +64,7 @@ function isCategoriasSeleccionadasManualmente(): bool {
  * @return array Array multidimensional que conten as categorias que van a usarse na partida
  * actual. So garda o nome e a imaxe de cada categoria. 
  */
-function getCategoriasSeleccionadasManualmente(array $categoriasFicheiro): array {
+function getCategoriasSeleccionadasManualmente(array $categoriasFicheiro) {
     $nomesCategoriasSeleccionadasUsuario = explode(",", $_GET["categorias"]);
 
     //Borra do array que contén todas as categorias, todas aquelas categorias que non teñan un nome que estea
@@ -86,7 +86,7 @@ function getCategoriasSeleccionadasManualmente(array $categoriasFicheiro): array
  * @return array Array multidimensional que conten as categorias que van a usarse na partida
  * actual. So garda o nome e a imaxe de cada categoria.
  */
-function getCategoriasSeleccionadasAleatoriamente($categoriasFicheiro, $dificultade): array {
+function getCategoriasSeleccionadasAleatoriamente($categoriasFicheiro, $dificultade) {
     shuffle($categoriasFicheiro);
     switch ($dificultade) {
         case "facil":
@@ -115,7 +115,7 @@ function getCategoriasSeleccionadasAleatoriamente($categoriasFicheiro, $dificult
  * @param string $dificultade "facil" | "normal" | "dificil".
  * @param string $mensaxeErro Queda vacío se non hai erros e se os hai amosa o número de categorías que debe seleccionar.
  */
-function eventoBotonSeleccionarCategorias(int $numCategoriasSeleccionar, string $dificultade, string &$mensaxeErro): void {
+function eventoBotonSeleccionarCategorias(int $numCategoriasSeleccionar, string $dificultade, string &$mensaxeErro) {
     $listaNomesCategoriasSeleccionadas = getNomesCategoriasSeleccionadas();
     if (count($listaNomesCategoriasSeleccionadas) != $numCategoriasSeleccionar) {
         $mensaxeErro = "Debes seleccionar $numCategoriasSeleccionar categorías";
@@ -129,7 +129,7 @@ function eventoBotonSeleccionarCategorias(int $numCategoriasSeleccionar, string 
  * @param string $dificultade "facil" | "normal" | "dificil"
  * @return int Número de categorías que deben seleccionarse.
  */
-function getNumCategoriasSeleccionar($dificultade): int {
+function getNumCategoriasSeleccionar($dificultade) {
     switch ($dificultade) {
         case "facil":
             $numCategoriasSeleccionar = 2;
@@ -149,7 +149,7 @@ function getNumCategoriasSeleccionar($dificultade): int {
  * almacenarán o nome da categoría seleccionada e do contrario o value estará baleiro.
  * @return array Nomes das categorías seleccionadas.
  */
-function getNomesCategoriasSeleccionadas(): array {
+function getNomesCategoriasSeleccionadas() {
     $nomesCategoriasSeleccionadas = array();
     for ($i = 0; isset($_POST["nomeCategoriaSeleccionada$i"]); $i++) {
         if (!empty($_POST["nomeCategoriaSeleccionada$i"])) {
@@ -164,7 +164,7 @@ function getNomesCategoriasSeleccionadas(): array {
  * @param array $listaNomesCategoriasSeleccionadas
  * @param string $dificultade "facil" | "normal" | "dificil".
  */
-function redirixirPaxinaInicio($listaNomesCategoriasSeleccionadas, $dificultade): void {
+function redirixirPaxinaInicio($listaNomesCategoriasSeleccionadas, $dificultade) {
     $nomesCategoriasFormatoString = implode(",", $listaNomesCategoriasSeleccionadas);
     header("Location:" . urldecode("index.php?categorias=" . $nomesCategoriasFormatoString . "&dificultade=" . $dificultade));
     exit();
@@ -181,7 +181,7 @@ function redirixirPaxinaInicio($listaNomesCategoriasSeleccionadas, $dificultade)
  * @return array O nome está na posición 0, a imaxe principal na 1, dende a 2 ata $numImaxes están as imaxes nun
  * orde aleatorio que o usuario ten que acertar.
  */
-function getCategoriaPartida(string $nomeCategoria, int $numImaxes): array {
+function getCategoriaPartida(string $nomeCategoria, int $numImaxes) {
     $ficheiro = fopen("categorias.csv", "r");
     $atopado = false;
     while (($linea = fgetcsv($ficheiro, 0, ";")) != false && $atopado == false) {
@@ -201,7 +201,7 @@ function getCategoriaPartida(string $nomeCategoria, int $numImaxes): array {
  * 
  * @return array Nomes das categorías usadas na partida.
  */
-function getNomesCategorias(): array {
+function getNomesCategorias() {
     return explode(",", $_GET["categorias"]);
 }
 
@@ -239,7 +239,7 @@ function seguinteTurno(int &$puntuacion, string $nomeCategoriaSeleccionada, arra
  * @param string $elementoClasificar Ruta completa da imaxe que se ten que clasificar.
  * @return bool TRUE se acertou. FALSE se non acertou.
  */
-function acertouCategoria(string $nomeCategoriaSeleccionada, string $elementoClasificar): bool {
+function acertouCategoria(string $nomeCategoriaSeleccionada, string $elementoClasificar) {
     $categoriasFicheiro = getCategorias();
     $nomesCategoriasFicheiro = array_column($categoriasFicheiro, INDEX_CATEGORIA_NOME);
     $indexCategoriaSeleccionada = array_search($nomeCategoriaSeleccionada, $nomesCategoriasFicheiro);
@@ -257,7 +257,7 @@ function acertouCategoria(string $nomeCategoriaSeleccionada, string $elementoCla
  * 
  * @return array Imaxes que o xogador ten que clasificar.
  */
-function getImaxesPartida(): array {
+function getImaxesPartida() {
     for ($i = 0; isset($_POST["imaxe$i"]); $i++) {
         $imaxesPartida[] = $_POST["imaxe$i"];
     }
@@ -268,7 +268,7 @@ function getImaxesPartida(): array {
  * 
  * @return array Array multidimensional que contén todos os arrays de categorías do ficheiro
  */
-function getCategorias(): array {
+function getCategorias() {
     $ficheiro = fopen("categorias.csv", "r");
     while (($datos = fgetcsv($ficheiro, 0, ";")) != false) {
         $categorias[] = $datos;
