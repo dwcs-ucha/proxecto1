@@ -9,38 +9,40 @@
 ?>
 <?php 
 /*Funcion para gardar a puntuacion*/
-/* Pasamoslle como parámetro o nome, a dificultade e a puntuacion da partida */
-/* function gardar($nome,$dif,$punt){
+/* Pasamoslle como parámetro o ficheiro, e os datos */
+ function escribir_ordeadoCSV($ficheiro,$datos){
     $rexistros = array();//Array que usaremos para ordear as puntuacións
-    $ficheiro = fopen('clasificacion.csv', "r+");//abrimos o ficheiro en lectura
-    while($celdas = fgetcsv($ficheiro,',')){
+    $fich = fopen($ficheiro, "r+");//abrimos o ficheiro en lectura
+    while($celdas = fgetcsv($fich,',')){
         $celdas = array_reverse($celdas);
         array_push($rexistros,$celdas);
-        //gardamos no array de rexistro a fila do ficheiro pero dandolle a volta
+        //gardamos no array de rexistros a fila do ficheiro pero dandolle a volta
     }
-    fclose($ficheiro);//pechamos o ficheiro
-    $datos = array(0,$nome,$dif,$punt);//Creamos o novo rexistro
-    $datos = array_reverse($datos);
-    array_push($rexistros,$datos);//O engadimos o array
+    fclose($fich);//pechamos o ficheiro
+    array_unshift($datos,0);//Creamos o novo rexistro
+    /* Con array unshift engadimos un valor ó inicio do array. Engadimos 0 como
+    	indentificador porque o imos cambiar ao ordear o array */    	
+    $datos = array_reverse($datos);//damoslle a volta para que o primeiro valor sea a puntuación
+    array_push($rexistros,$datos);//O engadimos o array de rexistros
     rsort($rexistros);//Ordeamos os rexistros de maior a menor
     for($i=0;$i<sizeof($rexistros);$i++){//Agora modificamos os identificadores
         $rexistros[$i] = array_reverse($rexistros[$i]);//O volvemos a colocar en orde
         $rexistros[$i][0] = $i + 1; //Modificamos o identificador
     }
     /*Abrimos o ficheiro en modo escritura e que sobreescriba o que hai*/
-  /*  $ficheiro = fopen('clasificacion.csv', "w+");
+    $fich = fopen($ficheiro, "w+");
     for($i=0;$i<sizeof($rexistros);$i++){
-      fputcsv($ficheiro,$rexistros[$i]);//Escribimos os rexistros no csv
+      fputcsv($fich,$rexistros[$i]);//Escribimos os rexistros no csv
   }
-  fclose($ficheiro);//pechamos o ficheiro
- }
- */
+  fclose($fich);//pechamos o ficheiro
+ } 
 ?>
 <?php 
 $directorioRaiz ="../..";
 $num_a='';
 $num_b='';
 $dif='';
+$errorusu=false;
 //recollemos a dificultade
 if(isset($_GET['difi'])){
     $dif = $_GET['difi'];
@@ -66,10 +68,20 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
                     $resultados[$i] = false;
                 }
         }
-        if(isset($_POST['gardar'])){    
-        //     gardar($nome,$dif,$aciertos);
-        /*Se pulsamos gardar chámase a función e pasamoslle como parámetros
-        o nome a dificultade e os aciertos */
+        if(isset($_POST['gardar'])){  
+ /* Se pulsamos gardar comprobase que o usuario é valido e chamamos a funcion de escribir */
+        	if(!$_POST['usuario']){ 
+			$errorusu = true;
+        	}else{
+        		$usu = trim($_POST['usuario']);
+        		if(!preg_match('/[a-zA-Z]/', $usu)){ 
+	        		$errorusu = true;
+        		}        	
+        		else{       	
+		 	   $datos = array($usu,$dif,$aciertos); 
+        		   escribir_ordeadoCSV('clasificacion.csv',$datos);
+             		}
+             	}        
         }
  }
 ?>
@@ -87,7 +99,8 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
 	<link rel="stylesheet" href="styles/estilosXogo.css">
 	<style>
 	.xogo {	margin-left: 40%;
-		vertical-align: center;	}	
+		vertical-align: center;	}
+	.error { color: red;}	
 	</style>
 	<title>Caderno de Sumas</title> 
 </head>
@@ -98,7 +111,7 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
 	
       <form action="sumas.php" method="post">
 <?php /* creamos aleatoriamente as sumas */
-        if(!isset($_POST['comp'])){
+        if(!isset($_POST['comp']) && !isset($_POST['gardar'])){
             $numeros_a = array();
             $numeros_b = array();        
             for($i=1;$i<=10;$i++){
@@ -128,21 +141,21 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
 /* Sacamos as sumas por pantalla */
 	for($i=1;$i<=10;$i++){ ?>      
         <label><? /* Se existe unha xogada anterior a recuperamos en pantalla */?>
-        <?php if(isset($_POST['comp'])){ 
+        <?php if(isset($_POST['comp']) || isset($_POST['gardar'])){ 
                 echo $nume_a[$i-1];
               }else{ /* Se non existe , creamos unha nova */
                 echo $numeros_a[$i-1];
               }?>
         </label>
         + <label>
-        <?php if(isset($_POST['comp'])){ 
+        <?php if(isset($_POST['comp']) || isset($_POST['gardar'])){ 
                 echo $nume_b[$i-1];
               }else{
                 echo $numeros_b[$i-1];
               }?>
         </label>
         = <input type="text" id="res1" name="res<?php echo $i;?>" size="2" 
-            <?php if(isset($_POST['comp'])){ ?> 
+            <?php if(isset($_POST['comp']) || isset($_POST['gardar'])){ ?> 
             value="<?php echo $_POST["res$i"];?>" <?php } ?>>
             <span style="background-color:
             <?php if($resultados[$i]){ ?>green<?php }else{ ?> red <?php } ?>">
@@ -152,16 +165,17 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
        <?php } ?>
    <input type="submit" id="comp" name="comp" value="Comprobar">
    <input type="submit" id="nova" name="nova" value="Nova Partida">
-   <input type="submit" id="gardar" name="gardar" value="Gardar Resultados">
+   <br><input type="text" id="usuario" name="usuario" value=''><input type="submit" id="gardar" name="gardar" value="Gardar Resultados">
+   <br><span class="error">&nbsp;&nbsp;<?php if($errorusu){ echo 'Obligatorio introducir un usuario, so valen letras'; } ?></span>
    <input type="hidden" id="num_a" name="num_a" value="<?php echo $num_a;?>">
    <input type="hidden" id="num_b" name="num_b" value="<?php echo $num_b;?>">
    <input type="hidden" id="dif" name="dif" value="<?php echo $dif;?>">    
      </form>
-
-<?php if(isset($_POST['comp'])){ ?>
+</div>
+<?php if(isset($_POST['comp']) || isset($_POST['gardar'])){ ?>
         <h2>Resultado ---> <?php echo  $aciertos;?> Aciertos </h2>
 <?php } ?>
-   
+   <div class='xogo'>
      <form action="index.php" method="post">
         <input type="submit" id="volver" name="volver" value="Volver ó inicio">
      </form>

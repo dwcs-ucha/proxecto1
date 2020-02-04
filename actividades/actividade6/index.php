@@ -9,8 +9,10 @@
 ?>
 <?php
 $directorioRaiz ="../..";
+include("$directorioRaiz/librerias/utils.php");
 $errordif=false;
 $dif="-";
+$mostrarclas=false;
 /* Cando pulsamos entrar garda o nivel de dificultade se estan ben, 
    se non ó estan, declara as variable vacias para mostrar o erro no formulario
    en cada caso */
@@ -26,7 +28,10 @@ if(isset($_POST['entrar'])){
      if(isset($_POST['dif'])){
        $dif = $_POST['dif'];
         header("location:sumas.php?difi=$dif");
-    }
+    }    
+}
+if(isset($_POST['vercla'])){
+	$mostrarclas = true;
 }
 ?>
 <!doctype html>
@@ -47,6 +52,10 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 			h1 { text-align: center; }
 			img { width: 80%; }
 			.error { color: red;}
+			.xogo {	margin-left: 40%;
+				vertical-align: center;	}
+			td,th {padding: 5px;
+			       text-align: center;}
 		</style>
 	<script type="text/javascript" src=""></script>    
 	<title>Caderno de Sumas</title>
@@ -93,32 +102,36 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 	   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 xogar" align="center">
 	   <button class="btn btn-lg btn-success" type="submit" id="entrar" name="entrar" value="enviar">Xogar</button>
 	   <br><span class="error"><?php if($errordif){ ?> Non hay escollida unha dificultade <?php } ?></span>
+	   <br><button class="btn btn-lg btn-success" type="submit" id="vercla" name="vercla" value="vercla">Ver Clasificación</button>
 	</div>
 	</div>
 	</div>
-	</form>   
-
-     <?php if(isset($_POST['vercla'])){ ?>
-	<div>
+	</form>  
+     <?php if($mostrarclas){ ?>
+	<div class="xogo">
 	 <table>
 	     <tr>
-	       <th>Ranking</th>
-	       <th>Nome</th>
+	       <th>Clasificación</th>
+	       <th>Usuario</th>
 	       <th>Dificultade</th>
 	       <th>Puntuacion</th>
 	     </tr> 
-<?php $ficheiro = fopen('clasificacion.csv', "r+");  //Cargamos o fichero
-      while($celdas = fgetcsv($ficheiro,',')){ 
+<?php $resultados = lerCSV('clasificacion.csv','r+',',');
+//	$ficheiro = fopen('clasificacion.csv', "r+");  //Cargamos o fichero
+//      while($celdas = fgetcsv($ficheiro,',')){ 
 /* asignamos os valores de cada rexistro do ficheiro ó array celdas hasta que
-	o ficheiro remate */?>
+	o ficheiro remate */
+	for($i=0;$i<sizeof($resultados);$i++){		
+	?>
 	     <tr>
-	        <td><?php echo $celdas[0];?></td>  
-	        <td><?php echo $celdas[1];?></td>
-	        <td><?php echo $celdas[2];?></td>
-	        <td><?php echo $celdas[3];?></td>
+	        <td><?php echo $resultados[$i][0];?></td>  
+	        <td><?php echo $resultados[$i][1];?></td>
+	        <td><?php echo $resultados[$i][2];?></td>
+	        <td><?php echo $resultados[$i][3];?></td>
+	       
          </tr>
 <?php /*engadimos as columnas cos valores do array*/
-    }  fclose($ficheiro); //pechamos o ficheiro	?>
+    }  //fclose($ficheiro); //pechamos o ficheiro	?>
 	</table>
 	</div>
 	<?php } ?>
