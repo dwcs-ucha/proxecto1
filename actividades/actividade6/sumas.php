@@ -10,34 +10,49 @@
 <?php 
 /*Funcion para gardar a puntuacion*/
 /* Pasamoslle como parámetro o ficheiro, e os datos */
+/* Os datos os pasamos como array co seguinte orde:	
+Usuario, Contrasinal, Partidas Ganadas,Partidas Perdidas, Dificultade,Puntuación
+-----A PUNTUACIÓN A DE SER O ULTIMO CAMPO PARA ASÍ PODER ORDEAR CORRECTAMENTE-----
+ Para os campos que non se utilicen recomendo utilizar '-' para que non vaian vacios
+ e así evitar problemas.
+ EX: $datos = array('Nome','contraseña','-','-','Facil',10);
+*/
  function escribir_ordeadoCSV($ficheiro,$datos){
     $rexistros = array();//Array que usaremos para ordear as puntuacións
-    $fich = fopen($ficheiro, "r+");//abrimos o ficheiro en lectura
-    while($celdas = fgetcsv($fich,',')){
-        $celdas = array_reverse($celdas);
-        array_push($rexistros,$celdas);
+    if(!$fich = fopen($ficheiro, "r+")){//abrimos o ficheiro en lectura
+    	return false;//se hai error devolve false
+    }else{
+    	while($celdas = fgetcsv($fich,',')){
+        	$celdas = array_reverse($celdas);
+        	array_push($rexistros,$celdas);
         //gardamos no array de rexistros a fila do ficheiro pero dandolle a volta
-    }
-    fclose($fich);//pechamos o ficheiro
-    array_unshift($datos,0);//Creamos o novo rexistro
+    	}
+    	fclose($fich);//pechamos o ficheiro
+    	array_unshift($datos,0);//Creamos o novo rexistro
     /* Con array unshift engadimos un valor ó inicio do array. Engadimos 0 como
     	indentificador porque o imos cambiar ao ordear o array */    	
-    $datos = array_reverse($datos);//damoslle a volta para que o primeiro valor sea a puntuación
-    array_push($rexistros,$datos);//O engadimos o array de rexistros
-    rsort($rexistros);//Ordeamos os rexistros de maior a menor
-    for($i=0;$i<sizeof($rexistros);$i++){//Agora modificamos os identificadores
-        $rexistros[$i] = array_reverse($rexistros[$i]);//O volvemos a colocar en orde
-        $rexistros[$i][0] = $i + 1; //Modificamos o identificador
-    }
+    	$datos = array_reverse($datos);//damoslle a volta para que o primeiro valor sea a puntuación
+    	array_push($rexistros,$datos);//O engadimos o array de rexistros
+    	rsort($rexistros);//Ordeamos os rexistros de maior a menor
+    	for($i=0;$i<sizeof($rexistros);$i++){//Agora modificamos os identificadores
+        	$rexistros[$i] = array_reverse($rexistros[$i]);//O volvemos a colocar en orde
+        	$rexistros[$i][0] = $i + 1; //Modificamos o identificador
+    	}
     /*Abrimos o ficheiro en modo escritura e que sobreescriba o que hai*/
-    $fich = fopen($ficheiro, "w+");
-    for($i=0;$i<sizeof($rexistros);$i++){
-      fputcsv($fich,$rexistros[$i]);//Escribimos os rexistros no csv
-  }
-  fclose($fich);//pechamos o ficheiro
+    	if(!$fich = fopen($ficheiro, "w+")){
+    		return false;//se hai error devolve false
+    	}else{
+    		for($i=0;$i<sizeof($rexistros);$i++){
+      			fputcsv($fich,$rexistros[$i]);//Escribimos os rexistros no csv
+  		}  		
+  	}
+  	fclose($fich);//pechamos o ficheiro
+  }  
+  return true;//se todo esta ben devolve true
  } 
 ?>
 <?php 
+define("semilla", '$5$rounds=5000$qqqwwwsemilla$');
 $directorioRaiz ="../..";
 $num_a='';
 $num_b='';
@@ -70,19 +85,33 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
         }
         if(isset($_POST['gardar'])){  
  /* Se pulsamos gardar comprobase que o usuario é valido e chamamos a funcion de escribir */
-        	if(!$_POST['usuario']){ 
+ 		
+ 
+        	if(!$_POST['usuario'] || !$_POST['cont']){ 
 			$errorusu = true;
         	}else{
         		$usu = trim($_POST['usuario']);
+        		$contrasinal = crypt(trim($_POST['cont']),semilla);        		
         		if(!preg_match('/[a-zA-Z]/', $usu)){ 
 	        		$errorusu = true;
         		}        	
-        		else{       	
-		 	   $datos = array($usu,$dif,$aciertos); 
-        		   escribir_ordeadoCSV('clasificacion.csv',$datos);
-             		}
-             	}        
-        }
+        		else{
+        		    switch($dif){
+        				case 'facil':
+        					$puntuacion = $aciertos;
+        					break;
+        				case 'medio':
+        					$puntuacion = $aciertos*2;
+        					break;
+       					case 'dificil':
+       						$puntuacion = $aciertos*3;
+       						break;        					
+        			}  		
+		 	   $datos = array($usu,$contrasinal,'-','-',$dif,$puntuacion); 
+       		   escribir_ordeadoCSV('clasificacion.csv',$datos);
+            }
+       }        
+    }
  }
 ?>
 <head>
@@ -165,8 +194,10 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
        <?php } ?>
    <input type="submit" id="comp" name="comp" value="Comprobar">
    <input type="submit" id="nova" name="nova" value="Nova Partida">
-   <br><input type="text" id="usuario" name="usuario" value=''><input type="submit" id="gardar" name="gardar" value="Gardar Resultados">
-   <br><span class="error">&nbsp;&nbsp;<?php if($errorusu){ echo 'Obligatorio introducir un usuario, so valen letras'; } ?></span>
+   <br><br>Usuario :<input type="text" id="usuario" name="usuario" value=''>
+   <br><br>Contrasinal : &nbsp;&nbsp;<input type="password" id="cont" name="cont" value=''>
+   <input type="submit" id="gardar" name="gardar" value="Gardar Resultados">
+   <br><span class="error">&nbsp;&nbsp;<?php if($errorusu){ echo 'Obligatorio introducir un usuario, so valen letras, e un Contrasinal'; } ?></span>
    <input type="hidden" id="num_a" name="num_a" value="<?php echo $num_a;?>">
    <input type="hidden" id="num_b" name="num_b" value="<?php echo $num_b;?>">
    <input type="hidden" id="dif" name="dif" value="<?php echo $dif;?>">    

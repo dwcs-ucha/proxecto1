@@ -52,7 +52,7 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 			h1 { text-align: center; }
 			img { width: 80%; }
 			.error { color: red;}
-			.xogo {	margin-left: 40%;
+			.clasificacion { margin-left: 15%;
 				vertical-align: center;	}
 			td,th {padding: 5px;
 			       text-align: center;}
@@ -108,11 +108,14 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 	</div>
 	</form>  
      <?php if($mostrarclas){ ?>
-	<div class="xogo">
+	<div class="clasificacion">
 	 <table>
 	     <tr>
 	       <th>Clasificación</th>
 	       <th>Usuario</th>
+	       <th>Contrasinal</th>
+	       <th>Partidas Ganadas</th>
+	       <th>Partidas Perdidas</th>
 	       <th>Dificultade</th>
 	       <th>Puntuacion</th>
 	     </tr> 
@@ -128,7 +131,9 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 	        <td><?php echo $resultados[$i][1];?></td>
 	        <td><?php echo $resultados[$i][2];?></td>
 	        <td><?php echo $resultados[$i][3];?></td>
-	       
+	        <td><?php echo $resultados[$i][4];?></td>
+	        <td><?php echo $resultados[$i][5];?></td>
+	        <td><?php echo $resultados[$i][6];?></td>
          </tr>
 <?php /*engadimos as columnas cos valores do array*/
     }  //fclose($ficheiro); //pechamos o ficheiro	?>
