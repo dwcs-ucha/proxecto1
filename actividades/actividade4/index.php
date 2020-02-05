@@ -69,7 +69,7 @@
                         <span>Material para traballar a pertenencia ou non pertenencia dun obxeto a unha categoría de
                             vocabulario dada. Primeiro se mostran as categorías e os elementos que pertencen a ela e
                             despois reforzaría o aprendido clasificando eses mesmos elementos. 
-                            <a href = "Manual de usuario.pdf" >Descargar manuaal de usuario</a>
+                            <a href = "Manual de usuario.pdf" >Descargar manual de usuario</a>
                         </span>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
