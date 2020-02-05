@@ -1,7 +1,7 @@
 <?php 
         /********************************/
 	/*	Luis Corral de Cal      */
-	/*	3 Febreiro 2020	        */
+	/*	5 Febreiro 2020	        */
     	/*	Proxecto 1 Avaliacion	*/
     	/*  	Páxina de acceso        */
     	/*	Version 1		*/
@@ -42,7 +42,7 @@ if(isset($_POST['vercla'])){
 		* @Autor: Luis Corral
 		* @GitHub: luiscorraldc
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 3/02/2020
+		* @UltimaModificacion: 05/02/2020
 		* @Version: 1.1
     **/
 include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?> 
@@ -75,9 +75,9 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 				<span>
 				  O xogo consiste en indicar o resultado das sumas que se mostran por pantalla.<br>
 					Consta de 3 dificultades:<br>
-					  -Fácil: Sumas de un só díxito.<br>
-					  -Medio: Sumas con dous díxitos.<br>
-					  -Difícil: Sumas de tres díxitos.<br>
+					  -Fácil: Sumas de un só díxito. Cada acierto vale 1 punto.<br>
+					  -Medio: Sumas con dous díxitos. Cada acierto vale 2 puntos.<br>
+					  -Difícil: Sumas de tres díxitos. Cada acierto vale 3 puntos.<br>
 					</span>
 				</div>
 				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
@@ -117,11 +117,9 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 	       <th>Partidas Ganadas</th>
 	       <th>Partidas Perdidas</th>
 	       <th>Dificultade</th>
-	       <th>Puntuacion</th>
+	       <th>Puntuación</th>
 	     </tr> 
 <?php $resultados = lerCSV('clasificacion.csv','r+',',');
-//	$ficheiro = fopen('clasificacion.csv', "r+");  //Cargamos o fichero
-//      while($celdas = fgetcsv($ficheiro,',')){ 
 /* asignamos os valores de cada rexistro do ficheiro ó array celdas hasta que
 	o ficheiro remate */
 	for($i=0;$i<sizeof($resultados);$i++){		
@@ -135,8 +133,7 @@ include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?>
 	        <td><?php echo $resultados[$i][5];?></td>
 	        <td><?php echo $resultados[$i][6];?></td>
          </tr>
-<?php /*engadimos as columnas cos valores do array*/
-    }  //fclose($ficheiro); //pechamos o ficheiro	?>
+<?php /*engadimos as columnas cos valores do array*/    }  	?>
 	</table>
 	</div>
 	<?php } ?>

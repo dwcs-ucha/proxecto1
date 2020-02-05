@@ -1,59 +1,16 @@
 <?php 
         /********************************/
-	/*      Luis Corral de Cal      */
-	/*	02 Febreiro 2020	*/
-    	/*	Proxecto 1 Avaliacion   */
-    	/*      Páxina da Actividade    */
-    	/*	Version 1	        */
+		/*  Luis Corral de Cal      	*/
+		/*	05 Febreiro 2020			*/
+    	/*	Proxecto 1 Avaliacion   	*/
+    	/*  Páxina da Actividade    	*/
+    	/*	Version 1	        		*/
     	/********************************/
-?>
-<?php 
-/*Funcion para gardar a puntuacion*/
-/* Pasamoslle como parámetro o ficheiro, e os datos */
-/* Os datos os pasamos como array co seguinte orde:	
-Usuario, Contrasinal, Partidas Ganadas,Partidas Perdidas, Dificultade,Puntuación
------A PUNTUACIÓN A DE SER O ULTIMO CAMPO PARA ASÍ PODER ORDEAR CORRECTAMENTE-----
- Para os campos que non se utilicen recomendo utilizar '-' para que non vaian vacios
- e así evitar problemas.
- EX: $datos = array('Nome','contraseña','-','-','Facil',10);
-*/
- function escribir_ordeadoCSV($ficheiro,$datos){
-    $rexistros = array();//Array que usaremos para ordear as puntuacións
-    if(!$fich = fopen($ficheiro, "r+")){//abrimos o ficheiro en lectura
-    	return false;//se hai error devolve false
-    }else{
-    	while($celdas = fgetcsv($fich,',')){
-        	$celdas = array_reverse($celdas);
-        	array_push($rexistros,$celdas);
-        //gardamos no array de rexistros a fila do ficheiro pero dandolle a volta
-    	}
-    	fclose($fich);//pechamos o ficheiro
-    	array_unshift($datos,0);//Creamos o novo rexistro
-    /* Con array unshift engadimos un valor ó inicio do array. Engadimos 0 como
-    	indentificador porque o imos cambiar ao ordear o array */    	
-    	$datos = array_reverse($datos);//damoslle a volta para que o primeiro valor sea a puntuación
-    	array_push($rexistros,$datos);//O engadimos o array de rexistros
-    	rsort($rexistros);//Ordeamos os rexistros de maior a menor
-    	for($i=0;$i<sizeof($rexistros);$i++){//Agora modificamos os identificadores
-        	$rexistros[$i] = array_reverse($rexistros[$i]);//O volvemos a colocar en orde
-        	$rexistros[$i][0] = $i + 1; //Modificamos o identificador
-    	}
-    /*Abrimos o ficheiro en modo escritura e que sobreescriba o que hai*/
-    	if(!$fich = fopen($ficheiro, "w+")){
-    		return false;//se hai error devolve false
-    	}else{
-    		for($i=0;$i<sizeof($rexistros);$i++){
-      			fputcsv($fich,$rexistros[$i]);//Escribimos os rexistros no csv
-  		}  		
-  	}
-  	fclose($fich);//pechamos o ficheiro
-  }  
-  return true;//se todo esta ben devolve true
- } 
 ?>
 <?php 
 define("semilla", '$5$rounds=5000$qqqwwwsemilla$');
 $directorioRaiz ="../..";
+include("$directorioRaiz/librerias/utils.php");
 $num_a='';
 $num_b='';
 $dif='';
@@ -109,6 +66,7 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
         			}  		
 		 	   $datos = array($usu,$contrasinal,'-','-',$dif,$puntuacion); 
        		   escribir_ordeadoCSV('clasificacion.csv',$datos);
+       		   header("location:index.php");
             }
        }        
     }
@@ -120,7 +78,7 @@ if(isset($_POST['comp']) || isset($_POST['gardar'])){
 		* @Autor: Luis Corral
 		* @GitHub: luiscorraldc
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 3/02/2020
+		* @UltimaModificacion: 05/02/2020
 		* @Version: 1.1
     **/
     include("../../layout/head.php"); /* Incluimos os enlaces dos estilos */?> 
