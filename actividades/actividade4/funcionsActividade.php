@@ -281,6 +281,7 @@ function getCategorias() {
  * @todo Redirixir ao usuario para gardar a puntuación e amosar as estadísticas
  * @param int $puntuación puntuacion obtida ao rematar o xogo.
  */
-function finalizarXogo(int $puntuacion): void {
-    
+function finalizarXogo(int $puntuacion)  {
+    header("Location: index.php");
+    exit();
 }
