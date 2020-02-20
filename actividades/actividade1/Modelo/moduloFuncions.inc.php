@@ -1,6 +1,6 @@
 <?php
     // BreoBeceiro:10/12/2019
-    // PROXECTO 1º AVALIACIÓN | Versión 1.0
+    // PROXECTO 2º AVALIACIÓN | Versión 1.0
 
     // validaSilaba() comprobará que nas caixas de texto vaian as sílabas que teñen
     //   que ir (poden ser 'LA', 'LE', 'LI' ou 'LU').
