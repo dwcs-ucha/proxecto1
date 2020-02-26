@@ -8,7 +8,7 @@
         // Devolve o obxecto PDO da conexión coa BBDD en caso de éxito, ou unha mensaxe de erro, en caso contrario.
         public static function conectaBBDD(){
             try{
-                $conexion= new PDO("mysql:host=localhost;dbname=actividade1_BBDD", "breogan", "4321");
+                $conexion= new PDO("mysql:host=localhost;dbname=xogoteca", "breo", "4321");
 
                 $conexion->exec("set names utf8");
 
