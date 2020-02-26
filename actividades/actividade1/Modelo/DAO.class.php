@@ -2,6 +2,11 @@
     // BreoBeceiro:20/02/2020
     // PROXECTO 2ª AVALIACIÓN | Versión 1.0
 
+    // OS MÉTODOS obterProduto() E obterProdutos() NON TEÑEN CABIDA NESTE PROXECTO, POIS A APLICACIÓN É 'Xogoteca',
+    //   SÓ HAI XOGADORES E PARTIDAS.
+    // FALTA UN MÉTODO gardarPuntuacion($id) QUE FAGA UN insert NA TÁBOA PARTIDAS PARA ESE USUARIO COA PUNTUACIÓN
+    //   QUE OBTIVO.
+
     class DAO{
 
         // Conecta coa BBDD 'actividade1_BBDD' por medio do usuario 'breogan'.
@@ -114,8 +119,10 @@
                 $conexion= "Erro conectando coa base de datos ". $e->getMessage();
 
             }finally{
-                if($resultado>=1){
-                    return $resultado;
+                if(isset($resultado)){
+                    if($resultado>=1){
+                        return $resultado;
+                    }
                 }else{
                     return false;
                 }
