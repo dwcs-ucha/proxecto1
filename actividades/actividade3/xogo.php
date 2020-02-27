@@ -7,7 +7,7 @@
 */
 
 include_once 'validacion_xogo.php';
-include '../../librerias/utils.php';
+include '../../Controlador/librerias/utils.php';
 /*var_dump($_POST);*/
 $difRango = array(
     "min" => 1,
@@ -51,7 +51,7 @@ $utilidade = azarCsv($utilidade, $preguntas);
     <head>
         <?php
         $directorioRaiz ="../.."; //Ten que declararse ao principio e debe ter este nome
-        include '../../layout/head.php'; //Debe escribirse no head
+        include '../../Vista/layout/head.php'; //Debe escribirse no head
         ?>
         <title>¿Que é? ¿para que serve? ¿para que se utiliza?  </title>
         <link rel="stylesheet" type="text/css" href="estilos.css">
@@ -64,7 +64,7 @@ $utilidade = azarCsv($utilidade, $preguntas);
                 <input type="hidden" value="<?php echo $dif; ?>" name="dificultade">
             </form>
             <?php
-            include '../../layout/cabeceira.php'; //Debe escribirse ao principio do body
+            include '../../Vista/layout/cabeceira.php'; //Debe escribirse ao principio do body
             ?>
             <h1 class="text-center titulo-h1">Xogo de preguntas con obxetos</h1>
             <div class="row">
@@ -143,8 +143,9 @@ $utilidade = azarCsv($utilidade, $preguntas);
                 }
                 ?>
             </div>
+            
             <?php
-            include '../../layout/pe.php'; //Debe escribirse ao final do body
+            include '../../Vista/layout/pe.php'; //Debe escribirse ao final do body
             ?>
         </main>
 		</wrapper>

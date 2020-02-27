@@ -10,7 +10,7 @@
         <?php
         // Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:
         $directorioRaiz = ".";
-        include 'layout/head.php';
+        include 'Vista/layout/head.php';
         ?>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script type="text/javascript" src=""></script>
@@ -35,7 +35,7 @@
 	<wrapper class="d-flex flex-column">
         <main class="container">
             <?php
-            include('layout/cabeceira.php');
+            include('Vista/layout/cabeceira.php');
             ?>
 
             <h2>Proxecto 1ª AvAliAciOn</h2>
@@ -52,10 +52,10 @@
             </p>
 
             <br />
-            <img src="imaxes/nenos.jpg" alt="Globo con cara feliz" class="imaxe" />
+            <img src="Vista/imaxes/nenos.jpg" alt="Globo con cara feliz" class="imaxe" />
 
             <?php
-            include('layout/pe.php');
+            include('Vista/layout/pe.php');
             ?>
         </main>
 	</wrapper>

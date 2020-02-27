@@ -6,7 +6,7 @@
          * @author Santiago Calvo Piñeiro
          */
         $directorioRaiz = "../..";
-        include '../../layout/head.php';
+        include '../../Vista/layout/head.php';
         ?>
         <meta charset="utf-8">
         <title>Categorias</title>
@@ -46,7 +46,7 @@
         ?>
         <div class="container">
             <?php
-            include '../../layout/cabeceira.php';
+            include '../../Vista/layout/cabeceira.php';
             ?>
 
             <form action="categorias.php" method="post">
@@ -86,7 +86,7 @@
                 <input type="hidden" name="dificultade" value="<?= $dificultade ?>"/>
             </form>
             <?php
-            include '../../layout/pe.php';
+            include '../../Vista/layout/pe.php';
             ?>
         </div>
 

@@ -5,7 +5,7 @@
          * @author Santiago Calvo Piñeiro
          */
         $directorioRaiz = "../..";
-        include '../../layout/head.php';
+        include '../../Vista/layout/head.php';
         ?>
         <title>Agrupar elementos</title>
         <meta charset="utf-8"/>
@@ -43,7 +43,7 @@
         ?>
         <div class="container">
             <?php
-            include '../../layout/cabeceira.php';
+            include '../../Vista/layout/cabeceira.php';
             ?>
 
             <div>
@@ -81,7 +81,7 @@
         </form>
     </div>
     <?php
-    require_once '../../layout/pe.php'; /* Contén o pé da páxina (<footer>[...]</footer>) */
+    require_once '../../Vista/layout/pe.php'; /* Contén o pé da páxina (<footer>[...]</footer>) */
     ?>
 </div>
 </body>

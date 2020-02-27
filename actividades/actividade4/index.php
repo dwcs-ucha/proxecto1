@@ -6,7 +6,7 @@
          * @author Santiago Calvo Piñeiro
          */
         $directorioRaiz = "../..";
-        include '../../layout/head.php';
+        include '../../Vista/layout/head.php';
         ?>
         <meta charset="utf-8">
         <title>Agrupar elementos</title>
@@ -56,7 +56,7 @@
         ?>
         <div class="container">
             <?php
-            include '../../layout/cabeceira.php';
+            include '../../Vista/layout/cabeceira.php';
             ?>
             <h1>Xogo de agrupar elementos por categorías</h1>
 
@@ -141,7 +141,7 @@
                 </div>
             </div>
             <?php
-            include '../../layout/pe.php';
+            include '../../Vista/layout/pe.php';
             ?>
         </div>
     </body>
