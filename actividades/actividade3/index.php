@@ -3,7 +3,7 @@
     <head>
         <?php
         /**
-         * @Autor: Santiago Calvo Piñeiro
+         * @Autor: Manuel Calvo Piñeiro
          * */
         $directorioRaiz = "../..";
         include '../../layout/head.php';
