@@ -1,4 +1,7 @@
 <?php
 	// BreoBeceiro:20/02/2020
 	// PROXECTO 1ª AVALIACIÓN | Versión 1.0
+
+	// CADEA DE CONEXION COA BBDD
+	// RUTAS DE PLANTILLAS DE SMARTY
 ?>
