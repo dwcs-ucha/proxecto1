@@ -31,6 +31,7 @@
     include('../../../librerias/utils.php');
 
     include('../Modelo/DAO.class.php');
+    include('../Modelo/Xogador.class.php');
 
     // Se o xogador quere gardar a súa puntuación, debe autenticarse, de modo que se non está identificado, envíaselle
     //   á páxina de acceso. Se está identificado, a súa puntuación envíase á BBDD:
@@ -46,7 +47,11 @@
             if(empty($nome) || empty($contrasinal)){
                 $erroDatos= "Ambolos dous campos son obrigatorios.";
             }else{
-                $datos= array($nome, $contrasinal, $puntos, "0", "0");
+                // Hai que validar $nome e $contrasinal...
+
+                // O método obterXogador() devolve o código do xogador en caso de atopalo, 
+                $xogador= DAO::obterXogador($nome, $contrasinal);
+                DAO::comprobaXogador($id);
             }
         }
     }
