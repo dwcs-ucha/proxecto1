@@ -1,8 +1,6 @@
 <?php
-    // BreoBeceiro:10/12/2019
-    // PROXECTO 1º AVALIACIÓN | Versión 1.0
-
-    include('DAO.class.php');
+    // BreoBeceiro:26/02/2020
+    // PROXECTO 2º AVALIACIÓN | Versión 1.0
 
     // FALTA REVISAR A VISUALIZACIÓN DA MENSAXE DE ERRO SE OS CAMPOS COS DATOS DO XOGADOR VAN BALEIROS, POIS
     //   TAL E COMO ESTÁ AGORA, NON SE AMOSA (NIN SE QUERA CHEGA A GARDARSE A VARIABLE QUE CONTÉN A MENSAXE NO
@@ -21,20 +19,44 @@
     //   CONSISTE EN QUE AO CARGARSE A PÁXINA, NOS inputs QUE TERÍA QUE RECHEAR O XOGADOR, VEÑEN XA CARGADAS AS 
     //   SÍLABAS INICIAIS.
 
+    // ACTUALIZACIÓN (26/02/2020): Hai que decidir se tomar as sílabas finais dunha táboa (habería que creala) da BBDD
+    //   ou deixar a cousa como está e obtelos dun CSV.
+
     // A VARIABLE $puntos DEBE GARDARSE NUN CAMPO OCULTO.
 
     // Módulo de funcións de validación e saneamento:
-    include('moduloFuncions.inc.php');
+    include('../Modelo/moduloFuncions.inc.php');
 
     // Ficheiro de funcións comúns do sitio:
-    include('../../librerias/utils.php');
+    include('../../../librerias/utils.php');
+
+    include('../Modelo/DAO.class.php');
+
+    // Se o xogador quere gardar a súa puntuación, debe autenticarse, de modo que se non está identificado, envíaselle
+    //   á páxina de acceso. Se está identificado, a súa puntuación envíase á BBDD:
+    if(isset($_POST['enviaPuntos'])){
+        session_start();
+
+        if(!isset($_SESSION['usuario'])){
+            header('Location: acceso.php');
+        }else{
+            $nome= $_POST['nome'];
+            $contrasinal= $_POST['contrasinal'];
+
+            if(empty($nome) || empty($contrasinal)){
+                $erroDatos= "Ambolos dous campos son obrigatorios.";
+            }else{
+                $datos= array($nome, $contrasinal, $puntos, "0", "0");
+            }
+        }
+    }
 
     // A variable $contido recibe os datos do CSV onde se gardan as sílabas finais das palabras do xogo. En cada unha das 
     //   filas, que soamente son dúas, atópanse as sílabas que completan o set de cinco palabras que pode haber nunha partida.
     // Posteriormente, unha variable recibirá aleatoriamente as sílabas da primeira fila ou da segunda, e en función diso,
     //   as imaxes que se amosarán no navegador e as sílabas iniciais que se esperará recibir nas casillas serán unhas ou 
     //   outras.
-    $contido= lerCSV("Datos/actividadeDoada_Contido.csv", "r", ",");
+    $contido;
 
     if(isset($_POST['enviar'])){
         $silabaLA= $_POST['silabaLA'];
@@ -138,7 +160,7 @@
         <?php
             // Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:
             $directorioRaiz ="../..";
-            include('../../layout/head.php');
+            include('../../../layout/head.php');
 
             // En función do valor do parámetro 'tema' que veña pola URL, se é que ven, empregarase unha capa de CSS
             //   ou outra (sendo as existentes dúas, unha de estilo claro, e outra de estilo escuro):
@@ -180,7 +202,7 @@
             <main class="container corpo">
                 <?php
                     // Inclúese a estrutura da cabeceira común do sitio:
-                    include('../../layout/cabeceira.php');
+                    include('../../../layout/cabeceira.php');
                 ?>
 
                 <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
@@ -333,28 +355,11 @@
                                 </form>
                             </div>
                         <?php
-                            // Ao pulsar en 'Gardar', compróbase que os campos non vaian baleiros (dáselle bastante liberdade ao
-                            //   xogador á hora de elexir os caracteres do seu alias, dado que é habitual que estos leven números
-                            //   e caracteres extraños polo medio, como 'N1nj4' ou 'Su$an4_29') e, se levan datos, fórmase o array
-                            //   cos datos a escribir (Nome, Contrasinal e Puntos da partida) para logo chamar á función escribirCSV
-                            //   pasándolle os parámetros correspondentes (a URL da orixe do ficheiro CSV, o modo de escritura e
-                            //   o array cos datos do xogador/a):
-                            if(isset($_POST['enviaPuntos'])){
-                                $nome= $_POST['nome'];
-                                $contrasinal= $_POST['contrasinal'];
-
-                                if(empty($nome) || empty($contrasinal)){
-                                    $erroDatos= "Ambolos dous campos son obrigatorios.";
-                                }else{
-                                    $datos= array($nome, $contrasinal, $puntos, "0", "0");
-                                    var_dump(escribirCSV("Datos/xogadores.csv", "a", $datos));
-                                }
-                            }
                     }
                         ?>
                 <?php
                     // Inclúese a estrutura do pé común do sitio:
-                    include('../../layout/pe.php');
+                    include('../../../layout/pe.php');
                 ?>
             </main>
         </wrapper>

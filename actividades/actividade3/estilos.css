@@ -38,7 +38,7 @@ div[id^="preg"] h1, div[id^="preg"] h2{
 }
 
 .imaxe-max {
-    width: %100;
+    width: 100%;
     text-align: center;
     margin-bottom: 2px;
 }
