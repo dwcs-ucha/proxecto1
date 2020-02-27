@@ -143,6 +143,7 @@ $utilidade = azarCsv($utilidade, $preguntas);
                 }
                 ?>
             </div>
+            
             <?php
             include '../../layout/pe.php'; //Debe escribirse ao final do body
             ?>

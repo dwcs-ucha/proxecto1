@@ -6,7 +6,7 @@
          * @Autor: Manuel Calvo Piñeiro
          * */
         $directorioRaiz = "../..";
-        include '../../layout/head.php';
+        include '../../Vista/layout/head.php';
         ?>
         <meta charset="utf-8">
 		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
@@ -16,7 +16,7 @@
 		<wrapper class="d-flex flex-column">
 		<main class="container corpo">
         <?php
-        include '../../layout/cabeceira.php';
+        include '../../Vista/layout/cabeceira.php';
         ?>
         <h1>Responde preguntas sobre obxetos</h1>
         <form id="facil" action="xogo.php" method="post">
@@ -35,13 +35,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dificultade" align="center">
                         <h4>Dificultade</h4>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-secondary active btn-success">
+                            <label class="btn btn-secondary btn-success">
                                 <input type="radio" name="dificultade" value="1" form="facil"/>Fácil
                             </label>
                             <label class="btn btn-secondary active btn-warning">
                                 <input type="radio" name="dificultade" value="2" form="facil"/>Normal
                             </label>
-                            <label class="btn btn-secondary active btn-danger">
+                            <label class="btn btn-secondary btn-danger">
                                 <input type="radio" name="dificultade" value="3" form="facil"/>Difícil
                             </label>
                         </div>
@@ -56,9 +56,9 @@
             </div>
         </form>
         <?php
-        include '../../layout/pe.php';
+        include '../../Vista/layout/pe.php';
         ?>
 		</main>
-		</wrapper class="d-flex flex-column">
+		</wrapper>
     </body>
 </html>
