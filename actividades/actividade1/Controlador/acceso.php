@@ -16,18 +16,14 @@
             $xogador= trim($user);
             $contrasinal= trim($passw);
 
-            $gardado= false;
-
             if(DAO::comprobaXogador($xogador, $contrasinal)){
                     session_start();
                     $_SESSION['xogador']= $xogador;
+                    $_SESSION['contrasinal']= $contrasinal;
 
-                    $gardado= true;
-            }
-
-            // Con $gardado en TRUE, a puntuación obtida polo xogador, almacénase na BBDD:
-            if($gardado){
-                DAO::gardarPuntuacion($xogador);
+                    header('Location: actividadeDoada.php');
+            }else{
+                $xogadorNonAtopado= "<p>O xogador non está na Base de Datos.</p>";
             }
         }
     }
@@ -76,6 +72,7 @@
                                     <input type="password" name="contrasinalXogador" id="Contrasinal" />
                                 </div>
                                 <?php isset($camposBaleiros)? print $camposBaleiros : print "" ?>
+                                <?php isset($xogadorNonAtopado)? print $xogadorNonAtopado : print "" ?>
 
                                 <input type="submit" name="enviar" value="Gardar" class="btn btn-primary" />
                             </fieldset>

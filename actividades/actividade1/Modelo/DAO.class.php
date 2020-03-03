@@ -94,7 +94,7 @@
 
         // Fai un INSERT na táboa a1_partidas para a tupla na que o campo 'nome' coincida co parámetro recibido.
         // Devolve TRUE en caso de éxito e FALSE, en caso de erro.
-        public static function gardarPuntuacion($nome){
+        public static function gardarPuntuacion($nomeXogador, $puntos){
             // Código para gardar os puntos do xogador...
             return true;
         }

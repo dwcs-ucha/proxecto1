@@ -36,20 +36,15 @@
     if(isset($_POST['enviaPuntos'])){
         session_start();
 
-        if(!isset($_SESSION['usuario'])){
+        if(!isset($_SESSION['xogador'])){
             header('Location: acceso.php');
         }else{
-            $nome= $_POST['nome'];
-            $contrasinal= $_POST['contrasinal'];
+            $xogador= $_SESSION['xogador'];
+            $contrasinal= $_SESSION['contrasinal'];
 
-            if(empty($nome) || empty($contrasinal)){
-                $erroDatos= "Ambolos dous campos son obrigatorios.";
-            }else{
-                // Hai que validar $nome e $contrasinal...
-
-                // Compróbase que os datos inseridos existen na BBDD:
-                DAO::comprobaXogador($nome, $contrasinal);
-            }
+            // Sabemos que os datos existen na BBDD e que están validados porque comprobáronse no momento de gardalos na
+            //   sesión (páxina 'acceso.php', pendente de implementar):
+            DAO::gardarPuntuacion($nome, $puntos);
         }
     }
 
