@@ -60,7 +60,7 @@
                 $consulta->bindParam(":codigo", $cod);
                 $consulta->execute();
 
-                $xogador= $resultado->fetch(PDO::FETCH_OBJ);
+                $xogador= $consulta->fetch(PDO::FETCH_OBJ);
 
             }catch(PDOException $e){
                 $xogador= "Erro conectando coa base de datos ". $e->getMessage();
@@ -92,9 +92,9 @@
             }
         }
 
-        // Fai un INSERT na táboa a1_partidas para a tupla na que o campo 'codigo' coincida co parámetro recibido.
+        // Fai un INSERT na táboa a1_partidas para a tupla na que o campo 'nome' coincida co parámetro recibido.
         // Devolve TRUE en caso de éxito e FALSE, en caso de erro.
-        public static function gardarPuntuacion($id){
+        public static function gardarPuntuacion($nome){
             // Código para gardar os puntos do xogador...
             return true;
         }

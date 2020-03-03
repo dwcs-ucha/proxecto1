@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:26/02/2020
+    // BreoBeceiro:03/03/2020
     // PROXECTO 2º AVALIACIÓN | Versión 1.0
 
     // FALTA REVISAR A VISUALIZACIÓN DA MENSAXE DE ERRO SE OS CAMPOS COS DATOS DO XOGADOR VAN BALEIROS, POIS
@@ -21,8 +21,6 @@
 
     // ACTUALIZACIÓN (26/02/2020): Hai que decidir se tomar as sílabas finais dunha táboa (habería que creala) da BBDD
     //   ou deixar a cousa como está e obtelos dun CSV.
-
-    // A VARIABLE $puntos DEBE GARDARSE NUN CAMPO OCULTO.
 
     // Módulo de funcións de validación e saneamento:
     include('../Modelo/moduloFuncions.inc.php');
@@ -49,9 +47,8 @@
             }else{
                 // Hai que validar $nome e $contrasinal...
 
-                // O método obterXogador() devolve o código do xogador en caso de atopalo, 
-                $xogador= DAO::obterXogador($nome, $contrasinal);
-                DAO::comprobaXogador($id);
+                // Compróbase que os datos inseridos existen na BBDD:
+                DAO::comprobaXogador($nome, $contrasinal);
             }
         }
     }
@@ -325,8 +322,6 @@
                             }
                                         ?>
                     </div>
-
-                    <br /><?php //isset($erroDatos)? print $erroDatos : print "" ?><br />
 
                     <input type="submit" name="enviar" id="Enviar" value="Comprobar" />
                     <input type="submit" name="refrescar" id="Refrescar" value="Refrescar" />
