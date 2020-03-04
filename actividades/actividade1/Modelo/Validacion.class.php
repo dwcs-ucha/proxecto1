@@ -41,6 +41,47 @@
             return $resultado;
         }
 
+        // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE X DA 'actividade4' (Santiago Calvo Piñeiro).
+        // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 5 (incluído) ao 10 (sen incluír).
+        public static function a4_validaNumero($numero){
+            if(is_int($numero)){
+                if($numero<5){
+                    $resultado= false;
+                }elseif($numero>10){
+                    $resultado= false;
+                }else{
+                    if(Validacion::validaInt($numero)){
+                        $resultado= true;
+                    }else{
+                        $resultado= false;
+                    }
+                }
+            }else{
+                $resultado= false;
+            }
+
+            return $resultado;
+        }
+
+        // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE X DA 'actividade4' (Santiago Calvo Piñeiro).
+        // Recibe un nome que, se ten menos de 30 caracteres e carece de números, producirá unha resposta positiva no
+        //   método, é dicir, TRUE. En calquer outro caso, devolverá FALSE.
+        public static function a4_validaNomeCategoria($nomeCategoria){
+            if(is_string($nomeCategoria)){
+                if(strlen($nomeCategoria)<30){
+                    if(filter_var($nomeCategoria, FILTER_SANITIZE_STRING)){
+                        $resultado= true;
+                    }else{
+                        $resultado= false;
+                    }
+                }
+            }else{
+                $resultado= false;
+            }
+
+            return $resultado;
+        }
+
         // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE BAIXA DA 'actividade6' (Luis Corral de Cal).
         // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 0 (incluído) ata o 100 (sen incluír).
         public static function a6_validaNumero_facil($numero){
@@ -95,47 +136,6 @@
                     $resultado= false;
                 }else{
                     if(Validacion::validaInt($numero)){
-                        $resultado= true;
-                    }else{
-                        $resultado= false;
-                    }
-                }
-            }else{
-                $resultado= false;
-            }
-
-            return $resultado;
-        }
-
-        // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE X DA 'actividade4' (Santiago Calvo Piñeiro).
-        // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 5 (incluído) ao 10 (sen incluír).
-        public static function a4_validaNumero($numero){
-            if(is_int($numero)){
-                if($numero<5){
-                    $resultado= false;
-                }elseif($numero>10){
-                    $resultado= false;
-                }else{
-                    if(Validacion::validaInt($numero)){
-                        $resultado= true;
-                    }else{
-                        $resultado= false;
-                    }
-                }
-            }else{
-                $resultado= false;
-            }
-
-            return $resultado;
-        }
-
-        // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE X DA 'actividade4' (Santiago Calvo Piñeiro).
-        // Recibe un nome que, se ten menos de 30 caracteres e carece de números, producirá unha resposta positiva no
-        //   método, é dicir, TRUE. En calquer outro caso, devolverá FALSE.
-        public static function a4_validaNomeCategoria($nomeCategoria){
-            if(is_string($nomeCategoria)){
-                if(strlen($nomeCategoria)<30){
-                    if(filter_var($nomeCategoria, FILTER_SANITIZE_STRING)){
                         $resultado= true;
                     }else{
                         $resultado= false;
