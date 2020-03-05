@@ -11,9 +11,9 @@
    *
    */
   class Usuario {
-    private nome;
-    private contrasinal
-    private rol;
+    private $nome;
+    private $contrasinal;
+    private $rol;
 
     function insertarNovoUsuario(Usuario $usuario) {
       $usuario->contrasinal = (crypt($this.contrasinal, '*L0saluMnosTheDAWm0L4n!'));
