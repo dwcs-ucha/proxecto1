@@ -42,10 +42,10 @@
         }
 
         // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
-        // Recibe un número enteiro, o valor mínimo do rango, e o valor máximo do rango
+        // Recibe un número enteiro, o valor mínimo do rango, e o valor máximo do rango.
         // Devolve TRUE soamente se está dentro do rango do 5 ao 10, ámbolos dous valores incluídos.
         public static function validaRangoNumerico($numero, $min, $max){
-            if(is_int($numero)){
+            if(is_int($numero) && is_int($min) && is_int($max)){
                 if($numero<$min){
                     $resultado= false;
                 }elseif($numero>$max){
@@ -100,7 +100,7 @@
         // Recibe o nome ou ruta dunha imaxe e valida que teña extensión '.jpg', '.gif' ou '.png'.
         // Devolve TRUE se a variable de entrada contén esa extensión e FALSE, se non.
         // OLLO: SE SE DESEXA ENGADIR EXTENSIÓNS DE IMAXES PARA VALIDAR, BASTA CON ENGADILAS AO ARRAY $formatos.
-        public static function validaImagen($ruta){
+        public static function validaImaxe1($ruta){
             $formatos = array("jpg", "gif", "png");
             $regex_formato = "#.+\.(".implode('|', $formatos).")$#";
 
@@ -109,6 +109,21 @@
             }else{
                 $resultado= false;
             }
+        }
+
+        // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
+        // Recibe o nome ou ruta dunha imaxe e valida que teña extensión '.jpg', 'jpeg', '.gif' ou '.png'.
+        // Devolve TRUE se a variable de entrada contén esa extensión e FALSE, se non.
+        public static function validaImaxe2($ruta){
+            $patron = "%\.(gif|jpe?g|png)$%i";
+
+            if(preg_match($patron, $ruta)){
+                $resultado= true;
+            }else{
+                $resultado= false;
+            }
+
+            return $resultado;
         }
 
         // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE BAIXA DA 'actividade6' (Luis Corral de Cal).
