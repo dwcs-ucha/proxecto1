@@ -20,7 +20,7 @@ USE `xogoteca` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `xogoteca`.`usuarios` (
   `nome` VARCHAR(10) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
-  `contrasinal` VARCHAR(10) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
+  `contrasinal` VARCHAR(30) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
   `rol` TINYINT(1) NOT NULL,
   PRIMARY KEY (`nome`))
 ENGINE = InnoDB
@@ -51,26 +51,29 @@ COLLATE = latin1_general_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `xogoteca`.`a4_categorias` (
   `codactividade` VARCHAR(4) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
+  `codcategoria` INT(100) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
   `imaxeprincipal` VARCHAR(45) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
-  PRIMARY KEY (`nome`),
-  UNIQUE INDEX `imaxeprincipal_UNIQUE` (`imaxeprincipal` ASC))
+  PRIMARY KEY (`codcategoria`),
+  UNIQUE INDEX `imaxeprincipal_UNIQUE` (`imaxeprincipal` ASC),
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1
 COLLATE = latin1_general_ci;
 
+
 -- -----------------------------------------------------
--- Table `mydb`.`a4_imaxes`
+-- Table `xogoteca`.`a4_imaxes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `xogoteca`.`a4_imaxes` (
   `a4_idimaxe` INT NOT NULL AUTO_INCREMENT,
-  `a4_categorias_nome` VARCHAR(45) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
   `rutaimaxe` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`a4_idimaxe`, `a4_categorias_nome`),
-  INDEX `fk_a4_imaxes_a4_categorias_idx` (`a4_categorias_nome` ASC),
+  `a4_categorias_codcategoria` INT(100) NOT NULL,
+  PRIMARY KEY (`a4_idimaxe`),
+  INDEX `fk_a4_imaxes_a4_categorias_idx` (`a4_categorias_codcategoria` ASC),
   CONSTRAINT `fk_a4_imaxes_a4_categorias`
-    FOREIGN KEY (`a4_categorias_nome`)
-    REFERENCES `xogoteca`.`a4_categorias` (`nome`)
+    FOREIGN KEY (`a4_categorias_codcategoria`)
+    REFERENCES `xogoteca`.`a4_categorias` (`codcategoria`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -82,5 +85,109 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-insert into usuarios (nome, contrasinal, rol) values ('admin', 'L0qGKMkFX0hHk', '0');
-insert into usuarios (nome, contrasinal, rol) values ('usuario', 'L0qGKMkFX0hHk', '1');
+insert into usuarios (nome, contrasinal, rol) values ('admin', 'L0qGKMkFX0hHk', 0);
+insert into usuarios (nome, contrasinal, rol) values ('usuario', 'L0qGKMkFX0hHk', 1);
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Animais', 'actividades/actividade4/Imaxes/animais.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal1.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal2.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal3.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal4.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal5.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal6.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal7.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal8.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal9.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal10.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal11.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal12.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal13.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal14.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal15.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal16.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal17.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal18.jpeg', 1);
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Arboles', 'actividades/actividade4/Imaxes/arboles.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol1.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol2.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol3.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol4.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol5.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol6.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol7.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol8.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol9.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol10.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/arbol11.png', 2);
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Bebidas', 'actividades/actividade4/Imaxes/bebidas.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida1.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida2.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida3.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida4.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida5.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida6.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida7.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida8.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida9.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida10.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida11.png', 3);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/bebida12.png', 3);
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Calzado', 'actividades/actividade4/Imaxes/calzado.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado1.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado2.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado3.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado4.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado5.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado6.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado7.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado8.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado9.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado10.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado11.png', 4);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/calzado12.png', 4);
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Comida', 'actividades/actividade4/Imaxes/comidas.jpg');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida1.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida2.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida3.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida4.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida5.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida6.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida7.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida8.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida9.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida10.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida11.png', 5);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comida12.png', 5);
+
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Comprar', 'actividades/actividade4/Imaxes/comprar.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar1.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar2.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar3.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar4.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar5.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar6.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar7.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar8.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar9.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar10.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar11.png', 6);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/comprar12.png', 6);
+
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Deporte', 'actividades/actividade4/Imaxes/deportes.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte1.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte2.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte7.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte4.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte5.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte6.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte7.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte8.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte9.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte10.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte11.png', 7);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/deporte12.png', 7);
