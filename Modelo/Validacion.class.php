@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:04/03/2020
+    // BreoBeceiro:05/03/2020
     // PROXECTO 2ª AVALIACIÓN | Versión 1.0
 
     // OS MÉTODOS ESPECIALMENTE DESENVOLVIDOS PARA O SEU USO NALGUNHA ACTIVIDADE, TEÑEN UN COMENTARIO PREVIO NO QUE SE PODE 
@@ -41,13 +41,14 @@
             return $resultado;
         }
 
-        // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE X DA 'actividade4' (Santiago Calvo Piñeiro).
-        // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 5 (incluído) ao 10 (sen incluír).
-        public static function a4_validaNumero($numero){
+        // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
+        // Recibe un número enteiro, o valor mínimo do rango, e o valor máximo do rango
+        // Devolve TRUE soamente se está dentro do rango do 5 ao 10, ámbolos dous valores incluídos.
+        public static function validaRangoNumerico($numero, $min, $max){
             if(is_int($numero)){
-                if($numero<5){
+                if($numero<$min){
                     $resultado= false;
-                }elseif($numero>10){
+                }elseif($numero>$max){
                     $resultado= false;
                 }else{
                     if(Validacion::validaInt($numero)){
@@ -63,10 +64,10 @@
             return $resultado;
         }
 
-        // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE X DA 'actividade4' (Santiago Calvo Piñeiro).
+        // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
         // Recibe un nome que, se ten menos de 30 caracteres e carece de números, producirá unha resposta positiva no
         //   método, é dicir, TRUE. En calquer outro caso, devolverá FALSE.
-        public static function a4_validaNomeCategoria($nomeCategoria){
+        public static function validaNomeCategoria($nomeCategoria){
             if(is_string($nomeCategoria)){
                 if(strlen($nomeCategoria)<30){
                     if(filter_var($nomeCategoria, FILTER_SANITIZE_STRING)){
@@ -82,9 +83,22 @@
             return $resultado;
         }
 
+        // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
+        // Recibe unha cadea de texto e un array, por esa orde.
+        // Devolve TRUE se a cadea atópase no array e FALSE, se non.
+        public static function buscaStringEnArray($cadeaABuscar, $vector){
+            if(in_array($cadeaABuscar, $vector)){
+                $resultado= true;
+            }else{
+                $resultado= false;
+            }
+
+            return $resultado;
+        }
+
         // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE BAIXA DA 'actividade6' (Luis Corral de Cal).
         // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 0 (incluído) ata o 100 (sen incluír).
-        public static function a6_validaNumero_facil($numero){
+        public static function validaNumero_facil($numero){
             if(is_int($numero)){
                 if($numero<0){
                     $resultado= false;
@@ -106,7 +120,7 @@
 
         // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE MEDIA DA 'actividade6' (Luis Corral de Cal).
         // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 0 (incluído) ata o 1000 (sen incluír).
-        public static function a6_validaNumero_medio($numero){
+        public static function validaNumero_medio($numero){
             if(is_int($numero)){
                 if($numero<0){
                     $resultado= false;
@@ -128,7 +142,7 @@
 
         // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE ALTA DA 'actividade6' (Luis Corral de Cal).
         // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 0 (incluído) ata o 10000 (sen incluír).
-        public static function a6_validaNumero_dificil($numero){
+        public static function validaNumero_dificil($numero){
             if(is_int($numero)){
                 if($numero<0){
                     $resultado= false;
@@ -148,7 +162,7 @@
             return $resultado;
         }
 
-        // Corrixe unha cadea de caracteres de entrada.
+        // Corrixe unha cadea de caracteres de entrada para que cumpra formato de correo electrónico.
         // Devolve TRUE en caso de éxito ou FALSE, en caso contrario.
         public static function validaCorreo($email){
             if(filter_var($email, FILTER_SANITIZE_EMAIL)){
@@ -160,6 +174,8 @@
             return $resultado;
         }
 
+        // Valida que unha variable conteña un número enteiro.
+        // Devolve TRUE se é INT e FALSE, se non.
         public static function validaInt($enteiro){
             if(filter_var($enteiro, FILTER_VALIDATE_INT)){
                 $resultado= true;
@@ -170,8 +186,8 @@
             return $resultado;
         }
 
-        // Corrixe e valida un número decimal de entrada.
-        // Devolve TRUE en caso de éxito ou FALSE, en caso contrario.
+        // Valida que unha variable conteña un número decimal.
+        // Devolve TRUE se é FLOAT e FALSE, se non.
         public static function validaFloat($decimal){
             if(filter_var($decimal, FILTER_VALIDATE_FLOAT)){
                 $resultado= true;
@@ -183,8 +199,8 @@
         }
 
         // Recibe unha data co formato 'aaaa-mm--dd'.
+        // Devolve TRUE se a data é correcta, tanto no tocante ao seu formato coma a se existe de acordo co calendario, e FALSE se non.
         public static function validaData($date){
-    
             $partesData= explode("-", $date);
             $data= checkdate($partesData[1], $partesData[2], $partesData[0]);
     
