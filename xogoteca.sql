@@ -81,3 +81,6 @@ USE `xogoteca` ;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+insert into usuarios (nome, contrasinal, rol) values ('admin', 'L0qGKMkFX0hHk', '0');
+insert into usuarios (nome, contrasinal, rol) values ('usuario', 'L0qGKMkFX0hHk', '1');
