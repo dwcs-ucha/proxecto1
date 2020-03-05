@@ -96,6 +96,21 @@
             return $resultado;
         }
 
+        // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
+        // Recibe o nome ou ruta dunha imaxe e valida que teña extensión '.jpg', '.gif' ou '.png'.
+        // Devolve TRUE se a variable de entrada contén esa extensión e FALSE, se non.
+        // OLLO: SE SE DESEXA ENGADIR EXTENSIÓNS DE IMAXES PARA VALIDAR, BASTA CON ENGADILAS AO ARRAY $formatos.
+        public static function validaImagen($ruta){
+            $formatos = array("jpg", "gif", "png");
+            $regex_formato = "#.+\.(".implode('|', $formatos).")$#";
+
+            if(preg_match($regex_formato, $ruta) && preg_match("#^image/[a-z0-9]+$#", $ruta)){
+                $resultado= true;
+            }else{
+                $resultado= false;
+            }
+        }
+
         // MÉTODO DE VALIDACIÓN PARA A DIFICULTADE BAIXA DA 'actividade6' (Luis Corral de Cal).
         // Recibe un número enteiro e devolve TRUE soamente se está dentro do rango do 0 (incluído) ata o 100 (sen incluír).
         public static function validaNumero_facil($numero){
