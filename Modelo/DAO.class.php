@@ -42,10 +42,9 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
 
             $lista = $resultado->fetchAll();//Se recogen todos los datos en esta variable
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
-            $log = new Log();//Se crea una instancia de la clase "Log"
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            $log->escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir del objeto "$log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
         
         return $lista;//Se devuelve la lista con los datos específicos de la tabla específica
@@ -66,10 +65,9 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
             $consulta = $conexion->prepare($sentencia);//Se prepara esa sentencia SQL y se recoge su valor en esta variable
             $consulta->execute($valores);//Se ejecuta la sentencia con los datos del array "$valores"
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
-            $log = new Log();//Se crea una instancia de la clase "Log"
             $mensaje_error = $e->getMessage();//Mensaje de error
-    
-            $log->escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir del objeto "$log" con el parámetro "$mensaje_error"
+
+            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
@@ -89,10 +87,9 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
             $consulta = $conexion->prepare($sentencia);//Se prepara una sentencia SQL y se recoge su valor en esta variable
             $consulta->execute($total_valores);//Se ejecuta la sentencia con los datos del array "$total_valores"
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
-            $log = new Log();//Se crea una instancia de la clase "Log"
             $mensaje_error = $e->getMessage();//Mensaje de error
-    
-            $log->escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir del objeto "$log" con el parámetro "$mensaje_error"
+
+            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
@@ -110,10 +107,9 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
             $consulta = $conexion->prepare($sentencia);//Se prepara una sentencia SQL y se recoge su valor en esta variable
             $consulta->execute($valores_condiciones);//Se ejecuta la sentencia con los datos del array "$valores_condiciones"
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
-            $log = new Log();//Se crea una instancia de la clase "Log"
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            $log->escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir del objeto "$log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 

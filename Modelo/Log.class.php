@@ -13,11 +13,14 @@
  */
 class Log {
 
-    const arquivoLog = "../log/errorLog.log"; // Definida na clase ou no arquivo config.php
+    public static function getLog() {
+        $arquivoLog = $_SERVER['DOCUMENT_ROOT'] . Config::rutaApp . "/log/errorLog.log"; // Definida na clase ou no arquivo config.php
+        return $arquivoLog;
+    }    
 
     // Función que devolve o máis aproximado á IP dun usuario
 
-    private function getIP() {
+    private static function getIP() {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
         else if (isset($_SERVER ['HTTP_VIA']))
@@ -30,9 +33,11 @@ class Log {
     }
 
     // Escribe no log o erro xunto coa data e a IP do usuario que lanzou o script
-    public function escribeLog($erro) {
-        $infoLog = date("Y-m-d H:i:s.u") . " - " . $this->getIP() . " - " . $erro . "\n";
+    public static function escribeLog($erro) {
+        $infoLog = date("d-m-Y H:i:s.u") . " - " . self::getIP() . " - " . $erro . "\n";
         error_log($infoLog, 3, self::arquivoLog);
     }
 
+    
+    
 }
