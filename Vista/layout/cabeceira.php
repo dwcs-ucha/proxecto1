@@ -2,7 +2,7 @@
 //03/12/2019 | Versión 1.2
 //PROPOSTA DUNHA ESTRUTURA PARA A CABECEIRA DO SITIO CON BootStrap 4.
 ?>
-<nav class="navbar sticky-top container navbar-expand-sm bg-primary navbar-dark cabeceira">
+<nav class="navbar sticky-top container-fluid navbar-expand-sm bg-primary navbar-dark cabeceira">
     <a id="logo-xogoteca" class="navbar-brand" href="<?php echo $directorioRaiz; ?>/index.php"><img src="<?php echo $directorioRaiz; ?>/Vista/imaxes/logo2.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent,#navbarSupportedContent2,#navbarSupportedContent3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
