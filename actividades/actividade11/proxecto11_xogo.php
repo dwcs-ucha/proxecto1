@@ -26,10 +26,10 @@
 	</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="styles/estilosXogo.css">
 	<title>Emparella imaxes</title>
 </head>
@@ -40,7 +40,7 @@
 			require_once '../../layout/cabeceira.php';
 		?>
 		<h1>EMPARELLA</h1>
-		<h2><small>Nivel <?php echo ($numeroCartas / 6); ?></small></h2> 
+		<h2><small>Nivel <?php echo ($numeroCartas / 6); ?></small></h2>
 		<form id="xogo" action="proxecto11_xogo.php" method="get">
 			<?php
 				echo '<div class="row">';
@@ -58,7 +58,7 @@
 						$froitasAcertadas = array();
 						while(count($froitasNivel) != $numeroCartas) {
 							$imaxe = $imaxes[random_int(0, 17)];
-							while(!in_array($imaxe, $froitasNivel)) {	
+							while(!in_array($imaxe, $froitasNivel)) {
 								$froitasNivel[] = $imaxe;
 								$froitasNivel[] = $imaxe;
 							}
@@ -116,7 +116,7 @@
 							echo '<script type="text/javascript">';
 								echo 'refresco('.$direccion.', 600);';
 							echo '</script>';
-						} 
+						}
 						if ($froitasNivel[$casillaDescuberta1] == $froitasNivel[$casillaDescuberta2]) {
 							$froitasAcertadas[] = $froitasNivel[$casillaDescuberta1];
 							$intentos++;
@@ -190,7 +190,7 @@
 							$arrayDatos = array();
 							if ($arquivoAberto = fopen($arquivoDatos, 'rw')) {
 								while ($datos = fgetcsv($arquivoAberto, 1000, ",")) {
-									$arrayDatos[] = $datos;	
+									$arrayDatos[] = $datos;
 								}
 							}
 							fclose($arquivoAberto);
@@ -222,7 +222,7 @@
 		<?php
 			require_once '../../layout/pe.php';
 		?>
-	</main>	
+	</main>
 	</wrapper>
 </body>
 </html>

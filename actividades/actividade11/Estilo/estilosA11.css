@@ -1,6 +1,6 @@
 @font-face {
 	font-family: starborn;
-	src: url(starborn.ttf);
+	src: url('Starborn.ttf');
 }
 h1, h2 {
 	text-align: center;
@@ -65,7 +65,7 @@ h1, h2 {
 	padding:10px 60px;
 }
 .btn-secondary {
-	
+
 	padding: 0px 30px;
 }
 .gardar {
