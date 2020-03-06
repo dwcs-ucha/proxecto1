@@ -15,19 +15,19 @@
     function __construct($nome, $contrasinal) {
       $this->nome = $nome;
       $this->contrasinal = $contrasinal;
-      $this->rol = 1;
+      $this->rol = self::ROL_ADMINISTRADOR;
     }
 
     function modificarPrivilexios(Usuario $usuario, $novoRol) {
-      usuario->rol = $novoRol;
+      $usuario->rol = $novoRol;
       $campos = ["nome", "contrasinal", "rol"];
-      $valores = [usuario->rol];
+      $valores = [$usuario->rol];
       DAO::modificarDatos("usuarios", $campos, $valores);
     }
 
     function eliminarUsuario(Usuario $usuario) {
       $campos = ["nome", "contrasinal", "rol"];
-      $valores = [usuario->nome, usuario->contrasinal, usuario->rol];
+      $valores = [$usuario->nome, $usuario->contrasinal, $usuario->rol];
       DAO::borrarDatos("usuarios", $campos, $valores);
     }
 

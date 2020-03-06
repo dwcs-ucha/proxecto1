@@ -15,7 +15,7 @@
     function __construct($nome, $contrasinal) {
       $this->nome = $nome;
       $this->contrasinal = $contrasinal;
-      $this->rol = 0;
+      $this->rol = self::ROL_NORMAL;
     }
 
   }
