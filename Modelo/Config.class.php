@@ -10,4 +10,17 @@
     public static $nombre = "phpmyadmin";//Nombre del usuario que se conecta al servidor (Tiene que tener los privilegios suficientes)
     public static $contrasena = "admin";//Contrasena del usuario
     public static $rutaApp = "Xogoteca";//Ruta de la aplicación
+    
+    /**
+     * @property boolean $LOG_ERRO_XENERICO Habilita ou deshabilita o log de erros xenéricos.
+     */
+    const LOG_ERRO_XENERICO = true;    
+    /**
+     * @property boolean $LOG_ERRO_BBDO Habilita ou deshabilita o log de erros relacionados coa base de datos.
+     */
+    const LOG_ERRO_BBDO = true;    
+    /**
+     * @property boolean $LOG_ERRO_XENERICO Habilita ou deshabilita o log de erros relacionados coas validacións.
+     */
+    const LOG_ERRO_VALIDACIONS = true;
  }
