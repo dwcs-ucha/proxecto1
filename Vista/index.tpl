@@ -9,7 +9,7 @@
     <head>
         {*Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:*}
         {assign var=directorioRaiz value="."}
-        {include file="{$rutaRootPHP}{'/Vista/layout/head.tpl'}"}
+        {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script type="text/javascript" src=""></script>
         <style type="text/css">
@@ -31,7 +31,7 @@
 
     <body>
     <wrapper class="d-flex flex-column">
-        {include file="{$rutaRootPHP}{'/Vista/layout/cabeceira.tpl'}"}
+        {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         <main class="container">
 
             <h2>Proxecto 1ª AvAliAciOn</h2>
@@ -48,7 +48,7 @@
             </p>
 
             <br />
-            <img src="http://{$rutaRootHTML}{'/Vista/imaxes/nenos.jpg'}" alt="Globo con cara feliz" class="imaxe" />
+            <img src="{$rutaRootHTML}{'Vista/imaxes/nenos.jpg'}" alt="Globo con cara feliz" class="imaxe" />
             {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
 
         </main>
