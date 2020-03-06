@@ -35,7 +35,7 @@ class Log {
     // Escribe no log o erro xunto coa data e a IP do usuario que lanzou o script
     public static function escribeLog($erro) {
         $infoLog = date("d-m-Y H:i:s.u") . " - " . self::getIP() . " - " . $erro . "\n";
-        error_log($infoLog, 3, self::arquivoLog);
+        error_log($infoLog, 3, self::getLog());
     }
 
     

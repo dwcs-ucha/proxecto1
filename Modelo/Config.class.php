@@ -6,8 +6,8 @@
  */
 
  class Config {
-    public static $datos = "mysql:host=localhost;dbname=asd";//Host del servidor y nombre de la base de datos
+    public static $datos = "mysql:host=localhost;dbname=tienda";//Host del servidor y nombre de la base de datos
     public static $nombre = "phpmyadmin";//Nombre del usuario que se conecta al servidor (Tiene que tener los privilegios suficientes)
     public static $contrasena = "admin";//Contrasena del usuario
-    public static $rutaApp = "Xogoteca";
+    public static $rutaApp = "Xogoteca";//Ruta de la aplicación
  }
