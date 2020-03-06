@@ -26,7 +26,7 @@ class ErrorLog {
      * @return string Ruta do ficheiro de log
      */
     private static function getLog() {
-        $arquivoLog = $_SERVER['DOCUMENT_ROOT'] . '/' . Config::$rutaApp . "/log/errorLog.log"; // Definida na clase ou no arquivo config.php
+        $arquivoLog = Config::$rutaRootPHP . "/log/errorLog.log"; // Definida na clase ou no arquivo config.php
         return $arquivoLog;
     }
     

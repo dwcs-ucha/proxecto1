@@ -15,14 +15,14 @@ class Config {
      *
      * @var string Ruta absoluta da aplicación no servidor
      */
-    public static $rutaRootPHP = "D:/xampp/proxecto/";
+    public static $rutaRootPHP = "D:/wamp/www/xogoteca/";
     
     /**
      *
      * @var string Nome do servidor. Pode ser a dirección do host virtual ou localhost. 
-     * Exemplo: http://localhost/    ou     http://proxecto.com/    (http://NOME_SERVIDOR/)
+     * Exemplo: http://localhost/proxecto1    ou     http://proxecto.com/    (http://NOME_SERVIDOR/)
      */
-    public static $rutaRootHTML = "http://localhost/";
+    public static $rutaRootHTML = "http://localhost/Xogoteca/";
 
     /**
      * @property boolean $LOG_ERRO_XENERICO Habilita ou deshabilita o log de erros xenéricos.
