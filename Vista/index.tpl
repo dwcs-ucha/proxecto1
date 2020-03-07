@@ -1,14 +1,12 @@
 {*
-// BreoBeceiro:25/11/2019
-// PROXECTO 1º AVALIACIÓN | Versión 1.0
-// Páxina de Inicio PROVISIONAL para o sitio web do Proxecto da 1ª Avaliación do módulo de 'Desenvolvemento web 
-//   en contorno servidor'.
+ * @version 1.1
+ * @data 07/03/2020
+ * @descripción Index principal do sitio web.
 *}
 <!doctype html>
 <html lang="gl">
     <head>
         {*Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:*}
-        {assign var=directorioRaiz value="."}
         {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script type="text/javascript" src=""></script>

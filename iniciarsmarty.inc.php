@@ -1,6 +1,10 @@
 <?php
-//$rutaRootPHP = $_SERVER['DOCUMENT_ROOT'].Config::$rutaApp;
-//$rutaRootHTML = $_SERVER['SERVER_NAME'].Config::$rutaApp;
+/**
+ * @autor Manuel Ángel Calvo Piñeiro
+ * @versión 1
+ * @data 07/03/2020
+ * @descripción Arquivo iniciador de Smarty.
+ */
 require Config::$rutaRootPHP.'/smarty/libs/Smarty.class.php';
 $smarty = new Smarty();
 $smarty->setTemplateDir(Config::$rutaRootPHP.'/smarty/templates');

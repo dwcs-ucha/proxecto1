@@ -1,4 +1,10 @@
-  <!-- Footer -->
+{*
+ * @autor Manuel Ángel Calvo Piñeiro
+ * @versión 1.1
+ * @data 07/03/2020
+ * @descripción Elementos HTML a engadir no pé da páxina nos distintos arquivos do sitio web.
+*}
+<!-- Footer -->
   <footer class="footer fixed-bottom container-fluid">
 
     <!-- Copyright -->

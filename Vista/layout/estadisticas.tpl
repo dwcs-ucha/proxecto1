@@ -14,8 +14,7 @@
     <head>
         
             {* Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio: *}
-            {assign var="directorioRaiz" value= "."}
-            {include file='layout/head.php'}
+            {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
         <script type="text/javascript" src=""></script>
         <style type="text/css">
 
@@ -36,15 +35,11 @@
 
     <body>
         <div class="container">
-            <?php
-                include('layout/cabeceira.php');
-            ?>
+                {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
 
 
 
-            <?php
-                include('layout/pe.php');
-            ?>
+                {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
         </div>
     </body>
 </html>

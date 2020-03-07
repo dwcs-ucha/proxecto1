@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-06 01:57:31
+/* Smarty version 3.1.34-dev-7, created on 2020-03-07 01:36:47
   from 'D:\xampp\proxecto\Vista\layout\pe.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e619ffbac7ca1_95609305',
+  'unifunc' => 'content_5e62ec9f0d80b4_92154783',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '175eef06d8a91a95187fc7aa359d9cb6babe2649' => 
     array (
       0 => 'D:\\xampp\\proxecto\\Vista\\layout\\pe.tpl',
-      1 => 1583454521,
+      1 => 1583541392,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e619ffbac7ca1_95609305 (Smarty_Internal_Template $_smarty_tpl) {
-?>  <!-- Footer -->
+function content_5e62ec9f0d80b4_92154783 (Smarty_Internal_Template $_smarty_tpl) {
+?><!-- Footer -->
   <footer class="footer fixed-bottom container-fluid">
 
     <!-- Copyright -->

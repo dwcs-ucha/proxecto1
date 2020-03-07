@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-06 17:31:15
+/* Smarty version 3.1.34-dev-7, created on 2020-03-07 01:36:46
   from 'D:\xampp\proxecto\Vista\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e627ad3bfb8c2_99798299',
+  'unifunc' => 'content_5e62ec9ee8f984_23097034',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c15f7be019e759ec47e91d6c5e62b1a0853b63b9' => 
     array (
       0 => 'D:\\xampp\\proxecto\\Vista\\index.tpl',
-      1 => 1583512275,
+      1 => 1583541267,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e627ad3bfb8c2_99798299 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e62ec9ee8f984_23097034 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="gl">
     <head>
-                <?php $_smarty_tpl->_assignInScope('directorioRaiz', ".");?>
-        <?php ob_start();
+                <?php ob_start();
 echo 'Vista/layout/head.tpl';
 $_prefixVariable1=ob_get_clean();
 $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value).$_prefixVariable1, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
