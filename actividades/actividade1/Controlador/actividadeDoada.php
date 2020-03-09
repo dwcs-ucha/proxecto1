@@ -1,5 +1,5 @@
 <?php
-    // BreoBeceiro:03/03/2020
+    // BreoBeceiro:09/03/2020
     // PROXECTO 2º AVALIACIÓN | Versión 1.0
 
     // FALTA REVISAR A VISUALIZACIÓN DA MENSAXE DE ERRO SE OS CAMPOS COS DATOS DO XOGADOR VAN BALEIROS, POIS
@@ -19,9 +19,6 @@
     //   CONSISTE EN QUE AO CARGARSE A PÁXINA, NOS inputs QUE TERÍA QUE RECHEAR O XOGADOR, VEÑEN XA CARGADAS AS 
     //   SÍLABAS INICIAIS.
 
-    // ACTUALIZACIÓN (26/02/2020): Hai que decidir se tomar as sílabas finais dunha táboa (habería que creala) da BBDD
-    //   ou deixar a cousa como está e obtelos dun CSV.
-
     // Módulo de funcións de validación e saneamento:
     include('../Modelo/moduloFuncions.inc.php');
 
@@ -30,6 +27,11 @@
 
     include('../Modelo/DAO.class.php');
     include('../Modelo/Xogador.class.php');
+
+    include_once '../../Modelo/Config.class.php'; 
+    include_once Config::$rutaRootPHP.'iniciarsmarty.inc.php';
+
+    $smarty->display("Vista/actividadeDoada.tpl");
 
     // Se o xogador quere gardar a súa puntuación, debe autenticarse, de modo que se non está identificado, envíaselle
     //   á páxina de acceso. Se está identificado, a súa puntuación envíase á BBDD:
