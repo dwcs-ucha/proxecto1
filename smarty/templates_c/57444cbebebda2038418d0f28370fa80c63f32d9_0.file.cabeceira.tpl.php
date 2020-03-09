@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-07 01:43:37
+/* Smarty version 3.1.34-dev-7, created on 2020-03-07 16:25:29
   from 'D:\xampp\proxecto\Vista\layout\cabeceira.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e62ee39140b65_26509509',
+  'unifunc' => 'content_5e63bce9eea0d5_12958794',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57444cbebebda2038418d0f28370fa80c63f32d9' => 
     array (
       0 => 'D:\\xampp\\proxecto\\Vista\\layout\\cabeceira.tpl',
-      1 => 1583541650,
+      1 => 1583594642,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e62ee39140b65_26509509 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e63bce9eea0d5_12958794 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar sticky-top container-fluid navbar-expand-sm bg-primary navbar-dark cabeceira">
     <a id="logo-xogoteca" class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 index.php"><img src="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
@@ -36,10 +36,6 @@ Vista/imaxes/logo2.png"></a>
             <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 actividades/actividade1">Completar sílabas ou palabras</a>
             <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-actividades/actividade15">O xogo das pistas</a>
-            <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-actividades/actividade8">Preguntas de estimulación</a>
-            <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 actividades/actividade3">Que é? Para que serve? Como se utiliza?</a>
             <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 actividades/actividade10">Sinónimos e antónimos</a>
@@ -53,24 +49,16 @@ actividades/actividade10">Sinónimos e antónimos</a>
             <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 actividades/actividade11/proxecto11_index.php">Emparellar</a>
             <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-actividades/actividad9">Ordenar secuencias temporais</a>
-            <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 actividades/actividade4">Ordenar obxetos por categoría</a>
-            <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-/actividades/actividade12">Estados de animo</a>
         </div>
     </div>
     <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent3">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Xogos varios
+            Xogos con números
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 actividades/actividade6">Caderno de sumas</a>
-            <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-actividades/actividade10">Sinónimos e antónimos</a>
-            <a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-actividades/actividad5">Son visual</a>
         </div>
     </div>
 </nav>

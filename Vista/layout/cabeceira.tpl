@@ -14,8 +14,6 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade1">Completar sílabas ou palabras</a>
-            <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade15">O xogo das pistas</a>
-            <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade8">Preguntas de estimulación</a>
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade3">Que é? Para que serve? Como se utiliza?</a>
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade10">Sinónimos e antónimos</a>
         </div>
@@ -26,19 +24,15 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade11/proxecto11_index.php">Emparellar</a>
-            <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividad9">Ordenar secuencias temporais</a>
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade4">Ordenar obxetos por categoría</a>
-            <a class="dropdown-item" href="{$rutaRootHTML}/actividades/actividade12">Estados de animo</a>
         </div>
     </div>
     <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent3">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Xogos varios
+            Xogos con números
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade6">Caderno de sumas</a>
-            <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade10">Sinónimos e antónimos</a>
-            <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividad5">Son visual</a>
         </div>
     </div>
 </nav>
