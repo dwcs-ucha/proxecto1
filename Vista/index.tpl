@@ -7,8 +7,8 @@
 <html lang="gl">
     <head>
         {*Inclúense sentenzas do <head> comúns a tódalas páxinas do sitio:*}
-        {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
         <script type="text/javascript" src=""></script>
         <style type="text/css">
 
@@ -31,7 +31,6 @@
     <wrapper class="d-flex flex-column">
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         <main class="container">
-
             <h2>Proxecto 1ª AvAliAciOn</h2>
             <p>
                 Benvid@s ao sitio web de xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros
