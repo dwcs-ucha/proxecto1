@@ -10,7 +10,7 @@
   $smarty->setCacheDir('../smarty/cache');
   $smarty->setConfigDir('../smarty/configs');
 
-  $hoxe = ;
+  $hoxe = date("Y-m-d");
   $campos = ['nome', 'contrasinal', 'rol', 'dataAlta', 'bloqueado'];
   $camposObligatorios = ['nome', 'contrasinal', 'rol'];
   $usuarios = DAO::leerDatos('usuarios', $campos);
@@ -23,17 +23,19 @@
       }
     }
     if (count($erros) > 0) {
-      $smarty->assign('camposBaleiros', $erros);
+      $smarty->assign('erros', $erros);
     } else {
       if ($_POST['rol'] = 1) {
         $a = new Administrador($_POST['nome'], $_POST['contrasinal'], $hoxe);
         if(!Usuario::insertarNovoUsuario($a)) {
           $erros[] = 'existente';
+          $smarty->assign('erros', $erros);
         }
       } else {
         $n = new Normal($_POST['nome'], $_POST['contrasinal'], $hoxe, 0);
         if(!Usuario::insertarNovoUsuario($n)) {
           $erros[] = 'existente';
+          $smarty->assign('erros', $erros);
         }
       }
     }
