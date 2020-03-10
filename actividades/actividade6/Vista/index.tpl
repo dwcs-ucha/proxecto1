@@ -2,7 +2,6 @@
 <html lang="gl">
     <head>
         {include file="../../../Vista/layout/head.tpl"}
-        <link rel="stylesheet" href="../estilos/estilos.css">
         <style type="text/css">
             .col { border: solid black 1px; }
             h1 { text-align: center; }
