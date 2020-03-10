@@ -11,6 +11,8 @@
    *
    */
   class Usuario {
+    const ROL_NORMAL = 0;
+    const ROL_ADMINISTRADOR = 1;
     private $nome;
     private $contrasinal;
     private $rol;

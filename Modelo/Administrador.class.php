@@ -15,6 +15,7 @@
     function __construct($nome, $contrasinal, $dataAlta) {
       $this->nome = $nome;
       $this->contrasinal = $contrasinal;
+<<<<<<< HEAD
       $this->rol = 1;
       $this->dataAlta = $dataAlta;
       $this->bloqueado = 0;
@@ -28,12 +29,26 @@
       usuario->rol = $novoRol;
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];
       $valores = [usuario->rol];
+=======
+      $this->rol = self::ROL_ADMINISTRADOR;
+    }
+
+    function modificarPrivilexios(Usuario $usuario, $novoRol) {
+      $usuario->rol = $novoRol;
+      $campos = ["nome", "contrasinal", "rol"];
+      $valores = [$usuario->rol];
+>>>>>>> 92cb28538536f7d8475b1c23a778056bceecc9c6
       DAO::modificarDatos("usuarios", $campos, $valores);
     }
 
     function eliminarUsuario(Usuario $usuario) {
+<<<<<<< HEAD
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];
       $valores = [usuario->nome, usuario->contrasinal, usuario->rol];
+=======
+      $campos = ["nome", "contrasinal", "rol"];
+      $valores = [$usuario->nome, $usuario->contrasinal, $usuario->rol];
+>>>>>>> 92cb28538536f7d8475b1c23a778056bceecc9c6
       DAO::borrarDatos("usuarios", $campos, $valores);
     }
 
