@@ -50,17 +50,19 @@ class Config {
     }
 
     /**
-     * @descripción Asigna o cartafol raíz do servidor
+     * @descripción Asigna o cartafol raíz do servidor. O máis probable é que $_SERVER["DOCUMENT_ROOT"] sexa o cartafol "/var/www/html" así que o que hai que indicar o nome do proxecto.
+     * Exemplo se a aplicación se garda no cartafol "Xogoteca": $_SERVER["DOCUMENT_ROOT"] . "/Xogoteca/"
      */
     public static function setRutaRootPHP() {
-        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/2aval/proxecto/proxecto1/";
+        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/Xogoteca/";
     }
 
     /**
-     * @descripción Asigna a ruta do dominio
+     * @descripción Asigna a ruta do dominio. O máis probable é que $_SERVER["SERVER_NAME"] sexa "localhost" así que o que hai que indicar o nome do proxecto.
+     * Exemplo se a aplicación se garda no cartafol "Xogoteca": $_SERVER["SERVER_NAME"] . "/Xogoteca/"
      */
     public static function setRutaRootHTML() {
-        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/2aval/proxecto/proxecto1/";
+        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/Xogoteca/";
     }
 
 }
