@@ -15,8 +15,7 @@
     function __construct($nome, $contrasinal, $dataAlta, $bloqueado) {
       $this->nome = $nome;
       $this->contrasinal = $contrasinal;
-<<<<<<< HEAD
-      $this->rol = 0;
+      $this->rol = self::ROL_NORMAL;
       $this->dataAlta = $dataAlta;
       $this->bloqueado = $bloqueado;
     }
@@ -27,9 +26,6 @@
 
     function estaBloqueado() {
       return $this->bloqueado;
-=======
-      $this->rol = self::ROL_NORMAL;
->>>>>>> 92cb28538536f7d8475b1c23a778056bceecc9c6
     }
 
   }
