@@ -19,8 +19,6 @@
     private $dataAlta;
     private $bloqueado;
 
-    require('DAO.class.php');
-
     function insertarNovoUsuario(Usuario $usuario) {
       $usuario->contrasinal = (crypt($this.contrasinal, '*L0saluMnosTheDAWm0L4n!'));
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];

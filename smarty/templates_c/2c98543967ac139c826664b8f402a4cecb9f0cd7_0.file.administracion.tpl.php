@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-10 18:51:30
+/* Smarty version 3.1.34-dev-7, created on 2020-03-10 20:07:27
   from '/var/www/html/proxecto/proxecto1/Vista/administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e67d3a26f7585_62804049',
+  'unifunc' => 'content_5e67e56fd71dd8_55633885',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2c98543967ac139c826664b8f402a4cecb9f0cd7' => 
     array (
       0 => '/var/www/html/proxecto/proxecto1/Vista/administracion.tpl',
-      1 => 1583862686,
+      1 => 1583865967,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e67d3a26f7585_62804049 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e67e56fd71dd8_55633885 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -116,7 +116,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
 							<?php }?>
 						</fieldset>
 						<label for="dataAlta">Data de alta</label>
-						<input type="text" name="dataAlta"><br>
+						<input type="text" name="dataAlta" readonly><br>
 					</fieldset>
 					<br>
 					<input class="botonForm" type="reset" name="novo" value="Borrar" onclick="location.replace('produtos.php')"></input>

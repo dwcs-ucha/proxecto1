@@ -1,5 +1,6 @@
 <?php
   require('../Modelo/DAO.class.php');
+  require('../Modelo/Usuario.class.php');
   require('../Modelo/Normal.class.php');
   require('../Modelo/Administrador.class.php');
   set_include_path('../smarty/libs');
