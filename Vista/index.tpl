@@ -23,7 +23,7 @@
 
         </style>
         <title>
-            Proxecto1 | Inicio
+            Xogoteca | Inicio
         </title>
     </head>
 
