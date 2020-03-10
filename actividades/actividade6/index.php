@@ -35,8 +35,8 @@ if(isset($_POST['entrar'])){
 /* Se todo esta correcto collemos o valor da dificultade e rediriximos á paxina da actividae 
    Enviamos o valor polo Get na ruta á páxina seguinte */
      if(isset($_POST['dif'])){
-       $dif = $_POST['dif'];
-        header("location:sumas.php?difi=$dif");
+         $_SESSION['a6_dif'] = $_POST['dif'];
+        header("location:sumas.php");
     }    
 }
 if(isset($_POST['vercla'])){
