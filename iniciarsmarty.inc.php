@@ -6,6 +6,7 @@
  * @descripción Arquivo iniciador de Smarty.
  */
 require Config::$rutaRootPHP.'/smarty/libs/Smarty.class.php';
+require Config::$rutaRootPHP.'Controlador/CookiesController.class.php';
 $smarty = new Smarty();
 $smarty->setTemplateDir(Config::$rutaRootPHP.'/smarty/templates');
 $smarty->setCompileDir(Config::$rutaRootPHP.'/smarty/templates_c');
@@ -14,4 +15,8 @@ $smarty->setConfigDir(Config::$rutaRootPHP.'/smarty/configs');
 
 $smarty->assign("rutaRootPHP", Config::$rutaRootPHP);
 $smarty->assign("rutaRootHTML", Config::$rutaRootHTML);
+if (!CookiesController::isPoliticaCookiesAceptada()) {
+    $smarty->assign("mostrarAvisoCookies", true);
+    CookiesController::aceptarPoliticaCookies();
+}
 ?>

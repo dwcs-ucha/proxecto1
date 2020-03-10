@@ -4,6 +4,11 @@
 * @data 07/03/2020
 * @descripción Elementos HTML a engadir no pé da páxina nos distintos arquivos do sitio web.
 *}
+
+<!-- Aviso sobre política de cookies -->
+{if isset($mostrarAvisoCookies)}
+{include file="{$rutaRootPHP}{'Vista/layout/avisoCookies.tpl'}"}
+{/if}
 <!-- Footer -->
 <footer class="footer container-fluid">
 
