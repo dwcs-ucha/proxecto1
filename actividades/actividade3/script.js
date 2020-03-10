@@ -1,8 +1,8 @@
 /*
- *Título:¿Que é? ¿para que serve? ¿para que se utiliza?  
+ *Título: Que é? Para que serve? Para que se utiliza?  
  *Autor: Manuel Ángel Calvo Piñeiro
- *Versión: 1.1
- *Modificado: 26/11/2019
+ *Versión: 1.2
+ *Modificado: 07/03/2020
 */
 
 /*

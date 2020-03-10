@@ -187,7 +187,7 @@ function getCategoriaPartida(string $nomeCategoria, int $numImaxes) {
     while (($linea = fgetcsv($ficheiro, 0, ";")) != false && $atopado == false) {
         if ($linea[INDEX_CATEGORIA_NOME] == $nomeCategoria) {
             $atopado = true;
-            $imaxePrincipalCategoria = "Imagenes/" . $linea[INDEX_CATEGORIA_NOME] . "/" . $linea[INDEX_CATEGORIA_IMAXE_PRINCIPAL];
+            $imaxePrincipalCategoria = "Imaxes/" . $linea[INDEX_CATEGORIA_NOME] . "/" . $linea[INDEX_CATEGORIA_IMAXE_PRINCIPAL];
             $imaxesCategoria = array_slice($linea, INDEX_CATEGORIA_INICIO_IMAXES_XOGO);
             shuffle($imaxesCategoria);
             $imaxesCategoria = array_slice($imaxesCategoria, 0, $numImaxes);

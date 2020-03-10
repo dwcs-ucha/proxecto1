@@ -6,7 +6,7 @@
  */
 
 require "Config.class.php";//Se meten los datos para la conexión a la base de datos
-require "Log.class.php";//Se meten los datos para escribir los errores en un log personalizado
+require "ErrorLog.class.php";//Se meten los datos para escribir los errores en un log personalizado
 
  class DAO {
     
@@ -15,16 +15,8 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
      * Descripción: Establece la conexión con la base de datos a partir del nombre y contraseña especificados
      */
     private static function establecerConexion() {
-        return new PDO(Config::$datos, Config::$nombre, Config::$contrasena);
-    }
-
-    /**
-     * Nombre: configurarPDO()
-     * Descripción: Configura la instancia de la clase PDO
-     */
-    private static function configurarPDO($instancia_conexion) {
-        $PDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);//Desactiva en las consultas la emulación de consultas preparadas, lo que fuerza a realizar todas las consultas como preparadas
-        $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Permite a esa clase lanzar excepciones del tipo PDOException
+        $opciones = array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);//Opciones para desactivar la emulación de consultas preparadas y permitir lanzar excepciones del tipo "PDOException"
+        return new PDO(Config::$datos, Config::$nombre, Config::$contrasena, $opciones);
     }
 
     /**
@@ -34,7 +26,6 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
     public static function leerDatos($tabla, $campos) {
         try {//Se prueban los datos siguientes:
             $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor en la variable "$conexion"
-            self::configurarPDO($conexion);//Se ejecuta la función configurarPDO() con el parámetro "$conexion"
             $total_campos = self::concatenarDatos($campos);//Se ejecuta la función "concatenarDatos()" con el parámetro "$campos"
             $sentencia = "SELECT " . $total_campos . " FROM " . $tabla;//Sentencia SQL a ejecutar
 
@@ -44,7 +35,31 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+        }
+        
+        return $lista;//Se devuelve la lista con los datos específicos de la tabla específica
+    }
+
+    /**
+     * Nombre: leerDatosCondicion()
+     * Descripción: Lee algunos datos de la tabla especificada a partir de una condición determinada
+     */
+    public static function leerDatosCondicion($tabla, $campos, $campo_condicion, $tipo_condicion, $valor_condicion) {
+        try {//Se prueban los datos siguientes:
+            $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor en la variable "$conexion"
+            $total_campos = self::concatenarDatos($campos);//Se ejecuta la función "concatenarDatos()" con el parámetro "$campos"
+            $sentencia = "SELECT " . $total_campos . " FROM " . $tabla . " WHERE " . $campo_condicion . " " . $tipo_condicion . " ?";//Sentencia SQL a ejecutar
+
+            $consulta = $conexion->prepare($sentencia);//Se prepara esa sentencia SQL y se recoge su valor en esta variable
+            $consulta->bindParam(1, $valor_condicion);//Se pone como parámetros la variable "$valor_condicion"
+            $consulta->execute();//Se ejecuta la sentencia
+
+            $lista = $consulta->fetchAll();//Se recogen todos los datos en esta variable
+        } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
+            $mensaje_error = $e->getMessage();//Mensaje de error
+
+            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
         
         return $lista;//Se devuelve la lista con los datos específicos de la tabla específica
@@ -57,7 +72,6 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
     public static function escribirDatos($tabla, $campos, $valores) {
         try {//Se prueban los datos siguientes:
             $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor en la variable "$conexion"
-            self::configurarPDO($conexion);//Se ejecuta la función configurarPDO() con el parámetro "$conexion"
             $total_campos = self::concatenarDatos($campos);//Se ejecuta la función "concatenarDatos()" con el parámetro "$campos"
             $total_valores = self::concatenarInterrogaciones($campos);//Se ejecuta la función "concatenarInterrogaciones()" con el parámetro "$campos"
 
@@ -67,7 +81,7 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
@@ -78,7 +92,6 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
     public static function modificarDatos($tabla, $campos_modificaciones, $valores_modificaciones, $campos_condiciones, $tipos_condiciones, $valores_condiciones) {
         try {//Se prueban los datos siguientes:
             $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor de retorno en la variable "$conexion"
-            self::configurarPDO($conexion);//Se ejecuta la función configurarPDO() con el parámetro "$conexion"
             $modificaciones = self::concatenarModificaciones($campos_modificaciones);//Se ejecuta la función "concatenarCondiciones()" con el parámetro "$campos_modificaciones" y se recoge su valor de retorno en la variable "$modificaciones"
             $condiciones = self::concatenarCondiciones($campos_condiciones, $tipos_condiciones);//Se ejecuta la función "concatenarCondiciones()" con los parámetros "$campos_condiciones" y "$tipos_condiciones" y se recoge su valor de retorno en la variable "$condiciones"
             $total_valores = array_merge($valores_modificaciones, $valores_condiciones);//Se junta en un solo array ($total_valores) los valores de las modificaciones y de las condiciones, en ese orden
@@ -89,7 +102,7 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
@@ -100,7 +113,6 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
     public static function borrarDatos($tabla, $campos_condiciones, $tipos_condiciones, $valores_condiciones) {
         try {//Se prueban los datos siguientes:
             $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor en la variable "$conexion"
-            self::configurarPDO($conexion);//Se ejecuta la función configurarPDO() con el parámetro "$conexion"
             $condiciones = self::concatenarCondiciones($campos_condiciones, $tipos_condiciones);//Se ejecuta la función "concatenarCondiciones()" con los parámetros "$campos_condiciones" y "$tipos_condiciones" y se recoge su valor de retorno en la variable "$condiciones"
 
             $sentencia = "DELETE FROM $tabla WHERE $condiciones";//Sentencia SQL a preparar
@@ -109,7 +121,7 @@ require "Log.class.php";//Se meten los datos para escribir los errores en un log
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            Log::escribeLog($mensaje_error);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 

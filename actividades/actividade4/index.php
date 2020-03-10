@@ -31,11 +31,13 @@
     </head>
     <body>
         <?php
+        include '../../Modelo/Config.class.php';
         include 'funcionsActividade.php';
+        include 'Controlador/PartidaController.class.php';
         /**
          * @property string $rutaImaxes Directorio no que se atopan todas as imaxes da actividade.
          */
-        $rutaImaxes = "Imagenes/";
+        $rutaImaxes = "Imaxes/";
         /**
          * @property array $categoriasFicheiro Array multidimensional que contén todas as categorías do ficheiro "categorias.csv".
          * Só garda o nome e a imaxe de cada categoría.

@@ -32,7 +32,7 @@
         if (isset($_POST["enviarCategorias"])) {
             eventoBotonSeleccionarCategorias($numCategoriasSeleccionar, $dificultade, $mensaxeErro);
         }
-        $rutaImaxes = "Imagenes/";
+        $rutaImaxes = "Imaxes/";
         $categorias = getNomesImaxesCategoriasFicheiro();
         
         //Número de imaxes a mostrar en cada liña da páxina

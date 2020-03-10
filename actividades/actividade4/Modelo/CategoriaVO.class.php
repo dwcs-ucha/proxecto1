@@ -7,30 +7,33 @@
  */
 class Categoria {
 
-    const NUMERO_CATEGORIAS_FACIL = 2;
-    const NUMERO_CATEGORIAS_NORMAL = 3;
-    const NUMERO_CATEGORIAS_DIFICIL = 4;
+    const INDEX_NOME = 0;
+    const INDEX_IMAXE_PRINCIPAL = 1;
+    const INDEX_COMEZO_IMAXES_XOGO = 2;
     
-
     private $nome;
-    private $imaxes;
+    private $imaxePrincipal;
+    private $imaxesXogo;
 
-    public function __construct(string $nome, array $imaxes, int $numeroImaxes) {
+    public function __construct(string $nome, string $imaxePrincipal , array $imaxesXogo) {
         $this->nome = $nome;
-        $this->imaxes = $this->seleccionarImaxesAleatoriamente($imaxes, $numeroImaxes);
+        $this->imaxePrincipal = $imaxePrincipal;
+        $this->imaxesXogo = $imaxesXogo;
     }
 
     public function getNome() {
         return $this->nome;
     }
 
-    public function getImaxes() {
-        return $this->imaxes;
+    public function getImaxesXogo() {
+        return $this->imaxesXogo;
     }
 
-    private function seleccionarImaxesAleatoriamente(array $imaxes, int $numImaxes) {
-        shuffle($imaxes);
-        array_slice($imaxes, $numImaxes);
+    public function seleccionarImaxesAleatoriamente() {
+        shuffle($this->imaxesXogo);
     }
-
+    
+    public static function convertirACategoria(string $nome, string $imaxeCategoria, array $imaxes) {
+        
+    }
 }
