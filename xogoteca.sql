@@ -87,9 +87,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-insert into usuarios (nome, contrasinal, rol) values ('admin', 'L0qGKMkFX0hHk', 0);
-insert into usuarios (nome, contrasinal, rol) values ('usuario', 'L0qGKMkFX0hHk', 1);
-
 insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Animais', 'actividades/actividade4/Imaxes/animais.png');
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal1.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/animal2.jpeg', 1);
