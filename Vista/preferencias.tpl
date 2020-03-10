@@ -72,7 +72,7 @@
         <form action="{$rutaRootHTML}{'Controlador/preferencias.php'}" method="post">
             Modo oscuro
             <label class="switch">
-                <input type="checkbox" name="temaOscuro" value="seleccionado">
+                <input type="checkbox" name="temaOscuro" value="seleccionado" {$temaOscuro}>
                 <span class="slider round"></span>
             </label>
             <button type="submit" name="preferencias" value="seleccionadas">Gardar preferencias</button>

@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Clase que xestiona a escritura no ficheiro de log
  *
@@ -12,10 +11,12 @@ class ErrorLog {
      * @param int $ERRO_XENERICO Tipo de erro non específico
      */
     const ERRO_XENERICO = 0;
+
     /**
      * @param int $ERRO_BBDO Tipo de erro relacionado coa base de datos
      */
     const ERRO_BBDO = 1;
+
     /**
      * @param int $ERRO_VALIDACIONS Tipo de erro relacionado coas validacións
      */
@@ -29,12 +30,11 @@ class ErrorLog {
         $arquivoLog = Config::$rutaRootPHP . "/log/errorLog.log"; // Definida na clase ou no arquivo config.php
         return $arquivoLog;
     }
-    
+
     /**
      * 
      * @return string Devolve a ip do usuario que chamou á función
      */
-
     private static function getIP() {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -80,5 +80,5 @@ class ErrorLog {
                 break;
         }
     }
-
+    
 }
