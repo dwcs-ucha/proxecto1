@@ -10,24 +10,8 @@ class Config {
     public static $datos = "mysql:host=localhost;dbname=tienda"; //Host del servidor y nombre de la base de datos
     public static $nombre = "phpmyadmin"; //Nombre del usuario que se conecta al servidor (Tiene que tener los privilegios suficientes)
     public static $contrasena = "admin"; //Contrasena del usuario
-    
-    /**
-     *
-     * @var string Ruta absoluta da aplicación no servidor
-     * @Exemplo: C:/xampp/htdocs/
-     * @Exemplo-de-uso: {$rutaRootHTML}{'Vista/imaxes/nenos.jpg'}
-     * É importante a "/" do final.
-     */
-    public static $rutaRootPHP = "D:/xampp/proxecto/";
-    
-    /**
-     *
-     * @var string Nome do servidor. Pode ser a dirección do host virtual ou localhost. 
-     * @Exemplo: http://localhost/proxecto1/    ou     http://proxecto.com/    (http://NOME_SERVIDOR/)
-     * @Exemplo-de-uso: {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
-     * É importante a "/" do final.
-     */
-    public static $rutaRootHTML = "http://proxecto.com/";
+    public static $rutaRootPHP;
+    public static $rutaRootHTML;
 
     /**
      * @property boolean $LOG_ERRO_XENERICO Habilita ou deshabilita o log de erros xenéricos.
@@ -44,4 +28,38 @@ class Config {
      */
     const LOG_ERRO_VALIDACIONS = true;
 
+    /**
+     * @descripción Devolve a ruta do cartafol raíz do proxecto
+     * @return string Cartafol raíz do proxecto
+     */
+    public static function getRutaRootPHP() {
+        return self::$rutaRootPHP;
+    }
+
+    /**
+     * @descripción Devolve a dirección do dominio
+     * @return string Nome de dominio co protocolo http
+     */
+    public static function getRutaRootHTML() {
+        return self::$rutaRootHTML;
+    }
+
+    /**
+     * @descripción Asigna o cartafol raíz do servidor
+     */
+    public static function setRutaRootPHP() {
+        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/2aval/proxecto/proxecto1/";
+    }
+
+    /**
+     * @descripción Asigna a ruta do dominio
+     */
+    public static function setRutaRootHTML() {
+        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/2aval/proxecto/proxecto1/";
+    }
+
 }
+
+//Asígnanse as rutas necesarias para facer funcionar a páxina web
+Config::setRutaRootPHP();
+Config::setRutaRootHTML();

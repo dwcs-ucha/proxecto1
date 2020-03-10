@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-10 03:11:37
-  from 'D:\xampp\proxecto\Vista\index.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-03-10 18:37:53
+  from '/var/www/html/2aval/proxecto/proxecto1/Vista/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e66f75977a6a4_48723058',
+  'unifunc' => 'content_5e67d071d66de8_00440107',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'c15f7be019e759ec47e91d6c5e62b1a0853b63b9' => 
+    'fea3ae2c320cef54da5ffa203935c7c7f2b272dc' => 
     array (
-      0 => 'D:\\xampp\\proxecto\\Vista\\index.tpl',
-      1 => 1583806294,
+      0 => '/var/www/html/2aval/proxecto/proxecto1/Vista/index.tpl',
+      1 => 1583856569,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e66f75977a6a4_48723058 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e67d071d66de8_00440107 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="gl">
     <head>
@@ -46,7 +46,7 @@ $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']-
 
         </style>
         <title>
-            Proxecto1 | Inicio
+            Xogoteca | Inicio
         </title>
     </head>
 

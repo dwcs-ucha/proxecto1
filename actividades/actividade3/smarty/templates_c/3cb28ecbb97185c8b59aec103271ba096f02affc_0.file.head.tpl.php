@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-09 22:23:19
-  from 'D:\xampp\proxecto\Vista\layout\head.tpl' */
+/* Smarty version 3.1.33, created on 2020-03-05 19:39:36
+  from '/var/www/html/2aval/proxecto/proxecto1/Vista/layout/head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e66b3c7555710_39987097',
+  'version' => '3.1.33',
+  'unifunc' => 'content_5e614768372c03_77458673',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '20131db71f525a6ea6ea270d15e3aa7ba6fd7475' => 
+    '3cb28ecbb97185c8b59aec103271ba096f02affc' => 
     array (
-      0 => 'D:\\xampp\\proxecto\\Vista\\layout\\head.tpl',
-      1 => 1583788993,
+      0 => '/var/www/html/2aval/proxecto/proxecto1/Vista/layout/head.tpl',
+      1 => 1583430609,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e66b3c7555710_39987097 (Smarty_Internal_Template $_smarty_tpl) {
-?><meta charset = "UTF-8">
+function content_5e614768372c03_77458673 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_assignInScope('directorioRaiz', isset($_smarty_tpl->tpl_vars['directorioRaiz']->value) ? $_smarty_tpl->tpl_vars['directorioRaiz']->value : "../..");?>
+<meta charset = "UTF-8">
 <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros problemas psicosociais">
 <meta name="author" content="Alumnos e alumnos do módulo de DWCS do Ciclo Superior de Desenvolvemento de aplicacións web, no CIFP Rodolfo Ucha Piñeiro">
@@ -36,11 +37,7 @@ function content_5e66b3c7555710_39987097 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"><?php echo '</script'; ?>
 >
-<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-Vista/estilos/estilos.css" type="text/css">
-<?php if (isset($_COOKIE['temaOscuro'])) {?>
-<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
-Vista/estilos/temaOscuro.css" type="text/css">
+<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['directorioRaiz']->value;?>
+/Vista/estilos/estilos.css" type="text/css">
 <?php }
-}
 }

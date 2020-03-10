@@ -1,33 +1,34 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-10 03:20:25
-  from 'D:\xampp\proxecto\actividades\actividade3\Vista\index.tpl' */
+/* Smarty version 3.1.33, created on 2020-03-05 19:39:36
+  from '/var/www/html/2aval/proxecto/proxecto1/actividades/actividade3/Vista/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e66f969629895_98232234',
+  'version' => '3.1.33',
+  'unifunc' => 'content_5e61476836ea96_42140453',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd31b7c114bb37560292cd5466f0cdec66578d579' => 
+    '031dbdaaf720ab8319b972f6096532ad663bedc9' => 
     array (
-      0 => 'D:\\xampp\\proxecto\\actividades\\actividade3\\Vista\\index.tpl',
-      1 => 1583806823,
+      0 => '/var/www/html/2aval/proxecto/proxecto1/actividades/actividade3/Vista/index.tpl',
+      1 => 1583432533,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:../../../Vista/layout/head.tpl' => 1,
+    'file:../../../Vista/layout/cabeceira.tpl' => 1,
+    'file:../../../Vista/layout/pe.tpl' => 1,
   ),
 ),false)) {
-function content_5e66f969629895_98232234 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e61476836ea96_42140453 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
     <head>
-        <?php ob_start();
-echo 'Vista/layout/head.tpl';
-$_prefixVariable1=ob_get_clean();
-$_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value).$_prefixVariable1, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+                <?php $_smarty_tpl->_assignInScope('directorioRaiz', "../..");?>
+        <?php $_smarty_tpl->_subTemplateRender('file:../../../Vista/layout/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         <meta charset="utf-8">
         <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
@@ -35,12 +36,9 @@ $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']-
     </head>
     <body>
     <wrapper class="d-flex flex-column">
-        <?php ob_start();
-echo 'Vista/layout/cabeceira.tpl';
-$_prefixVariable2=ob_get_clean();
-$_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value).$_prefixVariable2, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+        <?php $_smarty_tpl->_subTemplateRender('file:../../../Vista/layout/cabeceira.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-        <main class="container-fluid">
+        <main class="container-fluid corpo">
             <h1>Responde preguntas sobre obxetos</h1>
             <form id="facil" action="xogo.php" method="post">
                 <div class="container-fluid corpo">
@@ -50,7 +48,7 @@ $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']-
                             <img class="img-thumbnail" src="icono.png" height="300" width="300"/>
                         </div>
                         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
-                            <span>Xogo de imaxes con preguntas. Responde correctamente ás preguntas sobre os distintos obxetos amosados na pantalla.</span>
+                            <span>Responde correctamente ás preguntas sobre o obxeto da imaxe</span>
                         </div>
                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
                     </div>
@@ -78,13 +76,10 @@ $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']-
                     </div>
                 </div>
             </form>
+            <?php $_smarty_tpl->_subTemplateRender('file:../../../Vista/layout/pe.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
         </main>
     </wrapper>
-    <?php ob_start();
-echo 'Vista/layout/pe.tpl';
-$_prefixVariable3=ob_get_clean();
-$_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value).$_prefixVariable3, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
 </body>
 </html>
 <?php }
