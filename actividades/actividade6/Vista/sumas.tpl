@@ -19,10 +19,12 @@
         = <input type="text" id="res" name="res[]" size="4">            
         <br>
        {/foreach}
+       <span class="error">{if ($errorcampos)}Erro na introdución dos resultados, 
+           teñen que ser numeros e estar todos cubertos{/if}
+       </span>
    <input type="submit" id="finalizar" name="finalizar" value="Finalizar">
    <input type="submit" id="nova" name="nova" value="Nova Partida">
-   <input type="submit" id="gardar" name="gardar" value="Gardar Resultados">   
-   <input type="hidden" id="dif" name="dif" value="{$dif}">    
+   <input type="submit" id="gardar" name="gardar" value="Gardar Resultados">         
      </form>
 </div>
    <div class='xogo'>
