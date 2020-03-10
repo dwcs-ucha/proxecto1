@@ -1,33 +1,40 @@
 @font-face {
-	font-family: starborn;
-	src: url(starborn.ttf);
+    font-family: starborn;
+    src: url(starborn.ttf);
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding-bottom: 220px;
 }
 h1, h2, h3 {
-	font-family: starborn;
-	text-align: center;
+    font-family: starborn;
+    text-align: center;
 }
 
 #logo-xogoteca {
- height: 80px;
- width: 210px;
+    height: 80px;
+    width: 210px;
 }
 .navbar {
- margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 .footer {
- position: relative;
- bottom: 0;
- text-align: center;
- background-color: #007BFF;
- margin-top: 15px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color: #007BFF;
+    margin-top: 15px;
 }
 
 .copyright {
- color: #02035b;
- text-shadow: 1px 0px 0px #333;
+    color: #02035b;
+    text-shadow: 1px 0px 0px #333;
 }
 
 .copyright-link, .copyright-link:hover {
- color: #f8f9fa;
- text-shadow: 2px 1px 5px #000;
+    color: #f8f9fa;
+    text-shadow: 2px 1px 5px #000;
 }

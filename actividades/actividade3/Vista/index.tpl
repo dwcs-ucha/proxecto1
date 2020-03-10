@@ -1,7 +1,7 @@
 {*
- * @autor Manuel Ángel Calvo Piñeiro
- * @version 1.1
- * @data 07/03/2020
+* @autor Manuel Ángel Calvo Piñeiro
+* @version 1.1
+* @data 07/03/2020
 *}
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
     <body>
     <wrapper class="d-flex flex-column">
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
-        <main class="container-fluid corpo">
+        <main class="container-fluid">
             <h1>Responde preguntas sobre obxetos</h1>
             <form id="facil" action="xogo.php" method="post">
                 <div class="container-fluid corpo">
@@ -24,7 +24,7 @@
                             <img class="img-thumbnail" src="icono.png" height="300" width="300"/>
                         </div>
                         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
-                            <span>Responde correctamente ás preguntas sobre o obxeto da imaxe</span>
+                            <span>Xogo de imaxes con preguntas. Responde correctamente ás preguntas sobre os distintos obxetos amosados na pantalla.</span>
                         </div>
                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
                     </div>
@@ -52,8 +52,8 @@
                     </div>
                 </div>
             </form>
-            {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
         </main>
     </wrapper>
+    {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
 </body>
 </html>

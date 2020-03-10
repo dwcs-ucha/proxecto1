@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-09 15:08:52
+/* Smarty version 3.1.34-dev-7, created on 2020-03-09 22:23:19
   from 'D:\xampp\proxecto\Vista\layout\head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e664df4b3f551_47677232',
+  'unifunc' => 'content_5e66b3c7555710_39987097',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '20131db71f525a6ea6ea270d15e3aa7ba6fd7475' => 
     array (
       0 => 'D:\\xampp\\proxecto\\Vista\\layout\\head.tpl',
-      1 => 1583705340,
+      1 => 1583788993,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e664df4b3f551_47677232 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e66b3c7555710_39987097 (Smarty_Internal_Template $_smarty_tpl) {
 ?><meta charset = "UTF-8">
 <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros problemas psicosociais">

@@ -1,7 +1,7 @@
 {*
- * @version 1.1
- * @data 07/03/2020
- * @descripción Index principal do sitio web.
+* @version 1.1
+* @data 07/03/2020
+* @descripción Index principal do sitio web.
 *}
 <!doctype html>
 <html lang="gl">
@@ -31,7 +31,7 @@
     <wrapper class="d-flex flex-column">
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         <main class="container">
-            <h2>Proxecto 1ª AvAliAciOn</h2>
+            <h2>XogotecA</h2>
             <p>
                 Benvid@s ao sitio web de xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros
                 problemas psicosociais.
@@ -46,8 +46,8 @@
 
             <br />
             <img src="{$rutaRootHTML}{'Vista/imaxes/nenos.jpg'}" alt="Globo con cara feliz" class="imaxe" />
-            {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
-
         </main>
     </wrapper>
+    {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
 </body>
+</html>

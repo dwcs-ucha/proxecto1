@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-07 01:58:50
+/* Smarty version 3.1.34-dev-7, created on 2020-03-10 03:20:25
   from 'D:\xampp\proxecto\actividades\actividade3\Vista\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e62f1caaef8d3_11014889',
+  'unifunc' => 'content_5e66f969629895_98232234',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd31b7c114bb37560292cd5466f0cdec66578d579' => 
     array (
       0 => 'D:\\xampp\\proxecto\\actividades\\actividade3\\Vista\\index.tpl',
-      1 => 1583542527,
+      1 => 1583806823,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e62f1caaef8d3_11014889 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e66f969629895_98232234 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +40,7 @@ echo 'Vista/layout/cabeceira.tpl';
 $_prefixVariable2=ob_get_clean();
 $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value).$_prefixVariable2, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
-        <main class="container-fluid corpo">
+        <main class="container-fluid">
             <h1>Responde preguntas sobre obxetos</h1>
             <form id="facil" action="xogo.php" method="post">
                 <div class="container-fluid corpo">
@@ -50,7 +50,7 @@ $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']-
                             <img class="img-thumbnail" src="icono.png" height="300" width="300"/>
                         </div>
                         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 resumo">
-                            <span>Responde correctamente ás preguntas sobre o obxeto da imaxe</span>
+                            <span>Xogo de imaxes con preguntas. Responde correctamente ás preguntas sobre os distintos obxetos amosados na pantalla.</span>
                         </div>
                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marxe"></div>
                     </div>
@@ -78,13 +78,13 @@ $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']-
                     </div>
                 </div>
             </form>
-            <?php ob_start();
+        </main>
+    </wrapper>
+    <?php ob_start();
 echo 'Vista/layout/pe.tpl';
 $_prefixVariable3=ob_get_clean();
 $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value).$_prefixVariable3, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
-        </main>
-    </wrapper>
 </body>
 </html>
 <?php }
