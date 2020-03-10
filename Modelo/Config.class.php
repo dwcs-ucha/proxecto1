@@ -24,9 +24,14 @@ class Config {
     const LOG_ERRO_BBDO = true;
 
     /**
-     * @property boolean $LOG_ERRO_XENERICO Habilita ou deshabilita o log de erros relacionados coas validacións.
+     * @property boolean $LOG_ERRO_VALIDACIONS Habilita ou deshabilita o log de erros relacionados coas validacións.
      */
     const LOG_ERRO_VALIDACIONS = true;
+    
+    /**
+     * @property boolean $LOG_USUARIOS Habilita ou deshabilita o log relacionado cos usuarios.
+     */
+    const LOG_USUARIOS = true;
 
     /**
      * @descripción Devolve a ruta do cartafol raíz do proxecto

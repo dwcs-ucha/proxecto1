@@ -6,7 +6,7 @@
  */
 
 require "Config.class.php";//Se meten los datos para la conexión a la base de datos
-require "ErrorLog.class.php";//Se meten los datos para escribir los errores en un log personalizado
+require "Log.class.php";//Se meten los datos para escribir los errores en un log personalizado
 
  class DAO {
     
@@ -35,7 +35,7 @@ require "ErrorLog.class.php";//Se meten los datos para escribir los errores en u
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error, Log::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
         
         return $lista;//Se devuelve la lista con los datos específicos de la tabla específica
@@ -59,7 +59,7 @@ require "ErrorLog.class.php";//Se meten los datos para escribir los errores en u
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error, Log::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
         
         return $lista;//Se devuelve la lista con los datos específicos de la tabla específica
@@ -81,7 +81,7 @@ require "ErrorLog.class.php";//Se meten los datos para escribir los errores en u
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error, Log::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
@@ -102,7 +102,7 @@ require "ErrorLog.class.php";//Se meten los datos para escribir los errores en u
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error, Log::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
@@ -121,7 +121,7 @@ require "ErrorLog.class.php";//Se meten los datos para escribir los errores en u
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
-            ErrorLog::escribeLog($mensaje_error, ErrorLog::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
+            Log::escribeLog($mensaje_error, Log::ERRO_BBDO);//Se ejecuta la función "escribeLog()" a partir de la clase "Log" con el parámetro "$mensaje_error"
         }
     }
 
