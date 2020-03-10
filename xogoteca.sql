@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS `xogoteca`.`usuarios` (
   `nome` VARCHAR(10) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
   `contrasinal` VARCHAR(30) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
   `rol` TINYINT(1) NOT NULL,
+  `dataAlta` VARCHAR(10) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL,
+  `bloqueado` TINYINT(1) NOT NULL,
   PRIMARY KEY (`nome`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1

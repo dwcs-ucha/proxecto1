@@ -43,23 +43,46 @@
 						<input type="text" name="nome"><br>
 						<label for="contrasinal">Contrasinal</label>
 						<input type="password" name="contrasinal"><br>
-						{if $usuarioSeleccionado->rol == 0}
-							<label for="normal">Normal</label>
-							<input type="radio" name="rol" id="male" value="0" checked></br>
-							<label for="administrador">Administrador</label>
-							<input type="radio" name="rol" id="administrador" value="1"></br>
-						{elseif $usuarioSeleccionado->rol == 1}
-							<label for="normal">Normal</label>
-							<input type="radio" name="rol" id="male" value="0"></br>
-							<label for="administrador">Administrador</label>
-							<input type="radio" name="rol" id="administrador" value="1" checked></br>
-						{else}
-							<label for="normal">Normal</label>
-							<input type="radio" name="rol" id="male" value="0"></br>
-							<label for="administrador">Administrador</label>
-							<input type="radio" name="rol" id="administrador" value="1"></br>
-						{/if}
+						<fieldset>
+						<legend>Rol de usuario</legend>
+							{if $usuarioSeleccionado->rol == 0}
+								<label for="normal">Normal</label>
+								<input type="radio" name="rol" id="normal" value="0" checked></br>
+								<label for="administrador">Administrador</label>
+								<input type="radio" name="rol" id="administrador" value="1"></br>
+							{elseif $usuarioSeleccionado->rol == 1}
+								<label for="normal">Normal</label>
+								<input type="radio" name="rol" id="normal" value="0"></br>
+								<label for="administrador">Administrador</label>
+								<input type="radio" name="rol" id="administrador" value="1" checked></br>
+							{else}
+								<label for="normal">Normal</label>
+								<input type="radio" name="rol" id="normal" value="0"></br>
+								<label for="administrador">Administrador</label>
+								<input type="radio" name="rol" id="administrador" value="1"></br>
+							{/if}
+						</fieldset>
+						<fieldset>
+						<legend>Estado de usuario</legend>
+							{if $usuarioSeleccionado->rol == 0 && $usuarioSeleccionado->bloqueado eq 1}
+								<label for="bloqueado">Bloqueado</label>
+								<input type="radio" name="bloqueo" id="bloqueado" value="1" checked></br>
+								<label for="nonBloqueado">Non bloqueado</label>
+								<input type="radio" name="bloqueo" id="nonBloqueado" value="0"></br>
+							{elseif $usuarioSeleccionado->rol == 0 && $usuarioSeleccionado->bloqueado eq 0}
+								<label for="bloqueado">Bloqueado</label>
+								<input type="radio" name="bloqueo" id="bloqueado" value="1"></br>
+								<label for="nonBloqueado">Non bloqueado</label>
+								<input type="radio" name="bloqueo" id="nonBloqueado" value="0" checked></br>
+							{/if}
+						</fieldset>
+						<label for="dataAlta">Data de alta</label>
+						<input type="text" name="dataAlta" readonly><br>
 					</fieldset>
+					<br>
+					<input class="botonForm" type="reset" name="novo" value="Borrar" onclick="location.replace('produtos.php')"></input>
+					<input class="botonForm" type="submit" name="crear" value="Crear Usuario"></input>
+					<input class="botonForm" type="submit" name="eliminar" value="Eliminar Usuario"></input>
 				</div>
 				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 			</div>
