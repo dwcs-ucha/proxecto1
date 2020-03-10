@@ -48,6 +48,7 @@
     $tipos_condiciones = ['='];
     $valores_condiciones = [$_POST['listaUsuarios']];
     DAO::borrarDatos('usuarios', $campos_condiciones, $tipos_condiciones, $valores_condiciones);
+    header('Location:administracion.php');
   } else {
     header('Location:administracion.php');
   }
