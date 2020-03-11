@@ -1,9 +1,16 @@
 <?php
-    // BreoBeceiro:05/03/2020
+    // BreoBeceiro:10/03/2020
     // PROXECTO 2ª AVALIACIÓN | Versión 1.0
 
     // OS MÉTODOS ESPECIALMENTE DESENVOLVIDOS PARA O SEU USO NALGUNHA ACTIVIDADE, TEÑEN UN COMENTARIO PREVIO NO QUE SE PODE 
     //   AVERIGUAR PARA QUE ACTIVIDADE FOI IMPLANTADO, ASÍ COMO O COLABORADOR AO CARGO DE DITA ACTIVIDADE.
+
+    // HAI QUE DEPURAR validaXogador() -> SE SE LLE PASAN NÚMEROS, DEVOLVE TRUE.
+    // HAI QUE DEPURAR validaRangoNumerico() -> SE UN DOS VALORES LÍMITE VALE 0 E COINCIDE CON $numero, DEVOLVE FALSE.
+    // HAI DOUS MÉTODOS QUE VALIDAN IMAXES, O MÁIS FUNCIONAL É O SEGUNDO (validaImaxe2()), POIS O PRIMEIRO PRESENTA
+    //   PROBLEMAS Á HORA DE PROCESAR AS RUTAS.
+    // NOS DEMAIS MÉTODOS NON SE DETECTARON EXCEPCIÓNS (PERO PODERÍA HABELAS, DADO QUE NAS PROBAS PUIDERON QUEDAR CASOS SEN 
+    //   COMPROBAR).
 
     class Validacion{
 
@@ -43,19 +50,17 @@
 
         // MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
         // Recibe un número enteiro, o valor mínimo do rango, e o valor máximo do rango.
-        // Devolve TRUE soamente se está dentro do rango do 5 ao 10, ámbolos dous valores incluídos.
+        // Devolve TRUE soamente se $numero está dentro do rango do 5 ao 10, ámbolos dous valores incluídos.
         public static function validaRangoNumerico($numero, $min, $max){
             if(is_int($numero) && is_int($min) && is_int($max)){
-                if($numero<$min){
-                    $resultado= false;
-                }elseif($numero>$max){
-                    $resultado= false;
-                }else{
+                if($numero>=intval($min) && $numero<=intval($max)){
                     if(Validacion::validaInt($numero)){
                         $resultado= true;
                     }else{
                         $resultado= false;
                     }
+                }else{
+                    $resultado= false;
                 }
             }else{
                 $resultado= false;
