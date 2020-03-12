@@ -19,7 +19,7 @@ class Sumas {
     }
 
     public function crearPartida($dificultade) {
-        $partida = array();
+        $partida = array();     
         $max = 0;
         switch ($dificultade) {
             case 'baixa':

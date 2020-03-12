@@ -1,7 +1,34 @@
-<!doctype html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-03-12 18:47:52
+  from '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e6a75c89a0104_17265528',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '26c0406657fe748dd40ad73976dcb0ed15aeb8e2' => 
+    array (
+      0 => '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl',
+      1 => 1584035263,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:../../../Vista/layout/head.tpl' => 1,
+    'file:../../../Vista/layout/cabeceira.tpl' => 1,
+    'file:../../../Vista/layout/pe.tpl' => 1,
+  ),
+),false)) {
+function content_5e6a75c89a0104_17265528 (Smarty_Internal_Template $_smarty_tpl) {
+?><!doctype html>
 <html lang="gl">
     <head>
-        {include file="../../../Vista/layout/head.tpl"}
+        <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
         <style type="text/css">
             .col { border: solid black 1px; }
             h1 { text-align: center; }
@@ -12,11 +39,14 @@
             td,th { padding: 5px;
                     text-align: center;}
             </style>
-            <script type="text/javascript" src=""></script>    
+            <?php echo '<script'; ?>
+ type="text/javascript" src=""><?php echo '</script'; ?>
+>    
             <title>Caderno de Sumas</title>
         </head>
         <body>
-            {include file="../../../Vista/layout/cabeceira.tpl"}
+            <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/cabeceira.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
             <h1>Caderno de Sumas</h1>     
             <form action="index.php" method="post">
                 <div class="container-fluid corpo">
@@ -55,13 +85,13 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 xogar" align="center">
                         <button class="btn btn-lg btn-success" type="submit" id="entrar" name="entrar" value="enviar">Xogar</button>
-                        <br><span class="error">{if ($errordif)}Non hay escollida unha dificultade{/if}</span>
+                        <br><span class="error"><?php if (($_smarty_tpl->tpl_vars['errordif']->value)) {?>Non hay escollida unha dificultade<?php }?></span>
                         <br><button class="btn btn-lg btn-success" type="submit" id="vercla" name="vercla" value="vercla">Ver Clasificación</button>
                     </div>
                 </div>
             </div>
         </form>  
-        {if ($mostrarclas)}
+        <?php if (($_smarty_tpl->tpl_vars['mostrarclas']->value)) {?>
             <div class="clasificacion">
                 <table>
                     <tr>
@@ -73,17 +103,30 @@
                         <th>Dificultade</th>
                         <th>Puntuación</th>
                     </tr> 
-                    {foreach from=$estadisticas item=estatistica}		
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estadisticas']->value, 'estatistica');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['estatistica']->value) {
+?>		
                         <tr>
-                            <td>{$estatistica->nome}</td>  
-                            <td>{$estatistica->data}</td>
-                            <td>{$estatistica->dificultade}</td>
-                            <td>{$estatistica->puntuacion}</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->nome;?>
+</td>  
+                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->data;?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->dificultade;?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->puntuacion;?>
+</td>
                         </tr>
-                    {/foreach}
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </table>
             </div>
-        {/if}
-        {include file="../../../Vista/layout/pe.tpl"}
+        <?php }?>
+        <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/pe.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
     </body>
-</html>
+</html><?php }
+}

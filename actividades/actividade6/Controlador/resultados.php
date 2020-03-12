@@ -9,15 +9,19 @@
 ?>
 <?php
 session_start();
-include_once '../../Modelo/Config.class.php';
-include_once '../../iniciarsmarty.inc.php';
-include_once '../../Modelo/Estatisticas.class.php';
+include_once '../../../Modelo/Config.class.php';
+include_once '../../../iniciarsmarty.inc.php';
+include_once '../../../Modelo/Estatisticas.class.php';
 include_once '../Modelo/Sumas.class.php';
 
 if(isset($_POST['reintentar'])){
+    unset($_SESSION['a6_aciertos']);
+    unset($_SESSION['a6_puntuacion']);
     header('location:sumas.php');
 }
 if(isset($_POST['nova'])){
+    unset($_SESSION['a6_aciertos']);
+    unset($_SESSION['a6_puntuacion']);
     unset($_SESSION['a6_partida']);
     header('location:sumas.php');
 }
