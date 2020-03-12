@@ -15,6 +15,13 @@
     **/
 ?>
 <?php
+session_start();
+if(isset($_SESSION['a6_dif'])){
+    unset($_SESSION['a6_dif']);
+}
+if(isset($_SESSION["a6_partida"])){
+    unset($_SESSION["a6_partida"]);
+}
 /* Para facer funcionar Smarty */
 include_once '../../Modelo/Config.class.php'; 
 include_once '../../iniciarsmarty.inc.php';
@@ -27,25 +34,21 @@ $mostrarclas=false;
    en cada caso */
 if(isset($_POST['entrar'])){
     if(isset($_POST['dif'])){
-       $dif = $_POST['dif'];                
+       $dif = $_POST['dif'];
+        $_SESSION['a6_dif'] = $dif;
+        header("location:Controlador/sumas.php");
+        /* Se todo esta correcto collemos o valor da dificultade e rediriximos á paxina da actividade */
     }else{
        $dif='';
 	$errordif=true;
-    }   
-/* Se todo esta correcto collemos o valor da dificultade e rediriximos á paxina da actividae 
-   Enviamos o valor polo Get na ruta á páxina seguinte */
-     if(isset($_POST['dif'])){
-         $_SESSION['a6_dif'] = $_POST['dif'];
-        header("location:sumas.php");
-    }    
+    }      
 }
 if(isset($_POST['vercla'])){
 	$mostrarclas = true;
 }
-
 $smarty->assign('errordif',$errordif);
 $smarty->assign('mostrarclas',$mostrarclas);
-$smarty->display('../Vista/index.tpl');
+$smarty->display('Vista/index.tpl');
 
 
 ?>

@@ -8,8 +8,9 @@
  */
 
 //Inclúese Smarty
-require Config::getRutaRootPHP() . '/smarty/libs/Smarty.class.php';
-require Config::getRutaRootPHP() . 'Controlador/CookiesController.class.php';
+require_once "Modelo/Config.class.php";
+require_once Config::getRutaRootPHP() . '/smarty/libs/Smarty.class.php';
+require_once Config::getRutaRootPHP() . 'Controlador/CookiesController.class.php';
 
 //Créase o obxecto Smarty
 $smarty = new Smarty();

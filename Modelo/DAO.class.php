@@ -5,8 +5,8 @@
  * Descripción: Información de la clase "DAO" (Data Access Object)
  */
 
-require "Config.class.php";//Se meten los datos para la conexión a la base de datos
-require "Log.class.php";//Se meten los datos para escribir los errores en un log personalizado
+require_once "Config.class.php";//Se meten los datos para la conexión a la base de datos
+require_once "Log.class.php";//Se meten los datos para escribir los errores en un log personalizado
 
  class DAO {
     

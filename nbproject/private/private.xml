@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/proxecto/Modelo/Config.class.php</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/index.php</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/Modelo/Sumas.class.php</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/sumas.tpl</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/Controlador/sumas.php</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/Modelo/Validacion.class.php</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/resultados.tpl</file>
+            <file>file:/var/www/html/Proxecto/proxecto1/actividades/actividade6/Controlador/resultados.php</file>
         </group>
     </open-files>
 </project-private>
