@@ -51,9 +51,6 @@
         <wrapper class="d-flex flex-column">
             {include file="{$rutaRootPHP}Vista/layout/cabeceira.tpl"}
             <main class="container corpo">
-                {* Exemplo de uso de arquivos no cliente *}
-                <img src="{$rutaRootHTML}Vista/imaxes/logo2.png">
-
                 <h2>Completar Sílabas e Palabras<br />(Fácil)</h2>
 
                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -73,6 +70,77 @@
                     <div class="row align-items">
 
                         {* Imaxes e caixas de texto a cubrir polo xogador/a *}
+
+                        {* Hai que percorrer o array $silabasFinais e, en función do valor de cada un dos seus elementos, o contido
+                        //   dos inputs e as imaxes a amosar serán distintos (é dicir, o contido de cada unha das caixas que se
+                        //   producen con cada iteracción do bucle, varía en función do valor do elemento que hai en dita iteracción).
+                        // Haberá que empregar variables de SMARTY obtidas no controlador para empregalas na estrutura:
+                        foreach($silabasFinais as $silabaFinal){
+                            ?>
+                                <div class="col">
+                                    <?php
+                                        // A función devolveImaxe() vai devolver a imaxe correspondente coa sílaba de entrada:
+                                        devolveImaxe($silabaFinal);
+                                    ?>
+                                    <br />
+                                    <div class="form-group">
+                                        <input type='text' name='silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' id='Silaba<?php echo devolveSilabaInicial($silabaFinal); ?>' value="<?php if(isset($_POST["silaba" . devolveSilabaInicial($silabaFinal)])){ echo $_POST["silaba" . devolveSilabaInicial($silabaFinal)]; }else{ echo ""; } ?>" maxlength='2' class="form-control" />
+                                        <input type='text' name='silabaFinal<?php echo $i; ?>' id='SilabaFinal<?php echo $i; ?>' value='<?php echo $silabaFinal; ?>' class="form-control" readonly='readonly' />
+                                    </div>
+                                    <br />
+                                    <?php
+                                        // O seguinte SWITCH evalúa o elemento do array e, en función do valor deste, devolve unha
+                                        //   estrutura condicional coa que amosará a variable (se é que existe) que contén a mensaxe
+                                        //   de erro do caso en particular:
+                                        switch($silabaFinal){
+                                            case "PIZ":
+                                                if(isset($_POST['enviar']) && isset($erroLA)){ echo $erroLA; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLA)){ echo $noraboaLA; }
+                                                break;
+                                            case "CHE":
+                                                if(isset($_POST['enviar']) && isset($erroLE)){ echo $erroLE; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLE)){ echo $noraboaLE; }
+                                                break;
+                                            case "BRO":
+                                                if(isset($_POST['enviar']) && isset($erroLI)){ echo $erroLI; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLI)){ echo $noraboaLI; }
+                                                break;
+                                            case "RO":
+                                                if(isset($_POST['enviar']) && isset($erroLO)){ echo $erroLO; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLO)){ echo $noraboaLO; }
+                                                break;
+                                            case "NA":
+                                                if(isset($_POST['enviar']) && isset($erroLU)){ echo $erroLU; }
+                                                if(isset($_POST['enviar']) && isset($noraboaLU)){ echo $noraboaLU; }
+                                                break;
+                                            case "TA":
+                                                if(isset($_POST['enviar']) && isset($erroRA)){ echo $erroRA; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRA)){ echo $noraboaRA; }
+                                                break;
+                                            case "NO":
+                                                if(isset($_POST['enviar']) && isset($erroRE)){ echo $erroRE; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRE)){ echo $noraboaRE; }
+                                                break;
+                                            case "O":
+                                                if(isset($_POST['enviar']) && isset($erroRI)){ echo $erroRI; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRI)){ echo $noraboaRI; }
+                                                break;
+                                            case "CA":
+                                                if(isset($_POST['enviar']) && isset($erroRO)){ echo $erroRO; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRO)){ echo $noraboaRO; }
+                                                break;
+                                            case "SIA":
+                                                if(isset($_POST['enviar']) && isset($erroRU)){ echo $erroRU; }
+                                                if(isset($_POST['enviar']) && isset($noraboaRU)){ echo $noraboaRU; }
+                                                break;
+                                        }
+
+                                        // Increméntase $i para a seguinte iteracción:
+                                        $i++;
+
+                                        // Péchase o div de clase 'col':
+                                        echo "</div>";
+                        }*}
 
                     </div>
 
