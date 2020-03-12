@@ -31,8 +31,6 @@
     include_once '../../Modelo/Config.class.php'; 
     include_once Config::$rutaRootPHP.'iniciarsmarty.inc.php';
 
-    $smarty->display("Vista/actividadeDoada.tpl");
-
     // Se o xogador quere gardar a súa puntuación, debe autenticarse, de modo que se non está identificado, envíaselle
     //   á páxina de acceso. Se está identificado, a súa puntuación envíase á BBDD:
     if(isset($_POST['enviaPuntos'])){
@@ -171,4 +169,7 @@
     //   xa que se se produce por premer en 'Refrescar', o estado do array cambiará, dado que pasará de novo
     //   pola función shuffle():
     $silabasFinaisSTRING= implode(",", $silabasFinais);
+
+    // PRIMEIRO CARGAS AS CLAVES CO MÉTODO DE SMARTY assign, LOGO AMOSAS A PLANTILLA:
+    $smarty->display("Vista/actividadeDoada.tpl");
 ?>
