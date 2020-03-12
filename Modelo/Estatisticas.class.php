@@ -26,7 +26,8 @@ class Estatisticas {
         $this->dificultade = $dificultade;
         
     }
-    public function gardar_estatistica(Estatistica $estatistica){
+
+    public function gardar_estatistica(Estatisticas $estatistica){
         $campos = array('codactividade','nomexogador','data','puntos','dificultade');
         $valores = array($estatistica->codactividade,$estatistica->nomexogador,$estatistica->data,$estatistica->puntos,$estatistica->dificultade);
         DAO::escribirDatos('estadisticas', $campos, $valores);
@@ -43,6 +44,7 @@ class Estatisticas {
         }
         return $array_estatisticas;        
     }
+
     public function estatisticas_xogador($nomexogador){        
         $array_estatisticas = Array();
         $campos=array("codactividade","nomexogador","data","puntos","dificultade"); 
