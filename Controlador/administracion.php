@@ -3,18 +3,23 @@
   require('../Modelo/Usuario.class.php');
   require('../Modelo/Normal.class.php');
   require('../Modelo/Administrador.class.php');
-  set_include_path('../smarty/libs');
-  require('Smarty.class.php');
-  $smarty = new Smarty();
-  $smarty->setTemplateDir('../smarty/templates');
-  $smarty->setCompileDir('../smarty/templates_c');
-  $smarty->setCacheDir('../smarty/cache');
-  $smarty->setConfigDir('../smarty/configs');
+  include_once '../Modelo/Config.class.php';
+  include_once Config::$rutaRootPHP.'iniciarsmarty.inc.php';
 
   $hoxe = date("Y-m-d");
   $campos = ['nome', 'contrasinal', 'rol', 'dataAlta', 'bloqueado'];
   $camposObligatorios = ['nome', 'contrasinal', 'rol'];
-  $usuarios = DAO::leerDatos('usuarios', $campos);
+  $datos = DAO::leerDatos('usuarios', $campos);
+  $usuarios = Array();
+  for ($i=0; $i < count($datos) ; $i++) {
+    $u = new Usuario($datos[$i][0], $datos[$i][1], $datos[$i][2], $datos[$i][3], $datos[$i][4]);
+    $usuarios[] = $u;
+  }
+  var_dump($usuarios);
+
+  if(isset($_POST['listaUsuarios'])) {
+    $smarty->assign('usuarioSeleccionado', $_POST['listaUsuarios']);
+  }
 
   if (isset($_POST['crear'])) {
     $erros = Array();
@@ -43,17 +48,17 @@
 
   }
 
-  if (isset($_POST['eliminiar']) && isset($_POST['listaUsuarios'])) {
-    $campos_condiciones = ['nome'];
-    $tipos_condiciones = ['='];
-    $valores_condiciones = [$_POST['listaUsuarios']];
-    DAO::borrarDatos('usuarios', $campos_condiciones, $tipos_condiciones, $valores_condiciones);
-    header('Location:administracion.php');
-  } else {
-    header('Location:administracion.php');
+  if (isset($_POST['eliminar'])) {
+    if (isset($_POST['listaUsuarios'])) {
+      $campos_condiciones = ['nome'];
+      $tipos_condiciones = ['='];
+      $valores_condiciones = [$_POST['listaUsuarios']];
+      DAO::borrarDatos('usuarios', $campos_condiciones, $tipos_condiciones, $valores_condiciones);
+      header('Location:administracion.php');
+    }
   }
 
   $smarty->assign('numeroUsuarios', count($usuarios) - 1);
-  $smarty->assign('listaUsuarios', $_POST['listaUsuarios']);
+  $smarty->assign('usuarios', $usuarios);
   $smarty->display('../Vista/administracion.tpl');
 ?>

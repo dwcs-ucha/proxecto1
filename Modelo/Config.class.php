@@ -7,9 +7,9 @@
  */
 class Config {
 
-    public static $datos = "mysql:host=localhost;dbname=tienda"; //Host del servidor y nombre de la base de datos
+    public static $datos = "mysql:host=localhost;dbname=xogoteca"; //Host del servidor y nombre de la base de datos
     public static $nombre = "phpmyadmin"; //Nombre del usuario que se conecta al servidor (Tiene que tener los privilegios suficientes)
-    public static $contrasena = "admin"; //Contrasena del usuario
+    public static $contrasena = "1234"; //Contrasena del usuario
     public static $rutaRootPHP;
     public static $rutaRootHTML;
 
@@ -27,7 +27,7 @@ class Config {
      * @property boolean $LOG_ERRO_VALIDACIONS Habilita ou deshabilita o log de erros relacionados coas validacións.
      */
     const LOG_ERRO_VALIDACIONS = true;
-    
+
     /**
      * @property boolean $LOG_USUARIOS Habilita ou deshabilita o log relacionado cos usuarios.
      */
@@ -54,7 +54,7 @@ class Config {
      * Exemplo se a aplicación se garda no cartafol "Xogoteca": $_SERVER["DOCUMENT_ROOT"] . "/Xogoteca/"
      */
     public static function setRutaRootPHP() {
-        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/Xogoteca/";
+        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/proxecto/proxecto1/";
     }
 
     /**
@@ -62,7 +62,7 @@ class Config {
      * Exemplo se a aplicación se garda no cartafol "Xogoteca": $_SERVER["SERVER_NAME"] . "/Xogoteca/"
      */
     public static function setRutaRootHTML() {
-        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/Xogoteca/";
+        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/proxecto/proxecto1/";
     }
 
 }

@@ -1,16 +1,41 @@
-<html lang="gl">
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-03-12 19:04:52
+  from '/var/www/html/proxecto/proxecto1/actividades/actividade11/Vista/a11_index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e6a79c44e14f8_62567148',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '1ed8ba3f94f64ef19b618422246b9eee64d3151e' => 
+    array (
+      0 => '/var/www/html/proxecto/proxecto1/actividades/actividade11/Vista/a11_index.tpl',
+      1 => 1584036290,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5e6a79c44e14f8_62567148 (Smarty_Internal_Template $_smarty_tpl) {
+?><html lang="gl">
 <head>
 	<meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../Estilo/estilosA11.css">
-	<link rel="stylesheet" href="{$rutaRootHTML}/Vista/estilos/estilos.css">
+	<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
+/Vista/estilos/estilos.css">
 	<title>Emparella imaxes</title>
 </head>
 <body>
 	<wrapper class="d-flex flex-column">
 	<main class="container-fluid corpo">
-		{include file="{$rutaRootPHP}Vista/layout/cabeceira.tpl"}
+		<?php $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value)."Vista/layout/cabeceira.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
 		<h1>EmpArellA imaxes</h1>
 		<form id="numeroCartas" action="../Controlador/a11_xogo.php" method="post">
 			<div class="row">
@@ -47,6 +72,9 @@
 		</form>
 	</main>
 	</wrapper>
-	{include file="{$rutaRootPHP}Vista/layout/pe.tpl"}
+	<?php $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['rutaRootPHP']->value)."Vista/layout/pe.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
 </body>
 </html>
+<?php }
+}

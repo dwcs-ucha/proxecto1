@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-10 20:07:27
+/* Smarty version 3.1.34-dev-7, created on 2020-03-12 19:50:48
   from '/var/www/html/proxecto/proxecto1/Vista/administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e67e56fd71dd8_55633885',
+  'unifunc' => 'content_5e6a8488107325_92480735',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2c98543967ac139c826664b8f402a4cecb9f0cd7' => 
     array (
       0 => '/var/www/html/proxecto/proxecto1/Vista/administracion.tpl',
-      1 => 1583865967,
+      1 => 1584039045,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e67e56fd71dd8_55633885 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e6a8488107325_92480735 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -30,10 +30,10 @@ function content_5e67e56fd71dd8_55633885 (Smarty_Internal_Template $_smarty_tpl)
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  	<?php echo '<script'; ?>
+  <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
 >
-  	<?php echo '<script'; ?>
+  <?php echo '<script'; ?>
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 </head>

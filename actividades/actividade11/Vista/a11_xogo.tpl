@@ -5,7 +5,7 @@
 		* @Autor: Cristóbal Romero
 		* @GitHub: ZerinhoRomero
 		* @DataCreacion: 12/11/2019
-		* @UltimaModificacion: 10/12/2019
+		* @UltimaModificacion: 05/03/2020
 		* @Version: 0.0.9b
 		**/
 	?>
@@ -26,9 +26,9 @@
 <body>
 	<wrapper class="d-flex flex-column">
   	<main class="container corpo" align="center">
-  		{include file="../../layout/cabeceira.php"}
+  		{*{include file="../../layout/cabeceira.php"}*}
   		<h1>EMPARELLA</h1>
-      {include file="../../layout/pe.php"}
+      {*{include file="../../layout/pe.php"}*}
     </main>
   </wrapper>
 </body>
