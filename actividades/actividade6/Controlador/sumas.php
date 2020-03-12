@@ -60,7 +60,6 @@ if (isset($_POST['finalizar'])) {
         $puntuacion = 0;
         $resultados = $_POST['res'];
         for ($i = 0; $i < sizeof($resultados); $i++) {
-            if ($res[$i])
                 if ($res[$i] == $partida[$i]->resultado) {
                     $aciertos++;
                 }
