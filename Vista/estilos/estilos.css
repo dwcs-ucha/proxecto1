@@ -46,3 +46,32 @@ div.avisoCookies {
     background-color: green;
     padding: 20px;
 }
+
+.cabeceira input {
+  padding: 2px;
+  margin-top: 2px;
+  font-size: 17px;
+  border: none;
+  width: 100px;
+}
+
+.cabeceira .login-container button {
+  float: right;
+  padding: 2px 5px;
+  margin-top: 2px;
+  margin-right: 20px;
+  background-color: #555;
+  color: white;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.cabeceira .login-container button:hover {
+  background-color: lightgreen;
+}
+
+.cabeceira .rexistro, .cabeceira .rexistro:hover, .cabeceira .rexistro:visited {
+    color:white;
+    text-decoration: none;
+}

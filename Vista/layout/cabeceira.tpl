@@ -35,5 +35,15 @@
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade6">Caderno de sumas</a>
         </div>
     </div>
+    <div class="collapse navbar-collapse">
+        <a class="rexistro" href="{$rutaRootHTML}/Controlador/rexistro.php">Rexistro</a>
+    </div>
+    <div class="login-container">
+        <form>
+          <input type="text" placeholder="Usuario" name="usuario"><br>
+          <input type="password" placeholder="Contrasinal" name="contrasinal">
+          <button type="submit">Login</button>
+        </form>
+    </div>
 </nav>
 
