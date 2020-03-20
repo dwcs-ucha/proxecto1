@@ -16,7 +16,9 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
      */
     private static function establecerConexion() {
         $opciones = array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);//Opciones para desactivar la emulación de consultas preparadas y permitir lanzar excepciones del tipo "PDOException"
-        return new PDO(Config::$datos, Config::$nombre, Config::$contrasena, $opciones);
+        $conexion = new PDO(Config::$datos, Config::$nombre, Config::$contrasena, $opciones);
+        $conexion->query("SET NAMES 'utf8'"); //A codificación da base de datos será utf8
+        return $conexion;
     }
 
     /**
