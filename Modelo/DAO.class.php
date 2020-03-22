@@ -47,7 +47,7 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
      * Nombre: leerDatosCondicion()
      * Descripción: Lee algunos datos de la tabla especificada a partir de una condición determinada
      */
-    public static function leerDatosCondicion($tabla, $campos, $campo_condicion, $tipo_condicion, $valor_condicion) {
+    public static function leerDatosCondicion($tabla, $campos, $campo_condicion, $tipo_condicion, $valor_condicion, $formatoDevolverDatos = PDO::ATTR_DEFAULT_FETCH_MODE) {
         try {//Se prueban los datos siguientes:
             $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor en la variable "$conexion"
             $total_campos = self::concatenarDatos($campos);//Se ejecuta la función "concatenarDatos()" con el parámetro "$campos"
@@ -56,8 +56,7 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
             $consulta = $conexion->prepare($sentencia);//Se prepara esa sentencia SQL y se recoge su valor en esta variable
             $consulta->bindParam(1, $valor_condicion);//Se pone como parámetros la variable "$valor_condicion"
             $consulta->execute();//Se ejecuta la sentencia
-
-            $lista = $consulta->fetchAll();//Se recogen todos los datos en esta variable
+            $lista = $consulta->fetchAll($formatoDevolverDatos);//Se recogen todos los datos en esta variable en el formato indicado
         } catch (PDOException $e) {//Si salta un error del tipo "PDOException":
             $mensaje_error = $e->getMessage();//Mensaje de error
 
