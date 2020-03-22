@@ -23,13 +23,15 @@
     include('../Modelo/moduloFuncions.inc.php');
 
     // Ficheiro de funcións comúns do sitio:
-    include('../../../librerias/utils.php');
+    include('../../../Controlador/librerias/utils.php');
 
     include('../Modelo/DAO.class.php');
     include('../Modelo/Xogador.class.php');
 
-    include_once '../../Modelo/Config.class.php'; 
-    include_once Config::$rutaRootPHP.'iniciarsmarty.inc.php';
+    include_once '../../../Modelo/Config.class.php'; 
+    //include_once Config::$rutaRootPHP.'iniciarsmarty.inc.php';
+    include_once '../../../iniciarsmarty.inc.php';
+
 
     // Se o xogador quere gardar a súa puntuación, debe autenticarse, de modo que se non está identificado, envíaselle
     //   á páxina de acceso. Se está identificado, a súa puntuación envíase á BBDD:
