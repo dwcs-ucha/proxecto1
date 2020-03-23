@@ -103,12 +103,13 @@ insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividade
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal10.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal11.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal12.jpeg', 1);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/Animais/animal13.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal13.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal14.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal15.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal16.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal17.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal18.jpeg', 1);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal19.jpeg', 1);
 
 insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Árbores', 'actividades/actividade4/Imaxes/Arbores/arbores.png');
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol1.png', 2);
