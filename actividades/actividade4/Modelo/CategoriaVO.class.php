@@ -25,15 +25,18 @@ class Categoria {
         return $this->nome;
     }
 
+    public function getImaxeCategoria() {
+        return $this->imaxePrincipal;
+    }
+
+
     public function getImaxesXogo() {
         return $this->imaxesXogo;
     }
 
-    public function seleccionarImaxesAleatoriamente() {
+    public function seleccionarImaxesAleatoriamente(int $numeroImaxes) {
         shuffle($this->imaxesXogo);
+        $this->imaxesXogo = array_slice($this->imaxesXogo, 0,$numeroImaxes);
     }
     
-    public static function convertirACategoria(string $nome, string $imaxeCategoria, array $imaxes) {
-        
-    }
 }

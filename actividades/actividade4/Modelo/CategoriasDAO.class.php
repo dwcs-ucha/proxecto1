@@ -13,18 +13,17 @@
  */
 class CategoriasDAO {
     private static function getRutaFicheiroCategorias() {
-        $ruta = Config::$rutaRootPHP . "actividades/actividade4";
+        $ruta = Config::$rutaRootPHP . "actividades/actividade4/categorias.csv";
         return $ruta;
     }
     public static function getCategorias() {
         $categorias = array();
         $ficheiroCategorias = fopen(self::getRutaFicheiroCategorias(), "r");
-        while (!feof($ficheiroCategorias)) {
-            $arrayCategoriaLida = fgetcsv($ficheiroCategorias);
+        while (($arrayCategoriaLida = fgetcsv($ficheiroCategorias, 0, ';')) !== false) {
             $nomeCategoria = $arrayCategoriaLida[Categoria::INDEX_NOME];
             $imaxePrincipalCategoria = $arrayCategoriaLida[Categoria::INDEX_IMAXE_PRINCIPAL];
             $imaxesCategoriaXogo = array_slice($arrayCategoriaLida, Categoria::INDEX_COMEZO_IMAXES_XOGO);
-            $categoria = new Categoria($nome, $imaxePrincipal, $categorias);
+            $categoria = new Categoria($nomeCategoria, $imaxePrincipalCategoria, $imaxesCategoriaXogo);
             $categorias[] = $categoria;
         }
         fclose($ficheiroCategorias);
