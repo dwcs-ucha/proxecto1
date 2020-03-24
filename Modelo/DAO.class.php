@@ -11,8 +11,9 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
  class DAO {
     
     /**
-     * Nombre: establecerConexion()
+     * Nombre: establecerConexion()<br>
      * Descripción: Establece la conexión con la base de datos a partir del nombre y contraseña especificados
+     * @return \PDO Conexión a la base de datos
      */
     private static function establecerConexion() {
         $opciones = array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);//Opciones para desactivar la emulación de consultas preparadas y permitir lanzar excepciones del tipo "PDOException"
@@ -22,8 +23,12 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: leerDatos()
+     * Nombre: leerDatos() <br>
      * Descripción: Lee algunos datos de la tabla especificada
+     * @param string $tabla Nombre de la tabla de la que se quieren datos
+     * @param array $campos Array de cadenas de texto con el nombre de los campos que se quieren obtener. Incluso
+     * si solo se quiere un campo, debe estar en un array
+     * @return array Array multidimensional que contiene todos los resultados de la consulta
      */
     public static function leerDatos($tabla, $campos) {
         try {//Se prueban los datos siguientes:
@@ -44,8 +49,17 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: leerDatosCondicion()
+     * Nombre: leerDatosCondicion()<br>
      * Descripción: Lee algunos datos de la tabla especificada a partir de una condición determinada
+     * @param string $tabla Nombre de la tabla de la que se quieren datos
+     * @param array $campos Array de cadenas de texto con el nombre de los campos que se quieren obtener. Incluso
+     * si solo se quiere un campo, debe estar en un array
+     * @param string $campo_condicion Nombre del campo que va a estar en la condición
+     * @param string $tipo_condicion Puede ser < =  etc
+     * @param mixed $valor_condicion Valor con el que se compara el campo_condicion. Ejemplo: $campo_condicion < $valor_condicion
+     * @param int $formatoDevolverDatos Parámetro opcional que determina cómo se devolverán los datos. Se corresponde al
+     * parámetro opcional de la función fetchAll()
+     * @return array Array que contiene todos los resultados de la consulta
      */
     public static function leerDatosCondicion($tabla, $campos, $campo_condicion, $tipo_condicion, $valor_condicion, $formatoDevolverDatos = PDO::ATTR_DEFAULT_FETCH_MODE) {
         try {//Se prueban los datos siguientes:
@@ -67,8 +81,12 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: escribirDatos()
+     * Nombre: escribirDatos()<br>
      * Descripción: Escribe el dato a partir de la información contenida en los arrays "$campos" y "$valores"
+     * @param string $tabla Nombre de la tabla en la que se quiere insertar datos
+     * @param array $campos Array de cadenas de texto con el nombre de los campos que se quieren insertar. Incluso
+     * si solo se quiere un campo, debe estar en un array
+     * @param array $valores Valores de los campos que se quieren insertar
      */
     public static function escribirDatos($tabla, $campos, $valores) {
         try {//Se prueban los datos siguientes:
@@ -87,8 +105,16 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: modificarDatos()
+     * Nombre: modificarDatos()<br>
      * Descripción: Modifica los datos específicos
+     * @param string $tabla Nombre de la tabla en la que se quiere modificar datos
+     * @param array $campos_modificaciones Array de cadenas de texto con el nombre de los campos que se quieren modificar. Incluso
+     * si solo se quiere un campo, debe estar en un array
+     * @param array $campos_condiciones Nombres de los campos que va a estar en la condiciones
+     * @param array $tipos_condiciones Pueden ser < = etc. Cada $tipos_condiciones[$i] se corresponde con el
+     *  $campo_condiciones[$i] y $valores_condiciones[$i].
+     * @param array $valores_condiciones Valores con los que se compara el campo_condiciones[$i]. Ejemplo:
+     *  $campo_condiciones[$i] < $valores_condiciones[$i]
      */
     public static function modificarDatos($tabla, $campos_modificaciones, $valores_modificaciones, $campos_condiciones, $tipos_condiciones, $valores_condiciones) {
         try {//Se prueban los datos siguientes:
@@ -108,8 +134,14 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: borrarDatos()
+     * Nombre: borrarDatos()<br>
      * Descripción: Borra los datos a partir de la/s condicion/es específica/s
+     * @param string $tabla Nombre de la tabla en la que se quiere modificar datos
+     * @param array $campos_condiciones Nombres de los campos que va a estar en la condiciones
+     * @param array $tipos_condiciones Pueden ser < = etc. Cada $tipos_condiciones[$i] se corresponde con el
+     *  $campo_condiciones[$i] y $valores_condiciones[$i].
+     * @param array $valores_condiciones Valores con los que se compara el campo_condiciones[$i]. Ejemplo:
+     *  $campo_condiciones[$i] < $valores_condiciones[$i]
      */
     public static function borrarDatos($tabla, $campos_condiciones, $tipos_condiciones, $valores_condiciones) {
         try {//Se prueban los datos siguientes:
@@ -127,8 +159,11 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: concatenarDatos()
+     * Nombre: concatenarDatos()<br>
      * Descripción: Se concatenan los datos del array del parámetro y se devuelve el resultado
+     * Funcionamiento muy similar a implode()
+     * @param array $lista_datos Lista de campos que se quieren concatenar
+     * @return string Campos juntos en una cadena de texto
      */
     private static function concatenarDatos($lista_datos) {
         $total_datos = "";//Cadena donde se van a guardar los datos del array
@@ -143,8 +178,10 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: concatenarInterrogaciones()
+     * Nombre: concatenarInterrogaciones()<br>
      * Descripción: Se concatenan interrogaciones a partir de la longitud del array del parámetro y se devuelve el resultado
+     * @param array $lista_datos Lista de campos que se quieren concatenar
+     * @return string Lista separada por comas de ? que corresponden a cada campo del array recibido.
      */
     private static function concatenarInterrogaciones($lista_datos) {
         $total_datos = "";//Cadena donde se van a guardar las interrogaciones
@@ -159,8 +196,11 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: concatenarCondiciones()
+     * Nombre: concatenarCondiciones()<br>
      * Descripción: Se concatenan los datos del array del parámetro para representar condiciones SQL y se devuelve el resultado
+     * @param array $campos Nombres de los campos que forman parte de las condiciones
+     * @param string $tipos Pueden ser > < = etc.
+     * @return string lista de condiciones separadas por comas. Ejemplo: "nombre = ?, victorias > 0"
      */
     private static function concatenarCondiciones($campos, $tipos) {
         $total_datos = "";//Cadena donde se van a guardar los datos de los arrays
@@ -175,8 +215,10 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
     }
 
     /**
-     * Nombre: concatenarModificaciones()
+     * Nombre: concatenarModificaciones()<br>
      * Descripción: Se concatenan los datos del array del parámetro para representar modificaciones SQL y se devuelve el resultado
+     * @param array $campos Nombres de los campos que forman parte de las modificaciones
+     * @return string lista de condiciones separadas por comas. Ejemplo: "nombre = ?, victorias = ?"
      */
     private static function concatenarModificaciones($campos) {
         $total_datos = "";//Cadena donde se van a guardar los datos de los arrays
