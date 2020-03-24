@@ -301,7 +301,17 @@ class Validacion {
         }
         return $validado;
     }
-
+    
+    /**
+     * Valida que a dificultade da actividade esté dentro da lista permitida de valores
+     * @param string $dificultade
+     * @return bool TRUE se é válida. FALSE se non.
+     */
+    public static function validarDificultade($dificultade) {
+        $dificultadesPermitidas = ["facil", "normal", "dificil"];
+        $dificultadeValida = in_array($dificultade, $dificultadesPermitidas);
+        return $dificultadeValida;
+    }
 }
 
 ?>
