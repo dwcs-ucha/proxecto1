@@ -71,7 +71,7 @@ class Validacion {
      * FALSE en caso contrario.
      */
     public static function validaRangoNumerico($numero, $min, $max) {
-        if (is_int($numero) && is_int($min) && is_int($max)) {
+        if (is_numeric($numero) && is_numeric($min) && is_numeric($max)) {
             if ($numero >= intval($min) && $numero <= intval($max)) {
                 if (self::validaInt($numero)) {
                     $resultado = true;
@@ -311,6 +311,19 @@ class Validacion {
         $dificultadesPermitidas = ["facil", "normal", "dificil"];
         $dificultadeValida = in_array($dificultade, $dificultadesPermitidas);
         return $dificultadeValida;
+    }
+    
+    /**
+     * Comproba que todos os elementos dun array están dentro dun máis grande
+     * @param array $datosComprobar Lista de valores do que se quere comprobar se hai algún fóra dos valores permitidos
+     * @param array $listaValores Array máis grande que debería conter todos os valores de $datosComprobar
+     * @return type
+     */
+    public static function validarListaContenDatos($datosComprobar, $listaValores) {
+        $listaElementosComuns = array_intersect($datosComprobar, $listaValores);
+        $cantidadeElementosComuns = count($listaElementosComuns);
+        $isDatosContidoEnLista = $cantidadeElementosComuns === count($datosComprobar);
+        return $isDatosContidoEnLista;
     }
 }
 
