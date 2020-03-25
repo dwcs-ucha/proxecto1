@@ -7,6 +7,7 @@ include '../../Modelo/Config.class.php';
 include 'Controlador/PartidaController.class.php';
 include 'Controlador/CategoriaController.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
+include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
 
 session_start();
@@ -14,24 +15,40 @@ $fasePartida = PartidaController::getFasePartida();
 if ($fasePartida !== PartidaVO::FASE_CONFIGURAR) {
     PartidaController::crearPartidaNova();
 }
-$partida = PartidaController::getPartida();
+
 if (isset($_POST["dificultade"])) {
-    PartidaController::setDificultade($_POST["dificultade"]);
+    $dificultade = $_POST["dificultade"];
+    if (Validacion::validarDificultade($dificultade)) {
+        PartidaController::setDificultade($dificultade);
+    } else {
+        $mensaxeErro = "A dificultade non é válida";
+    }
 }
 
 if (isset($_POST["xogar"])) {
     $numImaxes = $_POST["numImaxes"];
-    PartidaController::iniciarXogo($numImaxes);
-    header("Location: Controlador/respostas.php");
-    exit();
+    if (Validacion::validaRangoNumerico($numImaxes, PartidaVO::NUMERO_IMAXES_CATEGORIA_MINIMO, PartidaVO::NUMERO_IMAXES_CATEGORIA_MAXIMO)) {
+        PartidaController::iniciarXogo($numImaxes);
+        header("Location: Controlador/respostas.php");
+        exit();
+    } else {
+        $mensaxeErro = "O número de imaxes por categoría non é válido";
+    }
 }
 
 
-$smarty->assign("dificultade", $partida->getDificultade());
-$smarty->assign("categoriasPartida", $partida->getCategorias());
-$smarty->assign("numImaxes", $partida->getNumeroImaxesCategoria());
+$dificultade = PartidaController::getDificultade();
+$categorias = PartidaController::getCategoriasPartida();
+$numeroImaxesCategoria = PartidaController::getNumeroImaxesPorCategoria();
+
+$smarty->assign("dificultade", $dificultade);
+$smarty->assign("categoriasPartida", $categorias);
+$smarty->assign("numImaxes", $numeroImaxesCategoria);
 $smarty->assign("numMinImaxes", PartidaVO::NUMERO_IMAXES_CATEGORIA_MINIMO);
 $smarty->assign("numMaxImaxes", PartidaVO::NUMERO_IMAXES_CATEGORIA_MAXIMO);
+if (isset($mensaxeErro)) {
+    $smarty->assign("mensaxeErro", $mensaxeErro);
+}
 $smarty->display("Vista/index.tpl");
 ?>
         

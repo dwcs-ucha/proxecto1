@@ -27,8 +27,6 @@ switch ($fasePartida) {
         break;
 }
 
-
-$partida = PartidaController::getPartida();
-$categorias = $partida->getCategorias();
+$categorias = PartidaController::getCategoriasPartida();
 $smarty->assign("categorias", $categorias);
 $smarty->display("../Vista/respostas.tpl");

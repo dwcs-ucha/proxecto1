@@ -35,9 +35,14 @@
                     <img src="{$rutaRootHTML}{$imaxeClasificar}"/>
                     <h3>Elemento</h3>
                 </div>
-                {if isset($erro)}
-                    <div>
+                {if isset($respostaEquivocada)}
+                    <div class="d-flex justify-content-center erro">
                         Inténtao de novo
+                    </div>
+                {/if}
+                {if isset($mensaxeErro)}
+                    <div class="d-flex justify-content-center erro">
+                        {$mensaxeErro}
                     </div>
                 {/if}
             </div>
