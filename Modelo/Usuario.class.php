@@ -26,8 +26,29 @@
       $this->dataAlta = $dataAlta;
       $this->bloqueado = $bloqueado;
     }
+    
+    /**
+     * Garda na sesión o usuario.
+     * @param Usuario $usuario Obxeto usuario que se quere gardar na sesión
+     */
+    private static function gardarSesionUsuario(Usuario $usuario) {
+        $_SESSION["usuario"] = $usuario;
+    }
+    
+    /**
+     * Obtén o usuario en sesión.
+     * @return Usuario Obxeto da clase usuario ou null se non hai ningún.
+     */
+    public static function getUsuarioEnSesion() {
+        if (isset($_SESSION["usuario"])) {
+            $usuario = $_SESSION["usuario"];
+        } else {
+            $usuario = null;
+        }
+        return $usuario;
+    }
 
-    function insertarNovoUsuario(Usuario $usuario) {
+    static function insertarNovoUsuario(Usuario $usuario) {
       $usuario->contrasinal = (crypt($this.contrasinal, 'L0saluMnosTheDAWm0L4n!*'));
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];
       $valores = [$usuario->getNome(), $usuario->getContrasinal(), $usuario->getRol(), $usuario->getAlta(), 0];
@@ -39,7 +60,7 @@
       }
     }
 
-    function existeUsuario(Usuario $usuario) {
+    static function existeUsuario(Usuario $usuario) {
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];
       $campo_condicion = ["nome"];
       $tipo_condicion = ['='];
@@ -68,7 +89,7 @@
       return $this->dataAlta;
     }
 
-    function loginUsuario($nome, $contrasinal) {
+    static function loginUsuario($nome, $contrasinal) {
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];
       $campo_condicion = "nome";
       $tipo_condicion = '=';
@@ -76,6 +97,7 @@
       $datos = DAO::leerDatosCondicion('usuarios', $campos, $campo_condicion, $tipo_condicion, $valor_condicion);
       if (count($datos > 0) && hash_equals($datos[0][1], crypt($contrasinal, $datos[0][1]))) {
         $u = new Usuario($datos[0][0], $datos[0][1], $datos[0][3], $datos[0][4]);
+        self::gardarSesionUsuario($u);
         return $u;
       } else {
         return false;
