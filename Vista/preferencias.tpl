@@ -69,13 +69,18 @@
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
     </head>
     <body>
-        <form action="{$rutaRootHTML}{'Controlador/preferencias.php'}" method="post">
-            Modo oscuro
-            <label class="switch">
-                <input type="checkbox" name="temaOscuro" value="seleccionado" {$temaOscuro}>
-                <span class="slider round"></span>
-            </label>
-            <button type="submit" name="preferencias" value="seleccionadas">Gardar preferencias</button>
-        </form>
+        <div class="container text-center border border-dark">
+            <form action="{$rutaRootHTML}{'Controlador/preferencias.php'}" method="post">
+                <div>
+                    Modo oscuro
+                    <label class="switch">
+                        <input type="checkbox" name="temaOscuro" value="seleccionado" {$temaOscuro}>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button type="submit" name="preferencias" value="seleccionadas">Gardar preferencias</button>
+            </form>
+        </div>
+        {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
     </body>
 </html>
