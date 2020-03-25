@@ -36,7 +36,10 @@
         </div>
     </div>
     <div class="collapse navbar-collapse">
-        <a class="rexistro" href="{$rutaRootHTML}/Controlador/rexistro.php">Rexistro</a>
+        <a class="enlaceMenu" href="{$rutaRootHTML}/Controlador/preferencias.php">Preferencias</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <a class="enlaceMenu" href="{$rutaRootHTML}/Controlador/rexistro.php">Rexistro</a>
     </div>
     <div class="login-container">
         <form>

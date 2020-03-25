@@ -71,7 +71,7 @@ div.avisoCookies {
   background-color: lightgreen;
 }
 
-.cabeceira .rexistro, .cabeceira .rexistro:hover, .cabeceira .rexistro:visited {
+.cabeceira .enlaceMenu, .cabeceira .enlaceMenu:hover, .cabeceira .enlaceMenu:visited {
     color:white;
     text-decoration: none;
 }
