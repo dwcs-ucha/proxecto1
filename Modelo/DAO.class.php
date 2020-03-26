@@ -61,7 +61,7 @@ require_once "Log.class.php";//Se meten los datos para escribir los errores en u
      * parámetro opcional de la función fetchAll()
      * @return array Array que contiene todos los resultados de la consulta
      */
-    public static function leerDatosCondicion($tabla, $campos, $campo_condicion, $tipo_condicion, $valor_condicion, $formatoDevolverDatos = PDO::ATTR_DEFAULT_FETCH_MODE) {
+    public static function leerDatosCondicion($tabla, $campos, $campo_condicion, $tipo_condicion, $valor_condicion, $formatoDevolverDatos = PDO::FETCH_BOTH) {
         try {//Se prueban los datos siguientes:
             $conexion = self::establecerConexion();//Se ejecuta la función "establecerConexion()" a partir de la clase "DAO" y se recoge su valor en la variable "$conexion"
             $total_campos = self::concatenarDatos($campos);//Se ejecuta la función "concatenarDatos()" con el parámetro "$campos"
