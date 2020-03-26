@@ -27,14 +27,14 @@ class Estatisticas {
         
     }
 
-    public function gardar_estatistica(Estatisticas $estatistica){
+    public static function gardar_estatistica(Estatisticas $estatistica){
         $campos = array('codactividade','nomexogador','data','puntos','dificultade');
         $valores = array($estatistica->codactividade,$estatistica->nomexogador,$estatistica->data,$estatistica->puntos,$estatistica->dificultade);
         DAO::escribirDatos('estadisticas', $campos, $valores);
     }
     
     
-    public function estatisticas_actividade($codactividade){               
+    public static function estatisticas_actividade($codactividade){               
         $array_estatisticas = Array();
         $campos=array("codactividade","nomexogador","data","puntos","dificultade"); 
         foreach(DAO::leerDatosCondicion('estadisticas',$campos,'codactividade','=',$codactividade) as $estatistica){
@@ -45,7 +45,7 @@ class Estatisticas {
         return $array_estatisticas;        
     }
 
-    public function estatisticas_xogador($nomexogador){        
+    public static function estatisticas_xogador($nomexogador){        
         $array_estatisticas = Array();
         $campos=array("codactividade","nomexogador","data","puntos","dificultade"); 
         foreach(DAO::leerDatosCondicion('esditisticas',$campos,'nomexogador','=',$nomexogador) as $estatistica){
