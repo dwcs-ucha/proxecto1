@@ -286,7 +286,7 @@ class Validacion {
     }
 
     /**
-     * Valida se a data recibida cumple co formato 'aaaa-mm--dd' e se existe esa data no calendario.
+     * Valida se a data recibida cumple co formato 'aaaa-mm-dd' e se existe esa data no calendario.
      * @param string $date data a validar
      * @return boolean TRUE se a data é correcta, tanto no tocante ao seu formato coma a se existe de acordo co calendario, e FALSE se non.
      */
@@ -308,7 +308,7 @@ class Validacion {
      * @return bool TRUE se é válida. FALSE se non.
      */
     public static function validarDificultade($dificultade) {
-        $dificultadesPermitidas = ["facil", "normal", "dificil"];
+        $dificultadesPermitidas = ["baixa", "media", "dificil"];
         $dificultadeValida = in_array($dificultade, $dificultadesPermitidas);
         return $dificultadeValida;
     }
