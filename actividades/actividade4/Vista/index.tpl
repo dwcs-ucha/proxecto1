@@ -39,11 +39,11 @@
                         <form action="index.php" method="post">
                             <h4>Dificultade</h4>
                             <div class="btn-group dificultade">
-                                <label class="btn btn-secondary {if $dificultade == "facil"}active{/if}  btn-success">
-                                    <button class="d-none"  type="submit" name="dificultade" value="facil"></button>Fácil
+                                <label class="btn btn-secondary {if $dificultade == "baixa"}active{/if}  btn-success">
+                                    <button class="d-none"  type="submit" name="dificultade" value="baixa"></button>Fácil
                                 </label>
-                                <label class="btn btn-secondary {if $dificultade == "normal"}active{/if}  btn-warning">
-                                    <button class="d-none" type="submit" name="dificultade" value="normal"></button>Normal
+                                <label class="btn btn-secondary {if $dificultade == "media"}active{/if}  btn-warning">
+                                    <button class="d-none" type="submit" name="dificultade" value="media"></button>Normal
                                 </label>
                                 <label class="btn btn-secondary {if $dificultade == "dificil"}active{/if} btn-danger">
                                     <button class="d-none"  type="submit" name="dificultade" value="dificil"></button>Difícil

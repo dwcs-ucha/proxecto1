@@ -61,7 +61,7 @@ class PartidaController {
         $partida->xerarImaxesClasificar();
         $partida->setFasePartida(PartidaVO::FASE_MEMORIZAR_IMAXES);
     }
-    
+
     /**
      * Establece que a fase da partida é 'FASE_CLASIFICAR_IMAXES'.
      */
@@ -139,8 +139,13 @@ class PartidaController {
      */
     public static function getImaxeClasificar() {
         $partida = self::getPartida();
-        $imaxeClasificar = $partida->getImaxesClasificar()[0];
-        return $imaxeClasificar;
+        $imaxesClasificar = $partida->getImaxesClasificar();
+        if (!empty($imaxesClasificar)) {
+            $imaxeClasificar = $partida->getImaxesClasificar()[0];
+            return $imaxeClasificar;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -149,7 +154,7 @@ class PartidaController {
      * FALSE en caso contrario
      */
     public static function rematouPartida() {
-        if (self::getImaxeClasificar() === null) {
+        if (self::getImaxeClasificar() === false) {
             return true;
         } else {
             return false;
@@ -188,7 +193,7 @@ class PartidaController {
         }
         return $nomesCategorias;
     }
-    
+
     /**
      * 
      * @return string Dificultade da partida.
@@ -197,7 +202,7 @@ class PartidaController {
         $partida = self::getPartida();
         return $partida->getDificultade();
     }
-    
+
     /**
      * 
      * @return int Número de categorías que se poden seleccionar para a dificultade da partida.
@@ -208,7 +213,7 @@ class PartidaController {
         $numeroCategoriasPermitidas = $partida->getNumeroCategorias($dificultade);
         return $numeroCategoriasPermitidas;
     }
-    
+
     /**
      * 
      * @return int Número de imaxes que terá cada categoría da partida.
@@ -218,4 +223,5 @@ class PartidaController {
         $numImaxesCategoria = $partida->getNumeroImaxesCategoria();
         return $numImaxesCategoria;
     }
+
 }

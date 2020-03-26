@@ -56,7 +56,7 @@ class PartidaVO {
     private $imaxesClasificar;
     private $fasePartida;
 
-    public function __construct(array $categorias, string $dificultade = "normal", int $numImaxesCategoria = self::NUMERO_IMAXES_CATEGORIA_MINIMO) {
+    public function __construct(array $categorias, string $dificultade = "media", int $numImaxesCategoria = self::NUMERO_IMAXES_CATEGORIA_MINIMO) {
         $this->dificultade = $dificultade;
         $this->numImaxesCategoria = $numImaxesCategoria;
         $this->categorias = $categorias;
@@ -147,10 +147,10 @@ class PartidaVO {
      */
     public static function getNumeroCategorias(string $dificultade) {
         switch ($dificultade) {
-            case "facil":
+            case "baixa":
                 $numeroCategorias = self::NUMERO_CATEGORIAS_FACIL;
                 break;
-            case "normal":
+            case "media":
                 $numeroCategorias = self::NUMERO_CATEGORIAS_NORMAL;
                 break;
             case "dificil":
