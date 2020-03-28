@@ -8,11 +8,14 @@ include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
 include Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
-include Config::getRutaRootPHP() . 'Modelo/Estatisticas.class.php';
 
 session_start();
-$usuario = Usuario::getUsuarioEnSesion();
-//var_dump($usuario);
+
+$fasePartida = PartidaController::getFasePartida();
+if ($fasePartida !== PartidaVO::FASE_CLASIFICAR_IMAXES) {
+    header("Location: ../index.php");
+    exit();
+}
 
 if (isset($_POST["categoriaSeleccionada"])) {
     $nomeCategoriaSeleccionada = $_POST["categoriaSeleccionada"];
@@ -31,14 +34,8 @@ if (isset($_POST["categoriaSeleccionada"])) {
 }
 
 if (PartidaController::rematouPartida()) {
-    $puntuacion = PartidaController::getPuntuacion();
-    $dificultade = PartidaController::getDificultade();
-    $data = date("Y-m-d");
-    $estadistica = new Estatisticas('a4', $usuario->getNome(), $data, $puntuacion, $dificultade);
- //   var_dump($estadistica);
-  //  Estatisticas::gardar_estatistica($estadistica);
-  //  header("Location: ../index.php");
-  //  exit();
+    header("Location: estatisticas.php");
+    exit();
 }
 
 $categorias = PartidaController::getCategoriasPartida();

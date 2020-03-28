@@ -15,7 +15,7 @@ session_start();
 //$usuario = new Usuario("santi", "1234", Usuario::ROL_NORMAL, "2020-03-26", 0);
 //Usuario::insertarNovoUsuario($usuario);
 Usuario::loginUsuario("santi", "1234");
-$usuario = Usuario::getUsuarioEnSesion();
+//$usuario = Usuario::getUsuarioEnSesion();
 //var_dump($usuario);
 
 $fasePartida = PartidaController::getFasePartida();

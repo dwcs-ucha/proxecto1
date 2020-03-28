@@ -11,6 +11,7 @@
             <div>
                 <h1>Selecciona a categoria a que pertence o elemento</h1>
             </div>
+            <a name="categorias"/>
             <div class="contenedor">
                 <div id="puntuacion">
                     <h5>Puntuación: {$puntuacion}</h5>
@@ -18,7 +19,7 @@
                 <div>
                     <h3>Categorías</h3>
                 </div>
-                <form action="actividade.php" method="post">
+                <form action="actividade.php#categorias" method="post">
                     <div class="categorias">
                         {foreach from = $categorias item = $categoria}
                             <label>

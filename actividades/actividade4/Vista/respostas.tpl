@@ -4,7 +4,7 @@
         <meta charset="utf-8"/>
         <script type="text/javascript">
             function temporizador() {
-                var t = 10;
+                var t = 60;
                 setInterval(function () {
                     document.getElementById("segundosRestantes").innerHTML = "Tes " + t-- + " segundos";
                     if (t == 0) {
