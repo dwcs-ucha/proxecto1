@@ -12,11 +12,25 @@ include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
 include Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
 
 session_start();
+
+/*
+    CREACIÓN MANUAL DE USUARIO ATA QUE SE COMPLETE A OPCIÓN DE REXISTRO DE USUARIOS
+ */
+/*
 //$usuario = new Usuario("santi", "1234", Usuario::ROL_NORMAL, "2020-03-26", 0);
-//Usuario::insertarNovoUsuario($usuario);
+$usuario = new Usuario("santi", "1234", Usuario::ROL_ADMINISTRADOR, "2020-03-26", 0);
+Usuario::insertarNovoUsuario($usuario);
 Usuario::loginUsuario("santi", "1234");
-//$usuario = Usuario::getUsuarioEnSesion();
-//var_dump($usuario);
+ */
+
+$usuario = Usuario::getUsuarioEnSesion();
+if ($usuario === null) {
+    $rol = "invitado";
+} else if ($usuario->getRol() === Usuario::ROL_NORMAL) {
+    $rol = "normal";
+} else if ($usuario->getRol() === Usuario::ROL_ADMINISTRADOR) {
+    $rol = "administrador";
+}
 
 $fasePartida = PartidaController::getFasePartida();
 if ($fasePartida !== PartidaVO::FASE_CONFIGURAR) {
@@ -56,6 +70,7 @@ $smarty->assign("numMaxImaxes", PartidaVO::NUMERO_IMAXES_CATEGORIA_MAXIMO);
 if (isset($mensaxeErro)) {
     $smarty->assign("mensaxeErro", $mensaxeErro);
 }
+$smarty->assign("rol", $rol);
 $smarty->display("Vista/index.tpl");
 ?>
         

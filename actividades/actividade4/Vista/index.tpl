@@ -18,7 +18,9 @@
     </head>
     <body>
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
+        {if $rol == "administrador"}
         <a href="Controlador/xestionActividade.php">Xestión da actividade</a>
+        {/if}
         <div class="container">
             <h1>Xogo de agrupar elementos por categorías</h1>
             <div class="container-fluid corpo">
