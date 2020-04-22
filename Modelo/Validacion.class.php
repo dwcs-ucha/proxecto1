@@ -1,6 +1,6 @@
 <?php
 
-/** 
+/**
  * 10/03/2020
  * PROXECTO 2ª AVALIACIÓN
  *
@@ -39,7 +39,7 @@ class Validacion {
         return $resultado;
     }
 
-    /** 
+    /**
      * Esta función valida o contrasinal do usuario. As que ten que cumprir o contrasinal son: Minimo de 4 caracteres e máximo de 8.
      *  Acéptanse caracteres alfanuméricos.
      * 
@@ -95,18 +95,14 @@ class Validacion {
      * @return boolean TRUE se é válido. FALSE en caso contrario.
      */
     public static function validaNomeCategoria($nomeCategoria) {
+        $resultado = false;
         if (is_string($nomeCategoria)) {
-            if (strlen($nomeCategoria) < 30) {
-                if (filter_var($nomeCategoria, FILTER_SANITIZE_STRING)) {
+            if (strlen($nomeCategoria) < 30 && !empty($nomeCategoria) && empty(DAO::leerDatosCondicion("a4_categorias", ["nome"], "nome", "=", $nomeCategoria))) {
+                if (filter_var($nomeCategoria, FILTER_SANITIZE_STRING) && !preg_match("/[^a-zA-Z ]/", $nomeCategoria)) {
                     $resultado = true;
-                } else {
-                    $resultado = false;
                 }
             }
-        } else {
-            $resultado = false;
         }
-
         return $resultado;
     }
 
@@ -126,39 +122,46 @@ class Validacion {
 
         return $resultado;
     }
-    
+
     /**
      * MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
      * Valida que unha imaxe sexa válida.
-     * @param string $ruta
-     * @return boolean TRUE se a variable de entrada contén esa extensión e FALSE, se non.
+     * @param string $tipo Obtense de $_FILES["input imaxe"]["type"]
+     * @return boolean TRUE se a variable de entrada é unha imaxe e FALSE, se non.
      */
-    public static function validaImaxe1($ruta) {
-        $formatos = array("jpg", "gif", "png", "jpeg");
-        $regex_formato = "#.+\.(" . implode('|', $formatos) . ")$#";
-
-        if (preg_match($regex_formato, $ruta) && preg_match("#^image/[a-z0-9]+$#", $ruta)) {
-            $resultado = true;
-        } else {
-            $resultado = false;
+    public static function validaImaxe($tipo) {
+        $resultado = false;
+        $regex_formato = "#^image#";
+        if (is_string($tipo)) {
+            if (preg_match($regex_formato, $tipo)) {
+                $resultado = true;
+            }
         }
+        return $resultado;
     }
 
     /**
      * MÉTODO DE VALIDACIÓN PARA A 'actividade4' (Santiago Calvo Piñeiro).
-     * Valida que unha imaxe teña extensión '.jpg', 'jpeg', '.gif' ou '.png'.
-     * @param string $ruta
-     * @return boolean TRUE se a variable de entrada contén esa extensión e FALSE, se non.
+     * Valida que unha imaxe sexa válida.
+     * @param array $tipo Obtense de $_FILES["input imaxe"]["type"]
+     * @param int $numMinImaxes Número mínimo de imaxes que se queren recibir
+     * @return boolean TRUE se todos os elementos do array de entrada son imaxes e FALSE, se non.
      */
-    public static function validaImaxe2($ruta) {
-        $patron = "%\.(gif|jpe?g|png)$%i";
-
-        if (preg_match($patron, $ruta)) {
-            $resultado = true;
+    public static function validaImaxes($tipos, $numMinImaxes) {
+        $resultado = true;
+        if (is_array($tipos)) {
+            if (count($tipos) < $numMinImaxes) {
+                return false;
+            }
+            foreach ($tipos as $tipo) {
+                if (!self::validaImaxe($tipo)) {
+                    $resultado = false;
+                    break;
+                }
+            }
         } else {
             $resultado = false;
         }
-
         return $resultado;
     }
 
@@ -301,7 +304,7 @@ class Validacion {
         }
         return $validado;
     }
-    
+
     /**
      * Valida que a dificultade da actividade esté dentro da lista permitida de valores
      * @param string $dificultade
@@ -312,7 +315,7 @@ class Validacion {
         $dificultadeValida = in_array($dificultade, $dificultadesPermitidas);
         return $dificultadeValida;
     }
-    
+
     /**
      * Comproba que todos os elementos dun array están dentro dun máis grande
      * @param array $datosComprobar Lista de valores do que se quere comprobar se hai algún fóra dos valores permitidos
@@ -325,6 +328,7 @@ class Validacion {
         $isDatosContidoEnLista = $cantidadeElementosComuns === count($datosComprobar);
         return $isDatosContidoEnLista;
     }
+
 }
 
 ?>
