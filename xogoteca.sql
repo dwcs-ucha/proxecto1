@@ -109,20 +109,19 @@ insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividade
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal16.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal17.jpeg', 1);
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal18.jpeg', 1);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Animais/animal19.jpeg', 1);
 
-insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Árbores', 'actividades/actividade4/Imaxes/Arbores/arbores.png');
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol1.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol2.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol3.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol4.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol5.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol6.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol7.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol8.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol9.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol10.png', 2);
-insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Arbores/arbol11.png', 2);
+insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Árbores', 'actividades/actividade4/Imaxes/Árbores/arbores.png');
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol1.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol2.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol3.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol4.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol5.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol6.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol7.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol8.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol9.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol10.png', 2);
+insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Árbores/arbol11.png', 2);
 
 insert into a4_categorias (codactividade, nome, imaxeprincipal) values ('a4', 'Bebidas', 'actividades/actividade4/Imaxes/Bebidas/bebidas.png');
 insert into a4_imaxes(rutaimaxe, a4_categorias_codcategoria) values ('actividades/actividade4/Imaxes/Bebidas/bebida1.png', 3);
