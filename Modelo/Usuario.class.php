@@ -62,11 +62,11 @@
 
     static function existeUsuario(Usuario $usuario) {
       $campos = ["nome", "contrasinal", "rol", "dataAlta", "bloqueado"];
-      $campo_condicion = ["nome"];
-      $tipo_condicion = ['='];
-      $valor_condicion = [$usuario->getNome()];
+      $campo_condicion = "nome";
+      $tipo_condicion = '=';
+      $valor_condicion = $usuario->getNome();
       $datos = DAO::leerDatosCondicion('usuarios', $campos, $campo_condicion, $tipo_condicion, $valor_condicion);
-      if (count($datos > 0)) {
+      if (!empty($datos)) {
         return false;
       } else {
         return true;
