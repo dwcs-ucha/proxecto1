@@ -1,0 +1,120 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 40px;
+}
+
+tr, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#volver_menu {
+    position: absolute;
+    left: 790px;
+    bottom: 180px;
+}
+
+#tabla_palabras {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+#estadisticas {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#nenos, #nenos2 {
+    position: absolute;
+}
+
+#nenos {
+    top: 200px;
+    left: 170px;
+    width: 400px;
+    height: 400px;
+}
+
+#nenos2 {
+    top: 280px;
+    right: 100px;
+    width: 600px;
+    height: 200px;
+}
+
+#victoria {
+    position: absolute;
+    left: 80px;
+    top: 150px;
+}
+
+.seleccion {
+    margin-left: 20px;
+}
+
+.dificultades, .tipo_juego {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.titulo {
+    font-size: 40px;
+}
+
+.boton_menu {
+    margin-top: 200px;
+}
+
+.palabra {
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.error, .exito, .lista_errores {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.error, .lista_errores {
+    color: #890000;
+}
+
+.exito {
+    color: #0094ed;
+}
+
+.lista_errores {
+    position: absolute;
+    top: 350px;
+    right: 130px;
+}
+
+.enlace {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
