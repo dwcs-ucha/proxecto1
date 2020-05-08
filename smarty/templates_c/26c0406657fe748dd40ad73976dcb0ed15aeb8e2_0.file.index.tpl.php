@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-12 18:47:52
+/* Smarty version 3.1.34-dev-7, created on 2020-05-08 21:36:22
   from '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e6a75c89a0104_17265528',
+  'unifunc' => 'content_5eb5b4b659abd8_25047865',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '26c0406657fe748dd40ad73976dcb0ed15aeb8e2' => 
     array (
       0 => '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl',
-      1 => 1584035263,
+      1 => 1588966579,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../../Vista/layout/pe.tpl' => 1,
   ),
 ),false)) {
-function content_5e6a75c89a0104_17265528 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eb5b4b659abd8_25047865 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="gl">
     <head>
@@ -34,10 +34,11 @@ function content_5e6a75c89a0104_17265528 (Smarty_Internal_Template $_smarty_tpl)
             h1 { text-align: center; }
             img { width: 80%; }
             .error { color: red;}
-            .clasificacion { margin-left: 15%;
+            .clasificacion { margin-left: 35%;
                              vertical-align: center;	}
             td,th { padding: 5px;
                     text-align: center;}
+            .sesion { margin-left: 80%; }
             </style>
             <?php echo '<script'; ?>
  type="text/javascript" src=""><?php echo '</script'; ?>
@@ -47,6 +48,13 @@ function content_5e6a75c89a0104_17265528 (Smarty_Internal_Template $_smarty_tpl)
         <body>
             <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/cabeceira.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+            <div class="sesion">
+                <?php if (($_smarty_tpl->tpl_vars['usuario']->value !== null)) {?>
+                    <h4><a href="Controlador/logoff.php">Pechar sesión</a></h4>
+                <?php } else { ?>
+                    <h4><a href="Controlador/login.php">Iniciar sesión</a></h4>
+                <?php }?>
+            </div>
             <h1>Caderno de Sumas</h1>     
             <form action="index.php" method="post">
                 <div class="container-fluid corpo">
@@ -85,8 +93,10 @@ function content_5e6a75c89a0104_17265528 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 xogar" align="center">
                         <button class="btn btn-lg btn-success" type="submit" id="entrar" name="entrar" value="enviar">Xogar</button>
+                        <br><span><?php if (($_smarty_tpl->tpl_vars['usuario']->value === null)) {?>Tes que iniciar sesión para poder gardar os datos da partida<?php }?></span>
                         <br><span class="error"><?php if (($_smarty_tpl->tpl_vars['errordif']->value)) {?>Non hay escollida unha dificultade<?php }?></span>
                         <br><button class="btn btn-lg btn-success" type="submit" id="vercla" name="vercla" value="vercla">Ver Clasificación</button>
+
                     </div>
                 </div>
             </div>
@@ -95,13 +105,10 @@ function content_5e6a75c89a0104_17265528 (Smarty_Internal_Template $_smarty_tpl)
             <div class="clasificacion">
                 <table>
                     <tr>
-                        <th>Clasificación</th>
-                        <th>Usuario</th>
-                        <th>Contrasinal</th>
-                        <th>Partidas Ganadas</th>
-                        <th>Partidas Perdidas</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Puntos</th>
                         <th>Dificultade</th>
-                        <th>Puntuación</th>
                     </tr> 
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['estadisticas']->value, 'estatistica');
@@ -109,14 +116,14 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['estatistica']->value) {
 ?>		
                         <tr>
-                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->nome;?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->nomexogador;?>
 </td>  
                             <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->data;?>
 </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->puntos;?>
+</td>
                             <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->dificultade;?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['estatistica']->value->puntuacion;?>
-</td>
+</td>                            
                         </tr>
                     <?php
 }

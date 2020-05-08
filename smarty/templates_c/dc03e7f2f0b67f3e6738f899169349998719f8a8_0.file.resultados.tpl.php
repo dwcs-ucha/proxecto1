@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-12 19:47:17
+/* Smarty version 3.1.34-dev-7, created on 2020-05-08 21:41:15
   from '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/resultados.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e6a83b54f5d47_89907748',
+  'unifunc' => 'content_5eb5b5dbe1ccc0_33724359',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc03e7f2f0b67f3e6738f899169349998719f8a8' => 
     array (
       0 => '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/resultados.tpl',
-      1 => 1584038835,
+      1 => 1588966873,
       2 => 'file',
     ),
   ),
@@ -23,15 +23,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../../Vista/layout/pe.php' => 1,
   ),
 ),false)) {
-function content_5e6a83b54f5d47_89907748 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eb5b5dbe1ccc0_33724359 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="gl">
     <head>
         <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         <style>
-            .xogo {	margin-left: 40%;
-                    vertical-align: center;	}
+            .xogo { margin-left: 40%;
+                    vertical-align: center;}
             .error { color: red;}
         </style>
         <title>Caderno de Sumas</title> 
@@ -46,16 +46,16 @@ function content_5e6a83b54f5d47_89907748 (Smarty_Internal_Template $_smarty_tpl)
 </h2>
         <div class="xogo">
             <form action="resultados.php" method="post">
-                <br><br><input type="submit" id="reintentar" name="reintentar" value="Reintentar">
-                <br><br><input type="submit" id="nova" name="nova" value="Nova Partida">
+                <br><br><input class="btn btn-secondary btn-success" type="submit" id="reintentar" name="reintentar" value='Reintentar'>
+                <br><br><input class="btn btn-secondary btn-danger" type="submit" id="nova" name="nova" value="Nova Partida">
                 <?php if (($_smarty_tpl->tpl_vars['login']->value)) {?>
-                 <br><br><input type="submit" id="gardar" name="gardar" value="Gardar Resultados">   
+                    <br><br><input class="btn btn-secondary btn-success" type="submit" id="gardar" name="gardar" value="Gardar Resultados">   
                 <?php }?>
             </form>
         </div>
         <div class='xogo'>
             <form action="../index.php" method="post">
-                <br><input type="submit" id="volver" name="volver" value="Volver ó inicio">
+                <br><input class="btn btn-secondary btn-warning" type="submit" id="volver" name="volver" value="Volver ó inicio">
             </form>
         </div>
         <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/pe.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

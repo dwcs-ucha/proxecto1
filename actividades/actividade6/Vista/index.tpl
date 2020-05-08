@@ -7,16 +7,24 @@
             h1 { text-align: center; }
             img { width: 80%; }
             .error { color: red;}
-            .clasificacion { margin-left: 15%;
+            .clasificacion { margin-left: 35%;
                              vertical-align: center;	}
             td,th { padding: 5px;
                     text-align: center;}
+            .sesion { margin-left: 80%; }
             </style>
             <script type="text/javascript" src=""></script>    
             <title>Caderno de Sumas</title>
         </head>
         <body>
             {include file="../../../Vista/layout/cabeceira.tpl"}
+            <div class="sesion">
+                {if ($usuario !== null)}
+                    <h4><a href="Controlador/logoff.php">Pechar sesión</a></h4>
+                {else }
+                    <h4><a href="Controlador/login.php">Iniciar sesión</a></h4>
+                {/if}
+            </div>
             <h1>Caderno de Sumas</h1>     
             <form action="index.php" method="post">
                 <div class="container-fluid corpo">
@@ -55,8 +63,10 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 xogar" align="center">
                         <button class="btn btn-lg btn-success" type="submit" id="entrar" name="entrar" value="enviar">Xogar</button>
+                        <br><span>{if ($usuario === null)}Tes que iniciar sesión para poder gardar os datos da partida{/if}</span>
                         <br><span class="error">{if ($errordif)}Non hay escollida unha dificultade{/if}</span>
                         <br><button class="btn btn-lg btn-success" type="submit" id="vercla" name="vercla" value="vercla">Ver Clasificación</button>
+
                     </div>
                 </div>
             </div>
@@ -65,20 +75,17 @@
             <div class="clasificacion">
                 <table>
                     <tr>
-                        <th>Clasificación</th>
-                        <th>Usuario</th>
-                        <th>Contrasinal</th>
-                        <th>Partidas Ganadas</th>
-                        <th>Partidas Perdidas</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Puntos</th>
                         <th>Dificultade</th>
-                        <th>Puntuación</th>
                     </tr> 
                     {foreach from=$estadisticas item=estatistica}		
                         <tr>
-                            <td>{$estatistica->nome}</td>  
+                            <td>{$estatistica->nomexogador}</td>  
                             <td>{$estatistica->data}</td>
-                            <td>{$estatistica->dificultade}</td>
-                            <td>{$estatistica->puntuacion}</td>
+                            <td>{$estatistica->puntos}</td>
+                            <td>{$estatistica->dificultade}</td>                            
                         </tr>
                     {/foreach}
                 </table>

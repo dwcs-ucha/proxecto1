@@ -8,7 +8,7 @@
 	/********************************/
 ?>
 <?php
-
+include_once 'DAO.class.php';
 class Estatisticas {
     
     public $codactividade;

@@ -22,12 +22,12 @@
        <span class="error">{if ($errorcampos)}Erro na introdución dos resultados, 
            teñen que ser numeros e estar todos cubertos{/if}
        </span><br>
-       <br><input type="submit" id="finalizar" name="finalizar" value="Finalizar">         
+       <br><input class="btn btn-secondary btn-success" type="submit" id="finalizar" name="finalizar" value="Finalizar">         
      </form>
 </div>
    <div class='xogo'>
      <form action="../index.php" method="post">
-         <br><input type="submit" id="volver" name="volver" value="Volver ó inicio">
+         <br><input class="btn btn-secondary btn-warning" type="submit" id="volver" name="volver" value="Volver ó inicio">
      </form>
 </div>
      {include "../../../Vista/layout/pe.php"}

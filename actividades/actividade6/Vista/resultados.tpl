@@ -16,16 +16,16 @@
         <h2>Puntuacion : {$puntuacion}</h2>
         <div class="xogo">
             <form action="resultados.php" method="post">
-                <br><br><input type="submit" id="reintentar" name="reintentar" value="Reintentar">
-                <br><br><input type="submit" id="nova" name="nova" value="Nova Partida">
+                <br><br><input class="btn btn-secondary btn-success" type="submit" id="reintentar" name="reintentar" value='Reintentar'>
+                <br><br><input class="btn btn-secondary btn-danger" type="submit" id="nova" name="nova" value="Nova Partida">
                 {if ($login)}
-                    <br><br><input type="submit" id="gardar" name="gardar" value="Gardar Resultados">   
+                    <br><br><input class="btn btn-secondary btn-success" type="submit" id="gardar" name="gardar" value="Gardar Resultados">   
                 {/if}
             </form>
         </div>
         <div class='xogo'>
             <form action="../index.php" method="post">
-                <br><input type="submit" id="volver" name="volver" value="Volver ó inicio">
+                <br><input class="btn btn-secondary btn-warning" type="submit" id="volver" name="volver" value="Volver ó inicio">
             </form>
         </div>
         {include "../../../Vista/layout/pe.php"}

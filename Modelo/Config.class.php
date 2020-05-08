@@ -54,7 +54,7 @@ class Config {
      * Exemplo se a aplicación se garda no cartafol "Xogoteca": $_SERVER["DOCUMENT_ROOT"] . "/Xogoteca/"
      */
     public static function setRutaRootPHP() {
-        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/proxecto/proxecto1/";
+        self::$rutaRootPHP = $_SERVER["DOCUMENT_ROOT"] . "/Proxecto/proxecto1/";
     }
 
     /**
@@ -62,7 +62,7 @@ class Config {
      * Exemplo se a aplicación se garda no cartafol "Xogoteca": $_SERVER["SERVER_NAME"] . "/Xogoteca/"
      */
     public static function setRutaRootHTML() {
-        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/proxecto/proxecto1/";
+        self::$rutaRootHTML = "http://" . $_SERVER["SERVER_NAME"] . "/Proxecto/proxecto1/";
     }
 
 }
