@@ -56,7 +56,6 @@ if (isset($_POST['iniciar'])) {//se pulsamos iniciar
                 header('location:../index.php');
             } else {
                 //se hai algun error poñemos a variable de error a true
-                die("existe y no loguea");
                 $error_inicio = true;
             }
         } else {
