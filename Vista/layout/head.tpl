@@ -4,6 +4,7 @@
 * @descripción Elementos HTML a engadir na etiqueta "<head>" dos distintos arquivos do sitio web.
 *}
 <meta charset = "UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
 <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros problemas psicosociais">
 <meta name="author" content="Alumnos e alumnos do módulo de DWCS do Ciclo Superior de Desenvolvemento de aplicacións web, no CIFP Rodolfo Ucha Piñeiro">
