@@ -67,10 +67,10 @@ include_once 'DAO.class.php';
       $tipo_condicion = '=';
       $valor_condicion = $usuario->getNome();
       $datos = DAO::leerDatosCondicion('usuarios', $campos, $campo_condicion, $tipo_condicion, $valor_condicion);
-      if (empty($datos)) {
-        return false;
-      } else {
+      if (empty($datos)) { //Se a consulta devolve un usuario entón o usuario existe e devolve true
         return true;
+      } else {
+        return false;
       }
     }
 
