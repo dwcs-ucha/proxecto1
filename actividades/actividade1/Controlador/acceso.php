@@ -31,6 +31,16 @@
         }
     }
 
-    // PRIMEIRO CARGAS AS CLAVES CO MÉTODO DE SMARTY assign, LOGO AMOSAS A PLANTILLA:
+    // ASIGNAS VALORES ÁS CLAVES QUE CORRESPONDA (MÉTODO assign DE Smarty)...
+    if(isset($camposBaleiros)){
+        $smarty->assign("camposBaleiros", $camposBaleiros);
+    }
+    
+    if(isset($xogadorNonAtopado)){
+        $smarty->assign("xogadorNonAtopado", $xogadorNonAtopado);
+    }
+    
+
+    // LOGO AMOSAS A PLANTILLA:
     $smarty->display("Vista/actividadeDoada.tpl");
 ?>
