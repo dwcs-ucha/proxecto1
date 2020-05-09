@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Agrupar elementos</title>
         <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
+        {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
         <link href="../estilos.css" rel="stylesheet" type="text/css"/>
         <style>
             .categoria {
@@ -18,15 +19,61 @@
             label {
                 font-weight: bold;
             }
+            @media(max-width: 768px) {
+                #menuLateral {
+                    width: 0;
+                    position: absolute;
+                    z-index: auto;
+                    right: 0;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    transition: 0.5s;
+                    padding-top: 60px;
+                }
+                #desplegadorMenu {
+                    cursor: pointer;
+                    position: absolute;
+                    height: 30px;
+                    width: 20px;
+                    right: 0px;
+                    display: inline-block;
+                }
+            }
+            @media(min-width: 768px) {
+                #desplegadorMenu {
+                    display: none;
+                }
+                .close {
+                    display: none;
+                }
+            }
+
         </style>
-        {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
+        <script>
+            $(document).ready(function () {
+                $("#desplegadorMenu").click(function () {
+                    $("#menuLateral").css("width","50%");
+                });
+                $(".close").click(function () {
+                    $("#menuLateral").css("width","0px");
+                });
+            })
+            function abrirMenu() {
+                var menu = document.getElementById("menuLateral");
+                menu.style.width = "50%";
+            }
+            function cerrarMenu() {
+                var menu = document.getElementById("menuLateral");
+                menu.style.width = "0px";
+            }
+        </script>
     </head>
     <body>
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         <div class="container">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="formulario col-9">
+                    <div class="formulario col-md-9 col-sm-12">
                         <form class="border border-dark p-2" action="xestionActividade.php" method="post" enctype="multipart/form-data">
                             <div>
                                 <label>
@@ -110,7 +157,13 @@
                             {/if}
                         </form>
                     </div>
-                    <div class="col-2 p-0 d-inline-block">
+                    <div id="desplegadorMenu" class="font-weight-bold" onclick="abrirMenu()">
+                        <
+                    </div>
+                    <div class="col-md-2 p-0 d-inline-block bg-primary" id="menuLateral">
+                        <div onclick="cerrarMenu()" class="close">
+                            &times;
+                        </div>
                         {foreach from = $nomesCategorias item = $nomeCategoria}
                             <div class="categoria text-center">
                                 <h4>{$nomeCategoria}</h4>

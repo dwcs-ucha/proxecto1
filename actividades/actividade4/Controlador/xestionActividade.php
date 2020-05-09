@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <?php
 /**
- * @author Santiago Calvo Piñeiro
+ * @author Santiago Calvo Piñeiro 
  */
 include '../../../Modelo/Config.class.php';
 include '../Controlador/CategoriaController.class.php';
@@ -33,7 +33,7 @@ if (isset($_POST["nomeCategoriaEliminar"])) {
 
 if (isset($_POST["rutaImaxeEliminar"])) {
     $imaxeEliminar = $_POST["rutaImaxeEliminar"];
-    if (file_exists($imaxeEliminar)) {
+    if (file_exists(Config::getRutaRootPHP() . $imaxeEliminar)) {
         CategoriaController::borrarImaxeCategoria($imaxeEliminar);
     } else {
         $mensaxeErro = "Non existe a imaxe que se quere eliminar";

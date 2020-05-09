@@ -13,13 +13,20 @@
             .dificultade {
                 border-style: none;
             }
+            td, th{
+                text-align: center;
+                border-style: solid;
+            }
+            th {
+                background-color: gray;
+            }
         </style>
         {include file="{$rutaRootPHP}{'Vista/layout/head.tpl'}"}
     </head>
     <body>
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         {if $rol == "administrador"}
-        <a href="Controlador/xestionActividade.php">Xestión da actividade</a>
+            <a href="Controlador/xestionActividade.php">Xestión da actividade</a>
         {/if}
         <div class="container">
             <h1>Xogo de agrupar elementos por categorías</h1>
@@ -78,6 +85,9 @@
                             <br/>
                             <button class="btn btn-lg btn-success" type="submit" name="xogar" value="enviar">Xogar</button>
                         </form>
+                        <form action="index.php#estatisticas" method="post">
+                            <br><button class="btn btn-lg btn-success" type="submit" id="vercla" name="vercla" value="vercla">Ver Clasificación</button>
+                        </form>
                         {if isset($mensaxeErro)}
                             <div class="d-flex justify-content-center erro">
                                 {$mensaxeErro}
@@ -86,6 +96,27 @@
                     </div>
                 </div>
             </div>
+            <a name="estatisticas"/>
+            {if isset($mostrarclas)}
+                <div class="clasificacion">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Puntos</th>
+                            <th>Dificultade</th>
+                        </tr> 
+                        {foreach from=$estadisticas item=estatistica}		
+                            <tr>
+                                <td>{$estatistica->nomexogador}</td>  
+                                <td>{$estatistica->data}</td>
+                                <td>{$estatistica->puntos}</td>
+                                <td>{$estatistica->dificultade}</td>                            
+                            </tr>
+                        {/foreach}
+                    </table>
+                </div>
+            {/if}
         </div>
         {include file="{$rutaRootPHP}{'Vista/layout/pe.tpl'}"}
     </body>

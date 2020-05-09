@@ -11,9 +11,9 @@
             <div>
                 <h1>Selecciona a categoria a que pertence o elemento</h1>
             </div>
-            <a name="categorias"/>
             <div class="contenedor">
                 <div id="puntuacion">
+                    <a name="categorias"/>
                     <h5>Puntuación: {$puntuacion}</h5>
                 </div>
                 <div>

@@ -18,9 +18,11 @@ if ($usuario !== null) {
 if (isset($_POST["gardarPuntuacion"])) {
     $puntuacion = PartidaController::getPuntuacion();
     $dificultade = PartidaController::getDificultade();
-    $data = date("Y-m-d");
+    $data = date("Y-m-d H:i:s");
     $estadistica = new Estatisticas('a4', $usuario->getNome(), $data, $puntuacion, $dificultade);
     Estatisticas::gardar_estatistica($estadistica);
+    header("Location: ../index.php");
+    exit();
 }
 
 $puntuacion = PartidaController::getPuntuacion();

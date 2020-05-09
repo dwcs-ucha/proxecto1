@@ -19,6 +19,7 @@
         <div class="container">
             <form action="../Controlador/categorias.php" method="post">
                 <div class="text-center">
+                    <h3>Selecciona {$numeroCategoriasSeleccionar} categorías</h3>
                     {foreach from = $categorias item = $categoria}
                     <div class="ficha" onmouseup="seleccionar(this)">
                         <label>

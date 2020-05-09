@@ -20,23 +20,26 @@ if ($fasePartida !== PartidaVO::FASE_CONFIGURAR) {
 }
 
 $partida = PartidaController::getPartida();
-
+$numeroCategoriasPermitidas = PartidaController::getNumeroCategoriasPermitidas();
 if (isset($_POST["enviarCategorias"])) {
-    $nomesCategoriasSeleccionadas = $_POST["nomesCategoriasSeleccionadas"];
-    $nomesCategoriasAlmacenadas = CategoriaController::getNomesCategoriasAlmacenadas();
-    $numeroCategoriasSeleccionadas = count($nomesCategoriasSeleccionadas);
-    $numeroCategoriasPermitidas = PartidaController::getNumeroCategoriasPermitidas();
-    if (Validacion::validarListaContenDatos($nomesCategoriasSeleccionadas, $nomesCategoriasAlmacenadas)) {
-        if ($numeroCategoriasSeleccionadas === $numeroCategoriasPermitidas) {
-            $categoriasSeleccionadas = CategoriaController::getCategoriasSeleccionadas($nomesCategoriasSeleccionadas);
-            PartidaController::setCategoriasSeleccionadas($categoriasSeleccionadas);
-            header("Location: ../index.php");
-            exit();
-        } else {
-            $mensaxeErro = "Debes seleccionar $numeroCategoriasPermitidas categorías";
-        }
+    if (empty($_POST["nomesCategoriasSeleccionadas"])) {
+        $mensaxeErro = "Debes seleccionar $numeroCategoriasPermitidas categorías";
     } else {
-        $mensaxeErro = "Algunha das categorías seleccionadas non é válida";
+        $nomesCategoriasSeleccionadas = $_POST["nomesCategoriasSeleccionadas"];
+        $nomesCategoriasAlmacenadas = CategoriaController::getNomesCategoriasAlmacenadas();
+        $numeroCategoriasSeleccionadas = count($nomesCategoriasSeleccionadas);
+        if (Validacion::validarListaContenDatos($nomesCategoriasSeleccionadas, $nomesCategoriasAlmacenadas)) {
+            if ($numeroCategoriasSeleccionadas === $numeroCategoriasPermitidas) {
+                $categoriasSeleccionadas = CategoriaController::getCategoriasSeleccionadas($nomesCategoriasSeleccionadas);
+                PartidaController::setCategoriasSeleccionadas($categoriasSeleccionadas);
+                header("Location: ../index.php");
+                exit();
+            } else {
+                $mensaxeErro = "Debes seleccionar $numeroCategoriasPermitidas categorías";
+            }
+        } else {
+            $mensaxeErro = "Algunha das categorías seleccionadas non é válida";
+        }
     }
 }
 
@@ -44,5 +47,8 @@ $categorias = CategoriaController::getCategorias();
 $smarty->assign("categorias", $categorias);
 if (isset($mensaxeErro)) {
     $smarty->assign("mensaxeErro", $mensaxeErro);
+}
+if (isset($numeroCategoriasPermitidas)) {
+    $smarty->assign("numeroCategoriasSeleccionar", $numeroCategoriasPermitidas);
 }
 $smarty->display("../Vista/categorias.tpl");
