@@ -14,6 +14,7 @@
             }
             h1, h2 {
                 text-align: left;
+                font-family: "arial";
             }
         </style>
     </head>
