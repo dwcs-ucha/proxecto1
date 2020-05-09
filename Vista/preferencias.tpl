@@ -78,6 +78,13 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
+                <div>
+                    Fonte arial
+                    <label class="switch">
+                        <input type="checkbox" name="fonteArial" value="seleccionado" {$fonteArial}>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
                 <button type="submit" name="preferencias" value="seleccionadas">Gardar preferencias</button>
             </form>
         </div>
