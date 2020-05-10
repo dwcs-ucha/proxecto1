@@ -33,7 +33,7 @@ class Sumas {
                 break;
         }
         for($i=0;$i<10;$i++){
-            $suma = new Sumas(rand(0, $max), rand(0, $max));
+            $suma = new Sumas(rand(1, $max), rand(1, $max));
             array_push($partida, $suma);
         }
         return $partida;

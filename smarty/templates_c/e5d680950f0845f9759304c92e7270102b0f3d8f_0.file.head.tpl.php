@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-12 17:49:16
+/* Smarty version 3.1.34-dev-7, created on 2020-05-09 19:09:19
   from '/var/www/html/Proxecto/proxecto1/Vista/layout/head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e6a680c8cc763_08319512',
+  'unifunc' => 'content_5eb6e3bf992e72_60213029',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e5d680950f0845f9759304c92e7270102b0f3d8f' => 
     array (
       0 => '/var/www/html/Proxecto/proxecto1/Vista/layout/head.tpl',
-      1 => 1583857867,
+      1 => 1589042568,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e6a680c8cc763_08319512 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eb6e3bf992e72_60213029 (Smarty_Internal_Template $_smarty_tpl) {
 ?><meta charset = "UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
 <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Xogos e actividades para nenos e nenas con trastornos do espectro autista (TEA) e outros problemas psicosociais">
 <meta name="author" content="Alumnos e alumnos do módulo de DWCS do Ciclo Superior de Desenvolvemento de aplicacións web, no CIFP Rodolfo Ucha Piñeiro">
@@ -39,8 +40,12 @@ function content_5e6a680c8cc763_08319512 (Smarty_Internal_Template $_smarty_tpl)
 <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 Vista/estilos/estilos.css" type="text/css">
 <?php if (isset($_COOKIE['temaOscuro'])) {?>
-<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
 Vista/estilos/temaOscuro.css" type="text/css">
+<?php }
+if (isset($_COOKIE['fonteArial'])) {?>
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['rutaRootHTML']->value;?>
+Vista/estilos/fonteArial.css" type="text/css">
 <?php }
 }
 }
