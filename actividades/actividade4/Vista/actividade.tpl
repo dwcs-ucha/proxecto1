@@ -8,9 +8,7 @@
     <body>
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         <div class="container">
-            <div>
-                <h1>Selecciona a categoria a que pertence o elemento</h1>
-            </div>
+            <h2>SELECCIONA A CATEGORÍA Á QUE PERTENCE O ELEMENTO</h2>
             <div class="contenedor">
                 <div id="puntuacion">
                     <a name="categorias"/>

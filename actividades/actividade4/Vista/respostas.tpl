@@ -33,7 +33,7 @@
     <body>
         {include file="{$rutaRootPHP}{'Vista/layout/cabeceira.tpl'}"}
         <div class="text-center">
-            <h1>Memoriza os elementos de cada categoria</h1>
+            <h1>Memoriza os elementos de cada categoría</h1>
             <h2 id="segundosRestantes"></h2>
             {foreach from = $categorias item = $categoria}
             <a name="{$categoria->getNome()}"/>
