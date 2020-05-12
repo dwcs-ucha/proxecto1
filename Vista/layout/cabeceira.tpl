@@ -1,7 +1,7 @@
 {*
- * @versión 1.3
- * @data 07/03/2020
- * @descripción Cabeceira do sitio web.
+* @versión 1.3
+* @data 07/03/2020
+* @descripción Cabeceira do sitio web.
 *}
 <nav class="navbar sticky-top container-fluid navbar-expand-lg bg-primary navbar-dark cabeceira">
     <a id="logo-xogoteca" class="navbar-brand" href="{$rutaRootHTML}index.php"><img src="{$rutaRootHTML}Vista/imaxes/logo2.png"></a>
@@ -23,7 +23,6 @@
             Xogos con imaxes
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade11/proxecto11_index.php">Emparellar</a>
             <a class="dropdown-item" href="{$rutaRootHTML}actividades/actividade4">Ordenar obxetos por categoría</a>
         </div>
     </div>
@@ -38,15 +37,14 @@
     <div class="collapse navbar-collapse">
         <a class="enlaceMenu" href="{$rutaRootHTML}/Controlador/preferencias.php">Preferencias</a>
     </div>
-    <div class="collapse navbar-collapse">
-        <a class="enlaceMenu" href="{$rutaRootHTML}/Controlador/rexistro.php">Rexistro</a>
-    </div>
-    <div class="login-container">
-        <form>
-          <input type="text" placeholder="Usuario" name="usuario"><br>
-          <input type="password" placeholder="Contrasinal" name="contrasinal">
-          <button type="submit">Login</button>
-        </form>
-    </div>
+    {if !isset($logeado)}
+        <div class="collapse navbar-collapse">
+            <a class="enlaceMenu" href="{$rutaRootHTML}/Controlador/login.php">Conectarse/Rexistrarse</a>
+        </div>
+    {else}
+        <div class="collapse navbar-collapse">
+            <a class="enlaceMenu" href="{$rutaRootHTML}/Controlador/logoff.php">Desconectarse</a>
+        </div>
+    {/if}
 </nav>
 

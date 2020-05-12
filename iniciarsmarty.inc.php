@@ -6,11 +6,11 @@
  * @data 10/03/2020
  * @descripción Arquivo iniciador de Smarty.
  */
-
 //Inclúese Smarty
 require_once "Modelo/Config.class.php";
 require_once Config::getRutaRootPHP() . '/smarty/libs/Smarty.class.php';
 require_once Config::getRutaRootPHP() . 'Controlador/CookiesController.class.php';
+require_once Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
 
 //Créase o obxecto Smarty
 $smarty = new Smarty();
@@ -25,5 +25,9 @@ $smarty->assign("rutaRootHTML", Config::getRutaRootHTML());
 if (!CookiesController::isPoliticaCookiesAceptada()) {
     $smarty->assign("mostrarAvisoCookies", true);
     CookiesController::aceptarPoliticaCookies();
+}
+session_start();
+if (Usuario::getUsuarioEnSesion() !== null) {
+    $smarty->assign("logeado", true);
 }
 ?>
