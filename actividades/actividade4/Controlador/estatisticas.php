@@ -6,10 +6,8 @@ include 'CategoriaController.class.php';
 include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
-include Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
 include Config::getRutaRootPHP() . 'Modelo/Estatisticas.class.php';
 
-session_start();
 $usuario = Usuario::getUsuarioEnSesion();
 if ($usuario !== null) {
     $usuarioLogeado = true;

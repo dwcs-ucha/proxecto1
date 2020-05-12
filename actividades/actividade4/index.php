@@ -9,18 +9,7 @@ include 'Controlador/CategoriaController.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
-include Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
 include_once Config::getRutaRootPHP() . 'Modelo/Estatisticas.class.php';
-
-session_start();
-
-/*
-  CREACIÓN MANUAL DE USUARIO ATA QUE SE COMPLETE A OPCIÓN DE REXISTRO DE USUARIOS
- */
-//$usuario = new Usuario("santi", "1234", Usuario::ROL_NORMAL, "2020-03-26", 0);
-$usuario = new Usuario("santi", "1234", Usuario::ROL_ADMINISTRADOR, "2020-05-08", 0);
-Usuario::insertarNovoUsuario($usuario);
-Usuario::loginUsuario("santi", "1234");
 
 $usuario = Usuario::getUsuarioEnSesion();
 if ($usuario === null) {

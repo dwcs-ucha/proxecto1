@@ -11,8 +11,6 @@ include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
 
-session_start();
-
 $fasePartida = PartidaController::getFasePartida();
 if ($fasePartida !== PartidaVO::FASE_CONFIGURAR) {
     header("Location: ../index.php");

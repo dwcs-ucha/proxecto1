@@ -8,13 +8,8 @@ include '../Controlador/CategoriaController.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
-include Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
 include Config::getRutaRootPHP() . 'actividades/actividade4/Modelo/PartidaVO.class.php';
 
-session_start();
-//$usuario = new Usuario("santi", "1234", Usuario::ROL_NORMAL, "2020-03-26", 0);
-//Usuario::insertarNovoUsuario($usuario);
-//Usuario::loginUsuario("santi", "1234");
 $usuario = Usuario::getUsuarioEnSesion();
 if ($usuario !== null) {
     if ($usuario->getRol() !== Usuario::ROL_ADMINISTRADOR) {

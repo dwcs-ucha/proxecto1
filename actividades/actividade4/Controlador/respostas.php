@@ -7,8 +7,6 @@ include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
 
 
-session_start();
-
 if (isset($_POST["xogar"])) {
     PartidaController::avanzarAFaseClasificarImaxes();
 }

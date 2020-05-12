@@ -7,9 +7,7 @@ include 'CategoriaController.class.php';
 include Config::getRutaRootPHP() . 'Modelo/Validacion.class.php';
 include Config::getRutaRootPHP() . 'Modelo/DAO.class.php';
 include Config::getRutaRootPHP() . 'iniciarsmarty.inc.php';
-include Config::getRutaRootPHP() . 'Modelo/Usuario.class.php';
 
-session_start();
 
 $fasePartida = PartidaController::getFasePartida();
 if ($fasePartida !== PartidaVO::FASE_CLASIFICAR_IMAXES) {
