@@ -15,7 +15,6 @@
     **/
 ?>
 <?php
-session_start();
 if(isset($_SESSION['a6_dif'])){//se existen as variables de partida as borramos da sesion
     unset($_SESSION['a6_dif']);
 }
@@ -26,7 +25,6 @@ if(isset($_SESSION["a6_partida"])){
 include_once '../../Modelo/Config.class.php'; 
 include_once '../../iniciarsmarty.inc.php';
 include_once '../../Modelo/Estatisticas.class.php';
-include_once '../../Modelo/Usuario.class.php';
 $errordif=false;//cargamos as variables de error a false
 $dif="-";
 $mostrarclas=false;

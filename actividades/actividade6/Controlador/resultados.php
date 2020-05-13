@@ -12,9 +12,7 @@
 include_once '../../../Modelo/Config.class.php';
 include_once '../../../iniciarsmarty.inc.php';
 include_once '../../../Modelo/Estatisticas.class.php';
-include_once '../../../Modelo/Usuario.class.php';
 include_once '../Modelo/Sumas.class.php';
-session_start();//iniciamos a sesion
 
 if(isset($_POST['reintentar'])){//se pulsamos reintentar
     unset($_SESSION['a6_aciertos']);//borramos as variables da session

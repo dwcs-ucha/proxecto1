@@ -28,6 +28,6 @@
                 <br><input class="btn btn-secondary btn-warning" type="submit" id="volver" name="volver" value="Volver ó inicio">
             </form>
         </div>
-        {include "../../../Vista/layout/pe.php"}
+        {include "../../../Vista/layout/pe.tpl"}
     </body>
 </html>

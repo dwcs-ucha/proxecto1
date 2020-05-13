@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-08 21:36:22
+/* Smarty version 3.1.34-dev-7, created on 2020-05-13 17:06:50
   from '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eb5b4b659abd8_25047865',
+  'unifunc' => 'content_5ebc0d0acb7573_18696047',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '26c0406657fe748dd40ad73976dcb0ed15aeb8e2' => 
     array (
       0 => '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/index.tpl',
-      1 => 1588966579,
+      1 => 1589382406,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../../../Vista/layout/pe.tpl' => 1,
   ),
 ),false)) {
-function content_5eb5b4b659abd8_25047865 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebc0d0acb7573_18696047 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="gl">
     <head>
@@ -47,14 +47,7 @@ function content_5eb5b4b659abd8_25047865 (Smarty_Internal_Template $_smarty_tpl)
         </head>
         <body>
             <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/cabeceira.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-            <div class="sesion">
-                <?php if (($_smarty_tpl->tpl_vars['usuario']->value !== null)) {?>
-                    <h4><a href="Controlador/logoff.php">Pechar sesión</a></h4>
-                <?php } else { ?>
-                    <h4><a href="Controlador/login.php">Iniciar sesión</a></h4>
-                <?php }?>
-            </div>
+?>           
             <h1>Caderno de Sumas</h1>     
             <form action="index.php" method="post">
                 <div class="container-fluid corpo">

@@ -17,14 +17,7 @@
             <title>Caderno de Sumas</title>
         </head>
         <body>
-            {include file="../../../Vista/layout/cabeceira.tpl"}
-            <div class="sesion">
-                {if ($usuario !== null)}
-                    <h4><a href="Controlador/logoff.php">Pechar sesión</a></h4>
-                {else }
-                    <h4><a href="Controlador/login.php">Iniciar sesión</a></h4>
-                {/if}
-            </div>
+            {include file="../../../Vista/layout/cabeceira.tpl"}           
             <h1>Caderno de Sumas</h1>     
             <form action="index.php" method="post">
                 <div class="container-fluid corpo">

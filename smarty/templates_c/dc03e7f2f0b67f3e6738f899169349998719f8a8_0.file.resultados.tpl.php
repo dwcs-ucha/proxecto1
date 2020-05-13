@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-08 21:41:15
+/* Smarty version 3.1.34-dev-7, created on 2020-05-13 17:12:23
   from '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/resultados.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eb5b5dbe1ccc0_33724359',
+  'unifunc' => 'content_5ebc0e5721eb04_30990857',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc03e7f2f0b67f3e6738f899169349998719f8a8' => 
     array (
       0 => '/var/www/html/Proxecto/proxecto1/actividades/actividade6/Vista/resultados.tpl',
-      1 => 1588966873,
+      1 => 1589382738,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:../../../Vista/layout/head.tpl' => 1,
     'file:../../../Vista/layout/cabeceira.tpl' => 1,
-    'file:../../../Vista/layout/pe.php' => 1,
+    'file:../../../Vista/layout/pe.tpl' => 1,
   ),
 ),false)) {
-function content_5eb5b5dbe1ccc0_33724359 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebc0e5721eb04_30990857 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="gl">
     <head>
@@ -58,7 +58,7 @@ function content_5eb5b5dbe1ccc0_33724359 (Smarty_Internal_Template $_smarty_tpl)
                 <br><input class="btn btn-secondary btn-warning" type="submit" id="volver" name="volver" value="Volver ó inicio">
             </form>
         </div>
-        <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/pe.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+        <?php $_smarty_tpl->_subTemplateRender("file:../../../Vista/layout/pe.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     </body>
 </html><?php }

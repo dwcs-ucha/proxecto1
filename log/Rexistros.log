@@ -1,3 +1,4 @@
 12-03-2020 19:36:54.000000 - 127.0.0.1 - SQLSTATE[HY000] [1049] Unknown database 'tienda'
 09-05-2020 19:09:53.000000 - ::1 - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'pepe' for key 'PRIMARY'
 10-05-2020 18:56:23.000000 - ::1 - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'pepe' for key 'PRIMARY'
+10-05-2020 19:12:12.000000 - ::1 - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'pepe' for key 'PRIMARY'
