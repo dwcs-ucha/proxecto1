@@ -8,8 +8,6 @@
 require_once '../../iniciarsmarty.inc.php';//Se añade como requerimiento el motor de plantillas "Smarty"
 require_once '../../Modelo/Usuario.class.php';//Se añade como requerimiento la clase de usuarios
 
-session_start();//Se inicializa la sesión
-
 $_SESSION = array();//Elimina todos los datos de sesión
 if (isset($_COOKIE[session_name()])) {//Si la cookie que almacena la sesión existe, se borra
         setcookie(session_name(), "", time() - 42000);

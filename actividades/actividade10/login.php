@@ -9,8 +9,6 @@ require_once '../../iniciarsmarty.inc.php';//Se añade como requerimiento el mot
 require_once '../../Modelo/DAO.class.php';//Se añade como requerimiento la clase de acceso a datos (DAO)
 require_once '../../Modelo/Usuario.class.php';//Se añade como requerimiento la clase de usuarios
 
-session_start();//Se abre la sesión
-
 if (isset($_POST['nombre'])) {//Si tiene algún valor el nombre del usuario, se guarda en la variable "$nombre"
     $nombre = trim($_POST['nombre']);
 }

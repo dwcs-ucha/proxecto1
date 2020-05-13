@@ -8,8 +8,6 @@
 require_once '../../iniciarsmarty.inc.php';//Se añade como requerimiento el motor de plantillas "Smarty"
 require_once '../../Modelo/Usuario.class.php';//Se añade como requerimiento la clase de usuarios
 
-session_start();//Se inicializa la sesión
-
 if (isset($_POST['juego'])) {//Si tiene algo de valor, se guarda en esta variable
     $juego_usuario = $_POST['juego'];
 }

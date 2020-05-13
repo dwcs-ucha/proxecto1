@@ -8,8 +8,6 @@
 require '../../iniciarsmarty.inc.php';//Se añade como requerimiento el motor de plantillas "Smarty"
 require_once '../../Modelo/Usuario.class.php';//Se añade como requerimiento la clase de usuarios
 
-session_start();//Se inicializa la sesión
-
 if (isset($_SESSION['usuario'])) {//Si está abierta la sesión de usuario:
     $usuario = $_SESSION['usuario'];//Se recoge la información del usuario en sesión y se guarda en esta variable ($usuario)
     if ($usuario->getRol() === 1) {//Si el rol del usuario es igual a 1 (es administrador), se le devuelve a la página de administración

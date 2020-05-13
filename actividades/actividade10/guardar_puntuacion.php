@@ -10,8 +10,6 @@ require_once '../../Modelo/DAO.class.php';//Se añade como requerimiento la clas
 require_once '../../Modelo/Estatisticas.class.php';//Se añade como requerimiento la clase de "Estatisticas"
 require_once '../../Modelo/Usuario.class.php';//Se añade como requerimiento la clase de usuarios
 
-session_start();//Se inicializa la sesión
-
 if (!isset($_SESSION['usuario'])) {//Si no está abierta la sesión de usuario, se lleva a la página de inicio de la actividad
     header("Location: index.php");
 } else {//De lo contrario:
