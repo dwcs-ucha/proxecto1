@@ -14,7 +14,7 @@
                     <button class="btn btn-lg btn-success" type="submit" name="gardarPuntuacion" value="true">Gardar puntuación</button>
                 </form>
             {else}
-                Conéctate ou <a href="{$rutaRootHTML}/Controlador/rexistro.php">rexístrate</a> para gardar a puntuación
+                <a href="{$rutaRootHTML}/Controlador/login.php">Conéctate ou rexístrate</a> para gardar a puntuación
             {/if}
             <form action="{$rutaRootHTML}/actividades/actividade4/index.php" method="post">
                 <button class="btn btn-lg btn-success" type="submit">Xogar de novo</button>
